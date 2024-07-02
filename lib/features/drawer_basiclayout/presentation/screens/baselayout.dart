@@ -35,7 +35,7 @@ class Base_Layout extends StatelessWidget {
                       BackgroundColor: Colors.white,
                     ),
                     Drawer_List(context: context),
-                    SvgPicture.asset(AssetsManager.drawer_image)
+                    SvgPicture.asset(AssetsManager.drawer_image,height: 440.h,)
                   ],
                 ),
               )),
