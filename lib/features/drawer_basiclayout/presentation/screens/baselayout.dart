@@ -15,25 +15,57 @@ class BaseLayout extends StatelessWidget {
       key: BasicCubit.get(context).scaffoldKey,
       backgroundColor: ColorsHelper.basicBackground,
       drawer: const CustomDrawer(),
-      body: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (!ResponsiveHelper.isDesktop(context))
-            IconButton(
-              onPressed: () {
-                BasicCubit.get(context).controlMenu();
-              },
-              icon: const Icon(
-                Icons.menu,
-              ),
+      body: !ResponsiveHelper.isDesktop(context)
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    BasicCubit.get(context).controlMenu();
+                  },
+                  icon: const Icon(
+                    Icons.menu,
+                  ),
+                ),
+                Expanded(
+                  child: child,
+                )
+              ],
+            )
+          : Row(
+              children: [
+                const CustomDrawer(),
+                Expanded(
+                  child: child,
+                ),
+              ],
             ),
-          if (ResponsiveHelper.isDesktop(context)) const CustomDrawer(),
-          Expanded(child: child)
-        ],
-      ),
     );
   }
 }
 
-
+// Row(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           if (!ResponsiveHelper.isDesktop(context))
+//             Container(
+//               color: Colors.blue,
+//               child: IconButton(
+//                 onPressed: () {
+//                   BasicCubit.get(context).controlMenu();
+//                 },
+//                 icon: const Icon(
+//                   Icons.menu,
+//                 ),
+//               ),
+//             ),
+//           if (ResponsiveHelper.isDesktop(context)) const CustomDrawer(),
+//           Expanded(
+//             child: Container(
+//               color: Colors.red,
+//               child: child,
+//             ),
+//           )
+//         ],
+//       ),
 //Color.fromARGB(255, 10, 185, 181)
