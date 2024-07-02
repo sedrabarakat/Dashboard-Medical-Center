@@ -25,27 +25,21 @@ class Base_Layout extends StatelessWidget {
           Drawer(
               backgroundColor: Colors.white,
               shape: StyleManager.Rounded50,
-              child: BlocConsumer<BasicCubit, BasicStates>(
-                listener: (BuildContext context, state) {},
-                builder: (BuildContext context, state) {
-                  BasicCubit cubit = BasicCubit.get(context);
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Liqued_Text(
-                        Text: 'Medical Center',
-                        waveColor: ColorsHelper.tealLightDark,
-                        BackgroundColor: Colors.white,
-                      ),
-                      Drawer_List(context: context, cubit: cubit),
-                      Flexible(
-                          child: Padding(
-                           padding: EdgeInsets.only(top: 100.h),
-                            child: SvgPicture.asset(AssetsManager.drawer_image),
-                      ))
-                    ],
-                  );
-                },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Liqued_Text(
+                    Text: 'Medical Center',
+                    waveColor: ColorsHelper.tealLightDark,
+                    BackgroundColor: Colors.white,
+                  ),
+                  Drawer_List(context: context),
+                  Flexible(
+                      child: Padding(
+                       padding: EdgeInsets.only(top: 100.h),
+                        child: SvgPicture.asset(AssetsManager.drawer_image),
+                  ))
+                ],
               )),
           Expanded(child: child)
         ],

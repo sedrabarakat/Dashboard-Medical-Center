@@ -13,6 +13,7 @@ Widget Liqued_Text({
   double height=140,
 }){
   return TextLiquidFill(
+    loadDuration: const Duration(seconds: 3),
     text: Text,
     waveColor: waveColor,
     boxBackgroundColor: BackgroundColor,
