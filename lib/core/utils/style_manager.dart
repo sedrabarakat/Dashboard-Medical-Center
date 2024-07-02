@@ -1,6 +1,3 @@
-/* Here goes the text styles */
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,16 +7,15 @@ class StyleManager {
       fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white);
 
   static TextStyle font30Bold = TextStyle(
-  fontSize: 30.sp,
-  fontWeight: FontWeight.bold,
+    fontSize: 30.sp,
+    fontWeight: FontWeight.bold,
   );
 
   ///borders
-  static  RoundedRectangleBorder Rounded50=const RoundedRectangleBorder(
+  static RoundedRectangleBorder rounded50 = const RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-        topRight: Radius.circular(50),
-        bottomRight: Radius.circular(50)),
+      topRight: Radius.circular(50),
+      bottomRight: Radius.circular(50),
+    ),
   );
 }
-
-

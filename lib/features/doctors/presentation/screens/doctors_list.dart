@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../drawer_basiclayout/presentation/screens/baselayout.dart';
 
-class Doctors_List extends StatelessWidget{
+class DoctorList extends StatelessWidget {
+  const DoctorList({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Base_Layout(
-        child:  Center(child:
-        Text('Doctors_List'),
-        ));
+    return BaseLayout(
+        child: const Center(
+      child: Text('Doctors_List'),
+    ));
   }
 }

@@ -1,7 +1,7 @@
 abstract class BasicStates {}
 
-class Init_BasicStates extends BasicStates{}
+class InitiBasicStates extends BasicStates {}
 
-class Change_Selected_Tap_State extends BasicStates{}
+class ChangeSelectedTapState extends BasicStates {}
 
-class Search_State extends BasicStates{}
+class SearchState extends BasicStates {}

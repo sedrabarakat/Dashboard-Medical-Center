@@ -11,89 +11,82 @@ import '../../features/doctors/presentation/screens/doctor_profile.dart';
 import '../../features/patients/presentation/screens/patient_profile.dart';
 import '../../features/patients/presentation/screens/patients_list.dart';
 
-class Web_Router{
-
+class WebRouter {
   static GoRouter router = GoRouter(
-
-    initialLocation:'/add_account',
+    initialLocation: '/add_account',
     routes: [
       GoRoute(
         path: '/add_account',
         name: 'add_account',
         pageBuilder: (context, state) {
-          return  MaterialPage(child: Add_Account());
+          return MaterialPage(child: AddAccount());
         },
       ),
       GoRoute(
         path: '/Directors_list',
         name: 'Directors_list',
         pageBuilder: (context, state) {
-          return  MaterialPage(child: Directors_List());
+          return MaterialPage(child: DirectorsList());
         },
       ),
       GoRoute(
-        path: '/Doctors_List',
-        name: 'Doctors_List',
-        pageBuilder: (context, state) {
-          return  MaterialPage(child: Doctors_List());
-        },
-        routes: [
-          GoRoute(
-            path: 'Doctor_profile/:Doctor_id',
-            name: 'Doctor_profile',
-            pageBuilder: (context, state) {
-              return  MaterialPage(child: Doctor_Profile());
-            },
-          ),
-        ]
-      ),
+          path: '/Doctors_List',
+          name: 'Doctors_List',
+          pageBuilder: (context, state) {
+            return MaterialPage(child: DoctorList());
+          },
+          routes: [
+            GoRoute(
+              path: 'Doctor_profile/:Doctor_id',
+              name: 'Doctor_profile',
+              pageBuilder: (context, state) {
+                return MaterialPage(child: DoctorProfile());
+              },
+            ),
+          ]),
       GoRoute(
           path: '/Patients_List',
           name: 'Patients_List',
           pageBuilder: (context, state) {
-            return  MaterialPage(child: Patients_List());
+            return MaterialPage(child: PatientsList());
           },
           routes: [
             GoRoute(
               path: 'Patient_profile/:Patient_id',
               name: 'Patient_profile',
               pageBuilder: (context, state) {
-                return  MaterialPage(child: Patient_Profile());
+                return MaterialPage(child: PatientProfile());
               },
             ),
-          ]
-      ),
+          ]),
       GoRoute(
         path: '/Laboratory',
         name: 'Laboratory',
         pageBuilder: (context, state) {
-          return  MaterialPage(child: Laboratories_List());
+          return MaterialPage(child: LaboratoriesList());
         },
       ),
       GoRoute(
         path: '/Reseptions_list',
         name: 'Reseptions_list',
         pageBuilder: (context, state) {
-          return  MaterialPage(child: Reseptions_List());
+          return MaterialPage(child: ReseptionsList());
         },
       ),
       GoRoute(
         path: '/Sections_list',
         name: 'Sections_list',
         pageBuilder: (context, state) {
-          return  MaterialPage(child: Sections_List());
+          return MaterialPage(child: SectionsList());
         },
       ),
       GoRoute(
         path: '/Inbox',
         name: 'Inbox',
         pageBuilder: (context, state) {
-          return  MaterialPage(child: Inbox());
+          return MaterialPage(child: Inbox());
         },
       ),
-
-
-
     ],
   );
 }

@@ -4,39 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
-
-
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers:[
-          BlocProvider(create: (BuildContext context) => BasicCubit())
-        ],
+      providers: [BlocProvider(create: (BuildContext context) => BasicCubit())],
       child: ScreenUtilInit(
-        designSize: Size(1600, 1000),
+        designSize: const Size(1600, 1000),
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
-            routerDelegate: Web_Router.router.routerDelegate,
-            routeInformationParser: Web_Router.router.routeInformationParser,
-            routeInformationProvider: Web_Router.router.routeInformationProvider,
+          routerDelegate: WebRouter.router.routerDelegate,
+          routeInformationParser: WebRouter.router.routeInformationParser,
+          routeInformationProvider: WebRouter.router.routeInformationProvider,
         ),
       ),
     );
   }
 }
-
-
-
-
-

@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget listTile_Widget({
+Widget listTileWidget({
   required int index,
-  required int sp_index,
+  required int spIndex,
   required IconData icon,
   required String text,
   required GestureTapCallback onTap,
@@ -16,13 +14,13 @@ Widget listTile_Widget({
     ),
     leading: Icon(
       icon,
-      color: (index == sp_index) ? Colors.white : Colors.teal,
+      color: (index == spIndex) ? Colors.white : Colors.teal,
     ),
     title: Text(
       text,
-      style: TextStyle(color: (index == sp_index) ? Colors.white : Colors.teal),
+      style: TextStyle(color: (index == spIndex) ? Colors.white : Colors.teal),
     ),
-    tileColor: (index == sp_index) ? Colors.teal.withOpacity(.7) : null,
+    tileColor: (index == spIndex) ? Colors.teal.withOpacity(.7) : null,
     onTap: onTap,
   );
 }

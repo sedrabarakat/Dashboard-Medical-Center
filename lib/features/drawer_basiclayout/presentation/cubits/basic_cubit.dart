@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../widgets/drawer_items.dart';
 import 'basic_states.dart';
 
-class BasicCubit extends Cubit<BasicStates>{
+class BasicCubit extends Cubit<BasicStates> {
+  BasicCubit() : super(InitiBasicStates());
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  int selectedIndex = 1; //in_drawer
 
-  BasicCubit():super(Init_BasicStates());
+  static BasicCubit get(context) => BlocProvider.of(context);
+  GlobalKey<ScaffoldState> get scaffoldKey => _scaffoldKey;
 
-  static BasicCubit get(context)=>BlocProvider.of(context);
+  void changeSelctedTap({required int index}) {
+    selectedIndex = index;
+    emit(ChangeSelectedTapState());
+  }
 
-  int Selected_Index=1;//in_drawer
-
-
-void Change_Selected_Tap({
-  required int index
-}){
-  Selected_Index=index;
-  emit(Change_Selected_Tap_State());
-}
-
-
-
+  void controlMenu() {
+    if (!_scaffoldKey.currentState!.isDrawerOpen) {
+      _scaffoldKey.currentState!.openDrawer();
+    }
+  }
 }

@@ -1,48 +1,39 @@
+import 'package:dashboad/core/helpers/responsive_helper.dart';
 import 'package:dashboad/features/drawer_basiclayout/presentation/cubits/basic_cubit.dart';
-import 'package:dashboad/features/drawer_basiclayout/presentation/cubits/basic_states.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dashboad/features/drawer_basiclayout/presentation/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../../../core/helpers/colors_helper.dart';
-import '../../../../core/utils/assets_manager.dart';
-import '../../../../core/utils/style_manager.dart';
-import '../../../../core/widgets/animated_text.dart';
-import '../widgets/drawer_items.dart';
 
-class Base_Layout extends StatelessWidget {
-  Base_Layout({required this.child});
+class BaseLayout extends StatelessWidget {
+  const BaseLayout({super.key, required this.child});
 
-  Widget child;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsHelper.Basic_background,
+      key: BasicCubit.get(context).scaffoldKey,
+      backgroundColor: ColorsHelper.basicBackground,
+      drawer: const CustomDrawer(),
       body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Drawer(
-              backgroundColor: Colors.white,
-              shape: StyleManager.Rounded50,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Liqued_Text(
-                      Text: 'Medical Center',
-                      waveColor: ColorsHelper.tealLightDark,
-                      BackgroundColor: Colors.white,
-                    ),
-                    Drawer_List(context: context),
-                    SvgPicture.asset(AssetsManager.drawer_image,height: 440.h,)
-                  ],
-                ),
-              )),
+          if (!ResponsiveHelper.isDesktop(context))
+            IconButton(
+              onPressed: () {
+                BasicCubit.get(context).controlMenu();
+              },
+              icon: const Icon(
+                Icons.menu,
+              ),
+            ),
+          if (ResponsiveHelper.isDesktop(context)) const CustomDrawer(),
           Expanded(child: child)
         ],
       ),
     );
   }
 }
+
+
 //Color.fromARGB(255, 10, 185, 181)

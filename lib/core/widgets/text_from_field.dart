@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
 
-import '../helpers/colors_helper.dart';
-
+// ignore: must_be_immutable
 class TextFiledDash extends StatelessWidget {
   TextFiledDash(
       {super.key,
-        this.textInputAction = TextInputAction.next,
-        this.keyboardType = TextInputType.text,
-        this.controller,
-        this.iconData,
-        this.hintText,
-        this.obscureText = false,
-        this.suffixIcon = false,
-        this.validator,
-        this.onChanged,
-        this.onTap,
-        this.autofocus = false,
-        this.readOnly = false,
-        this.maxLine = 1,
-        this.minLine = 1,
-        this.textFieldHintColor = Colors.white,
-        this.helperText,
-        this.suffix_pressed,
-        required this.radius});
+      this.textInputAction = TextInputAction.next,
+      this.keyboardType = TextInputType.text,
+      this.controller,
+      this.iconData,
+      this.hintText,
+      this.obscureText = false,
+      this.suffixIcon = false,
+      this.validator,
+      this.onChanged,
+      this.onTap,
+      this.autofocus = false,
+      this.readOnly = false,
+      this.maxLine = 1,
+      this.minLine = 1,
+      this.textFieldHintColor = Colors.white,
+      this.helperText,
+      this.suffixPressed,
+      required this.radius});
 
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
@@ -36,15 +35,14 @@ class TextFiledDash extends StatelessWidget {
   bool obscureText;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
-  final VoidCallback? suffix_pressed;
+  final VoidCallback? suffixPressed;
   final VoidCallback? onTap;
   final int? maxLine;
   final int? minLine;
 
   final Color? textFieldHintColor;
   final double radius;
-  bool is_border=false;
-
+  bool isBorder = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +50,9 @@ class TextFiledDash extends StatelessWidget {
       maxLines: maxLine,
       minLines: minLine,
       readOnly: readOnly,
-      autofocus:  autofocus,
+      autofocus: autofocus,
       validator: validator ??
-              (String? val) {
+          (String? val) {
             if (val!.trim().isEmpty) return 'Filed is required*';
             return null;
           },
@@ -68,37 +66,43 @@ class TextFiledDash extends StatelessWidget {
       decoration: InputDecoration(
           helperMaxLines: 2,
           helperText: helperText,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius),
             borderSide: BorderSide(
               color: Colors.grey.shade300,
-            ),),
+            ),
+          ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),borderSide: BorderSide(
-            color: Colors.grey.shade300,
-          ),),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(radius),borderSide: BorderSide(
-            color: Colors.grey.shade300,
-          ),),
+            borderRadius: BorderRadius.circular(radius),
+            borderSide: BorderSide(
+              color: Colors.grey.shade300,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius),
+            borderSide: BorderSide(
+              color: Colors.grey.shade300,
+            ),
+          ),
           filled: true,
           fillColor: Colors.grey.shade300,
           hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade800),
           prefixIcon: iconData == null
               ? null
               : Icon(
-            iconData,
-          ),
+                  iconData,
+                ),
           suffixIcon: suffixIcon
               ? IconButton(
-              onPressed: suffix_pressed,
-              icon: Icon(
-                obscureText ? Icons.lock_open : Icons.lock_outline,
-                color: !obscureText
-                    ? Theme.of(context).primaryColor
-                    : Colors.grey,
-              ))
+                  onPressed: suffixPressed,
+                  icon: Icon(
+                    obscureText ? Icons.lock_open : Icons.lock_outline,
+                    color: !obscureText
+                        ? Theme.of(context).primaryColor
+                        : Colors.grey,
+                  ))
               : null,
           hintText: hintText),
     );
   }
 }
-
