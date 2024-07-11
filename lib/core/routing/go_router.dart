@@ -1,3 +1,5 @@
+import 'package:dashboad/core/data/datasources/local.dart';
+import 'package:dashboad/features/auth/presentation/screens/login_screen.dart';
 import 'package:dashboad/features/create_account/presentation/screens/add_account.dart';
 import 'package:dashboad/features/director/presentation/screens/directors_list.dart';
 import 'package:dashboad/features/doctors/presentation/screens/doctors_list.dart';
@@ -12,79 +14,106 @@ import '../../features/patients/presentation/screens/patient_profile.dart';
 import '../../features/patients/presentation/screens/patients_list.dart';
 
 class WebRouter {
+  static bool _hasToken = false;
+  static Future<void> init() async {
+    String? token = await HandleShared.getString('token');
+    _hasToken = token != null;
+  }
+
+  static const kLogin = 'Login';
+  static const kAddAccount = 'add_account';
+  static const kDirectorsList = 'Directors_list';
+  static const kDoctorList = 'Doctor_list';
+  static const kDoctorProfile = 'Doctor_profile';
+  static const kPatientList = 'Patient_list';
+  static const kPatientProfile = 'Patient_profile';
+  static const kLaboratory = 'Laboratory';
+  static const kReseptionsList = 'Reseptions_list';
+  static const kSecontsList = 'Seconts_list';
+  static const kInbox = 'Inbox';
+
   static GoRouter router = GoRouter(
-    initialLocation: '/add_account',
+    //! This is working but I comment
+    // initialLocation: _hasToken ? '/add_account' : '/',
+    initialLocation: '/',
     routes: [
       GoRoute(
+        path: '/',
+        name: kLogin,
+        pageBuilder: (context, state) => MaterialPage(
+          child: LoginPage(),
+        ),
+      ),
+      GoRoute(
         path: '/add_account',
-        name: 'add_account',
+        name: kAddAccount,
         pageBuilder: (context, state) {
           return MaterialPage(child: AddAccount());
         },
       ),
       GoRoute(
         path: '/Directors_list',
-        name: 'Directors_list',
+        name: kDirectorsList,
         pageBuilder: (context, state) {
-          return MaterialPage(child: DirectorsList());
+          return const MaterialPage(child: DirectorsList());
         },
       ),
       GoRoute(
           path: '/Doctors_List',
-          name: 'Doctors_List',
+          name: kDoctorList,
           pageBuilder: (context, state) {
-            return MaterialPage(child: DoctorList());
+            return const MaterialPage(child: DoctorList());
           },
           routes: [
             GoRoute(
               path: 'Doctor_profile/:Doctor_id',
-              name: 'Doctor_profile',
+              name: kDoctorProfile,
               pageBuilder: (context, state) {
-                return MaterialPage(child: DoctorProfile());
+                return const MaterialPage(child: DoctorProfile());
               },
             ),
           ]),
       GoRoute(
           path: '/Patients_List',
-          name: 'Patients_List',
+          name: kPatientList,
           pageBuilder: (context, state) {
-            return MaterialPage(child: PatientsList());
+            return const MaterialPage(child: PatientsList());
           },
           routes: [
             GoRoute(
               path: 'Patient_profile/:Patient_id',
-              name: 'Patient_profile',
+              name: kPatientProfile,
               pageBuilder: (context, state) {
-                return MaterialPage(child: PatientProfile());
+                return const MaterialPage(child: PatientProfile());
               },
             ),
           ]),
       GoRoute(
         path: '/Laboratory',
-        name: 'Laboratory',
+        name: kLaboratory,
         pageBuilder: (context, state) {
-          return MaterialPage(child: LaboratoriesList());
+          return const MaterialPage(child: LaboratoriesList());
         },
       ),
       GoRoute(
         path: '/Reseptions_list',
-        name: 'Reseptions_list',
+        name: kReseptionsList,
         pageBuilder: (context, state) {
-          return MaterialPage(child: ReseptionsList());
+          return const MaterialPage(child: ReseptionsList());
         },
       ),
       GoRoute(
         path: '/Sections_list',
-        name: 'Sections_list',
+        name: kSecontsList,
         pageBuilder: (context, state) {
-          return MaterialPage(child: SectionsList());
+          return const MaterialPage(child: SectionsList());
         },
       ),
       GoRoute(
         path: '/Inbox',
-        name: 'Inbox',
+        name: kInbox,
         pageBuilder: (context, state) {
-          return MaterialPage(child: Inbox());
+          return const MaterialPage(child: Inbox());
         },
       ),
     ],

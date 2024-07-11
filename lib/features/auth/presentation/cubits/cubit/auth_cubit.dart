@@ -1,0 +1,54 @@
+import 'package:bloc/bloc.dart';
+import 'package:dashboad/core/data/datasources/local.dart';
+import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
+import 'package:dashboad/core/helpers/dio_helper.dart';
+import 'package:dashboad/core/widgets/constants.dart';
+import 'package:dashboad/features/auth/domain/respositories/auth_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'auth_state.dart';
+part 'auth_cubit.freezed.dart';
+
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit(this._repo) : super(const AuthState.initial());
+  final AuthRepository _repo;
+  final phoneNumberController = TextEditingController();
+  final passwordController = TextEditingController();
+  final pageController = PageController();
+  String otpCode = '';
+  Future<void> requestCode(BuildContext context) async {
+    emit(const AuthState.requestCodeLoading());
+    final response = await _repo.requestCode(
+        phoneNumberController.text, passwordController.text);
+    response.fold((error) {
+      emit(AuthState.requestCodeError(error));
+      Constants.onNetworkFailure(context, networkException: error);
+    }, (data) {
+      emit(const AuthState.requestCodeSuccess());
+      Constants.onSuccess(
+        context,
+        message: 'the code has been sent successfully',
+        title: "Success",
+      );
+    });
+  }
+
+  Future<void> verfiyCode(BuildContext context) async {
+    final response =
+        await _repo.verfiycode(phoneNumberController.text, otpCode);
+    response.fold((error) {
+      emit(AuthState.verfiyCodeError(error));
+      Constants.onNetworkFailure(context, networkException: error);
+    }, (data) {
+      emit(const AuthState.verfiyCodeSuccess());
+      HandleShared.addString('token', data);
+      DioHelper().addTokenInterceptor();
+      Constants.onSuccess(
+        context,
+        message: "Welcome Back",
+        title: 'Success',
+      );
+    });
+  }
+}

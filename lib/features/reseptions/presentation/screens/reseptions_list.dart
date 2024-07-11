@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../../../drawer_basiclayout/presentation/screens/baselayout.dart';
 
 class ReseptionsList extends StatelessWidget {
@@ -6,9 +7,9 @@ class ReseptionsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BaseLayout(
+    return BaseLayout(
         child: Center(
-      child: Text('Reseptions_List'),
+      child: TextFormField(),
     ));
   }
 }
