@@ -29,7 +29,7 @@ class WebRouter {
   static const kPatientProfile = 'Patient_profile';
   static const kLaboratory = 'Laboratory';
   static const kReseptionsList = 'Reseptions_list';
-  static const kSecontsList = 'Seconts_list';
+  static const kSectionsList = 'Seconts_list';
   static const kInbox = 'Inbox';
 
   static GoRouter router = GoRouter(
@@ -104,7 +104,7 @@ class WebRouter {
       ),
       GoRoute(
         path: '/Sections_list',
-        name: kSecontsList,
+        name: kSectionsList,
         pageBuilder: (context, state) {
           return const MaterialPage(child: SectionsList());
         },

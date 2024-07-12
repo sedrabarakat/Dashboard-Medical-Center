@@ -34,13 +34,13 @@ class LoginCard extends StatelessWidget {
         // when enter is pressed call the onPressed Function
         if (event is KeyDownEvent &&
             event.logicalKey == LogicalKeyboardKey.enter) {
-          if (formKey.currentState!.validate()) {
-            onPressed!();
-          }
+          // if (formKey.currentState!.validate()) {
+          //   onPressed!();
+          // }
         }
       },
       child: Form(
-        key: key,
+        key: formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -77,7 +77,7 @@ class LoginCard extends StatelessWidget {
               label: 'Password',
               textColor: textColor,
               validator: (value) =>
-                  ValidatorManager.instance.validatePassword(value!),
+                  ValidatorManager.instance.validatePassword(value ?? ''),
             ),
             const SizedBox(
               height: AppSize.s24,
@@ -86,7 +86,7 @@ class LoginCard extends StatelessWidget {
               label: 'Sign in',
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  onPressed;
+                  onPressed!();
                 } else {}
               },
               currentState: buttonCurrentState,
