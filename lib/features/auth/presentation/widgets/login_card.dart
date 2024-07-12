@@ -34,9 +34,9 @@ class LoginCard extends StatelessWidget {
         // when enter is pressed call the onPressed Function
         if (event is KeyDownEvent &&
             event.logicalKey == LogicalKeyboardKey.enter) {
-          // if (formKey.currentState!.validate()) {
-          //   onPressed!();
-          // }
+          if (formKey.currentState!.validate()) {
+            onPressed!();
+          }
         }
       },
       child: Form(
