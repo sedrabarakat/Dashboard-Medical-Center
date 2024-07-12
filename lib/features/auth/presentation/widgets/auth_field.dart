@@ -11,12 +11,14 @@ class AuthTextField extends StatefulWidget {
     this.isPassword = false,
     this.hintText,
     this.textColor = Colors.black54,
+    required this.validator,
   });
   final String label;
   final String? hintText;
   final TextEditingController controller;
   final bool isPassword;
   final Color textColor;
+  final String? Function(String?)? validator;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -60,6 +62,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           height: AppSize.s10,
         ),
         TextFormField(
+          validator: widget.validator,
           focusNode: _focusNode,
           obscureText: widget.isPassword ? _passwordVisible : false,
           controller: widget.controller,
@@ -88,6 +91,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             focusedBorder: _buildBorder(ColorsHelper.tealLightDark),
             enabledBorder: _buildBorder(ColorsHelper.lightGry),
             errorBorder: _buildBorder(Colors.red),
+            focusedErrorBorder: _buildBorder(Colors.red),
           ),
         ),
       ],

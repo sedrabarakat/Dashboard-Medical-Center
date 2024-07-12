@@ -22,6 +22,7 @@ mixin _$AuthState {
     required TResult Function() requestCodeLoading,
     required TResult Function() requestCodeSuccess,
     required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
   }) =>
@@ -32,6 +33,7 @@ mixin _$AuthState {
     TResult? Function()? requestCodeLoading,
     TResult? Function()? requestCodeSuccess,
     TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
   }) =>
@@ -42,6 +44,7 @@ mixin _$AuthState {
     TResult Function()? requestCodeLoading,
     TResult Function()? requestCodeSuccess,
     TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
     required TResult orElse(),
@@ -53,6 +56,7 @@ mixin _$AuthState {
     required TResult Function(_RequestCodeLoading value) requestCodeLoading,
     required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
     required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
   }) =>
@@ -63,6 +67,7 @@ mixin _$AuthState {
     TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
   }) =>
@@ -73,6 +78,7 @@ mixin _$AuthState {
     TResult Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
     required TResult orElse(),
@@ -139,6 +145,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() requestCodeLoading,
     required TResult Function() requestCodeSuccess,
     required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
   }) {
@@ -152,6 +159,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? requestCodeLoading,
     TResult? Function()? requestCodeSuccess,
     TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
   }) {
@@ -165,6 +173,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? requestCodeLoading,
     TResult Function()? requestCodeSuccess,
     TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
     required TResult orElse(),
@@ -182,6 +191,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_RequestCodeLoading value) requestCodeLoading,
     required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
     required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
   }) {
@@ -195,6 +205,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
   }) {
@@ -208,6 +219,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
     required TResult orElse(),
@@ -265,6 +277,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     required TResult Function() requestCodeLoading,
     required TResult Function() requestCodeSuccess,
     required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
   }) {
@@ -278,6 +291,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult? Function()? requestCodeLoading,
     TResult? Function()? requestCodeSuccess,
     TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
   }) {
@@ -291,6 +305,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult Function()? requestCodeLoading,
     TResult Function()? requestCodeSuccess,
     TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
     required TResult orElse(),
@@ -308,6 +323,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     required TResult Function(_RequestCodeLoading value) requestCodeLoading,
     required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
     required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
   }) {
@@ -321,6 +337,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
   }) {
@@ -334,6 +351,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
     required TResult orElse(),
@@ -391,6 +409,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     required TResult Function() requestCodeLoading,
     required TResult Function() requestCodeSuccess,
     required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
   }) {
@@ -404,6 +423,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult? Function()? requestCodeLoading,
     TResult? Function()? requestCodeSuccess,
     TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
   }) {
@@ -417,6 +437,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult Function()? requestCodeLoading,
     TResult Function()? requestCodeSuccess,
     TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
     required TResult orElse(),
@@ -434,6 +455,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     required TResult Function(_RequestCodeLoading value) requestCodeLoading,
     required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
     required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
   }) {
@@ -447,6 +469,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
   }) {
@@ -460,6 +483,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
     required TResult orElse(),
@@ -554,6 +578,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     required TResult Function() requestCodeLoading,
     required TResult Function() requestCodeSuccess,
     required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
   }) {
@@ -567,6 +592,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult? Function()? requestCodeLoading,
     TResult? Function()? requestCodeSuccess,
     TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
   }) {
@@ -580,6 +606,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult Function()? requestCodeLoading,
     TResult Function()? requestCodeSuccess,
     TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
     required TResult orElse(),
@@ -597,6 +624,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     required TResult Function(_RequestCodeLoading value) requestCodeLoading,
     required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
     required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
   }) {
@@ -610,6 +638,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
   }) {
@@ -623,6 +652,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
     required TResult orElse(),
@@ -642,6 +672,138 @@ abstract class _RequestCodeError implements AuthState {
   @JsonKey(ignore: true)
   _$$RequestCodeErrorImplCopyWith<_$RequestCodeErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VerifyCodeLoadingImplCopyWith<$Res> {
+  factory _$$VerifyCodeLoadingImplCopyWith(_$VerifyCodeLoadingImpl value,
+          $Res Function(_$VerifyCodeLoadingImpl) then) =
+      __$$VerifyCodeLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$VerifyCodeLoadingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$VerifyCodeLoadingImpl>
+    implements _$$VerifyCodeLoadingImplCopyWith<$Res> {
+  __$$VerifyCodeLoadingImplCopyWithImpl(_$VerifyCodeLoadingImpl _value,
+      $Res Function(_$VerifyCodeLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
+  const _$VerifyCodeLoadingImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.verfiyCodeLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$VerifyCodeLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() requestCodeLoading,
+    required TResult Function() requestCodeSuccess,
+    required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
+    required TResult Function(NetworkExceptions error) verfiyCodeError,
+    required TResult Function() verfiyCodeSuccess,
+  }) {
+    return verfiyCodeLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? requestCodeLoading,
+    TResult? Function()? requestCodeSuccess,
+    TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
+    TResult? Function(NetworkExceptions error)? verfiyCodeError,
+    TResult? Function()? verfiyCodeSuccess,
+  }) {
+    return verfiyCodeLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? requestCodeLoading,
+    TResult Function()? requestCodeSuccess,
+    TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
+    TResult Function(NetworkExceptions error)? verfiyCodeError,
+    TResult Function()? verfiyCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (verfiyCodeLoading != null) {
+      return verfiyCodeLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_RequestCodeLoading value) requestCodeLoading,
+    required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
+    required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
+    required TResult Function(_VerifyCodeError value) verfiyCodeError,
+    required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+  }) {
+    return verfiyCodeLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
+    TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
+    TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
+    TResult? Function(_VerifyCodeError value)? verfiyCodeError,
+    TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+  }) {
+    return verfiyCodeLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RequestCodeLoading value)? requestCodeLoading,
+    TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
+    TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
+    TResult Function(_VerifyCodeError value)? verfiyCodeError,
+    TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    required TResult orElse(),
+  }) {
+    if (verfiyCodeLoading != null) {
+      return verfiyCodeLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VerifyCodeLoading implements AuthState {
+  const factory _VerifyCodeLoading() = _$VerifyCodeLoadingImpl;
 }
 
 /// @nodoc
@@ -723,6 +885,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     required TResult Function() requestCodeLoading,
     required TResult Function() requestCodeSuccess,
     required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
   }) {
@@ -736,6 +899,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult? Function()? requestCodeLoading,
     TResult? Function()? requestCodeSuccess,
     TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
   }) {
@@ -749,6 +913,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult Function()? requestCodeLoading,
     TResult Function()? requestCodeSuccess,
     TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
     required TResult orElse(),
@@ -766,6 +931,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     required TResult Function(_RequestCodeLoading value) requestCodeLoading,
     required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
     required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
   }) {
@@ -779,6 +945,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
   }) {
@@ -792,6 +959,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
     required TResult orElse(),
@@ -855,6 +1023,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     required TResult Function() requestCodeLoading,
     required TResult Function() requestCodeSuccess,
     required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
   }) {
@@ -868,6 +1037,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult? Function()? requestCodeLoading,
     TResult? Function()? requestCodeSuccess,
     TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
   }) {
@@ -881,6 +1051,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult Function()? requestCodeLoading,
     TResult Function()? requestCodeSuccess,
     TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
     required TResult orElse(),
@@ -898,6 +1069,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     required TResult Function(_RequestCodeLoading value) requestCodeLoading,
     required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
     required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
   }) {
@@ -911,6 +1083,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
   }) {
@@ -924,6 +1097,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult Function(_RequestCodeLoading value)? requestCodeLoading,
     TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
     TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
     required TResult orElse(),

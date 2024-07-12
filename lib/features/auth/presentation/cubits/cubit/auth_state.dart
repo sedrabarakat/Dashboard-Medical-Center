@@ -7,6 +7,7 @@ class AuthState with _$AuthState {
   const factory AuthState.requestCodeSuccess() = _RequestCodeSuccess;
   const factory AuthState.requestCodeError(NetworkExceptions error) =
       _RequestCodeError;
+  const factory AuthState.verfiyCodeLoading() = _VerifyCodeLoading;
   const factory AuthState.verfiyCodeError(NetworkExceptions error) =
       _VerifyCodeError;
   const factory AuthState.verfiyCodeSuccess() = _VerifyCodeSuccess;

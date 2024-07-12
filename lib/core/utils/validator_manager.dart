@@ -60,9 +60,9 @@ class ValidatorManager {
     // }
 
     // Check for digits
-    if (!regExp.digitRegex.hasMatch(value)) {
-      return 'Password must contain at least one digit';
-    }
+    // if (!regExp.digitRegex.hasMatch(value)) {
+    //   return 'Password must contain at least one digit';
+    // }
 
     // // Check for special characters
     // if (!regExp.specialCharRegex.hasMatch(value)) {

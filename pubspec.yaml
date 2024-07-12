@@ -57,6 +57,7 @@ dependencies:
   animate_do: ^3.3.4
   progress_loading_button: ^2.0.2
   shared_preferences: ^2.2.3
+  progress_state_button: ^1.0.4
 
 dev_dependencies:
   flutter_test:
