@@ -11,18 +11,18 @@ part 'director_cubit.freezed.dart';
 
 class DirectorCubit extends Cubit<DirectorState> {
   final DirectorRepo _repo;
-  DirectorCubit(this._repo) : super(const DirectorState.initial());
+  DirectorCubit(this._repo) : super(DirectorInitialState());
   List<UserModel> _directors = [];
   Future<void> getDirectors() async {
-    emit(const DirectorState.directorsLoading());
+    emit(GetDirectorsLoadingState());
     final response = await _repo.getDirectors();
     response.fold((error) {
-      emit(DirectorState.directorsFailure(error));
+      emit(GetDirectorsErrorState(error));
     }, (data) {
       List<UserModel> listOfDirectors =
           data.list.map((director) => director as UserModel).toList();
       _directors = listOfDirectors;
-      emit(DirectorState.directorsSuccess(_directors));
+      emit(GetDirectorsSuccessState(_directors));
     });
   }
 
@@ -35,12 +35,10 @@ class DirectorCubit extends Cubit<DirectorState> {
       Constants.onNetworkFailure(context,
           networkException: error, title: "Error");
       _directors.add(removedDirector);
-      emit(DirectorState.deleteDirectorFailure(error));
+      emit(DeleteDirectorErrorState(error));
     }, (unit) {
-      // emit the initial state because is the previous state equal the current state it will not build the widget tree
-      emit(const DirectorState.initial());
       emit(
-        DirectorState.deleteDirectorSuccess(_directors),
+        DeleteDirectorSuccessState(_directors),
       );
     });
   }

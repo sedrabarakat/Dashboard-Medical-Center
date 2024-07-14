@@ -1,3 +1,4 @@
+import 'package:dashboad/core/data/models/user_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
@@ -34,59 +35,57 @@ class DirectorsList extends StatelessWidget {
               children: [
                 const TableHeader(),
                 BlocBuilder<DirectorCubit, DirectorState>(
-                  buildWhen: (previous, current) {
-                    return current.maybeWhen(
-                      directorsSuccess: (_) => true,
-                      directorsLoading: () => true,
-                      directorsFailure: (_) => true,
-                      deleteDirectorSuccess: (_) => true,
-                      orElse: () => false,
-                    );
-                  },
-                  builder: (context, state) => state.maybeWhen(
-                    directorsFailure: (e) =>
-                        Text(NetworkExceptions.getErrorMessage(e)),
-                    directorsLoading: () => Expanded(
+                    buildWhen: (previous, current) {
+                  if (current is GetDirectorsLoadingState) {
+                    return true;
+                  } else if (current is GetDirectorsSuccessState) {
+                    return true;
+                  } else if (current is GetDirectorsErrorState) {
+                    return true;
+                  } else if (current is DeleteDirectorSuccessState) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                }, builder: (context, state) {
+                  if (state is GetDirectorsErrorState) {
+                    return Text(NetworkExceptions.getErrorMessage(state.error));
+                  } else if (state is GetDirectorsLoadingState) {
+                    return Expanded(
                       child: ListView.builder(
                         itemBuilder: (context, index) =>
                             const ShimmerTableRow(),
                         itemCount: 10,
                       ),
-                    ),
-                    directorsSuccess: (directors) => Expanded(
-                      key: Key(directors.length.toString()),
-                      child: ListView.builder(
-                        itemBuilder: (context, index) => MyTableRow(
-                          user: directors[index],
-                          onEditPressed: () {},
-                          onRemovePressed: () {
-                            BlocProvider.of<DirectorCubit>(context)
-                                .deleteDirector(context, directors[index].id);
-                          },
-                        ),
-                        itemCount: directors.length,
-                      ),
-                    ),
-                    deleteDirectorSuccess: (directors) => Expanded(
-                      child: ListView.builder(
-                        itemBuilder: (context, index) => MyTableRow(
-                          user: directors[index],
-                          onEditPressed: () {},
-                          onRemovePressed: () {
-                            BlocProvider.of<DirectorCubit>(context)
-                                .deleteDirector(context, directors[index].id);
-                          },
-                        ),
-                        itemCount: directors.length,
-                      ),
-                    ),
-                    orElse: () => const SizedBox(),
-                  ),
-                ),
+                    );
+                  } else if (state is GetDirectorsSuccessState) {
+                    return _buildTable(state.directors);
+                  } else if (state is DeleteDirectorSuccessState) {
+                    return _buildTable(state.directors);
+                  } else {
+                    return const SizedBox();
+                  }
+                }),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildTable(List<UserModel> directors) {
+    return Expanded(
+      child: ListView.builder(
+        itemBuilder: (context, index) => MyTableRow(
+          user: directors[index],
+          onEditPressed: () {},
+          onRemovePressed: () {
+            BlocProvider.of<DirectorCubit>(context)
+                .deleteDirector(context, directors[index].id);
+          },
+        ),
+        itemCount: directors.length,
       ),
     );
   }
