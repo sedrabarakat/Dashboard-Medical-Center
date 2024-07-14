@@ -2,7 +2,9 @@ import 'package:dashboad/core/domain/services/api_service.dart';
 import 'package:dashboad/core/domain/services/api_services_impl.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
 import 'package:dashboad/features/auth/data/datasrouces/remote/auth_remote.dart';
-import 'package:dashboad/features/auth/domain/respositories/auth_repository.dart';
+import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
+import 'package:dashboad/features/director/data/datasources/remote/director_remote_data_source.dart';
+import 'package:dashboad/features/director/domain/repositories/director_repo.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.I;
@@ -16,5 +18,11 @@ Future locatorSetUp() async {
   );
   getIt.registerLazySingleton<AuthRepository>(
     () => AuthRepository(getIt()),
+  );
+  getIt.registerLazySingleton<DirectorRemoteDataSource>(
+    () => DirectorRemoteDataSource(getIt()),
+  );
+  getIt.registerLazySingleton<DirectorRepo>(
+    () => DirectorRepo(getIt()),
   );
 }

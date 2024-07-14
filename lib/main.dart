@@ -1,3 +1,4 @@
+import 'package:dashboad/core/cubits/bloc_observer.dart';
 import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/core/routing/go_router.dart';
 import 'package:dashboad/features/auth/presentation/cubits/cubit/auth_cubit.dart';
@@ -10,6 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await WebRouter.init();
   await locatorSetUp();
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -20,10 +22,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (BuildContext context) => BasicCubit()),
+        BlocProvider(
+          create: (BuildContext context) => BasicCubit(),
+        ),
         BlocProvider(
           create: (context) => AuthCubit(getIt()),
-        )
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(1600, 1000),

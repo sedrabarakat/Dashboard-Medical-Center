@@ -3,7 +3,7 @@ import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
 import 'package:dashboad/core/widgets/constants.dart';
-import 'package:dashboad/features/auth/domain/respositories/auth_repository.dart';
+import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';

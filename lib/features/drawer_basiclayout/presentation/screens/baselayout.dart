@@ -43,29 +43,3 @@ class BaseLayout extends StatelessWidget {
     );
   }
 }
-
-// Row(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           if (!ResponsiveHelper.isDesktop(context))
-//             Container(
-//               color: Colors.blue,
-//               child: IconButton(
-//                 onPressed: () {
-//                   BasicCubit.get(context).controlMenu();
-//                 },
-//                 icon: const Icon(
-//                   Icons.menu,
-//                 ),
-//               ),
-//             ),
-//           if (ResponsiveHelper.isDesktop(context)) const CustomDrawer(),
-//           Expanded(
-//             child: Container(
-//               color: Colors.red,
-//               child: child,
-//             ),
-//           )
-//         ],
-//       ),
-//Color.fromARGB(255, 10, 185, 181)

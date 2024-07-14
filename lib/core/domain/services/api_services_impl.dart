@@ -26,14 +26,10 @@ class ApiServicesImp implements ApiServices {
     );
   }
 
-  Future<void> setHeaders(bool hasToken) async {
+  Future<void> setHeaders() async {
     _headers = {
       "Accept": "application/json",
-
       "accept-timezone": DateTime.now().timeZoneName,
-      // Todo handle the token
-      // "Authorization":
-      //     hasToken ? "Bearer ${( AppStorage.instance.readData(AppStorage.TOKEN))}" : null,
     };
   }
 
@@ -43,7 +39,7 @@ class ApiServicesImp implements ApiServices {
       Map<String, dynamic>? body,
       bool? hasToken}) async {
     try {
-      await setHeaders(hasToken ?? true);
+      await setHeaders();
       final response = await _dio.delete(
         path,
         queryParameters: queryParams,
@@ -60,7 +56,7 @@ class ApiServicesImp implements ApiServices {
   Future get(String path,
       {Map<String, String>? queryParams, bool? hasToken}) async {
     try {
-      await setHeaders(hasToken ?? true);
+      await setHeaders();
       final response = await _dio.get(
         path,
         queryParameters: queryParams,
@@ -79,7 +75,7 @@ class ApiServicesImp implements ApiServices {
       FormData? formData,
       bool? hasToken}) async {
     try {
-      await setHeaders(hasToken ?? true);
+      await setHeaders();
 
       final response = await _dio.post(
         path,
@@ -103,7 +99,7 @@ class ApiServicesImp implements ApiServices {
       FormData? formData,
       bool? hasToken}) async {
     try {
-      await setHeaders(hasToken ?? true);
+      await setHeaders();
 
       final response = await _dio.post(path,
           queryParameters: queryParams,
@@ -138,7 +134,7 @@ class ApiServicesImp implements ApiServices {
       FormData? formData,
       bool? hasToken}) async {
     try {
-      setHeaders(hasToken ?? true);
+      setHeaders();
       final response = await _dio.post(
         path,
         queryParameters: queryParams,
@@ -159,7 +155,7 @@ class ApiServicesImp implements ApiServices {
       FormData? formData,
       bool? hasToken}) async {
     try {
-      await setHeaders(hasToken ?? true);
+      await setHeaders();
 
       final response = await _dio.put(
         path,

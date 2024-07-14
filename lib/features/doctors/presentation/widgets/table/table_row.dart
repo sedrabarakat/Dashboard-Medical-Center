@@ -1,14 +1,17 @@
+import 'package:dashboad/core/data/models/user_model.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
+import 'package:dashboad/core/helpers/dimensions_helper.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:shimmer/shimmer.dart';
 
 class MyTableRow extends StatelessWidget {
   const MyTableRow({
     super.key,
     required this.onEditPressed,
     required this.onRemovePressed,
+    required this.user,
     this.rowPadding = const EdgeInsets.symmetric(
       horizontal: AppPadding.p8,
       vertical: AppPadding.p10,
@@ -17,6 +20,7 @@ class MyTableRow extends StatelessWidget {
     this.editIcon = Icons.settings,
     this.removeIcon = Icons.remove_circle,
   });
+  final UserModel user;
   final void Function()? onEditPressed;
   final void Function()? onRemovePressed;
   final EdgeInsets rowPadding;
@@ -40,9 +44,9 @@ class MyTableRow extends StatelessWidget {
             flex: 4,
             child: Row(
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage(
-                    'images/avatar_2.png',
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    user.image,
                   ),
                   radius: 22,
                 ),
@@ -54,12 +58,12 @@ class MyTableRow extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Person",
+                        user.firstName + " " + user.lastName,
                         overflow: TextOverflow.ellipsis,
                         style: StyleManager.fontRegular16,
                       ),
                       Text(
-                        "09xxxxxxxx",
+                        user.phoneNumber,
                         overflow: TextOverflow.ellipsis,
                         style: StyleManager.fontregular14,
                       ),
@@ -83,7 +87,7 @@ class MyTableRow extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    "Receptionist",
+                    user.userType,
                     overflow: TextOverflow.ellipsis,
                     style: StyleManager.fontRegular12.copyWith(
                       color: ColorsHelper.white,
