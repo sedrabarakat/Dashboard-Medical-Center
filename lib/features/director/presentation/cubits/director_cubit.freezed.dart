@@ -23,6 +23,8 @@ mixin _$DirectorState {
     required TResult Function(List<UserModel> directors) directorsSuccess,
     required TResult Function(NetworkExceptions networkException)
         directorsFailure,
+    required TResult Function(List<UserModel> directors) deleteDirectorSuccess,
+    required TResult Function(NetworkExceptions error) deleteDirectorFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +33,8 @@ mixin _$DirectorState {
     TResult? Function()? directorsLoading,
     TResult? Function(List<UserModel> directors)? directorsSuccess,
     TResult? Function(NetworkExceptions networkException)? directorsFailure,
+    TResult? Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult? Function(NetworkExceptions error)? deleteDirectorFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +43,8 @@ mixin _$DirectorState {
     TResult Function()? directorsLoading,
     TResult Function(List<UserModel> directors)? directorsSuccess,
     TResult Function(NetworkExceptions networkException)? directorsFailure,
+    TResult Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult Function(NetworkExceptions error)? deleteDirectorFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +54,10 @@ mixin _$DirectorState {
     required TResult Function(_DirectorsLoading value) directorsLoading,
     required TResult Function(_DirectorsSuccess value) directorsSuccess,
     required TResult Function(_DirectorsFailure value) directorsFailure,
+    required TResult Function(_DeleteDirectorSuccess value)
+        deleteDirectorSuccess,
+    required TResult Function(_DeleteDirectorFailure value)
+        deleteDirectorFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +66,8 @@ mixin _$DirectorState {
     TResult? Function(_DirectorsLoading value)? directorsLoading,
     TResult? Function(_DirectorsSuccess value)? directorsSuccess,
     TResult? Function(_DirectorsFailure value)? directorsFailure,
+    TResult? Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult? Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +76,8 @@ mixin _$DirectorState {
     TResult Function(_DirectorsLoading value)? directorsLoading,
     TResult Function(_DirectorsSuccess value)? directorsSuccess,
     TResult Function(_DirectorsFailure value)? directorsFailure,
+    TResult Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,6 +144,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<UserModel> directors) directorsSuccess,
     required TResult Function(NetworkExceptions networkException)
         directorsFailure,
+    required TResult Function(List<UserModel> directors) deleteDirectorSuccess,
+    required TResult Function(NetworkExceptions error) deleteDirectorFailure,
   }) {
     return initial();
   }
@@ -141,6 +157,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? directorsLoading,
     TResult? Function(List<UserModel> directors)? directorsSuccess,
     TResult? Function(NetworkExceptions networkException)? directorsFailure,
+    TResult? Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult? Function(NetworkExceptions error)? deleteDirectorFailure,
   }) {
     return initial?.call();
   }
@@ -152,6 +170,8 @@ class _$InitialImpl implements _Initial {
     TResult Function()? directorsLoading,
     TResult Function(List<UserModel> directors)? directorsSuccess,
     TResult Function(NetworkExceptions networkException)? directorsFailure,
+    TResult Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult Function(NetworkExceptions error)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -167,6 +187,10 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_DirectorsLoading value) directorsLoading,
     required TResult Function(_DirectorsSuccess value) directorsSuccess,
     required TResult Function(_DirectorsFailure value) directorsFailure,
+    required TResult Function(_DeleteDirectorSuccess value)
+        deleteDirectorSuccess,
+    required TResult Function(_DeleteDirectorFailure value)
+        deleteDirectorFailure,
   }) {
     return initial(this);
   }
@@ -178,6 +202,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_DirectorsLoading value)? directorsLoading,
     TResult? Function(_DirectorsSuccess value)? directorsSuccess,
     TResult? Function(_DirectorsFailure value)? directorsFailure,
+    TResult? Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult? Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
   }) {
     return initial?.call(this);
   }
@@ -189,6 +215,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_DirectorsLoading value)? directorsLoading,
     TResult Function(_DirectorsSuccess value)? directorsSuccess,
     TResult Function(_DirectorsFailure value)? directorsFailure,
+    TResult Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -245,6 +273,8 @@ class _$DirectorsLoadingImpl implements _DirectorsLoading {
     required TResult Function(List<UserModel> directors) directorsSuccess,
     required TResult Function(NetworkExceptions networkException)
         directorsFailure,
+    required TResult Function(List<UserModel> directors) deleteDirectorSuccess,
+    required TResult Function(NetworkExceptions error) deleteDirectorFailure,
   }) {
     return directorsLoading();
   }
@@ -256,6 +286,8 @@ class _$DirectorsLoadingImpl implements _DirectorsLoading {
     TResult? Function()? directorsLoading,
     TResult? Function(List<UserModel> directors)? directorsSuccess,
     TResult? Function(NetworkExceptions networkException)? directorsFailure,
+    TResult? Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult? Function(NetworkExceptions error)? deleteDirectorFailure,
   }) {
     return directorsLoading?.call();
   }
@@ -267,6 +299,8 @@ class _$DirectorsLoadingImpl implements _DirectorsLoading {
     TResult Function()? directorsLoading,
     TResult Function(List<UserModel> directors)? directorsSuccess,
     TResult Function(NetworkExceptions networkException)? directorsFailure,
+    TResult Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult Function(NetworkExceptions error)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (directorsLoading != null) {
@@ -282,6 +316,10 @@ class _$DirectorsLoadingImpl implements _DirectorsLoading {
     required TResult Function(_DirectorsLoading value) directorsLoading,
     required TResult Function(_DirectorsSuccess value) directorsSuccess,
     required TResult Function(_DirectorsFailure value) directorsFailure,
+    required TResult Function(_DeleteDirectorSuccess value)
+        deleteDirectorSuccess,
+    required TResult Function(_DeleteDirectorFailure value)
+        deleteDirectorFailure,
   }) {
     return directorsLoading(this);
   }
@@ -293,6 +331,8 @@ class _$DirectorsLoadingImpl implements _DirectorsLoading {
     TResult? Function(_DirectorsLoading value)? directorsLoading,
     TResult? Function(_DirectorsSuccess value)? directorsSuccess,
     TResult? Function(_DirectorsFailure value)? directorsFailure,
+    TResult? Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult? Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
   }) {
     return directorsLoading?.call(this);
   }
@@ -304,6 +344,8 @@ class _$DirectorsLoadingImpl implements _DirectorsLoading {
     TResult Function(_DirectorsLoading value)? directorsLoading,
     TResult Function(_DirectorsSuccess value)? directorsSuccess,
     TResult Function(_DirectorsFailure value)? directorsFailure,
+    TResult Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (directorsLoading != null) {
@@ -395,6 +437,8 @@ class _$DirectorsSuccessImpl implements _DirectorsSuccess {
     required TResult Function(List<UserModel> directors) directorsSuccess,
     required TResult Function(NetworkExceptions networkException)
         directorsFailure,
+    required TResult Function(List<UserModel> directors) deleteDirectorSuccess,
+    required TResult Function(NetworkExceptions error) deleteDirectorFailure,
   }) {
     return directorsSuccess(directors);
   }
@@ -406,6 +450,8 @@ class _$DirectorsSuccessImpl implements _DirectorsSuccess {
     TResult? Function()? directorsLoading,
     TResult? Function(List<UserModel> directors)? directorsSuccess,
     TResult? Function(NetworkExceptions networkException)? directorsFailure,
+    TResult? Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult? Function(NetworkExceptions error)? deleteDirectorFailure,
   }) {
     return directorsSuccess?.call(directors);
   }
@@ -417,6 +463,8 @@ class _$DirectorsSuccessImpl implements _DirectorsSuccess {
     TResult Function()? directorsLoading,
     TResult Function(List<UserModel> directors)? directorsSuccess,
     TResult Function(NetworkExceptions networkException)? directorsFailure,
+    TResult Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult Function(NetworkExceptions error)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (directorsSuccess != null) {
@@ -432,6 +480,10 @@ class _$DirectorsSuccessImpl implements _DirectorsSuccess {
     required TResult Function(_DirectorsLoading value) directorsLoading,
     required TResult Function(_DirectorsSuccess value) directorsSuccess,
     required TResult Function(_DirectorsFailure value) directorsFailure,
+    required TResult Function(_DeleteDirectorSuccess value)
+        deleteDirectorSuccess,
+    required TResult Function(_DeleteDirectorFailure value)
+        deleteDirectorFailure,
   }) {
     return directorsSuccess(this);
   }
@@ -443,6 +495,8 @@ class _$DirectorsSuccessImpl implements _DirectorsSuccess {
     TResult? Function(_DirectorsLoading value)? directorsLoading,
     TResult? Function(_DirectorsSuccess value)? directorsSuccess,
     TResult? Function(_DirectorsFailure value)? directorsFailure,
+    TResult? Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult? Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
   }) {
     return directorsSuccess?.call(this);
   }
@@ -454,6 +508,8 @@ class _$DirectorsSuccessImpl implements _DirectorsSuccess {
     TResult Function(_DirectorsLoading value)? directorsLoading,
     TResult Function(_DirectorsSuccess value)? directorsSuccess,
     TResult Function(_DirectorsFailure value)? directorsFailure,
+    TResult Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (directorsSuccess != null) {
@@ -554,6 +610,8 @@ class _$DirectorsFailureImpl implements _DirectorsFailure {
     required TResult Function(List<UserModel> directors) directorsSuccess,
     required TResult Function(NetworkExceptions networkException)
         directorsFailure,
+    required TResult Function(List<UserModel> directors) deleteDirectorSuccess,
+    required TResult Function(NetworkExceptions error) deleteDirectorFailure,
   }) {
     return directorsFailure(networkException);
   }
@@ -565,6 +623,8 @@ class _$DirectorsFailureImpl implements _DirectorsFailure {
     TResult? Function()? directorsLoading,
     TResult? Function(List<UserModel> directors)? directorsSuccess,
     TResult? Function(NetworkExceptions networkException)? directorsFailure,
+    TResult? Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult? Function(NetworkExceptions error)? deleteDirectorFailure,
   }) {
     return directorsFailure?.call(networkException);
   }
@@ -576,6 +636,8 @@ class _$DirectorsFailureImpl implements _DirectorsFailure {
     TResult Function()? directorsLoading,
     TResult Function(List<UserModel> directors)? directorsSuccess,
     TResult Function(NetworkExceptions networkException)? directorsFailure,
+    TResult Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult Function(NetworkExceptions error)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (directorsFailure != null) {
@@ -591,6 +653,10 @@ class _$DirectorsFailureImpl implements _DirectorsFailure {
     required TResult Function(_DirectorsLoading value) directorsLoading,
     required TResult Function(_DirectorsSuccess value) directorsSuccess,
     required TResult Function(_DirectorsFailure value) directorsFailure,
+    required TResult Function(_DeleteDirectorSuccess value)
+        deleteDirectorSuccess,
+    required TResult Function(_DeleteDirectorFailure value)
+        deleteDirectorFailure,
   }) {
     return directorsFailure(this);
   }
@@ -602,6 +668,8 @@ class _$DirectorsFailureImpl implements _DirectorsFailure {
     TResult? Function(_DirectorsLoading value)? directorsLoading,
     TResult? Function(_DirectorsSuccess value)? directorsSuccess,
     TResult? Function(_DirectorsFailure value)? directorsFailure,
+    TResult? Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult? Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
   }) {
     return directorsFailure?.call(this);
   }
@@ -613,6 +681,8 @@ class _$DirectorsFailureImpl implements _DirectorsFailure {
     TResult Function(_DirectorsLoading value)? directorsLoading,
     TResult Function(_DirectorsSuccess value)? directorsSuccess,
     TResult Function(_DirectorsFailure value)? directorsFailure,
+    TResult Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
     required TResult orElse(),
   }) {
     if (directorsFailure != null) {
@@ -630,4 +700,348 @@ abstract class _DirectorsFailure implements DirectorState {
   @JsonKey(ignore: true)
   _$$DirectorsFailureImplCopyWith<_$DirectorsFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteDirectorSuccessImplCopyWith<$Res> {
+  factory _$$DeleteDirectorSuccessImplCopyWith(
+          _$DeleteDirectorSuccessImpl value,
+          $Res Function(_$DeleteDirectorSuccessImpl) then) =
+      __$$DeleteDirectorSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<UserModel> directors});
+}
+
+/// @nodoc
+class __$$DeleteDirectorSuccessImplCopyWithImpl<$Res>
+    extends _$DirectorStateCopyWithImpl<$Res, _$DeleteDirectorSuccessImpl>
+    implements _$$DeleteDirectorSuccessImplCopyWith<$Res> {
+  __$$DeleteDirectorSuccessImplCopyWithImpl(_$DeleteDirectorSuccessImpl _value,
+      $Res Function(_$DeleteDirectorSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? directors = null,
+  }) {
+    return _then(_$DeleteDirectorSuccessImpl(
+      null == directors
+          ? _value._directors
+          : directors // ignore: cast_nullable_to_non_nullable
+              as List<UserModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteDirectorSuccessImpl implements _DeleteDirectorSuccess {
+  const _$DeleteDirectorSuccessImpl(final List<UserModel> directors)
+      : _directors = directors;
+
+  final List<UserModel> _directors;
+  @override
+  List<UserModel> get directors {
+    if (_directors is EqualUnmodifiableListView) return _directors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_directors);
+  }
+
+  @override
+  String toString() {
+    return 'DirectorState.deleteDirectorSuccess(directors: $directors)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteDirectorSuccessImpl &&
+            const DeepCollectionEquality()
+                .equals(other._directors, _directors));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_directors));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteDirectorSuccessImplCopyWith<_$DeleteDirectorSuccessImpl>
+      get copyWith => __$$DeleteDirectorSuccessImplCopyWithImpl<
+          _$DeleteDirectorSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() directorsLoading,
+    required TResult Function(List<UserModel> directors) directorsSuccess,
+    required TResult Function(NetworkExceptions networkException)
+        directorsFailure,
+    required TResult Function(List<UserModel> directors) deleteDirectorSuccess,
+    required TResult Function(NetworkExceptions error) deleteDirectorFailure,
+  }) {
+    return deleteDirectorSuccess(directors);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? directorsLoading,
+    TResult? Function(List<UserModel> directors)? directorsSuccess,
+    TResult? Function(NetworkExceptions networkException)? directorsFailure,
+    TResult? Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult? Function(NetworkExceptions error)? deleteDirectorFailure,
+  }) {
+    return deleteDirectorSuccess?.call(directors);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? directorsLoading,
+    TResult Function(List<UserModel> directors)? directorsSuccess,
+    TResult Function(NetworkExceptions networkException)? directorsFailure,
+    TResult Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult Function(NetworkExceptions error)? deleteDirectorFailure,
+    required TResult orElse(),
+  }) {
+    if (deleteDirectorSuccess != null) {
+      return deleteDirectorSuccess(directors);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_DirectorsLoading value) directorsLoading,
+    required TResult Function(_DirectorsSuccess value) directorsSuccess,
+    required TResult Function(_DirectorsFailure value) directorsFailure,
+    required TResult Function(_DeleteDirectorSuccess value)
+        deleteDirectorSuccess,
+    required TResult Function(_DeleteDirectorFailure value)
+        deleteDirectorFailure,
+  }) {
+    return deleteDirectorSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_DirectorsLoading value)? directorsLoading,
+    TResult? Function(_DirectorsSuccess value)? directorsSuccess,
+    TResult? Function(_DirectorsFailure value)? directorsFailure,
+    TResult? Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult? Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
+  }) {
+    return deleteDirectorSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_DirectorsLoading value)? directorsLoading,
+    TResult Function(_DirectorsSuccess value)? directorsSuccess,
+    TResult Function(_DirectorsFailure value)? directorsFailure,
+    TResult Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
+    required TResult orElse(),
+  }) {
+    if (deleteDirectorSuccess != null) {
+      return deleteDirectorSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteDirectorSuccess implements DirectorState {
+  const factory _DeleteDirectorSuccess(final List<UserModel> directors) =
+      _$DeleteDirectorSuccessImpl;
+
+  List<UserModel> get directors;
+  @JsonKey(ignore: true)
+  _$$DeleteDirectorSuccessImplCopyWith<_$DeleteDirectorSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteDirectorFailureImplCopyWith<$Res> {
+  factory _$$DeleteDirectorFailureImplCopyWith(
+          _$DeleteDirectorFailureImpl value,
+          $Res Function(_$DeleteDirectorFailureImpl) then) =
+      __$$DeleteDirectorFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({NetworkExceptions error});
+
+  $NetworkExceptionsCopyWith<$Res> get error;
+}
+
+/// @nodoc
+class __$$DeleteDirectorFailureImplCopyWithImpl<$Res>
+    extends _$DirectorStateCopyWithImpl<$Res, _$DeleteDirectorFailureImpl>
+    implements _$$DeleteDirectorFailureImplCopyWith<$Res> {
+  __$$DeleteDirectorFailureImplCopyWithImpl(_$DeleteDirectorFailureImpl _value,
+      $Res Function(_$DeleteDirectorFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$DeleteDirectorFailureImpl(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as NetworkExceptions,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NetworkExceptionsCopyWith<$Res> get error {
+    return $NetworkExceptionsCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleteDirectorFailureImpl implements _DeleteDirectorFailure {
+  const _$DeleteDirectorFailureImpl(this.error);
+
+  @override
+  final NetworkExceptions error;
+
+  @override
+  String toString() {
+    return 'DirectorState.deleteDirectorFailure(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteDirectorFailureImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteDirectorFailureImplCopyWith<_$DeleteDirectorFailureImpl>
+      get copyWith => __$$DeleteDirectorFailureImplCopyWithImpl<
+          _$DeleteDirectorFailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() directorsLoading,
+    required TResult Function(List<UserModel> directors) directorsSuccess,
+    required TResult Function(NetworkExceptions networkException)
+        directorsFailure,
+    required TResult Function(List<UserModel> directors) deleteDirectorSuccess,
+    required TResult Function(NetworkExceptions error) deleteDirectorFailure,
+  }) {
+    return deleteDirectorFailure(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? directorsLoading,
+    TResult? Function(List<UserModel> directors)? directorsSuccess,
+    TResult? Function(NetworkExceptions networkException)? directorsFailure,
+    TResult? Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult? Function(NetworkExceptions error)? deleteDirectorFailure,
+  }) {
+    return deleteDirectorFailure?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? directorsLoading,
+    TResult Function(List<UserModel> directors)? directorsSuccess,
+    TResult Function(NetworkExceptions networkException)? directorsFailure,
+    TResult Function(List<UserModel> directors)? deleteDirectorSuccess,
+    TResult Function(NetworkExceptions error)? deleteDirectorFailure,
+    required TResult orElse(),
+  }) {
+    if (deleteDirectorFailure != null) {
+      return deleteDirectorFailure(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_DirectorsLoading value) directorsLoading,
+    required TResult Function(_DirectorsSuccess value) directorsSuccess,
+    required TResult Function(_DirectorsFailure value) directorsFailure,
+    required TResult Function(_DeleteDirectorSuccess value)
+        deleteDirectorSuccess,
+    required TResult Function(_DeleteDirectorFailure value)
+        deleteDirectorFailure,
+  }) {
+    return deleteDirectorFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_DirectorsLoading value)? directorsLoading,
+    TResult? Function(_DirectorsSuccess value)? directorsSuccess,
+    TResult? Function(_DirectorsFailure value)? directorsFailure,
+    TResult? Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult? Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
+  }) {
+    return deleteDirectorFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_DirectorsLoading value)? directorsLoading,
+    TResult Function(_DirectorsSuccess value)? directorsSuccess,
+    TResult Function(_DirectorsFailure value)? directorsFailure,
+    TResult Function(_DeleteDirectorSuccess value)? deleteDirectorSuccess,
+    TResult Function(_DeleteDirectorFailure value)? deleteDirectorFailure,
+    required TResult orElse(),
+  }) {
+    if (deleteDirectorFailure != null) {
+      return deleteDirectorFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteDirectorFailure implements DirectorState {
+  const factory _DeleteDirectorFailure(final NetworkExceptions error) =
+      _$DeleteDirectorFailureImpl;
+
+  NetworkExceptions get error;
+  @JsonKey(ignore: true)
+  _$$DeleteDirectorFailureImplCopyWith<_$DeleteDirectorFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

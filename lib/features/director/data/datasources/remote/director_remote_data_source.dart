@@ -11,4 +11,11 @@ class DirectorRemoteDataSource {
 
     return BaseModels.fromJson(response, (json) => UserModel.fromJson(json));
   }
+
+  Future<void> deleteDirector(int id) async {
+    await _apiServices.get(
+      AppUrl.deleteDirector,
+      id: id,
+    );
+  }
 }

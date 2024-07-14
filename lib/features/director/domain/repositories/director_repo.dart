@@ -14,4 +14,13 @@ class DirectorRepo {
       return left(NetworkExceptions.getException(error));
     }
   }
+
+  Future<Either<NetworkExceptions, Unit>> deleteDirector(int id) async {
+    try {
+      await _remote.deleteDirector(id);
+      return right(unit);
+    } catch (error) {
+      return left(NetworkExceptions.getException(error));
+    }
+  }
 }

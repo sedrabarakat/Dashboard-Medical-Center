@@ -34,6 +34,15 @@ class DirectorsList extends StatelessWidget {
               children: [
                 const TableHeader(),
                 BlocBuilder<DirectorCubit, DirectorState>(
+                  buildWhen: (previous, current) {
+                    return current.maybeWhen(
+                      directorsSuccess: (_) => true,
+                      directorsLoading: () => true,
+                      directorsFailure: (_) => true,
+                      deleteDirectorSuccess: (_) => true,
+                      orElse: () => false,
+                    );
+                  },
                   builder: (context, state) => state.maybeWhen(
                     directorsFailure: (e) =>
                         Text(NetworkExceptions.getErrorMessage(e)),
@@ -45,11 +54,28 @@ class DirectorsList extends StatelessWidget {
                       ),
                     ),
                     directorsSuccess: (directors) => Expanded(
+                      key: Key(directors.length.toString()),
                       child: ListView.builder(
                         itemBuilder: (context, index) => MyTableRow(
                           user: directors[index],
                           onEditPressed: () {},
-                          onRemovePressed: () {},
+                          onRemovePressed: () {
+                            BlocProvider.of<DirectorCubit>(context)
+                                .deleteDirector(context, directors[index].id);
+                          },
+                        ),
+                        itemCount: directors.length,
+                      ),
+                    ),
+                    deleteDirectorSuccess: (directors) => Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) => MyTableRow(
+                          user: directors[index],
+                          onEditPressed: () {},
+                          onRemovePressed: () {
+                            BlocProvider.of<DirectorCubit>(context)
+                                .deleteDirector(context, directors[index].id);
+                          },
                         ),
                         itemCount: directors.length,
                       ),

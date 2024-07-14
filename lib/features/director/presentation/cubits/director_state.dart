@@ -8,4 +8,8 @@ class DirectorState with _$DirectorState {
       _DirectorsSuccess;
   const factory DirectorState.directorsFailure(
       NetworkExceptions networkException) = _DirectorsFailure;
+  const factory DirectorState.deleteDirectorSuccess(List<UserModel> directors) =
+      _DeleteDirectorSuccess;
+  const factory DirectorState.deleteDirectorFailure(NetworkExceptions error) =
+      _DeleteDirectorFailure;
 }

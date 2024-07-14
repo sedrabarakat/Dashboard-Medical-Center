@@ -54,11 +54,15 @@ class ApiServicesImp implements ApiServices {
 
   @override
   Future get(String path,
-      {Map<String, String>? queryParams, bool? hasToken}) async {
+      {Map<String, String>? queryParams, bool? hasToken, int? id}) async {
     try {
       await setHeaders();
+      late String updatedPath;
+      if (id != null) {
+        updatedPath = '$path$id';
+      }
       final response = await _dio.get(
-        path,
+        id != null ? updatedPath : path,
         queryParameters: queryParams,
         options: Options(headers: _headers),
       );
