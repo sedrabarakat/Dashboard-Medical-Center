@@ -4,10 +4,8 @@ import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/widgets/constants.dart';
 import 'package:dashboad/features/director/domain/repositories/director_repo.dart';
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'director_state.dart';
-part 'director_cubit.freezed.dart';
 
 class DirectorCubit extends Cubit<DirectorState> {
   final DirectorRepo _repo;

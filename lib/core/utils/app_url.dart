@@ -8,7 +8,10 @@ class AppUrl {
   /*>>>>>>>>>>>>>>>>>>>> Auth <<<<<<<<<<<<<<<<<<<<*/
   static const requestCode = '$baseUrl${auth}request-code';
   static const verifyCode = '$baseUrl${auth}verify-code';
-  /* Directors */
+  /*>>>>>>>>>>>>>>>>>>>> Directors <<<<<<<<<<<<<<<<<<<<*/
   static const getDirectorsList = '$baseUrl${dashboard}director';
-  static const deleteDirector = '$baseUrl${dashboard}director/${delete}';
+  static const deleteDirector = '$baseUrl${dashboard}director/$delete';
+  /*>>>>>>>>>>>>>>>>>>>> Doctors <<<<<<<<<<<<<<<<<<<<*/
+  static const getDoctorsList = '$baseUrl${dashboard}doctor';
+  static const deleteDoctor = '$baseUrl${dashboard}doctor/$delete';
 }
