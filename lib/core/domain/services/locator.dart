@@ -7,6 +7,8 @@ import 'package:dashboad/features/director/data/datasources/remote/director_remo
 import 'package:dashboad/features/director/domain/repositories/director_repo.dart';
 import 'package:dashboad/features/doctors/data/datasources/doctor_remote_data_source.dart';
 import 'package:dashboad/features/doctors/domain/repositories/doctor_repo.dart';
+import 'package:dashboad/features/patients/data/datasources/patient_remote_data_source.dart';
+import 'package:dashboad/features/patients/domain/repositories/patient_repo.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.I;
@@ -32,5 +34,11 @@ Future locatorSetUp() async {
   );
   getIt.registerLazySingleton<DoctorRepo>(
     () => DoctorRepo(getIt()),
+  );
+  getIt.registerLazySingleton<PatientRemoteDataSource>(
+    () => PatientRemoteDataSource(getIt()),
+  );
+  getIt.registerLazySingleton<PatientRepo>(
+    () => PatientRepo(getIt()),
   );
 }

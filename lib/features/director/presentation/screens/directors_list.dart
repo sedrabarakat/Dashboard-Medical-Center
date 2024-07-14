@@ -4,9 +4,9 @@ import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:dashboad/features/director/presentation/cubits/director_cubit.dart';
-import 'package:dashboad/features/doctors/presentation/widgets/table/shimmer_table_row.dart';
-import 'package:dashboad/features/doctors/presentation/widgets/table/table_header.dart';
-import 'package:dashboad/features/doctors/presentation/widgets/table/table_row.dart';
+import 'package:dashboad/core/widgets/table/shimmer_table_row.dart';
+import 'package:dashboad/core/widgets/table/table_header.dart';
+import 'package:dashboad/core/widgets/table/table_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

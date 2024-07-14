@@ -14,4 +14,7 @@ class AppUrl {
   /*>>>>>>>>>>>>>>>>>>>> Doctors <<<<<<<<<<<<<<<<<<<<*/
   static const getDoctorsList = '$baseUrl${dashboard}doctor';
   static const deleteDoctor = '$baseUrl${dashboard}doctor/$delete';
+  /*>>>>>>>>>>>>>>>>>>>> Patients <<<<<<<<<<<<<<<<<<<<*/
+  static const getPatientsList = '$baseUrl${dashboard}patient';
+  static const deletePatient = '$baseUrl${dashboard}patient/$delete';
 }

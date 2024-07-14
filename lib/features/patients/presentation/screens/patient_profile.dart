@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
+import 'package:flutter/material.dart';
 import '../../../drawer_basiclayout/presentation/screens/baselayout.dart';
 
 class PatientProfile extends StatelessWidget {
@@ -7,9 +7,8 @@ class PatientProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const BaseLayout(
-        child: Center(
-      child: Text('Patient_Profile'),
-    ));
+    return BaseLayout(
+      child: Text("patient profile"),
+    );
   }
 }
