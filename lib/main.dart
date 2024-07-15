@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'core/utils/theme_manager.dart';
-
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  await WebRouter.init();
+  await locatorSetUp();
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -16,7 +18,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (BuildContext context) => BasicCubit())],
+      providers: [
+        BlocProvider(
+          create: (BuildContext context) => BasicCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AuthCubit(getIt()),
+        ),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(1600, 1000),
         minTextAdapt: true,

@@ -14,7 +14,7 @@ class ColorsHelper {
   static const Color tealDark = Color(0xFF00796B); // Dark teal
   static const Color tealDarker = Color(0xFF004D40); // Darker teal
   static const Color tealDarkest = Color(0xFF00251A); // Darkest teal
-  // HexColor("#009797") hexteal
+// HexColor("#009797") hexteal
 
   ///gray
   static Color grey = Colors.grey;
@@ -39,4 +39,13 @@ class ColorsHelper {
   static Color black54 = Colors.black54;
   static Color black87 = Colors.black87;
 
+  //black
+  static const Color black = Colors.black;
+  //white
+  static const Color white = Colors.white;
+
+  ///gray
+  static const Color lightGry = Color(0XFFD5D5D6);
+  static const success = Color(0xff4AC064);
+  static const error = Color(0xffFE6A60);
 }
