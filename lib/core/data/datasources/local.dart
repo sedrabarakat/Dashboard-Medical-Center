@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:dashboad/core/helpers/json_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HandleShared {
@@ -31,5 +34,24 @@ class HandleShared {
   static Future<void> clearData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.clear();
+  }
+
+  static Future<void> saveObject(dynamic object, String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String itemToSave = JsonHelper.convertObjectToString(object);
+    prefs.setString(key, itemToSave);
+  }
+
+  static Future<void> saveListOfObject(
+      List<dynamic> objects, String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> listToSave =
+        JsonHelper.convertListOfObjectsToListOfString(objects);
+    prefs.setStringList(key, listToSave);
+  }
+
+  static Future<List<String>> getListOfString(String key) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList(key) ?? [];
   }
 }

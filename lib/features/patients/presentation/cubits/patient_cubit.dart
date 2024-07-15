@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
+import 'package:dashboad/core/helpers/json_helper.dart';
 import 'package:dashboad/core/widgets/constants.dart';
 import 'package:dashboad/features/patients/data/models/patient_model.dart';
 import 'package:dashboad/features/patients/domain/repositories/patient_repo.dart';
@@ -12,6 +14,17 @@ class PatientCubit extends Cubit<PatientState> {
   PatientCubit(this._repo) : super(PatientInitialState());
   List<PatientModel> _patients = [];
   Future<void> getPatients() async {
+    List<String> patientCachedList =
+        await HandleShared.getListOfString('patients');
+    // Check if there is cached data if true then return the cached data
+    if (patientCachedList.isNotEmpty) {
+      _patients = JsonHelper.convertListOfStringToListOfObjects<PatientModel>(
+        patientCachedList,
+        PatientModel.fromJson,
+      );
+      emit(GetPatientSuccessState(_patients));
+      return;
+    }
     emit(GetPatientsLoadingState());
     final response = await _repo.getPatients();
     response.fold((error) {
@@ -20,6 +33,7 @@ class PatientCubit extends Cubit<PatientState> {
       List<PatientModel> listOfPatients =
           data.list.map((patient) => patient as PatientModel).toList();
       _patients = listOfPatients;
+      HandleShared.saveListOfObject(_patients, 'patients');
       emit(GetPatientSuccessState(_patients));
     });
   }
@@ -35,6 +49,7 @@ class PatientCubit extends Cubit<PatientState> {
       _patients.add(removedPatient);
       emit(DeletePatientErrorState(error));
     }, (unit) {
+      HandleShared.saveListOfObject(_patients, 'patients');
       emit(
         DeletePatientSuccessState(_patients),
       );
