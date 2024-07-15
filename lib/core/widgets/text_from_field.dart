@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
-class TextFiledDash extends StatelessWidget {
-  TextFiledDash(
+class TextFiled extends StatelessWidget {
+  TextFiled(
       {super.key,
       this.textInputAction = TextInputAction.next,
       this.keyboardType = TextInputType.text,

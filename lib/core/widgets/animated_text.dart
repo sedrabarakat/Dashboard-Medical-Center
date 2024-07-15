@@ -11,11 +11,23 @@ Widget liquedText({
   double height = 140,
 }) {
   return TextLiquidFill(
-    loadDuration: const Duration(seconds: 3),
+    loadDuration: const Duration(seconds: 4),
     text: text,
     waveColor: waveColor,
     boxBackgroundColor: backgroundColor,
-    textStyle: StyleManager.font30Bold,
+    textStyle: StyleManager.font30Bold_Lobster,
     boxHeight: height.h,
+  );
+}
+
+Widget animated_List({
+  required List<RotateAnimatedText> list,
+  int repeat_count=50,
+  int microseconds_num=1
+}){
+  return AnimatedTextKit(
+    totalRepeatCount: repeat_count,
+    pause: Duration(microseconds: microseconds_num),
+    animatedTexts: list,
   );
 }
