@@ -19,7 +19,7 @@ class DioHelper {
     addTokenInterceptor();
   }
   void addTokenInterceptor() async {
-    final token = await HandleShared.getString('token');
+    final token = await SharedPrefrence.getData( key: 'token');
     if (token != null) _dio!.interceptors.add(TokenInterceptor(token));
   }
 

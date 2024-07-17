@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../core/utils/app_url.dart';
+import '../app_url.dart';
 
 import 'api_service.dart';
 

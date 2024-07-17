@@ -9,7 +9,7 @@ class ReseptionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseLayout(
         child: Center(
-      child: TextFormField(),
+      child: Container(),
     ));
   }
 }

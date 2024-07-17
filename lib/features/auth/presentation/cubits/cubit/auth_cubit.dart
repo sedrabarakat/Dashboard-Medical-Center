@@ -52,7 +52,7 @@ class AuthCubit extends Cubit<AuthState> {
     }, (data) {
       otpButtonState = ButtonState.success;
       emit(const AuthState.verfiyCodeSuccess());
-      HandleShared.addString('token', data);
+      SharedPrefrence.saveData(key:'token', value:data);
       DioHelper().addTokenInterceptor();
       Constants.onSuccess(
         context,

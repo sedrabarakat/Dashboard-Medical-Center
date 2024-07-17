@@ -39,8 +39,6 @@ class ColorsHelper {
   static Color black54 = Colors.black54;
   static Color black87 = Colors.black87;
 
-  //black
-  static const Color black = Colors.black;
   //white
   static const Color white = Colors.white;
 

@@ -15,7 +15,7 @@ class PatientCubit extends Cubit<PatientState> {
   List<PatientModel> _patients = [];
   Future<void> getPatients() async {
     List<String> patientCachedList =
-        await HandleShared.getListOfString('patients');
+        await SharedPrefrence.getListOfString('patients');
     // Check if there is cached data if true then return the cached data
     if (patientCachedList.isNotEmpty) {
       _patients = JsonHelper.convertListOfStringToListOfObjects<PatientModel>(
@@ -33,7 +33,7 @@ class PatientCubit extends Cubit<PatientState> {
       List<PatientModel> listOfPatients =
           data.list.map((patient) => patient as PatientModel).toList();
       _patients = listOfPatients;
-      HandleShared.saveListOfObject(_patients, 'patients');
+      SharedPrefrence.saveListOfObject(_patients, 'patients');
       emit(GetPatientSuccessState(_patients));
     });
   }
@@ -49,7 +49,7 @@ class PatientCubit extends Cubit<PatientState> {
       _patients.add(removedPatient);
       emit(DeletePatientErrorState(error));
     }, (unit) {
-      HandleShared.saveListOfObject(_patients, 'patients');
+      SharedPrefrence.saveListOfObject(_patients, 'patients');
       emit(
         DeletePatientSuccessState(_patients),
       );

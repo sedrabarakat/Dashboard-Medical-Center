@@ -5,9 +5,6 @@ import '../helpers/colors_helper.dart';
 
 class StyleManager {
   ///texts
-  static TextStyle fontRegular20 = const TextStyle(
-      fontSize: 20, fontWeight: FontWeight.w400, color: Colors.white);
-
   static TextStyle font30Bold = TextStyle(
     color: Colors.teal,
     fontSize: 30.sp,
@@ -24,13 +21,13 @@ class StyleManager {
       fontWeight: FontWeight.bold,
       fontFamily: "Lobster-Regular"
   );
-  static TextStyle fontBold32 = const TextStyle(
+  static TextStyle fontBold32 = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.w700,
     color: ColorsHelper.black,
   );
   /*>>>>>>>>>> Medium <<<<<<<<<<*/
-  static TextStyle fontMedium24 = const TextStyle(
+  static TextStyle fontMedium24 = TextStyle(
     fontSize: 24,
     color: ColorsHelper.black,
     fontWeight: FontWeight.w500,
@@ -41,7 +38,7 @@ class StyleManager {
     fontWeight: FontWeight.w500,
   );
   /*>>>>>>>>>> Regular <<<<<<<<<<*/
-  static TextStyle fontRegular20 = const TextStyle(
+  static TextStyle fontRegular20 =  TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w400,
     color: Colors.white,
@@ -51,7 +48,7 @@ class StyleManager {
     fontWeight: FontWeight.w400,
     color: ColorsHelper.lightGry,
   );
-  static TextStyle fontRegular16 = const TextStyle(
+  static TextStyle fontRegular16 = TextStyle(
     color: ColorsHelper.black,
     fontSize: 16,
     fontWeight: FontWeight.w400,

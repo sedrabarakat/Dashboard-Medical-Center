@@ -11,7 +11,7 @@ import 'package:progress_state_button/progress_button.dart';
 class LoginCard extends StatelessWidget {
   LoginCard({
     super.key,
-    this.textColor = ColorsHelper.black,
+    this.textColor = Colors.black,
     required this.phoneNumberController,
     required this.passwordController,
     required this.onPressed,

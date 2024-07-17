@@ -1,7 +1,9 @@
+import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/features/create_account/presentation/cubits/add_account_cubit.dart';
 import 'package:dashboad/features/create_account/presentation/widgets/texts_and_fields/text&text_filed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/widgets/elevated_button.dart';
 import '../fields/doctors_fields.dart';
 import '../fields/patient_fields.dart';
 
@@ -40,7 +42,12 @@ class FromfieldColumn extends StatelessWidget{
           Text_TextFiled(text: 'Phone Number',controller: Phone,),
           SizedBox(height: 70.h,),
           if(cubit.SelectedIndex==1) DoctorsFields(cubit: cubit,),
-          if(cubit.SelectedIndex==2) PatientFields(cubit: cubit,context: context,)
+          if(cubit.SelectedIndex==2) PatientFields(cubit: cubit,context: context,),
+          if(cubit.SelectedIndex!=1 && cubit.SelectedIndex!=2)SizedBox(height: 230.h,),
+          Padding(
+            padding: EdgeInsets.only(left: 750.w,top: 50.h),
+            child: CustomElevatedButton(onPressed: () {  }, label: 'Add',buttonColor: ColorsHelper.teal,),
+          )
       
         ],
       ),

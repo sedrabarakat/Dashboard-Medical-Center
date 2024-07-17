@@ -3,55 +3,58 @@ import 'dart:convert';
 import 'package:dashboad/core/helpers/json_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class HandleShared {
-  static Future<void> addString(String key, String value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString(key, value);
+class SharedPrefrence {
+
+  static SharedPreferences? prefs;
+
+  static init() async
+  {
+    prefs = await SharedPreferences.getInstance();
   }
 
-  static Future<void> addInt(String key, int value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt(key, value);
+  static Future<bool> saveData({
+    required String key,
+    required dynamic value,
+  }) async {
+    if (value is String) return await prefs!.setString(key, value);
+    if (value is int) return await prefs!.setInt(key, value);
+    if (value is bool) return await prefs!.setBool(key, value);
+
+    return await prefs!.setDouble(key, value);
   }
 
-  static Future<String?> getString(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? stringValue = prefs.getString(key);
-    return stringValue;
-  }
-
-  static Future<int?> getInt(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int? intValue = prefs.getInt(key);
-    return intValue;
+  static dynamic getData({
+    required String key,
+  }) {
+    return prefs!.get(key);
   }
 
   static Future<void> delete(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove(key);
+    prefs!.remove(key);
   }
 
   static Future<void> clearData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
+
+    await prefs!.clear();
   }
 
   static Future<void> saveObject(dynamic object, String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     String itemToSave = JsonHelper.convertObjectToString(object);
-    prefs.setString(key, itemToSave);
+    prefs!.setString(key, itemToSave);
+
   }
 
   static Future<void> saveListOfObject(
       List<dynamic> objects, String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+
     List<String> listToSave =
-        JsonHelper.convertListOfObjectsToListOfString(objects);
-    prefs.setStringList(key, listToSave);
+    JsonHelper.convertListOfObjectsToListOfString(objects);
+    prefs!.setStringList(key, listToSave);
   }
 
   static Future<List<String>> getListOfString(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getStringList(key) ?? [];
+
+    return prefs!.getStringList(key) ?? [];
   }
 }

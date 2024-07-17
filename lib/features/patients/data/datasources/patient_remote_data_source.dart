@@ -1,6 +1,6 @@
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/services/api_service.dart';
-import 'package:dashboad/core/utils/app_url.dart';
+import 'package:dashboad/core/domain/app_url.dart';
 import 'package:dashboad/features/patients/data/models/patient_model.dart';
 
 class PatientRemoteDataSource {

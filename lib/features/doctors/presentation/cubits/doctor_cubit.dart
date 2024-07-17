@@ -14,7 +14,7 @@ class DoctorCubit extends Cubit<DoctorState> {
   DoctorCubit(this._repo) : super(DoctorInitialState());
   List<DoctorModel> _doctors = [];
   Future<void> getDoctors() async {
-    List<String> cachedDoctors = await HandleShared.getListOfString('doctors');
+    List<String> cachedDoctors = await SharedPrefrence.getListOfString('doctors');
     // Check if there is cached data if true then return the cached data
     if (cachedDoctors.isNotEmpty) {
       _doctors = JsonHelper.convertListOfStringToListOfObjects<DoctorModel>(
@@ -32,7 +32,7 @@ class DoctorCubit extends Cubit<DoctorState> {
       List<DoctorModel> listOfDoctors =
           data.list.map((doctors) => doctors as DoctorModel).toList();
       _doctors = listOfDoctors;
-      HandleShared.saveListOfObject(_doctors, 'doctors');
+      SharedPrefrence.saveListOfObject(_doctors, 'doctors');
       emit(GetDoctorsSuccessState(_doctors));
     });
   }
@@ -48,7 +48,7 @@ class DoctorCubit extends Cubit<DoctorState> {
       _doctors.add(removedDoctor);
       emit(DeleteDoctorErrorState(error));
     }, (unit) {
-      HandleShared.saveListOfObject(_doctors, 'doctors');
+      SharedPrefrence.saveListOfObject(_doctors, 'doctors');
       emit(
         DeleteDoctorSuccessState(_doctors),
       );

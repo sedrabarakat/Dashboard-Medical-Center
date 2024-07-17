@@ -4,9 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+import 'core/cubits/bloc_observer.dart';
+import 'core/data/datasources/local.dart';
+import 'core/domain/services/locator.dart';
+import 'core/helpers/token_helper.dart';
+import 'core/utils/theme_manager.dart';
+import 'features/auth/presentation/cubits/cubit/auth_cubit.dart';
+
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await WebRouter.init();
+  await SharedPrefrence.init();
+  await TokenHelper.init();
   await locatorSetUp();
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
