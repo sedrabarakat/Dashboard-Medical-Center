@@ -1,33 +1,47 @@
 import '../../../../../core/data/models/base_model.dart';
 import '../../../../../core/domain/services/api_service.dart';
 import '../../../../../core/domain/urls/app_url.dart';
-import '../../models/usermodel.dart';
 
 class CreateRemoteDataSource{
   final ApiServices apiService;
 
   CreateRemoteDataSource(this.apiService);
 
-  Future<Usermodel> create_director ({
+  Future<BaseModel> create_user ({
     required String first_name,
     required String middle_name,
     required String last_name,
     required String phone_number,
     required String description,
+    required String user_type,
+    String ?image
 })async{
-    final response = await apiService.post(AppUrl.creatDirector,
+    final response = await apiService.post(AppUrls_Toggle(user_type: user_type),
         body: {
           "first_name": first_name,
           "middle_name": middle_name,
           "last_name": last_name,
           "phone_number": phone_number,
-          "description": description
+          "description": description,
+          "user_type":user_type,
+          if(image!=null) "image": image
         });
-
-    return Usermodel.fromJson(response);
+    return BaseModel(data: response['data'],message: response['message']);
   }
 
-
+  String AppUrls_Toggle({
+    required String user_type
+}){
+    if(user_type=="director")
+    {
+      return AppUrl.creatDirector;
+    }
+    else if(user_type=="receptionist") {
+      return AppUrl.creatReceptionist;
+    } else {
+      return AppUrl.creatLabMaster;
+    }
+  }
   Future<BaseModel> create_patient( {required String first_name,
     required String middle_name,
     required String last_name,
@@ -45,7 +59,8 @@ class CreateRemoteDataSource{
     required bool diabetes,
     required bool blood_pressure,
     required int wallet,
-    required String user_type})async{
+    required String user_type,
+    String ? image })async{
     final response=await apiService.post(AppUrl.creatPatient,
         body: {
           "first_name":  first_name,
@@ -65,7 +80,8 @@ class CreateRemoteDataSource{
           "proffesion":  profession,
           "diabetes": diabetes,
           "blood_pressure": blood_pressure,
-          "wallet": wallet
+          "wallet": wallet,
+          if(image!=null) "image":image
         });
     return BaseModel(data: response["data"],message: response["message"]);
 

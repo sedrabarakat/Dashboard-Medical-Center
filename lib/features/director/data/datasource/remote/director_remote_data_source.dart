@@ -14,8 +14,7 @@ class DirectorRemoteDataSource {
 
   Future<void> deleteDirector(int id) async {
     await _apiServices.get(
-      AppUrl.deleteDirector,
-      id: id,
+      AppUrl.deleteDirector+"$id",
     );
   }
 }

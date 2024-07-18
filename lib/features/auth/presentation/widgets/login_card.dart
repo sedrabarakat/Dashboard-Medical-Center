@@ -77,7 +77,7 @@ class LoginCard extends StatelessWidget {
               label: 'Password',
               textColor: textColor,
               validator: (value) =>
-                  ValidatorManager.instance.validatePassword(value ?? '',8),
+                  ValidatorManager.instance.validatePassword(value ?? ''),
             ),
             const SizedBox(
               height: AppSize.s24,

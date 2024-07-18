@@ -5,7 +5,6 @@ abstract class ApiServices {
   Future<dynamic> get(
     String path, {
     Map<String, String>? queryParams,
-    int? id,
   });
 
   Future post(

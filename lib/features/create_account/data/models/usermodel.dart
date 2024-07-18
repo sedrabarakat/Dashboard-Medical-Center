@@ -12,12 +12,14 @@ class Usermodel{
   String last_name;
   @JsonKey(name: "phone_number")
   String phone_number;
+  @JsonKey(name: "user_type")
+  String? user_type;
   @JsonKey(name: "description")
   String description;
-  @JsonKey(name: "image")
-  String? image;
+  @JsonKey(name: "id")
+  int id;
 
-  Usermodel(this.first_name,this.last_name,this.description,this.middle_name,this.phone_number);
+  Usermodel(this.id,this.first_name,this.last_name,this.description,this.middle_name,this.phone_number);
 
   factory Usermodel.fromJson(Map<String,dynamic>json)=>_$UsermodelFromJson(json);
 

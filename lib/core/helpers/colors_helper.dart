@@ -44,6 +44,6 @@ class ColorsHelper {
 
   ///gray
   static const Color lightGry = Color(0XFFD5D5D6);
-  static const success = Color(0xff4AC064);
-  static const error = Color(0xffFE6A60);
+  static const success =  Color(0xFF04A18F);
+  static const error = Color(0xffd9332c);
 }

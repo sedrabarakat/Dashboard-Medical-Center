@@ -1,3 +1,4 @@
+import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/features/create_account/presentation/cubits/add_account_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,8 +44,7 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
   var profession=TextEditingController();
   var wallet=TextEditingController();
 
-  ///
-
+  ///Select Fields method
 
   void changed_Select({required int index}) {
     SelectedIndex = index;
@@ -85,25 +85,29 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     emit(Select_Date_State());
   }
 
+  ///
 
-  Future<void> Create_Director() {
-    emit(Loading_Create_Director());
-    return createRepo.Create_Director(
+  /// Creat Users
+  Future<void> Create_User()async {
+    emit(Loading_Create_User());
+    final response= await createRepo.Create_User(
         first_name: First_name.text,
         middle_name: Middle_name.text,
         last_name: Last_name.text,
         phone_number: Phone.text,
-        description: Description.text)
-        .then((value) {
-      emit(Success_Create_Director());
-    }).catchError((error) {
-      emit(Error_Create_Director());
+        description: Description.text,
+        user_type: Selected_role_list[SelectedIndex]['name'],
+    );
+    response.fold((error){
+      emit(Error_Create_User(error));
+    }, (user){
+      emit(Success_Create_User());
     });
   }
 
-  Future<void> Create_Patient() {
+  Future<void> Create_Patient()async {
     emit(Loading_Create_Patient());
-    return createRepo.Create_Patient(
+    return await createRepo.Create_Patient(
         first_name: First_name.text,
         middle_name: Middle_name.text,
         last_name: Last_name.text,
@@ -122,12 +126,16 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
         blood_pressure: (Pressure=="Haven\'t")?false:true,
         wallet: int.parse(wallet.text),
         user_type: Selected_role_list[SelectedIndex]['name']).then((value){
-          emit(Success_Create_Patient());
-    }).catchError((error){
-      emit(Error_Create_Patient());
+      value.fold((error){
+        emit(Error_Create_Patient(error));
+      }, (user){
+        print("sososososs");
+        emit(Success_Create_Patient());
+      });
     });
   }
 
+  ///
   int calculateAge(DateTime birthDate) {
     DateTime currentDate = DateTime.now();
     int age = currentDate.year - birthDate.year;

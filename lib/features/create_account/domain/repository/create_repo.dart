@@ -4,12 +4,14 @@ import 'package:dashboad/features/create_account/data/models/patient_model.dart'
 import '../../data/models/usermodel.dart';
 
 abstract class CreateRepo {
-  Future<Either<NetworkExceptions, Usermodel>> Create_Director(
+  Future<Either<NetworkExceptions, Usermodel>> Create_User(
       {required String first_name,
       required String middle_name,
       required String last_name,
       required String phone_number,
-      required String description});
+      required String description,
+      required String user_type,
+      String ? image });
 
   Future<Either<NetworkExceptions, Usermodel>> Create_Doctor();
 
@@ -31,9 +33,7 @@ abstract class CreateRepo {
       required bool diabetes,
       required bool blood_pressure,
       required int wallet,
-      required String user_type});
+      required String user_type,
+      String ? image});
 
-  Future<Either<NetworkExceptions, Usermodel>> Create_LabMaster();
-
-  Future<Either<NetworkExceptions, Usermodel>> Create_Reception();
 }

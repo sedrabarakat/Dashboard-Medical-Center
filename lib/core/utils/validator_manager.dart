@@ -40,17 +40,19 @@ class ValidatorManager {
   }
 
   String? validatePhone(String value) {
+    const int minLength=10;
     if (value.isEmpty) {
       return 'Please enter phone number';
     }
-    if (!regExp.phoneRegex.hasMatch(value)) {
-      return 'Please enter a valid 10-digit phone number';
+    if (value.length<minLength) {
+      return 'Please enter a valid $minLength-digit phone number';
     }
     return null;
   }
 
-  String? validatePassword(String value,int minLength) {
+  String? validatePassword(String value) {
 
+    const int minLength=8;
 
     if (value.isEmpty) {
       return 'Please enter a password';

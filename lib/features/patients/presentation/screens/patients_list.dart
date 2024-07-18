@@ -9,6 +9,7 @@ import 'package:dashboad/features/patients/data/models/patient_model.dart';
 import 'package:dashboad/features/patients/presentation/cubits/patient_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import '../../../drawer_basiclayout/presentation/screens/baselayout.dart';
 
 class PatientsList extends StatelessWidget {
@@ -78,7 +79,9 @@ class PatientsList extends StatelessWidget {
       child: ListView.builder(
         itemBuilder: (context, index) => MyTableRow(
           user: patients[index].userData,
-          onEditPressed: () {},
+          onEditPressed: () {
+            context.go('/Patient_profile/:Patient_id');
+          },
           onRemovePressed: () {
             BlocProvider.of<PatientCubit>(context)
                 .deletePatient(context, patients[index].id);

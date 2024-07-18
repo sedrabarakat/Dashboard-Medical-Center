@@ -13,22 +13,27 @@ class CreateRepoImpl extends CreateRepo {
   CreateRepoImpl(this.remoteDataSource);
 
   @override
-  Future<Either<NetworkExceptions, Usermodel>> Create_Director({
-    required String first_name,
-    required String middle_name,
-    required String last_name,
-    required String phone_number,
-    required String description,
-  }) async {
+  Future<Either<NetworkExceptions, Usermodel>> Create_User(
+      {required String first_name,
+      required String middle_name,
+      required String last_name,
+      required String phone_number,
+      required String description,
+      required String user_type,
+      String? image}) async {
     try {
-      Usermodel data = await remoteDataSource.create_director(
+      BaseModel resp = await remoteDataSource.create_user(
           first_name: first_name,
           middle_name: middle_name,
           last_name: last_name,
           phone_number: phone_number,
-          description: description);
-      return right(data);
+          description: description,
+          user_type: user_type,
+          );
+      Usermodel usermodel=Usermodel.fromJson(resp.data);
+      return right(usermodel);
     } catch (e) {
+      print(NetworkExceptions.getException(e));
       return left(NetworkExceptions.getException(e));
     }
   }
@@ -36,12 +41,6 @@ class CreateRepoImpl extends CreateRepo {
   @override
   Future<Either<NetworkExceptions, Usermodel>> Create_Doctor() {
     // TODO: implement Create_Doctor
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<NetworkExceptions, Usermodel>> Create_LabMaster() {
-    // TODO: implement Create_LabMaster
     throw UnimplementedError();
   }
 
@@ -64,7 +63,8 @@ class CreateRepoImpl extends CreateRepo {
       required bool diabetes,
       required bool blood_pressure,
       required int wallet,
-      required String user_type}) async {
+      required String user_type,
+      String? image}) async {
     try {
       BaseModel baseModel = await remoteDataSource.create_patient(
           first_name: first_name,
@@ -84,18 +84,13 @@ class CreateRepoImpl extends CreateRepo {
           diabetes: diabetes,
           blood_pressure: blood_pressure,
           wallet: wallet,
-          user_type: user_type);
+          user_type: user_type,
+          image: image);
 
       PatientModel patientModel = PatientModel.fromJson(baseModel.data);
       return right(patientModel);
     } catch (e) {
       return left(NetworkExceptions.getException(e));
     }
-  }
-
-  @override
-  Future<Either<NetworkExceptions, Usermodel>> Create_Reception() {
-    // TODO: implement Create_Reception
-    throw UnimplementedError();
   }
 }

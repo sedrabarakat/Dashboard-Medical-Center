@@ -14,8 +14,7 @@ class DoctorRemoteDataSource {
 
   Future<void> deleteDoctor(int id) async {
     await _apiServices.get(
-      AppUrl.deleteDoctor,
-      id: id,
+      AppUrl.deleteDoctor+"$id",
     );
   }
 }

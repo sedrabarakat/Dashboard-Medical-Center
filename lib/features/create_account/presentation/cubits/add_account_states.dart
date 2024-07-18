@@ -1,3 +1,5 @@
+import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
+
 abstract class AddAccountStates{}
 
 class AddAccountInitState extends AddAccountStates{}
@@ -18,11 +20,17 @@ class Select_Date_State extends AddAccountStates{}
 
 class Calc_age_State extends AddAccountStates{}
 
-class Loading_Create_Director extends AddAccountStates{}
-class Success_Create_Director extends AddAccountStates{}
-class Error_Create_Director extends AddAccountStates{}
+class Loading_Create_User extends AddAccountStates{}
+class Success_Create_User extends AddAccountStates{}
+class Error_Create_User extends AddAccountStates{
+  NetworkExceptions error;
+  Error_Create_User(this.error);
+}
 
 
 class Loading_Create_Patient extends AddAccountStates{}
 class Success_Create_Patient extends AddAccountStates{}
-class Error_Create_Patient extends AddAccountStates{}
+class Error_Create_Patient extends AddAccountStates{
+  NetworkExceptions error;
+  Error_Create_Patient(this.error);
+}

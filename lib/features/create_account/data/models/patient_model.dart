@@ -45,33 +45,3 @@ class PatientModel{
 
 
 
-/*{
-    "data": {
-        "birth_date": "2024-07-17",
-        "age": "string",
-        "gender": "male",
-        "address": "string",
-        "blood_type": "string",
-        "marital_status": "single",
-        "children_num": 0,
-        "habits": "string",
-        "proffesion": "string",
-        "diabetes": true,
-        "blood_pressure": true,
-        "wallet": 0,
-        "user_id": 94,
-        "id": 31,
-        "user": {
-            "id": 94,
-            "first_name": "string",
-            "middle_name": "string",
-            "last_name": "string",
-            "phone_number": "sssssss",
-            "user_type": "patient",
-            "image": null,
-            "description": "string",
-            "remember_token": null
-        }
-    },
-    "message": "created successfully"
-}*/

@@ -9,7 +9,7 @@ List<Map<String, dynamic>> Selected_role_list = [
     "name": "patient",
   },
   {
-    "name": "reseptionist",
+    "name": "receptionist",
   },
   {
     "name": "lab_master",

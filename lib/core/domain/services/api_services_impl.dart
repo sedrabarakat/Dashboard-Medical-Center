@@ -37,7 +37,7 @@ class ApiServicesImp implements ApiServices {
   Future delete(String path,
       {Map<String, dynamic>? queryParams,
       Map<String, dynamic>? body,
-      bool? hasToken}) async {
+      }) async {
     try {
       await setHeaders();
       final response = await _dio.delete(
@@ -54,15 +54,11 @@ class ApiServicesImp implements ApiServices {
 
   @override
   Future get(String path,
-      {Map<String, String>? queryParams, bool? hasToken, int? id}) async {
+      {Map<String, String>? queryParams}) async {
     try {
       await setHeaders();
-      late String updatedPath;
-      if (id != null) {
-        updatedPath = '$path$id';
-      }
       final response = await _dio.get(
-        id != null ? updatedPath : path,
+        path,
         queryParameters: queryParams,
         options: Options(headers: _headers),
       );
@@ -77,7 +73,7 @@ class ApiServicesImp implements ApiServices {
       {Map<String, dynamic>? queryParams,
       Map<String, dynamic>? body,
       FormData? formData,
-      bool? hasToken}) async {
+      }) async {
     try {
       await setHeaders();
 
@@ -101,7 +97,7 @@ class ApiServicesImp implements ApiServices {
       Map<String, dynamic>? body,
       String? key,
       FormData? formData,
-      bool? hasToken}) async {
+       }) async {
     try {
       await setHeaders();
 
@@ -136,7 +132,7 @@ class ApiServicesImp implements ApiServices {
       {Map<String, String>? queryParams,
       List? body,
       FormData? formData,
-      bool? hasToken}) async {
+       }) async {
     try {
       setHeaders();
       final response = await _dio.post(
@@ -157,7 +153,7 @@ class ApiServicesImp implements ApiServices {
       {Map<String, dynamic>? queryParams,
       Map<String, dynamic>? body,
       FormData? formData,
-      bool? hasToken}) async {
+       }) async {
     try {
       await setHeaders();
 

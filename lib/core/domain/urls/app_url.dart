@@ -20,6 +20,8 @@ class AppUrl {
   static const creatPatient= '$baseUrl${dashboard}patient/store';
   static const getPatientsList = '$baseUrl${dashboard}patient';
   static const deletePatient = '$baseUrl${dashboard}patient/$delete';
-  /*>>>>>>>>>>>>>>>>>>>> Reseeption <<<<<<<<<<<<<<<<<<<<*/
-
+  /*>>>>>>>>>>>>>>>>>>>> Receptionist <<<<<<<<<<<<<<<<<<<<*/
+  static const creatReceptionist="$baseUrl${dashboard}receptionist/store";
+  /*>>>>>>>>>>>>>>>>>>>> Receptionist <<<<<<<<<<<<<<<<<<<<*/
+  static const creatLabMaster="$baseUrl${dashboard}lab-master/store";
 }

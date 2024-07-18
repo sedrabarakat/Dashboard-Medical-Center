@@ -48,7 +48,7 @@ class FromfieldColumn extends StatelessWidget{
             Row(children: [
               Text_TextFiled(text: 'Phone Number',controller: cubit.Phone,isNum: true,
               validator:  (value) =>
-                  ValidatorManager.instance.validatePhone(value ?? ''),),
+                  ValidatorManager.instance.validatePhone(value ?? '')),
               SizedBox(width: 30.w,),
               Text_TextFiled(text: 'Description',controller: cubit.Description,maxLine: 4,
                   validator:  (value) =>
@@ -63,8 +63,8 @@ class FromfieldColumn extends StatelessWidget{
               padding: EdgeInsets.only(left: 750.w),
               child: CustomElevatedButton(onPressed: () {
                 if(formKey.currentState!.validate()){
-                  if(cubit.SelectedIndex==0)
-                    cubit.Create_Director();
+                  if(cubit.SelectedIndex==0 || cubit.SelectedIndex==3 || cubit.SelectedIndex==4)
+                    cubit.Create_User();
                   if(cubit.SelectedIndex==2)
                     cubit.Create_Patient();
                 }

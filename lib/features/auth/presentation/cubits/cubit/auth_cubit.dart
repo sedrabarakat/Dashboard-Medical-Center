@@ -28,15 +28,15 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((error) {
       loginButtonState = ButtonState.idle;
       emit(AuthState.requestCodeError(error));
-      ToastBar.onNetworkFailure(context, networkException: error);
+     // ToastBar.onNetworkFailure(context, networkException: error);
     }, (data) {
       loginButtonState = ButtonState.success;
       emit(const AuthState.requestCodeSuccess());
-      ToastBar.onSuccess(
+      /*ToastBar.onSuccess(
         context,
         message: 'the code has been sent successfully',
         title: "Success",
-      );
+      );*/
     });
   }
 
@@ -48,17 +48,17 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((error) {
       otpButtonState = ButtonState.fail;
       emit(AuthState.verfiyCodeError(error));
-      ToastBar.onNetworkFailure(context, networkException: error);
+      // ToastBar.onNetworkFailure(context, networkException: error);
     }, (data) {
       otpButtonState = ButtonState.success;
       emit(const AuthState.verfiyCodeSuccess());
       SharedPrefrence.saveData(key:'token', value:data);
       DioHelper().addTokenInterceptor();
-      ToastBar.onSuccess(
+      /*ToastBar.onSuccess(
         context,
         message: "Welcome Back",
         title: 'Success',
-      );
+      );*/
     });
   }
 }

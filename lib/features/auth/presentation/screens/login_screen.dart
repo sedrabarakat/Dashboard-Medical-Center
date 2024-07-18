@@ -12,6 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/widgets/toast_bar.dart';
+
 // Todo try to make the performance better
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -28,15 +30,33 @@ class LoginPage extends StatelessWidget {
       body: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           state.whenOrNull(
-            // Go to the otp card
-            requestCodeSuccess: () =>
-                BlocProvider.of<AuthCubit>(context).pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    ),
-            // Navigate to the add account screen when the otp code is right
-            verfiyCodeSuccess: () =>
-                context.pushReplacementNamed(WebRouter.kAddAccount),
+            // snackbar & Go to the otp card
+            requestCodeSuccess: (){
+              BlocProvider.of<AuthCubit>(context).pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeIn,
+              );
+              ToastBar.onSuccess(
+                context,
+                message: 'the code has been sent successfully',
+                title: "Success",
+              );
+            },
+            requestCodeError: (error){
+              ToastBar.onNetworkFailure(context, networkException: error);
+            },
+            // snackbar & Navigate to the add account screen when the otp code is right
+            verfiyCodeSuccess: () {
+              ToastBar.onSuccess(
+                context,
+                message: "Welcome Back",
+                title: 'Success',
+              );
+              context.go('/add_account');
+            },
+            verfiyCodeError: (error){
+              ToastBar.onNetworkFailure(context, networkException: error);
+            },
           );
         },
         child: Stack(
