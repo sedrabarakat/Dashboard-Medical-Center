@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/helpers/strings_helper.dart';
+import '../../../domain/constants/constants.dart';
+
 Widget SelectedCell({
   required int index,
   required AddAccountCubit cubit
@@ -17,7 +20,7 @@ Widget SelectedCell({
       children: [
         Cell(index: index,cubit: cubit),
         SizedBox(width: 10.w,),
-        Text(cubit.Selected_role_list[index]["name"],
+        Text(capitalizeFirstLetter(Selected_role_list[index]["name"]),
           style: StyleManager.font20W600,)
       ],),
   );

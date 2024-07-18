@@ -3,13 +3,14 @@ import 'package:dashboad/features/create_account/presentation/widgets/texts_and_
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/validator_manager.dart';
+import '../../../domain/constants/constants.dart';
 import '../../cubits/add_account_cubit.dart';
 
 class DoctorsFields extends StatelessWidget{
 
-  var First_name=TextEditingController();
-  var Day_In_Advance=TextEditingController();
-  var Duration=TextEditingController();
+
+
 
   AddAccountCubit cubit;
   DoctorsFields({required this.cubit});
@@ -19,13 +20,20 @@ class DoctorsFields extends StatelessWidget{
 
     return Row(
       children: [
-        Text_DropDown(text: "Section",dropdownItems: cubit.Sections, OnChanged: (value) {
+        Text_DropDown(text: "Section",dropdownItems: Sections, OnChanged: (value) {
           cubit.Select_Section(item: value);
-        },selectedItem: cubit.Selected_Section,),
+        },selectedItem: cubit.Selected_Section,
+          validator: (value) =>
+              ValidatorManager.instance.validate_EmptyState(value ?? '','Section'),
+        ),
         SizedBox(width: 30.w,),
-        Text_TextFiled(text: 'Day In Advance',controller: Day_In_Advance,),
+        Text_TextFiled(text: 'Day In Advance',controller: cubit.Day_In_Advance,
+        validator: (value) =>
+            ValidatorManager.instance.validate_EmptyState(value ?? '',"Doctor Advance Day")),
         SizedBox(width: 30.w,),
-        Text_TextFiled(text: 'Duration',controller: Duration,),
+        Text_TextFiled(text: 'Duration',controller: cubit.Duration,
+        validator: (value) =>
+            ValidatorManager.instance.validate_EmptyState(value ?? '',"Doctor Duration"),),
       ],
     );
   }

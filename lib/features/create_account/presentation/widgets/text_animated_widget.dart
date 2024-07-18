@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/style_manager.dart';
 import '../../../../core/widgets/animated_text.dart';
+import '../../domain/constants/constants.dart';
 
 Widget Text_Animated_Row({
   required AddAccountCubit cubit
@@ -31,7 +32,7 @@ Widget Text_Animated_Row({
       )
       else
         Text(
-          "${cubit.Selected_role_list[cubit.SelectedIndex]["name"]} ",
+          "${Selected_role_list[cubit.SelectedIndex]["name"]} ",
           style: StyleManager.font30Bold,
         ),
     ],

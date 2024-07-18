@@ -67,6 +67,14 @@ class StyleManager {
     ),
   );
 
+  ///Input Borders
+  static InputBorder Border_round40=OutlineInputBorder(
+    borderRadius: BorderRadius.circular(40),
+    borderSide: BorderSide(
+      color: Colors.grey.shade300,
+    ),
+  );
+
 
   ///shapes BoxDecoration
   static BoxDecoration Circle_Shape({

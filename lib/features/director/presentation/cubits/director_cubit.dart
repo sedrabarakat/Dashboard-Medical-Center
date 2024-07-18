@@ -3,7 +3,7 @@ import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/data/models/user_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/json_helper.dart';
-import 'package:dashboad/core/widgets/constants.dart';
+import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/director/domain/repository/director_repo.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +44,7 @@ class DirectorCubit extends Cubit<DirectorState> {
     _directors.removeWhere((director) => director.id == id);
     final response = await _repo.deleteDirector(id);
     response.fold((error) {
-      Constants.onNetworkFailure(context,
+      ToastBar.onNetworkFailure(context,
           networkException: error, title: "Error");
       _directors.add(removedDirector);
       emit(DeleteDirectorErrorState(error));

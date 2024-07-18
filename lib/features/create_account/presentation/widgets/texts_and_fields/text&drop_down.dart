@@ -11,11 +11,13 @@ class Text_DropDown extends StatelessWidget{
   List<String> dropdownItems;
   ValueChanged OnChanged;
   String ? selectedItem;
+  final String? Function(String?)? validator;
 
   Text_DropDown({required this.text
     ,required this.OnChanged,
     required this.dropdownItems,
-    this.selectedItem
+    this.selectedItem,
+    this.validator
   });
 
   @override
@@ -28,7 +30,10 @@ class Text_DropDown extends StatelessWidget{
           child: Text(text,style: StyleManager.fontRegular20.copyWith(color: ColorsHelper.black54),),
         ),
         SizedBox(height: 8.h,),
-        Dropdown(dropdownItems: dropdownItems, OnChanged: OnChanged,selectedItem: selectedItem,hintText: "Select Section",),
+        SizedBox(
+          width: 250.w,
+            child: Dropdown(dropdownItems: dropdownItems, OnChanged: OnChanged,selectedItem: selectedItem,hintText: "Select Section",
+            borderStyle: StyleManager.Border_round40,validator: validator,)),
       ],
     );
   }

@@ -3,17 +3,14 @@ import 'package:dashboad/features/create_account/presentation/cubits/add_account
 import 'package:dashboad/features/create_account/presentation/widgets/texts_and_fields/text&text_filed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/utils/validator_manager.dart';
 import '../../../../../core/widgets/elevated_button.dart';
 import '../fields/doctors_fields.dart';
 import '../fields/patient_fields.dart';
 
 class FromfieldColumn extends StatelessWidget{
 
-
-  var First_name=TextEditingController();
-  var Middle_name=TextEditingController();
-  var Last_name=TextEditingController();
-  var Phone=TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   AddAccountCubit cubit;
   BuildContext context;
@@ -23,33 +20,59 @@ class FromfieldColumn extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 10.h,),
-          Row(
-            children: [
-              Text_TextFiled(text: 'First Name',controller: First_name,),
+    return Form(
+      key: formKey,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 10.h,),
+            Row(
+              children: [
+                Text_TextFiled(text: 'First Name',controller: cubit.First_name,
+                validator: (value) =>
+                    ValidatorManager.instance.validateName(value ?? ''),
+                  ),
+                SizedBox(width: 30.w,),
+                Text_TextFiled(text: 'Middle Name',controller: cubit.Middle_name,
+                    validator: (value) =>
+                        ValidatorManager.instance.validateMiddleName(value ?? '')),
+                SizedBox(width: 30.w,),
+                Text_TextFiled(text: 'Last Name',controller: cubit.Last_name,
+                  validator: (value) =>
+                      ValidatorManager.instance.validateLastName(value ?? ''),),
+              ],
+            ),
+            SizedBox(height: 50.h,),
+            Row(children: [
+              Text_TextFiled(text: 'Phone Number',controller: cubit.Phone,isNum: true,
+              validator:  (value) =>
+                  ValidatorManager.instance.validatePhone(value ?? ''),),
               SizedBox(width: 30.w,),
-              Text_TextFiled(text: 'Middle Name',controller: Middle_name,),
-              SizedBox(width: 30.w,),
-              Text_TextFiled(text: 'Last Name',controller: Last_name,),
-            ],
-          ),
-          SizedBox(height: 50.h,),
-          Text_TextFiled(text: 'Phone Number',controller: Phone,),
-          SizedBox(height: 70.h,),
-          if(cubit.SelectedIndex==1) DoctorsFields(cubit: cubit,),
-          if(cubit.SelectedIndex==2) PatientFields(cubit: cubit,context: context,),
-          if(cubit.SelectedIndex!=1 && cubit.SelectedIndex!=2)SizedBox(height: 230.h,),
-          Padding(
-            padding: EdgeInsets.only(left: 750.w,top: 50.h),
-            child: CustomElevatedButton(onPressed: () {  }, label: 'Add',buttonColor: ColorsHelper.teal,),
-          )
-      
-        ],
+              Text_TextFiled(text: 'Description',controller: cubit.Description,maxLine: 4,
+                  validator:  (value) =>
+                      ValidatorManager.instance.validate_EmptyState(value ?? '','Description')
+              ),
+            ],),
+            SizedBox(height: 70.h,),
+            if(cubit.SelectedIndex==1) DoctorsFields(cubit: cubit,),
+            if(cubit.SelectedIndex==2) PatientFields(cubit: cubit,context: context,),
+            SizedBox(height: (cubit.SelectedIndex!=2)?(cubit.SelectedIndex!=1)?247.h:130.h:50.h),
+            Padding(
+              padding: EdgeInsets.only(left: 750.w),
+              child: CustomElevatedButton(onPressed: () {
+                if(formKey.currentState!.validate()){
+                  if(cubit.SelectedIndex==0)
+                    cubit.Create_Director();
+                  if(cubit.SelectedIndex==2)
+                    cubit.Create_Patient();
+                }
+              }, label: 'Add',buttonColor: ColorsHelper.teal,),
+            )
+
+          ],
+        ),
       ),
     );
   }

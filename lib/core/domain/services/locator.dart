@@ -3,6 +3,8 @@ import 'package:dashboad/core/domain/services/api_services_impl.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
 import 'package:dashboad/features/auth/data/datasrouces/remote/auth_remote.dart';
 import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
+import 'package:dashboad/features/create_account/data/repository/create_repo_impl.dart';
+import 'package:dashboad/features/create_account/domain/repository/create_repo.dart';
 import 'package:dashboad/features/director/domain/repository/director_repo.dart';
 import 'package:dashboad/features/doctors/data/datasources/doctor_remote_data_source.dart';
 import 'package:dashboad/features/doctors/domain/repositories/doctor_repo.dart';
@@ -10,6 +12,7 @@ import 'package:dashboad/features/patients/data/datasources/patient_remote_data_
 import 'package:dashboad/features/patients/domain/repositories/patient_repo.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../features/create_account/data/data_source/remote/create_remote.dart';
 import '../../../features/director/data/datasource/remote/director_remote_data_source.dart';
 
 final getIt = GetIt.I;
@@ -41,5 +44,11 @@ Future locatorSetUp() async {
   );
   getIt.registerLazySingleton<PatientRepo>(
     () => PatientRepo(getIt()),
+  );
+  getIt.registerLazySingleton<CreateRepo>(
+      ()=> CreateRepoImpl(getIt()),
+  );
+  getIt.registerLazySingleton<CreateRemoteDataSource>(
+      ()=> CreateRemoteDataSource(getIt()),
   );
 }

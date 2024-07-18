@@ -10,14 +10,16 @@ class Text_TextFiled extends StatelessWidget{
   String text;
   TextEditingController controller;
    int? maxLine;
-   String? Function(String?)? validator;
+   final String? Function(String?)? validator;
    Function(String)? onChanged;
    VoidCallback? onTap;
+   bool ? isNum;
+   bool ? ReadOnly;
 
 
 
   Text_TextFiled({required this.text,required this.controller,
-    this.maxLine,this.onTap,this.onChanged,this.validator});
+    this.maxLine,this.onTap,this.onChanged,this.validator,this.isNum});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,11 @@ class Text_TextFiled extends StatelessWidget{
         SizedBox(
             width: 250.w,
             child: TextFiled(radius: 40,controller: controller,
-              onTap: onTap,onChanged: onChanged,validator: validator,maxLine: maxLine,)),
+              onTap: onTap,onChanged: onChanged,validator: validator,maxLine: maxLine,
+              isNum: (isNum!=null)?isNum!:false,
+              readOnly: (ReadOnly!=null)?ReadOnly!:false,
+              borderStyle: StyleManager.Border_round40,
+            )),
       ],
     );
   }

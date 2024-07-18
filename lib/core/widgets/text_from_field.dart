@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../utils/style_manager.dart';
 
 // ignore: must_be_immutable
 class TextFiled extends StatelessWidget {
@@ -22,7 +25,10 @@ class TextFiled extends StatelessWidget {
       this.textFieldHintColor = Colors.white,
       this.helperText,
       this.suffixPressed,
-      required this.radius});
+      required this.radius,
+       this.isNum= false,
+       required this.borderStyle
+      });
 
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
@@ -44,6 +50,8 @@ class TextFiled extends StatelessWidget {
   final Color? textFieldHintColor;
   final double radius;
   bool isBorder = false;
+  bool isNum=false;
+  InputBorder borderStyle=StyleManager.Border_round40;
 
   @override
   Widget build(BuildContext context) {
@@ -64,27 +72,15 @@ class TextFiled extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       cursorColor: Colors.grey,
+      inputFormatters: (isNum)?<TextInputFormatter>[
+        FilteringTextInputFormatter.allow(RegExp(r'[0-9+]')),
+      ]:null,
       decoration: InputDecoration(
           helperMaxLines: 2,
           helperText: helperText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: BorderSide(
-              color: Colors.grey.shade300,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: BorderSide(
-              color: Colors.grey.shade300,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: BorderSide(
-              color: Colors.grey.shade300,
-            ),
-          ),
+          border: borderStyle,
+          enabledBorder: borderStyle,
+          focusedBorder: borderStyle,
           filled: true,
           fillColor: Colors.grey.shade300,
           hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade800),

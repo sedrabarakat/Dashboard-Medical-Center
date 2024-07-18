@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
-import 'package:dashboad/core/widgets/constants.dart';
+import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -28,11 +28,11 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((error) {
       loginButtonState = ButtonState.idle;
       emit(AuthState.requestCodeError(error));
-      Constants.onNetworkFailure(context, networkException: error);
+      ToastBar.onNetworkFailure(context, networkException: error);
     }, (data) {
       loginButtonState = ButtonState.success;
       emit(const AuthState.requestCodeSuccess());
-      Constants.onSuccess(
+      ToastBar.onSuccess(
         context,
         message: 'the code has been sent successfully',
         title: "Success",
@@ -48,13 +48,13 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((error) {
       otpButtonState = ButtonState.fail;
       emit(AuthState.verfiyCodeError(error));
-      Constants.onNetworkFailure(context, networkException: error);
+      ToastBar.onNetworkFailure(context, networkException: error);
     }, (data) {
       otpButtonState = ButtonState.success;
       emit(const AuthState.verfiyCodeSuccess());
       SharedPrefrence.saveData(key:'token', value:data);
       DioHelper().addTokenInterceptor();
-      Constants.onSuccess(
+      ToastBar.onSuccess(
         context,
         message: "Welcome Back",
         title: 'Success',

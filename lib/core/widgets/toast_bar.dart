@@ -9,7 +9,7 @@ enum ToastStatus {
   failure,
 }
 
-class Constants {
+class ToastBar {
   static const int spalshDelay = 5;
   static const int spalshDelayAppName = 200;
 

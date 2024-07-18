@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/json_helper.dart';
-import 'package:dashboad/core/widgets/constants.dart';
+import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
 import 'package:dashboad/features/doctors/domain/repositories/doctor_repo.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +43,7 @@ class DoctorCubit extends Cubit<DoctorState> {
     _doctors.removeWhere((doctor) => doctor.id == id);
     final response = await _repo.deleteDoctors(id);
     response.fold((error) {
-      Constants.onNetworkFailure(context,
+      ToastBar.onNetworkFailure(context,
           networkException: error, title: "Error");
       _doctors.add(removedDoctor);
       emit(DeleteDoctorErrorState(error));

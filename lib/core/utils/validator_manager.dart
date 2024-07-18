@@ -10,24 +10,38 @@ class ValidatorManager {
 
   String? validateName(String value) {
     if (value.isEmpty) {
-      return 'Please enter your name';
+      return 'Please enter First name';
+    }
+    return null;
+  }
+
+  String? validateMiddleName(String value) {
+    if (value.isEmpty) {
+      return 'Please enter Middle name';
+    }
+    return null;
+  }
+
+  String? validateLastName(String value) {
+    if (value.isEmpty) {
+      return 'Please enter Last name';
     }
     return null;
   }
 
   String? validateEmail(String value) {
     if (value.isEmpty) {
-      return 'Please enter your email';
+      return 'Please enter email';
     }
     if (!regExp.emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email';
+      return 'Please enter  email';
     }
     return null;
   }
 
   String? validatePhone(String value) {
     if (value.isEmpty) {
-      return 'Please enter your phone number';
+      return 'Please enter phone number';
     }
     if (!regExp.phoneRegex.hasMatch(value)) {
       return 'Please enter a valid 10-digit phone number';
@@ -35,41 +49,17 @@ class ValidatorManager {
     return null;
   }
 
-  String? validatePassword(String value) {
-    // Define your password criteria
-    const int minLength = 8;
+  String? validatePassword(String value,int minLength) {
 
-    // Check for empty input
+
     if (value.isEmpty) {
       return 'Please enter a password';
     }
 
-    // Check for minimum length
     if (value.length < minLength) {
       return 'Password must be at least $minLength characters long';
     }
 
-    // // Check for uppercase letters
-    // if (!regExp.upperCaseRegex.hasMatch(value)) {
-    //   return 'Password must contain at least one uppercase letter';
-    // }
-    //
-    // // Check for lowercase letters
-    // if (!regExp.lowerCaseRegex.hasMatch(value)) {
-    //   return 'Password must contain at least one lowercase letter';
-    // }
-
-    // Check for digits
-    // if (!regExp.digitRegex.hasMatch(value)) {
-    //   return 'Password must contain at least one digit';
-    // }
-
-    // // Check for special characters
-    // if (!regExp.specialCharRegex.hasMatch(value)) {
-    //   return 'Password must contain at least one special character';
-    // }
-
-    // Password meets all criteria
     return null;
   }
 
@@ -87,6 +77,23 @@ class ValidatorManager {
     // Passwords match
     return null;
   }
+
+  String? validate_EmptyState(String value,String phrase) {
+    if (value.isEmpty) {
+      return 'Please enter $phrase';
+    }
+    return null;
+  }
+
+  String? validateChildren(String value) {
+    if (value.isEmpty) {
+      return 'Please enter Children Number';
+    }
+    if(int.parse(value)<0)
+      return 'Please enter valid Number';
+    return null;
+  }
+
 }
 
 class RegularExpressions {
