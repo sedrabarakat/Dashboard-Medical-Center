@@ -3,19 +3,19 @@ import 'package:dashboad/core/data/models/user_model.dart';
 import 'package:dashboad/core/domain/services/api_service.dart';
 import 'package:dashboad/core/domain/urls/app_url.dart';
 
-class DirectorRemoteDataSource {
+class LaboratoryRemoteDataSource {
   final ApiServices _apiServices;
-  DirectorRemoteDataSource(this._apiServices);
-  Future<BaseModels> getDirectors() async {
-    final response = await _apiServices.get(AppUrl.getDirectorsList);
+  LaboratoryRemoteDataSource(this._apiServices);
+  Future<BaseModels> getLabMasters() async {
+    final response = await _apiServices.get(AppUrl.getLabMastersList);
 
     return BaseModels.fromJson(
         response['data'], (json) => UserModel.fromJson(json));
   }
 
-  Future<void> deleteDirector(int id) async {
-    await _apiServices.delete(
-      "${AppUrl.deleteDirector}$id",
+  Future<void> deleteLabMaster(int id) async {
+    await _apiServices.get(
+      "${AppUrl.deleteLabMaster}$id",
     );
   }
 }

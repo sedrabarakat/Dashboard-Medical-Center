@@ -1,7 +1,6 @@
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/helpers/dimensions_helper.dart';
 import 'package:dashboad/core/helpers/responsive_helper.dart';
-import 'package:dashboad/core/routing/go_router.dart';
 import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:dashboad/features/auth/presentation/cubits/cubit/auth_cubit.dart';
@@ -31,18 +30,18 @@ class LoginPage extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             // snackbar & Go to the otp card
-            requestCodeSuccess: (){
+            requestCodeSuccess: () {
               BlocProvider.of<AuthCubit>(context).pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeIn,
-              );
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
               ToastBar.onSuccess(
                 context,
                 message: 'the code has been sent successfully',
                 title: "Success",
               );
             },
-            requestCodeError: (error){
+            requestCodeError: (error) {
               ToastBar.onNetworkFailure(context, networkException: error);
             },
             // snackbar & Navigate to the add account screen when the otp code is right
@@ -54,7 +53,7 @@ class LoginPage extends StatelessWidget {
               );
               context.go('/add_account');
             },
-            verfiyCodeError: (error){
+            verfiyCodeError: (error) {
               ToastBar.onNetworkFailure(context, networkException: error);
             },
           );

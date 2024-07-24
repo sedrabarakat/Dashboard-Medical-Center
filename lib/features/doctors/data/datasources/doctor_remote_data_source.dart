@@ -9,12 +9,13 @@ class DoctorRemoteDataSource {
   Future<BaseModels> getDoctors() async {
     final response = await _apiServices.get(AppUrl.getDoctorsList);
 
-    return BaseModels.fromJson(response, (json) => DoctorModel.fromJson(json));
+    return BaseModels.fromJson(
+        response['data'], (json) => DoctorModel.fromJson(json));
   }
 
   Future<void> deleteDoctor(int id) async {
     await _apiServices.get(
-      AppUrl.deleteDoctor+"$id",
+      AppUrl.deleteDoctor + "$id",
     );
   }
 }

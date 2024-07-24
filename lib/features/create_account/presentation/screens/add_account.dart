@@ -1,4 +1,3 @@
-import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/features/create_account/presentation/cubits/add_account_cubit.dart';
 import 'package:dashboad/features/drawer_basiclayout/presentation/screens/baselayout.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,8 +10,6 @@ import '../../../../core/widgets/toast_bar.dart';
 import '../../domain/repository/create_repo.dart';
 import '../cubits/add_account_states.dart';
 import '../widgets/base_container.dart';
-import '../widgets/basic_columns/fromfield_column.dart';
-import '../widgets/basic_columns/role_image_column.dart';
 import '../widgets/text_animated_widget.dart';
 
 class AddAccount extends StatelessWidget {
