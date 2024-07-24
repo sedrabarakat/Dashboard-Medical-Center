@@ -29,8 +29,8 @@ class WebRouter {
   static const kInbox = 'Inbox';
 
   static GoRouter router = GoRouter(
-
     initialLocation: TokenHelper.hasToken ? '/add_account' : '/',
+    //initialLocation:"/Patients_List/Patient_profile/:2",
     routes: [
       GoRoute(
         path: '/',
