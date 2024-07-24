@@ -8,15 +8,13 @@ import '../../../../../core/widgets/elevated_button.dart';
 import '../fields/doctors_fields.dart';
 import '../fields/patient_fields.dart';
 
-class FromfieldColumn extends StatelessWidget{
-
+class FromfieldColumn extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
 
   AddAccountCubit cubit;
   BuildContext context;
 
-  FromfieldColumn({required this.cubit,required this.context});
-
+  FromfieldColumn({required this.cubit, required this.context});
 
   @override
   Widget build(BuildContext context) {
@@ -27,50 +25,91 @@ class FromfieldColumn extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10.h,),
+            SizedBox(
+              height: 10.h,
+            ),
             Row(
               children: [
-                Text_TextFiled(text: 'First Name',controller: cubit.First_name,
-                validator: (value) =>
-                    ValidatorManager.instance.validateName(value ?? ''),
-                  ),
-                SizedBox(width: 30.w,),
-                Text_TextFiled(text: 'Middle Name',controller: cubit.Middle_name,
-                    validator: (value) =>
-                        ValidatorManager.instance.validateMiddleName(value ?? '')),
-                SizedBox(width: 30.w,),
-                Text_TextFiled(text: 'Last Name',controller: cubit.Last_name,
+                Text_TextFiled(
+                  text: 'First Name',
+                  controller: cubit.First_name,
                   validator: (value) =>
-                      ValidatorManager.instance.validateLastName(value ?? ''),),
+                      ValidatorManager.instance.validateName(value ?? ''),
+                ),
+                SizedBox(
+                  width: 30.w,
+                ),
+                Text_TextFiled(
+                    text: 'Middle Name',
+                    controller: cubit.Middle_name,
+                    validator: (value) => ValidatorManager.instance
+                        .validateMiddleName(value ?? '')),
+                SizedBox(
+                  width: 30.w,
+                ),
+                Text_TextFiled(
+                  text: 'Last Name',
+                  controller: cubit.Last_name,
+                  validator: (value) =>
+                      ValidatorManager.instance.validateLastName(value ?? ''),
+                ),
               ],
             ),
-            SizedBox(height: 50.h,),
-            Row(children: [
-              Text_TextFiled(text: 'Phone Number',controller: cubit.Phone,isNum: true,
-              validator:  (value) =>
-                  ValidatorManager.instance.validatePhone(value ?? '')),
-              SizedBox(width: 30.w,),
-              Text_TextFiled(text: 'Description',controller: cubit.Description,maxLine: 4,
-                  validator:  (value) =>
-                      ValidatorManager.instance.validate_EmptyState(value ?? '','Description')
+            SizedBox(
+              height: 50.h,
+            ),
+            Row(
+              children: [
+                Text_TextFiled(
+                    text: 'Phone Number',
+                    controller: cubit.Phone,
+                    isNum: true,
+                    validator: (value) =>
+                        ValidatorManager.instance.validatePhone(value ?? '')),
+                SizedBox(
+                  width: 30.w,
+                ),
+                Text_TextFiled(
+                    text: 'Description',
+                    controller: cubit.Description,
+                    maxLine: 4,
+                    validator: (value) => ValidatorManager.instance
+                        .validate_EmptyState(value ?? '', 'Description')),
+              ],
+            ),
+            SizedBox(
+              height: 70.h,
+            ),
+            if (cubit.SelectedIndex == 1)
+              DoctorsFields(
+                cubit: cubit,
               ),
-            ],),
-            SizedBox(height: 70.h,),
-            if(cubit.SelectedIndex==1) DoctorsFields(cubit: cubit,),
-            if(cubit.SelectedIndex==2) PatientFields(cubit: cubit,context: context,),
-            SizedBox(height: (cubit.SelectedIndex!=2)?(cubit.SelectedIndex!=1)?247.h:130.h:50.h),
+            if (cubit.SelectedIndex == 2)
+              PatientFields(
+                cubit: cubit,
+                context: context,
+              ),
+            SizedBox(
+                height: (cubit.SelectedIndex != 2)
+                    ? (cubit.SelectedIndex != 1)
+                        ? 247.h
+                        : 130.h
+                    : 50.h),
             Padding(
               padding: EdgeInsets.only(left: 750.w),
-              child: CustomElevatedButton(onPressed: () {
-                if(formKey.currentState!.validate()){
-                  if(cubit.SelectedIndex==0 || cubit.SelectedIndex==3 || cubit.SelectedIndex==4)
-                    cubit.Create_User();
-                  if(cubit.SelectedIndex==2)
-                    cubit.Create_Patient();
-                }
-              }, label: 'Add',buttonColor: ColorsHelper.teal,),
+              child: CustomElevatedButton(
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    if (cubit.SelectedIndex == 0 ||
+                        cubit.SelectedIndex == 3 ||
+                        cubit.SelectedIndex == 4) cubit.Create_User();
+                    if (cubit.SelectedIndex == 2) cubit.Create_Patient();
+                  }
+                },
+                label: 'Add',
+                buttonColor: ColorsHelper.teal,
+              ),
             )
-
           ],
         ),
       ),

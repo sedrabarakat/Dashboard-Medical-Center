@@ -1,4 +1,3 @@
-import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/features/create_account/presentation/cubits/add_account_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,8 +40,8 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
   var Matrial_Status = TextEditingController();
   var Children_num = TextEditingController();
   var Habit = TextEditingController();
-  var profession=TextEditingController();
-  var wallet=TextEditingController();
+  var profession = TextEditingController();
+  var wallet = TextEditingController();
 
   ///Select Fields method
 
@@ -80,55 +79,56 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     emit(Select_BloodType_State());
   }
 
-  void Select_Date(String val){
-    Birth_Date.text=val.toString();
+  void Select_Date(String val) {
+    Birth_Date.text = val.toString();
     emit(Select_Date_State());
   }
 
   ///
 
   /// Creat Users
-  Future<void> Create_User()async {
+  Future<void> Create_User() async {
     emit(Loading_Create_User());
-    final response= await createRepo.Create_User(
-        first_name: First_name.text,
-        middle_name: Middle_name.text,
-        last_name: Last_name.text,
-        phone_number: Phone.text,
-        description: Description.text,
-        user_type: Selected_role_list[SelectedIndex]['name'],
+    final response = await createRepo.Create_User(
+      first_name: First_name.text,
+      middle_name: Middle_name.text,
+      last_name: Last_name.text,
+      phone_number: Phone.text,
+      description: Description.text,
+      user_type: Selected_role_list[SelectedIndex]['name'],
     );
-    response.fold((error){
+    response.fold((error) {
       emit(Error_Create_User(error));
-    }, (user){
+    }, (user) {
       emit(Success_Create_User());
     });
   }
 
-  Future<void> Create_Patient()async {
+  Future<void> Create_Patient() async {
     emit(Loading_Create_Patient());
     return await createRepo.Create_Patient(
-        first_name: First_name.text,
-        middle_name: Middle_name.text,
-        last_name: Last_name.text,
-        phone_number: Phone.text.trim(),
-        description: Description.text,
-        birth_date: Birth_Date.text,
-        age: Age.text,
-        gender: Selected_Gender.toString(),
-        address: Address.text,
-        bloodType: Selected_Blood_Type.toString(),
-        marital_status: Status.toString(),
-        children_num: int.parse(Children_num.text),
-        habits: Habit.text,
-        profession: profession.text,
-        diabetes: (Diabetes=="Haven\'t")?false:true,
-        blood_pressure: (Pressure=="Haven\'t")?false:true,
-        wallet: int.parse(wallet.text),
-        user_type: Selected_role_list[SelectedIndex]['name']).then((value){
-      value.fold((error){
+            first_name: First_name.text,
+            middle_name: Middle_name.text,
+            last_name: Last_name.text,
+            phone_number: Phone.text.trim(),
+            description: Description.text,
+            birth_date: Birth_Date.text,
+            age: Age.text,
+            gender: Selected_Gender.toString(),
+            address: Address.text,
+            bloodType: Selected_Blood_Type.toString(),
+            marital_status: Status.toString(),
+            children_num: int.parse(Children_num.text),
+            habits: Habit.text,
+            profession: profession.text,
+            diabetes: (Diabetes == "Haven\'t") ? false : true,
+            blood_pressure: (Pressure == "Haven\'t") ? false : true,
+            wallet: int.parse(wallet.text),
+            user_type: Selected_role_list[SelectedIndex]['name'])
+        .then((value) {
+      value.fold((error) {
         emit(Error_Create_Patient(error));
-      }, (user){
+      }, (user) {
         print("sososososs");
         emit(Success_Create_Patient());
       });
@@ -140,13 +140,12 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     DateTime currentDate = DateTime.now();
     int age = currentDate.year - birthDate.year;
     if (currentDate.month < birthDate.month ||
-        (currentDate.month == birthDate.month && currentDate.day < birthDate.day)) {
+        (currentDate.month == birthDate.month &&
+            currentDate.day < birthDate.day)) {
       age--;
     }
-    Age.text=age.toString();
+    Age.text = age.toString();
     emit(Calc_age_State());
     return age;
   }
-
-
 }

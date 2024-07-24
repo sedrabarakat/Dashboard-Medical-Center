@@ -16,8 +16,8 @@ class PatientRemoteDataSource {
   }
 
   Future<void> deletePatient(int id) async {
-    await _apiServices.get(
-      AppUrl.deletePatient+"$id",
+    await _apiServices.delete(
+      AppUrl.deletePatient + "$id",
     );
   }
 }

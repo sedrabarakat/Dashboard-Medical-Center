@@ -81,11 +81,11 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
     switch (statusCode) {
       case 400:
       case 401:
-        return NetworkExceptions.unauthorizedRequest(error.error);
+        return NetworkExceptions.unauthorizedRequest(error.message);
       case 403:
         return const NetworkExceptions.loggingInRequired();
       case 404:
-        return const NetworkExceptions.notFound("");
+        return NetworkExceptions.notFound(error.message);
       case 405:
         return const NetworkExceptions.methodNotAllowed();
       case 409:

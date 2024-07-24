@@ -8,8 +8,14 @@ import 'package:dashboad/features/create_account/domain/repository/create_repo.d
 import 'package:dashboad/features/director/domain/repository/director_repo.dart';
 import 'package:dashboad/features/doctors/data/datasources/doctor_remote_data_source.dart';
 import 'package:dashboad/features/doctors/domain/repositories/doctor_repo.dart';
+import 'package:dashboad/features/laboratory/data/data_sources/laboratory_remote_data_source.dart';
+import 'package:dashboad/features/laboratory/domain/repositories/lab_master_repo.dart';
 import 'package:dashboad/features/patients/data/datasources/patient_remote_data_source.dart';
 import 'package:dashboad/features/patients/domain/repositories/patient_repo.dart';
+import 'package:dashboad/features/reseptions/data/datasource/remote/reseptions_remote_data_source.dart';
+import 'package:dashboad/features/reseptions/domain/repository/reseptions_repo.dart';
+import 'package:dashboad/features/sections/data/data_sources/section_remote_data_srouce.dart';
+import 'package:dashboad/features/sections/domain/repositories/section_repo.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../features/create_account/data/data_source/remote/create_remote.dart';
@@ -21,34 +27,60 @@ Future locatorSetUp() async {
   getIt.registerLazySingleton<ApiServices>(
     () => ApiServicesImp(DioHelper().dio),
   );
+  /*>>>>>>>>>> Auth <<<<<<<<<<*/
   getIt.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSource(getIt()),
   );
   getIt.registerLazySingleton<AuthRepository>(
     () => AuthRepository(getIt()),
   );
+  /*>>>>>>>>>> Director <<<<<<<<<<*/
   getIt.registerLazySingleton<DirectorRemoteDataSource>(
     () => DirectorRemoteDataSource(getIt()),
   );
   getIt.registerLazySingleton<DirectorRepo>(
     () => DirectorRepo(getIt()),
   );
+  /*>>>>>>>>>> Doctor <<<<<<<<<<*/
   getIt.registerLazySingleton<DoctorRemoteDataSource>(
     () => DoctorRemoteDataSource(getIt()),
   );
   getIt.registerLazySingleton<DoctorRepo>(
     () => DoctorRepo(getIt()),
   );
+  /*>>>>>>>>>> Patient <<<<<<<<<<*/
   getIt.registerLazySingleton<PatientRemoteDataSource>(
     () => PatientRemoteDataSource(getIt()),
   );
   getIt.registerLazySingleton<PatientRepo>(
     () => PatientRepo(getIt()),
   );
+  /*>>>>>>>>>> Reseptions <<<<<<<<<<*/
+  getIt.registerLazySingleton<ReseptionsRemoteDataSource>(
+    () => ReseptionsRemoteDataSource(getIt()),
+  );
+  getIt.registerLazySingleton<ReseptionsRepo>(
+    () => ReseptionsRepo(getIt()),
+  );
+  /*>>>>>>>>>> Create Account <<<<<<<<<<*/
   getIt.registerLazySingleton<CreateRepo>(
-      ()=> CreateRepoImpl(getIt()),
+    () => CreateRepoImpl(getIt()),
   );
   getIt.registerLazySingleton<CreateRemoteDataSource>(
-      ()=> CreateRemoteDataSource(getIt()),
+    () => CreateRemoteDataSource(getIt()),
+  );
+  /*>>>>>>>>>> Lab Master <<<<<<<<<<*/
+  getIt.registerLazySingleton<LaboratoryRemoteDataSource>(
+    () => LaboratoryRemoteDataSource(getIt()),
+  );
+  getIt.registerLazySingleton<LabMasterRepo>(
+    () => LabMasterRepo(getIt()),
+  );
+  /*>>>>>>>>>> Sections <<<<<<<<<<*/
+  getIt.registerLazySingleton<SectionRemoteDataSrouce>(
+    () => SectionRemoteDataSrouce(getIt()),
+  );
+  getIt.registerLazySingleton<SectionRepo>(
+    () => SectionRepo(getIt()),
   );
 }

@@ -12,15 +12,12 @@ class StyleManager {
   );
 
   static TextStyle font20W600 = TextStyle(
-      fontSize: 20.sp, color: Colors.black54,
-      fontWeight: FontWeight.w600
-  );
+      fontSize: 20.sp, color: Colors.black54, fontWeight: FontWeight.w600);
 
   static TextStyle font30Bold_Lobster = TextStyle(
       fontSize: 30.sp,
       fontWeight: FontWeight.bold,
-      fontFamily: "Lobster-Regular"
-  );
+      fontFamily: "Lobster-Regular");
   static TextStyle fontBold32 = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.w700,
@@ -38,12 +35,12 @@ class StyleManager {
     fontWeight: FontWeight.w500,
   );
   /*>>>>>>>>>> Regular <<<<<<<<<<*/
-  static TextStyle fontRegular20 =  TextStyle(
+  static TextStyle fontRegular20 = const TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w400,
     color: Colors.white,
   );
-  static TextStyle fontregular14 = TextStyle(
+  static TextStyle fontregular14 = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     color: ColorsHelper.lightGry,
@@ -53,7 +50,7 @@ class StyleManager {
     fontSize: 16,
     fontWeight: FontWeight.w400,
   );
-  static TextStyle fontRegular12 = TextStyle(
+  static TextStyle fontRegular12 = const TextStyle(
     color: ColorsHelper.lightGry,
     fontSize: 12,
     fontWeight: FontWeight.w400,
@@ -68,34 +65,22 @@ class StyleManager {
   );
 
   ///Input Borders
-  static InputBorder Border_round40=OutlineInputBorder(
+  static InputBorder Border_round40 = OutlineInputBorder(
     borderRadius: BorderRadius.circular(40),
     borderSide: BorderSide(
       color: Colors.grey.shade300,
     ),
   );
 
-
   ///shapes BoxDecoration
-  static BoxDecoration Circle_Shape({
-    required Color color
-  }) {
+  static BoxDecoration Circle_Shape({required Color color}) {
     return BoxDecoration(
       shape: BoxShape.circle,
       color: color,
     );
   }
 
-  static BoxDecoration rounded40({
-    required Color color
-  }) {
-    return BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(40)
-      );
+  static BoxDecoration rounded40({required Color color}) {
+    return BoxDecoration(color: color, borderRadius: BorderRadius.circular(40));
   }
-
-
 }
-
-

@@ -2,7 +2,6 @@ import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class Dropdown extends StatelessWidget{

@@ -1,4 +1,3 @@
-import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/features/create_account/presentation/widgets/texts_and_fields/text&drop_down.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
