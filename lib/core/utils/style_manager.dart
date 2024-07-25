@@ -15,12 +15,20 @@ class StyleManager {
       fontSize: 20.sp, color: Colors.black54, fontWeight: FontWeight.w600);
 
   static TextStyle font30Bold_Lobster = TextStyle(
-      fontSize: 30.sp,
-      fontWeight: FontWeight.bold,
-      fontFamily: "Lobster-Regular");
+    fontSize: 30.sp,
+    fontWeight: FontWeight.bold,
+    fontFamily: "Lobster-Regular",
+  );
+  /*>>>>>>>>>> Bold <<<<<<<<<<*/
   static TextStyle fontBold32 = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.w700,
+    color: ColorsHelper.black,
+  );
+  /*>>>>>>>>>> Semi-Bold <<<<<<<<<<*/
+  static TextStyle fontSemiBold22 = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
     color: ColorsHelper.black,
   );
   /*>>>>>>>>>> Medium <<<<<<<<<<*/

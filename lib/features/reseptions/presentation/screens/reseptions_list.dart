@@ -10,7 +10,6 @@ import 'package:dashboad/features/reseptions/presentation/cubits/reseption_cubit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../drawer_basiclayout/presentation/screens/baselayout.dart';
 
 class ReseptionsList extends StatelessWidget {
   const ReseptionsList({super.key});
@@ -19,55 +18,52 @@ class ReseptionsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ReseptionCubit(getIt())..getReseptions(),
-      child: BaseLayout(
-        child: Padding(
-          padding: const EdgeInsets.all(
-            AppPadding.p30,
+      child: Padding(
+        padding: const EdgeInsets.all(
+          AppPadding.p30,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: ColorsHelper.lightGry,
+            ),
+            borderRadius: BorderRadius.circular(10),
           ),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: ColorsHelper.lightGry,
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                const TableHeader(),
-                BlocBuilder<ReseptionCubit, ReseptionState>(
-                    buildWhen: (previous, current) {
-                  if (current is GetReseptionsLoadingState) {
-                    return true;
-                  } else if (current is GetReseptionsSuccessState) {
-                    return true;
-                  } else if (current is GetReseptionsErrorState) {
-                    return true;
-                  } else if (current is DeleteReseptionSuccessState) {
-                    return true;
-                  } else {
-                    return false;
-                  }
-                }, builder: (context, state) {
-                  if (state is GetReseptionsErrorState) {
-                    return Text(NetworkExceptions.getErrorMessage(state.error));
-                  } else if (state is GetReseptionsLoadingState) {
-                    return Expanded(
-                      child: ListView.builder(
-                        itemBuilder: (context, index) =>
-                            const ShimmerTableRow(),
-                        itemCount: 10,
-                      ),
-                    );
-                  } else if (state is GetReseptionsSuccessState) {
-                    return _buildTable(state.reseptions);
-                  } else if (state is DeleteReseptionSuccessState) {
-                    return _buildTable(state.reseptions);
-                  } else {
-                    return const SizedBox();
-                  }
-                }),
-              ],
-            ),
+          child: Column(
+            children: [
+              const TableHeader(),
+              BlocBuilder<ReseptionCubit, ReseptionState>(
+                  buildWhen: (previous, current) {
+                if (current is GetReseptionsLoadingState) {
+                  return true;
+                } else if (current is GetReseptionsSuccessState) {
+                  return true;
+                } else if (current is GetReseptionsErrorState) {
+                  return true;
+                } else if (current is DeleteReseptionSuccessState) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }, builder: (context, state) {
+                if (state is GetReseptionsErrorState) {
+                  return Text(NetworkExceptions.getErrorMessage(state.error));
+                } else if (state is GetReseptionsLoadingState) {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) => const ShimmerTableRow(),
+                      itemCount: 10,
+                    ),
+                  );
+                } else if (state is GetReseptionsSuccessState) {
+                  return _buildTable(state.reseptions);
+                } else if (state is DeleteReseptionSuccessState) {
+                  return _buildTable(state.reseptions);
+                } else {
+                  return const SizedBox();
+                }
+              }),
+            ],
           ),
         ),
       ),

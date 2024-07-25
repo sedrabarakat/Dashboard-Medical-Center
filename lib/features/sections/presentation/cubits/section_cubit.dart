@@ -1,4 +1,6 @@
+import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
+import 'package:dashboad/core/helpers/json_helper.dart';
 import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
 import 'package:dashboad/features/sections/domain/repositories/section_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,13 +31,28 @@ class SectionCubit extends Cubit<SectionState> {
 
   Future<void> getSections() async {
     emit(GetSectionsLoadingState());
+    List<String> cachedSections =
+        await SharedPrefrence.getListOfString('sections');
+    // Check if there is cached data if true then return the cached data
+    if (cachedSections.isNotEmpty) {
+      _sections = JsonHelper.convertListOfStringToListOfObjects<SectionModel>(
+        cachedSections,
+        SectionModel.fromJson,
+      );
+      emit(GetSectionsSuccessState(_sections));
+      return;
+    }
     final response = await _repo.getSections();
     response.fold((e) {
       emit(GetSectionsErrorState(e));
     }, (data) {
       List<SectionModel> sections =
           data.list.map((section) => section as SectionModel).toList();
+
       _sections = sections;
+      SharedPrefrence.saveListOfObject(_sections, 'sections');
+      _sections = sections;
+
       emit(GetSectionsSuccessState(_sections));
     });
   }

@@ -14,7 +14,8 @@ class DoctorCubit extends Cubit<DoctorState> {
   DoctorCubit(this._repo) : super(DoctorInitialState());
   List<DoctorModel> _doctors = [];
   Future<void> getDoctors() async {
-    List<String> cachedDoctors = await SharedPrefrence.getListOfString('doctors');
+    List<String> cachedDoctors =
+        await SharedPrefrence.getListOfString('doctors');
     // Check if there is cached data if true then return the cached data
     if (cachedDoctors.isNotEmpty) {
       _doctors = JsonHelper.convertListOfStringToListOfObjects<DoctorModel>(

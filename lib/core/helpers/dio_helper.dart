@@ -12,6 +12,7 @@ class DioHelper {
     _dio ??= Dio();
     _dio!.interceptors.add(
       LogInterceptor(
+        
         requestBody: true,
         responseBody: true,
       ),
