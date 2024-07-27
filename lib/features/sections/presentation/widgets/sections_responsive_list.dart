@@ -1,7 +1,7 @@
 import 'package:dashboad/core/helpers/responsive_helper.dart';
 import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
-import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
+import 'package:dashboad/features/sections/data/models/section_model.dart';
 import 'package:dashboad/features/sections/presentation/cubits/section_cubit.dart';
 import 'package:dashboad/features/sections/presentation/widgets/section_card.dart';
 import 'package:flutter/material.dart';
@@ -18,13 +18,13 @@ class SectionsResponsiveList extends StatelessWidget {
         ? ListView.separated(
             padding: const EdgeInsets.all(AppPadding.p30),
             itemBuilder: (context, index) => SectionCard(
+              id: sections[index].id,
               onTap: () async {
-                context
-                    .go('/Sections_list/section_details/${sections[index].id}');
-                await BlocProvider.of<SectionCubit>(context)
-                    .getSectionInformation(sections[index].id);
+                context.go(
+                    '/Sections_list/section_details/${sections[index].id}/${sections[index].sectionName}',
+                    extra: BlocProvider.of<SectionCubit>(context));
               },
-              name: sections[index].name,
+              name: sections[index].sectionName,
               image: AssetsManager.heart,
             ),
             separatorBuilder: (context, index) => const SizedBox(
@@ -41,13 +41,14 @@ class SectionsResponsiveList extends StatelessWidget {
               crossAxisSpacing: 10,
             ),
             itemBuilder: (context, index) => SectionCard(
+              id: sections[index].id,
               onTap: () async {
-                context
-                    .go('/Sections_list/section_details/${sections[index].id}');
+                context.go(
+                    '/Sections_list/section_details/${sections[index].id}/${sections[index].sectionName}');
                 await BlocProvider.of<SectionCubit>(context)
                     .getSectionInformation(sections[index].id);
               },
-              name: sections[index].name,
+              name: sections[index].sectionName,
               image: AssetsManager.heart,
             ),
             itemCount: sections.length,

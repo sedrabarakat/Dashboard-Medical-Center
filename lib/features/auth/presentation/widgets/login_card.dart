@@ -1,10 +1,13 @@
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/core/utils/validator_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
+import 'package:dashboad/core/widgets/count_down_timer.dart';
+import 'package:dashboad/features/auth/presentation/cubits/cubit/auth_cubit.dart';
 import 'package:dashboad/features/auth/presentation/widgets/auth_field.dart';
 import 'package:dashboad/features/auth/presentation/widgets/custom_state_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_state_button/progress_button.dart';
 
 class LoginCard extends StatelessWidget {

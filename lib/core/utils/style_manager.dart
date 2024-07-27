@@ -31,6 +31,11 @@ class StyleManager {
     fontWeight: FontWeight.w600,
     color: ColorsHelper.black,
   );
+  static TextStyle fontSemiBold18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: ColorsHelper.black,
+  );
   /*>>>>>>>>>> Medium <<<<<<<<<<*/
   static TextStyle fontMedium24 = TextStyle(
     fontSize: 24,

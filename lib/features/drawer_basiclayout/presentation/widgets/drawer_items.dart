@@ -52,7 +52,8 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
         icon: Icons.add_business,
         onTap: () {
           // cubit.changeSelctedTap(index: 4);
-          navigationShell.goBranch(3);
+          navigationShell.goBranch(3,
+              initialLocation: index == navigationShell.currentIndex);
 
           // context.go('/Sections_list');
         },

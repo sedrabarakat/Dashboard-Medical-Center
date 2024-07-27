@@ -1,7 +1,7 @@
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/json_helper.dart';
-import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
+import 'package:dashboad/features/sections/data/models/section_model.dart';
 import 'package:dashboad/features/sections/domain/repositories/section_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'section_state.dart';
@@ -9,6 +9,7 @@ part 'section_state.dart';
 class SectionCubit extends Cubit<SectionState> {
   final SectionRepo _repo;
   List<SectionModel> _sections = [];
+  int? previousId;
   SectionCubit(this._repo) : super(SectionInitialState());
 
   Future<void> createSection() async {
@@ -58,6 +59,13 @@ class SectionCubit extends Cubit<SectionState> {
   }
 
   Future<void> getSectionInformation(int id) async {
+    if (previousId == null) {
+      previousId = id;
+    } else if (previousId == id) {
+      return;
+    } else {
+      previousId = id;
+    }
     emit(GetSectionInformationLoadingState());
     final response = await _repo.getSectionInformation(id);
     response.fold(

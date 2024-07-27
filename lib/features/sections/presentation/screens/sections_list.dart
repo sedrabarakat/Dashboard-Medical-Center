@@ -6,14 +6,13 @@ import 'package:dashboad/features/sections/presentation/widgets/shimmer/sections
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class SectionsList extends StatelessWidget {
   const SectionsList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SectionCubit(getIt())..getSections(),
+      create: (context) => getIt.get<SectionCubit>()..getSections(),
       child: Builder(builder: (context) {
         return BlocListener<SectionCubit, SectionState>(
           listener: (context, state) {

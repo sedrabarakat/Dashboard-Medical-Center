@@ -24,6 +24,8 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
   const factory NetworkExceptions.methodNotAllowed() = MethodNotAllowed;
 
   const factory NetworkExceptions.notAcceptable() = NotAcceptable;
+  const factory NetworkExceptions.tooManyRequest(String reason) =
+      TooManyRequest;
 
   const factory NetworkExceptions.requestTimeout() = RequestTimeout;
 
@@ -70,6 +72,7 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
       const NetworkExceptions.unableToProcess(),
       const NetworkExceptions.serviceUnavailable(),
       const NetworkExceptions.sendTimeout(),
+      const NetworkExceptions.tooManyRequest(''),
     ];
   }
 
@@ -94,6 +97,8 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
         return const NetworkExceptions.requestTimeout();
       case 422:
         return const NetworkExceptions.unprocessableEntity("");
+      case 429:
+        return NetworkExceptions.tooManyRequest(error.message);
       case 500:
         return const NetworkExceptions.internalServerError();
       case 503:
@@ -164,65 +169,47 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
   static String getErrorMessage(NetworkExceptions? networkExceptions) {
     //  return getErrorMessageTr(networkExceptions);
     var errorMessage = "";
-    networkExceptions?.whenOrNull(
-          notImplemented: () {
-            errorMessage = "Not Implemented";
-          },
-          requestCancelled: () {
-            errorMessage = "Request Cancelled";
-          },
-          loggingInRequired: () {
-            errorMessage = "Log in First";
-          },
-          internalServerError: () {
-            errorMessage = "Internal Server Error";
-          },
-          notFound: (String reason) {
-            errorMessage = reason;
-          },
-          serviceUnavailable: () {
-            errorMessage = "Service unavailable";
-          },
-          methodNotAllowed: () {
-            errorMessage = "Method Not Allowed";
-          },
-          badRequest: () {
-            errorMessage = "Bad request";
-          },
-          unauthorizedRequest: (String error) {
-            errorMessage = error;
-          },
-          unprocessableEntity: (String error) {
-            errorMessage = error;
-          },
-          unexpectedError: () {
-            errorMessage = "Unexpected error occurred";
-          },
-          requestTimeout: () {
-            errorMessage = "Connection request timeout";
-          },
-          noInternetConnection: () {
-            errorMessage = "No internet connection";
-          },
-          conflict: () {
-            errorMessage = "Error due to a conflict";
-          },
-          sendTimeout: () {
-            errorMessage = "Send timeout in connection with API server";
-          },
-          unableToProcess: () {
-            errorMessage = "Unable to process the data";
-          },
-          defaultError: (String error) {
-            errorMessage = error;
-          },
-          formatException: () {
-            errorMessage = "Unexpected error occurred";
-          },
-          notAcceptable: () {
-            errorMessage = "Not acceptable";
-          },
-        ) ??
+    networkExceptions?.whenOrNull(notImplemented: () {
+          errorMessage = "Not Implemented";
+        }, requestCancelled: () {
+          errorMessage = "Request Cancelled";
+        }, loggingInRequired: () {
+          errorMessage = "Log in First";
+        }, internalServerError: () {
+          errorMessage = "Internal Server Error";
+        }, notFound: (String reason) {
+          errorMessage = reason;
+        }, serviceUnavailable: () {
+          errorMessage = "Service unavailable";
+        }, methodNotAllowed: () {
+          errorMessage = "Method Not Allowed";
+        }, badRequest: () {
+          errorMessage = "Bad request";
+        }, unauthorizedRequest: (String error) {
+          errorMessage = error;
+        }, unprocessableEntity: (String error) {
+          errorMessage = error;
+        }, unexpectedError: () {
+          errorMessage = "Unexpected error occurred";
+        }, requestTimeout: () {
+          errorMessage = "Connection request timeout";
+        }, noInternetConnection: () {
+          errorMessage = "No internet connection";
+        }, conflict: () {
+          errorMessage = "Error due to a conflict";
+        }, sendTimeout: () {
+          errorMessage = "Send timeout in connection with API server";
+        }, unableToProcess: () {
+          errorMessage = "Unable to process the data";
+        }, defaultError: (String error) {
+          errorMessage = error;
+        }, formatException: () {
+          errorMessage = "Unexpected error occurred";
+        }, notAcceptable: () {
+          errorMessage = "Not acceptable";
+        }, tooManyRequest: (String error) {
+          errorMessage = error;
+        }) ??
         '';
     return errorMessage;
   }

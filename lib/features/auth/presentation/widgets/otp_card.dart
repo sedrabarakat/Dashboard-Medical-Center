@@ -1,9 +1,12 @@
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
+import 'package:dashboad/core/widgets/count_down_timer.dart';
+import 'package:dashboad/features/auth/presentation/cubits/cubit/auth_cubit.dart';
 import 'package:dashboad/features/auth/presentation/widgets/custom_state_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pinput/pinput.dart';
 import 'package:progress_state_button/progress_button.dart';
 
@@ -14,9 +17,11 @@ class OtpCard extends StatelessWidget {
     required this.onPressed,
     required this.onCompleted,
     required this.buttonCurrentState,
+    required this.timerDuration,
   });
 
   final Color textColor;
+  final Duration timerDuration;
   final Function()? onPressed;
   final void Function(String)? onCompleted;
   final ButtonState buttonCurrentState;
@@ -94,6 +99,18 @@ class OtpCard extends StatelessWidget {
             label: 'Sign in',
             onPressed: onPressed,
             currentState: buttonCurrentState,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          CountDownTimer(
+            label: 'Didn\'t recive a code ? ',
+            labelColor: textColor,
+            onTimeFinished: () {},
+            duration: timerDuration,
+            onSendAgainPressed: () async {
+              await BlocProvider.of<AuthCubit>(context).requestCode(context);
+            },
           ),
         ],
       ),

@@ -8,9 +8,11 @@ class SectionCard extends StatelessWidget {
       {required this.onTap,
       required this.name,
       required this.image,
+      required this.id,
       super.key});
   final String name;
   final String image;
+  final int id;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -40,15 +42,21 @@ class SectionCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Image.asset(
-              AssetsManager.heart,
-              fit: BoxFit.fitHeight,
+            Hero(
+              tag: id,
+              child: Image.asset(
+                AssetsManager.heart,
+                fit: BoxFit.fitHeight,
+              ),
             ),
             Expanded(
-              child: Text(
-                name,
-                overflow: TextOverflow.ellipsis,
-                style: StyleManager.fontSemiBold22,
+              child: Hero(
+                tag: name,
+                child: Text(
+                  name,
+                  overflow: TextOverflow.ellipsis,
+                  style: StyleManager.fontSemiBold22,
+                ),
               ),
             ),
           ],

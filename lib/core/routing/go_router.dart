@@ -93,12 +93,14 @@ class WebRouter {
                 },
                 routes: [
                   GoRoute(
-                    path: 'section_details/:id',
+                    path: 'section_details/:id/:name',
                     name: kSectionDetails,
                     builder: (context, state) {
                       int id = int.parse(state.pathParameters['id']!);
+                      String name = state.pathParameters['name']!;
                       return SectionDetails(
                         id: id,
+                        name: name,
                       );
                     },
                   ),

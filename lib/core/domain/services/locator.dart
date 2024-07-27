@@ -16,6 +16,7 @@ import 'package:dashboad/features/reseptions/data/datasource/remote/reseptions_r
 import 'package:dashboad/features/reseptions/domain/repository/reseptions_repo.dart';
 import 'package:dashboad/features/sections/data/data_sources/section_remote_data_srouce.dart';
 import 'package:dashboad/features/sections/domain/repositories/section_repo.dart';
+import 'package:dashboad/features/sections/presentation/cubits/section_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../features/create_account/data/data_source/remote/create_remote.dart';
@@ -82,5 +83,9 @@ Future locatorSetUp() async {
   );
   getIt.registerLazySingleton<SectionRepo>(
     () => SectionRepo(getIt()),
+  );
+  /*>>>>>>>>>> Cubits <<<<<<<<<<*/
+  getIt.registerLazySingleton<SectionCubit>(
+    () => SectionCubit(getIt()),
   );
 }

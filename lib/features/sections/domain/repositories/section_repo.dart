@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
-import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
+
 import 'package:dashboad/features/sections/data/data_sources/section_remote_data_srouce.dart';
+import 'package:dashboad/features/sections/data/models/section_model.dart';
 
 class SectionRepo {
   final SectionRemoteDataSrouce _remote;

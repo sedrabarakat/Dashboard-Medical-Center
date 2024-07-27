@@ -149,6 +149,11 @@ class LoginPage extends StatelessWidget {
                                               .loginButtonState,
                                     ),
                                     OtpCard(
+                                      timerDuration: Duration(
+                                        seconds:
+                                            BlocProvider.of<AuthCubit>(context)
+                                                .timerSeconds,
+                                      ),
                                       buttonCurrentState:
                                           BlocProvider.of<AuthCubit>(context)
                                               .otpButtonState,
