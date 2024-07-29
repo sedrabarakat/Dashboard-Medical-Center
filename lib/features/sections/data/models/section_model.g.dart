@@ -36,3 +36,15 @@ Map<String, dynamic> _$TempModelToJson(TempModel instance) => <String, dynamic>{
       'session_durtion': instance.sessionDuration,
       'days_in_advance': instance.daysInAdvance,
     };
+
+SectionService _$SectionServiceFromJson(Map<String, dynamic> json) =>
+    SectionService(
+      name: json['name'] as String,
+      price: (json['price'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$SectionServiceToJson(SectionService instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'price': instance.price,
+    };

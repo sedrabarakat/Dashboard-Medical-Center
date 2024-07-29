@@ -12,6 +12,8 @@ import '../widgets/base_container.dart';
 import '../widgets/text_animated_widget.dart';
 
 class AddAccount extends StatelessWidget {
+  const AddAccount({super.key});
+
   @override
   Widget build(BuildContext context) {
     CreateRepo createRepo;

@@ -7,6 +7,7 @@ import 'package:dashboad/features/drawer_basiclayout/presentation/screens/basela
 import 'package:dashboad/features/inbox/presentation/screens/inbox.dart';
 import 'package:dashboad/features/laboratory/presentation/screens/laboratories_list.dart';
 import 'package:dashboad/features/reseptions/presentation/screens/reseptions_list.dart';
+import 'package:dashboad/features/sections/presentation/screens/add_section_screen.dart';
 import 'package:dashboad/features/sections/presentation/screens/section_details.dart';
 import 'package:dashboad/features/sections/presentation/screens/sections_list.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class WebRouter {
   static const kReseptionsList = 'Reseptions_list';
   static const kSectionsList = 'Seconts_list';
   static const kSectionDetails = 'section_details';
+  static const kAddSection = "add_section";
   static const kInbox = 'Inbox';
 
   static GoRouter router = GoRouter(
@@ -56,7 +58,7 @@ class WebRouter {
                 path: '/add_account',
                 name: kAddAccount,
                 builder: (context, state) {
-                  return AddAccount();
+                  return const AddAccount();
                 },
               ),
             ],
@@ -104,6 +106,11 @@ class WebRouter {
                       );
                     },
                   ),
+                  GoRoute(
+                    path: 'add_section',
+                    name: kAddSection,
+                    builder: (context, state) => const AddSectionScreen(),
+                  )
                 ],
               ),
             ],

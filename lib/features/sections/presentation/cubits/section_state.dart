@@ -61,3 +61,7 @@ class DeleteSectionErrorState extends SectionState {
   final NetworkExceptions error;
   DeleteSectionErrorState(this.error);
 }
+
+class AddSectionService extends SectionState {}
+
+class RemoveSectionService extends SectionState {}

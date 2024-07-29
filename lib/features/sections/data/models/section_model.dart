@@ -39,3 +39,13 @@ class TempModel {
       _$TempModelFromJson(json);
   Map<String, dynamic> toJson() => _$TempModelToJson(this);
 }
+
+@JsonSerializable()
+class SectionService {
+  final String name;
+  final int price;
+  SectionService({required this.name, required this.price});
+  factory SectionService.fromJson(Map<String, dynamic> json) =>
+      _$SectionServiceFromJson(json);
+  Map<String, dynamic> toJson() => _$SectionServiceToJson(this);
+}

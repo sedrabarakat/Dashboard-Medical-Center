@@ -8,7 +8,7 @@ import 'package:dashboad/features/sections/data/models/section_model.dart';
 class SectionRepo {
   final SectionRemoteDataSrouce _remote;
   SectionRepo(this._remote);
-  Future<Either<NetworkExceptions, BaseModel>> createSection(
+  Future<Either<NetworkExceptions, BaseModel<SectionModel>>> createSection(
       String name) async {
     try {
       final response = await _remote.createSection(name);

@@ -1,10 +1,12 @@
 import 'package:dashboad/core/domain/services/locator.dart';
+import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/sections/presentation/cubits/section_cubit.dart';
 import 'package:dashboad/features/sections/presentation/widgets/sections_responsive_list.dart';
 import 'package:dashboad/features/sections/presentation/widgets/shimmer/sections_list_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SectionsList extends StatelessWidget {
   const SectionsList({super.key});
@@ -36,7 +38,21 @@ class SectionsList extends StatelessWidget {
               if (state is GetSectionsLoadingState) {
                 return const SectionsListLoading();
               } else if (state is GetSectionsSuccessState) {
-                return SectionsResponsiveList(sections: state.sections);
+                return Scaffold(
+                    floatingActionButton: FloatingActionButton(
+                      onPressed: () {
+                        BlocProvider.of<SectionCubit>(context)
+                            .sectionServices
+                            .clear();
+                        context.go('/Sections_list/add_section');
+                      },
+                      backgroundColor: ColorsHelper.teal,
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                    body: SectionsResponsiveList(sections: state.sections));
               }
               return const Center(
                 child: Text("Something went wrong"),

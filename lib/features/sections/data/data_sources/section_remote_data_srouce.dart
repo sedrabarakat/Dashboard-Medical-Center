@@ -8,14 +8,17 @@ class SectionRemoteDataSrouce {
   final ApiServices _apiServices;
   SectionRemoteDataSrouce(this._apiServices);
 
-  Future<BaseModel> createSection(String name) async {
-    await _apiServices.post(
+  Future<BaseModel<SectionModel>> createSection(String name) async {
+    final response = await _apiServices.post(
       AppUrl.createSection,
       body: {
         'name': name,
       },
     );
-    return BaseModel(data: null, message: 'Section Created Successfully');
+    return BaseModel.fromJson(
+      response,
+      (json) => SectionModel.fromJson(json),
+    );
   }
 
   Future<BaseModel<SectionModel>> updateSection(int id, String name) async {

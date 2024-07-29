@@ -30,7 +30,7 @@ class SectionsResponsiveList extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
             ),
-            itemCount: 10,
+            itemCount: sections.length,
           )
         : GridView.builder(
             padding: const EdgeInsets.all(AppPadding.p30),
