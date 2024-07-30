@@ -36,7 +36,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
               setState(
                 () {
                   _focusNode.hasFocus
-                      ? _suffixIconColor = ColorsHelper.teal
+                      ? _suffixIconColor = ColorsHelper.blue
                       : _suffixIconColor = ColorsHelper.lightGry;
                 },
               );
@@ -66,7 +66,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           focusNode: _focusNode,
           obscureText: widget.isPassword ? _passwordVisible : false,
           controller: widget.controller,
-          cursorColor: ColorsHelper.tealDark,
+          cursorColor: ColorsHelper.blueDark,
           style: StyleManager.fontregular14.copyWith(
             color: widget.textColor,
           ),
@@ -88,7 +88,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                 : null,
             hintText: widget.hintText,
             hintStyle: StyleManager.fontRegular12,
-            focusedBorder: _buildBorder(ColorsHelper.tealLightDark),
+            focusedBorder: _buildBorder(ColorsHelper.blueLightDark),
             enabledBorder: _buildBorder(ColorsHelper.lightGry),
             errorBorder: _buildBorder(Colors.red),
             focusedErrorBorder: _buildBorder(Colors.red),

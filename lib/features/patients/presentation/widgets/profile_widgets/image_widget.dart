@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/helpers/colors_helper.dart';
-import '../../../../core/utils/style_manager.dart';
+import '../../../../../core/helpers/colors_helper.dart';
+import '../../../../../core/utils/style_manager.dart';
 
 Widget Image_widget(){
   return Container(

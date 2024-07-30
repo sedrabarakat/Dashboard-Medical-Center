@@ -74,15 +74,15 @@ class WebRouter {
           pageBuilder: (context, state) {
             return const MaterialPage(child: PatientsList());
           },
-          routes: [
-            GoRoute(
-              path: 'Patient_profile/:Patient_id',
-              name: kPatientProfile,
-              pageBuilder: (context, state) {
-                return const MaterialPage(child: PatientProfile());
-              },
-            ),
-          ]),
+          ),
+      GoRoute(
+        path: '/Patients_List/Patient_profile/:Patient_id',
+        name: kPatientProfile,
+        pageBuilder: (context, state) {
+          int Patient_id=int.parse(state.pathParameters['Patient_id']!);
+          return const MaterialPage(child: PatientProfile());
+        },
+      ),
       GoRoute(
         path: '/Laboratory',
         name: kLaboratory,

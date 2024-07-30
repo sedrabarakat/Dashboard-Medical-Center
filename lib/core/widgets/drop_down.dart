@@ -29,7 +29,7 @@ class Dropdown extends StatelessWidget{
             hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade800),
             hintText: hintText),
         value: selectedItem,
-        focusColor: ColorsHelper.tealLightest,
+        focusColor: ColorsHelper.blueLightest,
         hint: Text(hintText),
         items: dropdownItems.map((String item) {
           return DropdownMenuItem<String>(

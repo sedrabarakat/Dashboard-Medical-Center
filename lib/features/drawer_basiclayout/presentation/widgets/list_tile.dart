@@ -1,3 +1,4 @@
+import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:flutter/material.dart';
 
 Widget listTileWidget({
@@ -14,13 +15,13 @@ Widget listTileWidget({
     ),
     leading: Icon(
       icon,
-      color: (index == spIndex) ? Colors.white : Colors.teal,
+      color: (index == spIndex) ? Colors.white : ColorsHelper.blue,
     ),
     title: Text(
       text,
-      style: TextStyle(color: (index == spIndex) ? Colors.white : Colors.teal),
+      style: TextStyle(color: (index == spIndex) ? Colors.white : ColorsHelper.blue),
     ),
-    tileColor: (index == spIndex) ? Colors.teal.withOpacity(.7) : null,
+    tileColor: (index == spIndex) ? ColorsHelper.blue.withOpacity(.9) : null,
     onTap: onTap,
   );
 }

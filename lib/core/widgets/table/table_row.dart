@@ -81,7 +81,7 @@ class MyTableRow extends StatelessWidget {
                     horizontal: AppPadding.p12,
                   ),
                   decoration: BoxDecoration(
-                    color: ColorsHelper.teal,
+                    color: ColorsHelper.blue,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(

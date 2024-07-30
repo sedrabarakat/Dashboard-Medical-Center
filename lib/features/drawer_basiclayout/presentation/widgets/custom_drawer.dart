@@ -23,7 +23,7 @@ class CustomDrawer extends StatelessWidget {
           children: [
             liquedText(
               text: 'Medical Center',
-              waveColor: ColorsHelper.tealLightDark,
+              waveColor: ColorsHelper.blue,
               backgroundColor: Colors.white,
             ),
             drawerList(context: context),

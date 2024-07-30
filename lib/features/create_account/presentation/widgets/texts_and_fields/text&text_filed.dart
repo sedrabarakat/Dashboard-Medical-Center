@@ -33,7 +33,7 @@ class Text_TextFiled extends StatelessWidget{
         SizedBox(height: 10.h,),
         SizedBox(
             width: 250.w,
-            child: TextFiled(radius: 40,controller: controller,
+            child: TextFild_def(radius: 40,controller: controller,
               onTap: onTap,onChanged: onChanged,validator: validator,maxLine: maxLine,
               isNum: (isNum!=null)?isNum!:false,
               readOnly: (ReadOnly!=null)?ReadOnly!:false,

@@ -15,7 +15,7 @@ Widget Cell({required int index, required AddAccountCubit cubit}) {
     child: (index==cubit.SelectedIndex)?Container(
       height: 25.h,
       width: 15.w,
-      decoration: StyleManager.Circle_Shape(color: ColorsHelper.tealDark),
+      decoration: StyleManager.Circle_Shape(color: ColorsHelper.blueDark),
     ):SizedBox(),
   );
 }

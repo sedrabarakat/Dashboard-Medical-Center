@@ -80,7 +80,7 @@ class PatientsList extends StatelessWidget {
         itemBuilder: (context, index) => MyTableRow(
           user: patients[index].userData,
           onEditPressed: () {
-            context.go('/Patient_profile/:Patient_id');
+            context.go('/Patients_List/Patient_profile/${patients[index].id}');
           },
           onRemovePressed: () {
             BlocProvider.of<PatientCubit>(context)

@@ -3,7 +3,6 @@ import 'package:dashboad/features/drawer_basiclayout/presentation/cubits/basic_c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/cubits/bloc_observer.dart';
 import 'core/data/datasources/local.dart';
 import 'core/domain/services/locator.dart';
@@ -39,7 +38,7 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp.router(
-          theme: ThemeManager.myTheme,
+          theme: ThemeManager.lightTheme,
           debugShowCheckedModeBanner: false,
           routerDelegate: WebRouter.router.routerDelegate,
           routeInformationParser: WebRouter.router.routeInformationParser,

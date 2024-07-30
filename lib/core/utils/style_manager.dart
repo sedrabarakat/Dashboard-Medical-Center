@@ -6,8 +6,13 @@ import '../helpers/colors_helper.dart';
 class StyleManager {
   ///texts
   static TextStyle font30Bold = TextStyle(
-    color: Colors.teal,
+    color: ColorsHelper.blue,
     fontSize: 30.sp,
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle font35Bold = TextStyle(
+    color: ColorsHelper.omarColor,
+    fontSize: 35.sp,
     fontWeight: FontWeight.bold,
   );
 

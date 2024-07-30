@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import '../utils/style_manager.dart';
 
 // ignore: must_be_immutable
-class TextFiled extends StatelessWidget {
-  TextFiled(
+class TextFild_def extends StatelessWidget {
+  TextFild_def(
       {super.key,
       this.textInputAction = TextInputAction.next,
       this.keyboardType = TextInputType.text,

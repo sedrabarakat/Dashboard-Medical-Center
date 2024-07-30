@@ -10,6 +10,6 @@ Widget AddImage(){
     clipBehavior: Clip.hardEdge,
     height: 250.h,width: 200.w,
     decoration: StyleManager.Circle_Shape(color: ColorsHelper.black26),
-    child: IconButton(onPressed: (){},icon: Icon(Icons.add_a_photo,size: 30.w,),),
+    child: IconButton(onPressed: (){},icon: Icon(Icons.add_a_photo,size: 30.w,color: Colors.white,),),
   );
 }

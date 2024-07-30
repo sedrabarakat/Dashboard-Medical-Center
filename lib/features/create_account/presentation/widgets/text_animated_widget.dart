@@ -17,10 +17,10 @@ Widget Text_Animated_Row({
       ),
       Text(
         "Add ",
-        style: StyleManager.font30Bold,
+        style: StyleManager.font35Bold,
       ),
       if(cubit.SelectedIndex==-1) DefaultTextStyle(
-        style: StyleManager.font30Bold,
+        style: StyleManager.font35Bold,
         child: animated_List(list:
         [
           RotateAnimatedText('Director'),

@@ -56,7 +56,7 @@ class OtpCard extends StatelessWidget {
             cursor: Container(
               height: 15,
               width: 1,
-              color: ColorsHelper.teal,
+              color: ColorsHelper.blue,
             ),
             defaultPinTheme: PinTheme(
               width: 56,
@@ -78,7 +78,7 @@ class OtpCard extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 border: Border.all(
-                  color: ColorsHelper.teal,
+                  color: ColorsHelper.blue,
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),

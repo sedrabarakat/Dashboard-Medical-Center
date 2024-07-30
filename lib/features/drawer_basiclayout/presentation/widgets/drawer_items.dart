@@ -16,7 +16,7 @@ Widget drawerList({required BuildContext context}) {
       int index = cubit.selectedIndex;
       return ListView(
         shrinkWrap: true,
-        padding: EdgeInsets.all(10.r),
+        padding: EdgeInsets.only(left: 10.r),
         children: [
           listTileWidget(
               index: index,
@@ -102,3 +102,4 @@ Widget drawerList({required BuildContext context}) {
     },
   );
 }
+
