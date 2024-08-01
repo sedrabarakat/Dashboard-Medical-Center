@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:dartz/dartz.dart';
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
@@ -9,9 +11,14 @@ class SectionRepo {
   final SectionRemoteDataSrouce _remote;
   SectionRepo(this._remote);
   Future<Either<NetworkExceptions, BaseModel<SectionModel>>> createSection(
-      String name) async {
+      String name, Uint8List image, List<SectionService> services) async {
     try {
-      final response = await _remote.createSection(name);
+      final response = await _remote.createSection(name, image);
+      // TODO tell the backend to remove the description
+      for (int i = 0; i < services.length; i++) {
+        await _remote.createService(services[i].name, 'description',
+            services[i].price, response.data!.id.toString());
+      }
       return right(response);
     } catch (error) {
       return left(NetworkExceptions.getException(error));
@@ -50,6 +57,30 @@ class SectionRepo {
   Future<Either<NetworkExceptions, BaseModel>> deleteSection(int id) async {
     try {
       final response = await _remote.deleteSection(id);
+      return right(response);
+    } catch (error) {
+      return left(NetworkExceptions.getException(error));
+    }
+  }
+
+  Future<Either<NetworkExceptions, BaseModel>> deleteService(int id) async {
+    try {
+      final response = await _remote.deleteService(id);
+      return right(response);
+    } catch (e) {
+      return left(NetworkExceptions.getException(e));
+    }
+  }
+
+  Future<Either<NetworkExceptions, BaseModel<SectionService>>> editService(
+      int serviceId,
+      String name,
+      String price,
+      String description,
+      String sectionId) async {
+    try {
+      final response = await _remote.editService(
+          serviceId, name, price, description, sectionId);
       return right(response);
     } catch (error) {
       return left(NetworkExceptions.getException(error));

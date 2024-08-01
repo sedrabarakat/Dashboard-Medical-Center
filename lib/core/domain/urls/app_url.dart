@@ -1,4 +1,4 @@
-const baseServ = "http://192.168.1.8:8000/";
+const baseServ = "http://192.168.1.9:8000/";
 const baseUrl = "${baseServ}api/";
 const auth = "auth/";
 const dashboard = 'dashboard/';
@@ -34,4 +34,8 @@ class AppUrl {
   static const getSectionInformation = "$baseUrl${dashboard}section/";
   static const updateSection = "$baseUrl${dashboard}section/update/";
   static const deleteSection = "$baseUrl${dashboard}section/";
+
+  static const createService = "$baseUrl${dashboard}service/store";
+  static const editService = "$baseUrl${dashboard}service/update/";
+  static const deleteService = "$baseUrl${dashboard}service/destroy/";
 }

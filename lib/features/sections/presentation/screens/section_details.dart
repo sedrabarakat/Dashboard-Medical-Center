@@ -22,7 +22,6 @@ class SectionDetails extends StatelessWidget {
   });
   final int id;
   final String name;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +35,18 @@ class SectionDetails extends StatelessWidget {
                     networkException: state.error);
               } else if (state is DeleteSectionSuccessState) {
                 context.pop();
+              } else if (state is DeleteServiceSuccessState) {
+                ToastBar.onSuccess(context,
+                    message: state.message, title: "Success");
+              } else if (state is DeleteServiceErrorState) {
+                ToastBar.onNetworkFailure(context,
+                    networkException: state.error, title: "Error");
+              } else if (state is EditServiceSuccessState) {
+                ToastBar.onSuccess(context,
+                    message: "Edited Successfully", title: "Success");
+              } else if (state is EditServiceErrorState) {
+                ToastBar.onNetworkFailure(context,
+                    networkException: state.error, title: "Error");
               }
             },
             child: Padding(
@@ -51,6 +62,7 @@ class SectionDetails extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
+                        //TODO change it to network image
                         Hero(tag: id, child: Image.asset(AssetsManager.heart)),
                         Hero(
                           tag: name,
@@ -104,6 +116,10 @@ class SectionDetails extends StatelessWidget {
                         } else if (current
                             is GetSectionInformationSuccessState) {
                           return true;
+                        } else if (previous
+                                is GetSectionInformationSuccessState &&
+                            current is DeleteServiceSuccessState) {
+                          return true;
                         }
                         return false;
                       },
@@ -123,7 +139,8 @@ class SectionDetails extends StatelessWidget {
                                   ),
                                   itemBuilder: (context, index) => DoctorCard(
                                     sectionName: name,
-                                    doctorName: "Doctor name",
+                                    doctorName: state.section.doctor![index]
+                                        .userData.firstName,
                                     onTap: () {},
                                   ),
                                   itemCount: state.section.doctor?.length,
@@ -146,6 +163,25 @@ class SectionDetails extends StatelessWidget {
                                           child: ListView.separated(
                                             itemBuilder: (context, index) =>
                                                 SerivcesTile(
+                                              onDeletePressed: () async {
+                                                await BlocProvider.of<
+                                                        SectionCubit>(context)
+                                                    .deleteService(state.section
+                                                        .service![index].id);
+                                              },
+                                              onEditPressed: () async {
+                                                await BlocProvider.of<
+                                                        SectionCubit>(context)
+                                                    .showServiceDialog(
+                                                  context: context,
+                                                  edit: true,
+                                                  index: index,
+                                                );
+                                              },
+                                              name: state
+                                                  .section.service![index].name,
+                                              price: state.section
+                                                  .service![index].price,
                                               index: index,
                                               lastIndex: 20,
                                             ),
@@ -154,7 +190,8 @@ class SectionDetails extends StatelessWidget {
                                                     const SizedBox(
                                               height: 0,
                                             ),
-                                            itemCount: 20,
+                                            itemCount:
+                                                state.section.service!.length,
                                           )),
                                     )
                                   : const SizedBox(),

@@ -16,15 +16,15 @@ class DoctorModel {
   final int daysInAdvance;
   @JsonKey(name: 'user')
   final UserModel userData;
-  final SectionModel section;
+  final SectionModel? section;
   DoctorModel({
     required this.daysInAdvance,
     required this.id,
-    required this.section,
     required this.sectionId,
     required this.sessionDuration,
     required this.userData,
     required this.userId,
+    this.section,
   });
   factory DoctorModel.fromJson(Map<String, dynamic> json) =>
       _$DoctorModelFromJson(json);

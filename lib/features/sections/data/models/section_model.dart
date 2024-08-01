@@ -1,3 +1,4 @@
+import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'section_model.g.dart';
 
@@ -6,45 +7,41 @@ class SectionModel {
   final int id;
   @JsonKey(name: 'name')
   final String sectionName;
-  final List<TempModel>? doctor;
+  @JsonKey(readValue: imageValue)
+  final String image;
+  final List<DoctorModel>? doctor;
+  final List<SectionService>? service;
   SectionModel({
     required this.id,
     required this.sectionName,
+    required this.image,
+    this.service,
     this.doctor,
   });
   factory SectionModel.fromJson(Map<String, dynamic> json) =>
       _$SectionModelFromJson(json);
   Map<String, dynamic> toJson() => _$SectionModelToJson(this);
-}
-
-@JsonSerializable()
-class TempModel {
-  final int id;
-  @JsonKey(name: 'user_id')
-  final int userId;
-  @JsonKey(name: 'section_id')
-  final int sectionId;
-  @JsonKey(name: 'session_durtion')
-  final int sessionDuration;
-  @JsonKey(name: 'days_in_advance')
-  final int daysInAdvance;
-  TempModel({
-    required this.daysInAdvance,
-    required this.id,
-    required this.sectionId,
-    required this.sessionDuration,
-    required this.userId,
-  });
-  factory TempModel.fromJson(Map<String, dynamic> json) =>
-      _$TempModelFromJson(json);
-  Map<String, dynamic> toJson() => _$TempModelToJson(this);
+  //! I made this function because sometimes the image return as a boolean value
+  static imageValue(map, string) {
+    if (map['image'] is bool && !map['image']) {
+      return '00';
+    } else if (map['image'] is bool) {
+      return '10';
+    }
+    return map['image'];
+  }
 }
 
 @JsonSerializable()
 class SectionService {
+  final int id;
   final String name;
-  final int price;
-  SectionService({required this.name, required this.price});
+  final String price;
+  SectionService({
+    required this.name,
+    required this.price,
+    required this.id,
+  });
   factory SectionService.fromJson(Map<String, dynamic> json) =>
       _$SectionServiceFromJson(json);
   Map<String, dynamic> toJson() => _$SectionServiceToJson(this);

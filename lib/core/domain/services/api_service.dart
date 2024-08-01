@@ -15,7 +15,6 @@ abstract class ApiServices {
   });
 
   Future postFiles(
-    BuildContext context,
     String path, {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,

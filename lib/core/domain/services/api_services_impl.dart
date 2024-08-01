@@ -94,7 +94,6 @@ class ApiServicesImp implements ApiServices {
 
   @override
   Future postFiles(
-    BuildContext context,
     String path, {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,
@@ -107,8 +106,9 @@ class ApiServicesImp implements ApiServices {
       final response = await _dio.post(path,
           queryParameters: queryParams,
           data: formData ?? body,
-          options:
-              Options(headers: _headers, contentType: Headers.jsonContentType),
+          options: Options(
+              headers: _headers,
+              contentType: Headers.multipartFormDataContentType),
           onSendProgress: (sent, total) {
         if (total != -1) {
           var progress = (sent / total * 100).toStringAsFixed(0);

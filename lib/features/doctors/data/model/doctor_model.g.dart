@@ -9,11 +9,13 @@ part of 'doctor_model.dart';
 DoctorModel _$DoctorModelFromJson(Map<String, dynamic> json) => DoctorModel(
       daysInAdvance: (json['days_in_advance'] as num).toInt(),
       id: (json['id'] as num).toInt(),
-      section: SectionModel.fromJson(json['section'] as Map<String, dynamic>),
       sectionId: (json['section_id'] as num).toInt(),
       sessionDuration: (json['session_durtion'] as num).toInt(),
       userData: UserModel.fromJson(json['user'] as Map<String, dynamic>),
       userId: (json['user_id'] as num).toInt(),
+      section: json['section'] == null
+          ? null
+          : SectionModel.fromJson(json['section'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$DoctorModelToJson(DoctorModel instance) =>

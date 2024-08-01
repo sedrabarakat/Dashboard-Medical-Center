@@ -1,5 +1,4 @@
 import 'package:dashboad/core/helpers/responsive_helper.dart';
-import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:dashboad/features/sections/data/models/section_model.dart';
 import 'package:dashboad/features/sections/presentation/cubits/section_cubit.dart';
@@ -22,10 +21,10 @@ class SectionsResponsiveList extends StatelessWidget {
               onTap: () async {
                 context.go(
                     '/Sections_list/section_details/${sections[index].id}/${sections[index].sectionName}',
-                    extra: BlocProvider.of<SectionCubit>(context));
+                    extra: sections[index].image);
               },
               name: sections[index].sectionName,
-              image: AssetsManager.heart,
+              image: sections[index].image,
             ),
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
@@ -44,12 +43,13 @@ class SectionsResponsiveList extends StatelessWidget {
               id: sections[index].id,
               onTap: () async {
                 context.go(
-                    '/Sections_list/section_details/${sections[index].id}/${sections[index].sectionName}');
+                  '/Sections_list/section_details/${sections[index].id}/${sections[index].sectionName}',
+                );
                 await BlocProvider.of<SectionCubit>(context)
                     .getSectionInformation(sections[index].id);
               },
               name: sections[index].sectionName,
-              image: AssetsManager.heart,
+              image: sections[index].image,
             ),
             itemCount: sections.length,
           );

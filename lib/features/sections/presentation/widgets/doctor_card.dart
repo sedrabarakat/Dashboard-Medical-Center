@@ -74,7 +74,7 @@ class _DoctorCardState extends State<DoctorCard> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Text(
-                        "Doctor name",
+                        widget.doctorName,
                         style: StyleManager.fontSemiBold18,
                       ),
                       const SizedBox(

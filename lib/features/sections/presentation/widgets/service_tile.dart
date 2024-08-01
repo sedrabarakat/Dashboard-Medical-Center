@@ -3,9 +3,20 @@ import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:flutter/material.dart';
 
 class SerivcesTile extends StatefulWidget {
-  const SerivcesTile({super.key, required this.index, required this.lastIndex});
+  const SerivcesTile(
+      {super.key,
+      required this.index,
+      required this.lastIndex,
+      required this.name,
+      required this.price,
+      required this.onDeletePressed,
+      required this.onEditPressed});
   final int index;
   final int lastIndex;
+  final String name;
+  final String price;
+  final void Function()? onDeletePressed;
+  final void Function()? onEditPressed;
   @override
   State<SerivcesTile> createState() => _SerivcesTileState();
 }
@@ -26,7 +37,7 @@ class _SerivcesTileState extends State<SerivcesTile> {
         });
       },
       child: AnimatedContainer(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
+        clipBehavior: Clip.hardEdge,
         padding: const EdgeInsets.all(10),
         duration: const Duration(milliseconds: 200),
         width: double.infinity,
@@ -61,17 +72,25 @@ class _SerivcesTileState extends State<SerivcesTile> {
                 height: 30,
                 child: Row(
                   children: [
-                    Text(
-                      "Services",
-                      style: StyleManager.fontMedium14.copyWith(
-                        color: ColorsHelper.black,
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        widget.name,
+                        overflow: TextOverflow.ellipsis,
+                        style: StyleManager.fontMedium14.copyWith(
+                          color: ColorsHelper.black,
+                        ),
                       ),
                     ),
                     const Spacer(),
-                    Text(
-                      "200\$",
-                      style: StyleManager.fontRegular12.copyWith(
-                        color: ColorsHelper.black,
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "${widget.price}\$",
+                        overflow: TextOverflow.ellipsis,
+                        style: StyleManager.fontRegular12.copyWith(
+                          color: ColorsHelper.black,
+                        ),
                       ),
                     )
                   ],
@@ -87,7 +106,7 @@ class _SerivcesTileState extends State<SerivcesTile> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: widget.onDeletePressed,
                                   child: Container(
                                     width: 30,
                                     padding: const EdgeInsets.all(5),
@@ -108,7 +127,7 @@ class _SerivcesTileState extends State<SerivcesTile> {
                                   width: 10,
                                 ),
                                 InkWell(
-                                  onTap: () {},
+                                  onTap: widget.onEditPressed,
                                   child: Container(
                                     width: 30,
                                     padding: const EdgeInsets.all(5),

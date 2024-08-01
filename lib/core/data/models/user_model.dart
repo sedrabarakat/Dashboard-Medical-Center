@@ -6,6 +6,8 @@ class UserModel {
   final int id;
   @JsonKey(name: 'first_name')
   final String firstName;
+  @JsonKey(name: 'middle_name')
+  final String middleName;
   @JsonKey(name: 'last_name')
   final String lastName;
   @JsonKey(name: 'phone_number')
@@ -27,6 +29,7 @@ class UserModel {
     required this.image,
     required this.lastName,
     required this.phoneNumber,
+    required this.middleName,
     required this.rememberToken,
     required this.userType,
     this.updatedAt,

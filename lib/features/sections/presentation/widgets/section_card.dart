@@ -44,6 +44,7 @@ class SectionCard extends StatelessWidget {
           children: [
             Hero(
               tag: id,
+              // Todo change it to network image
               child: Image.asset(
                 AssetsManager.heart,
                 fit: BoxFit.fitHeight,
