@@ -33,7 +33,7 @@ class AppUrl {
   static const getSections = "$baseUrl${dashboard}section";
   static const getSectionInformation = "$baseUrl${dashboard}section/";
   static const updateSection = "$baseUrl${dashboard}section/update/";
-  static const deleteSection = "$baseUrl${dashboard}section/";
+  static const deleteSection = "$baseUrl${dashboard}section/destroy/";
 
   static const createService = "$baseUrl${dashboard}service/store";
   static const editService = "$baseUrl${dashboard}service/update/";

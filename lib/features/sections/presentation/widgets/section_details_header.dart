@@ -5,6 +5,7 @@ import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/features/sections/presentation/cubits/section_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SectionDetailsHeader extends StatelessWidget {
   const SectionDetailsHeader({
@@ -43,6 +44,26 @@ class SectionDetailsHeader extends StatelessWidget {
             ),
           ),
           const Spacer(),
+          IconButton(
+            onPressed: () async {
+              BlocProvider.of<SectionCubit>(context).sectionName.text = name;
+              context.go('/Sections_list/edit_section');
+            },
+            icon: const Icon(
+              Icons.edit,
+              color: Colors.white,
+            ),
+            style: IconButton.styleFrom(
+              padding: EdgeInsets.zero,
+              iconSize: 22,
+              maximumSize: const Size(32, 32),
+              minimumSize: const Size(32, 32),
+              backgroundColor: ColorsHelper.tealDark,
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
           IconButton(
             onPressed: () async {
               BlocProvider.of<SectionCubit>(context).deleteSection(id);

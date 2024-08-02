@@ -1,4 +1,3 @@
-import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_state_button/progress_button.dart';
@@ -44,8 +43,8 @@ class CustomStateButton extends StatelessWidget {
         )
       },
       stateColors: {
-        ButtonState.idle: Color(0XFF1F1F99),
-        ButtonState.loading: Color(0XFF1F1F99),
+        ButtonState.idle: const Color(0XFF1F1F99),
+        ButtonState.loading: const Color(0XFF1F1F99),
         ButtonState.fail: Colors.red.shade300,
         ButtonState.success: Colors.green.shade400
       },

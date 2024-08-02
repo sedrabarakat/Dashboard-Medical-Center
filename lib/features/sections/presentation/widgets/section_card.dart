@@ -50,6 +50,7 @@ class SectionCard extends StatelessWidget {
                 fit: BoxFit.fitHeight,
               ),
             ),
+            
             Expanded(
               child: Hero(
                 tag: name,

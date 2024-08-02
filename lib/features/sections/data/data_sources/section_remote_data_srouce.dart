@@ -61,7 +61,7 @@ class SectionRemoteDataSrouce {
   }
 
   Future<BaseModel> deleteSection(int id) async {
-    await _apiServices.get("${AppUrl.deleteSection}$id");
+    await _apiServices.delete("${AppUrl.deleteSection}$id");
     return BaseModel(data: null, message: "Section Deleted Successfully");
   }
 

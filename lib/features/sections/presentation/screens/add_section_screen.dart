@@ -9,21 +9,33 @@ import 'package:dashboad/features/sections/presentation/cubits/section_cubit.dar
 import 'package:dashboad/features/sections/presentation/widgets/add_service_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 // TODO Refactor the code
 class AddSectionScreen extends StatelessWidget {
-  const AddSectionScreen({super.key});
+  const AddSectionScreen({
+    super.key,
+    required this.edit,
+  });
+  final bool edit;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider.value(
           value: getIt<SectionCubit>(),
           child: Builder(builder: (builderContext) {
+            if (BlocProvider.of<SectionCubit>(builderContext).sectionDetails ==
+                    null &&
+                edit) {
+              builderContext.pop();
+            }
             return BlocListener<SectionCubit, SectionState>(
               listener: (context, state) {
                 if (state is CreateSectionSuccessState) {
                   ToastBar.onSuccess(context,
-                      message: "Section created Successfully",
+                      message: edit
+                          ? "Section edited Successfully"
+                          : "Section created Successfully",
                       title: "Success");
                 } else if (state is CreateSectionErrorState) {
                   ToastBar.onNetworkFailure(
@@ -54,7 +66,7 @@ class AddSectionScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(40),
                         ),
                         child: Text(
-                          'Add Section',
+                          edit ? 'Edit Section' : 'Add Section',
                           style: StyleManager.font30Bold,
                         ),
                       ),
@@ -150,9 +162,14 @@ class AddSectionScreen extends StatelessWidget {
                                     listKey: BlocProvider.of<SectionCubit>(
                                             builderContext)
                                         .listKey,
-                                    items: BlocProvider.of<SectionCubit>(
-                                            builderContext)
-                                        .sectionServices,
+                                    items: edit
+                                        ? BlocProvider.of<SectionCubit>(
+                                                builderContext)
+                                            .sectionDetails!
+                                            .service!
+                                        : BlocProvider.of<SectionCubit>(
+                                                builderContext)
+                                            .sectionServices,
                                     onRemovePressed:
                                         BlocProvider.of<SectionCubit>(
                                                 builderContext)
@@ -177,7 +194,7 @@ class AddSectionScreen extends StatelessWidget {
                                     currentState: BlocProvider.of<SectionCubit>(
                                             builderContext)
                                         .createSectionButtonState,
-                                    label: "Create",
+                                    label: edit ? "Edit" : "Create",
                                   );
                                 },
                               ),

@@ -64,6 +64,8 @@ class SectionCubit extends Cubit<SectionState> {
               sectionName: data.data!.sectionName,
               image: data.data!.image),
         );
+        SharedPrefrence.saveListOfObject(_sections, 'sections');
+
         emit(GetSectionsSuccessState(_sections));
       },
     );
@@ -101,7 +103,6 @@ class SectionCubit extends Cubit<SectionState> {
 
       _sections = sections;
       SharedPrefrence.saveListOfObject(_sections, 'sections');
-      _sections = sections;
 
       emit(GetSectionsSuccessState(_sections));
     });
@@ -133,6 +134,8 @@ class SectionCubit extends Cubit<SectionState> {
       (data) {
         _sections.removeWhere((section) => section.id == id);
         emit(DeleteSectionSuccessState(data.message));
+        SharedPrefrence.saveListOfObject(_sections, 'sections');
+
         // emit the GetSectionSuccessState to rebuild the sectionDetailsScreen
         emit(GetSectionsSuccessState(_sections));
       },

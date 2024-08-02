@@ -31,6 +31,7 @@ class WebRouter {
   static const kSectionsList = 'Seconts_list';
   static const kSectionDetails = 'section_details';
   static const kAddSection = "add_section";
+  static const kEditSection = "edit_section";
   static const kInbox = 'Inbox';
 
   static GoRouter router = GoRouter(
@@ -109,7 +110,15 @@ class WebRouter {
                   GoRoute(
                     path: 'add_section',
                     name: kAddSection,
-                    builder: (context, state) => const AddSectionScreen(),
+                    builder: (context, state) => const AddSectionScreen(
+                      edit: false,
+                    ),
+                  ),
+                  GoRoute(
+                    path: 'edit_section',
+                    name: kEditSection,
+                    builder: (context, state) =>
+                        const AddSectionScreen(edit: true),
                   )
                 ],
               ),
