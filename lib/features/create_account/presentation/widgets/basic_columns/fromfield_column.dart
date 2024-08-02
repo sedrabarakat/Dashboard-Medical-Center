@@ -14,7 +14,7 @@ class FromfieldColumn extends StatelessWidget {
   AddAccountCubit cubit;
   BuildContext context;
 
-  FromfieldColumn({required this.cubit, required this.context});
+  FromfieldColumn({super.key, required this.cubit, required this.context});
 
   @override
   Widget build(BuildContext context) {

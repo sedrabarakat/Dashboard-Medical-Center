@@ -14,10 +14,10 @@ class UserModel {
   final String phoneNumber;
   @JsonKey(name: 'user_type')
   final String userType;
-  final String image;
+  final String? image;
   final String description;
   @JsonKey(name: 'remember_token')
-  final String rememberToken;
+  final String? rememberToken;
   @JsonKey(name: 'created_at')
   final String? createdAt;
   @JsonKey(name: 'updated_at')
@@ -26,15 +26,17 @@ class UserModel {
     required this.description,
     required this.firstName,
     required this.id,
-    required this.image,
     required this.lastName,
     required this.phoneNumber,
     required this.middleName,
-    required this.rememberToken,
     required this.userType,
+    this.image,
+    this.rememberToken,
     this.updatedAt,
     this.createdAt,
   });
+  String get fullName => "$firstName $lastName";
+
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
   Map<String, dynamic> toJson() => _$UserModelToJson(this);

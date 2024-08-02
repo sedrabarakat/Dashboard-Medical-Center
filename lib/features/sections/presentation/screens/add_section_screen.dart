@@ -121,7 +121,7 @@ class AddSectionScreen extends StatelessWidget {
                                               builderContext)
                                           .showServiceDialog(
                                         context: builderContext,
-                                        edit: false,
+                                        type: ServiceCrud.addToList,
                                       );
                                     },
                                     icon: const Icon(

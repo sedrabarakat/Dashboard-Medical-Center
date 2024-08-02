@@ -63,6 +63,17 @@ class SectionRepo {
     }
   }
 
+  Future<Either<NetworkExceptions, BaseModel<SectionService>>> createService(
+      String name, String price, String description, String sectionId) async {
+    try {
+      final response =
+          await _remote.createService(name, description, price, sectionId);
+      return right(response);
+    } catch (error) {
+      return left(NetworkExceptions.getException(error));
+    }
+  }
+
   Future<Either<NetworkExceptions, BaseModel>> deleteService(int id) async {
     try {
       final response = await _remote.deleteService(id);

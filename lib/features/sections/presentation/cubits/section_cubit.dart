@@ -9,7 +9,6 @@ import 'package:dashboad/features/auth/presentation/widgets/auth_field.dart';
 import 'package:dashboad/features/auth/presentation/widgets/custom_state_button.dart';
 import 'package:dashboad/features/sections/data/models/section_model.dart';
 import 'package:dashboad/features/sections/domain/repositories/section_repo.dart';
-import 'package:dashboad/features/sections/presentation/screens/section_details.dart';
 
 import 'package:dashboad/features/sections/presentation/widgets/section_item_list.dart';
 import 'package:file_picker/file_picker.dart';
@@ -17,6 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_state_button/progress_button.dart';
 part 'section_state.dart';
+
+enum ServiceCrud { edit, addToList, addToServer }
 
 class SectionCubit extends Cubit<SectionState> {
   final SectionRepo _repo;
@@ -39,6 +40,7 @@ class SectionCubit extends Cubit<SectionState> {
   int? previousId;
   SectionCubit(this._repo) : super(SectionInitialState());
 
+  /*>>>>>>>>>>>>>>> Section API'S <<<<<<<<<<<<<<<*/
   Future<void> createSection() async {
     emit(CreateSectionLoadingState());
     createSectionButtonState = ButtonState.loading;
@@ -67,6 +69,7 @@ class SectionCubit extends Cubit<SectionState> {
     );
   }
 
+  // Todo
   Future<void> updateSection(int id) async {
     emit(UpdateSectionLoadingState());
     final response = await _repo.updateSection(id, 'Updated Section');
@@ -105,6 +108,7 @@ class SectionCubit extends Cubit<SectionState> {
   }
 
   Future<void> getSectionInformation(int id) async {
+    // this condition to prevent fetching data when every time the screen is rebuild
     if (previousId == null) {
       previousId = id;
     } else if (previousId == id) {
@@ -129,7 +133,27 @@ class SectionCubit extends Cubit<SectionState> {
       (data) {
         _sections.removeWhere((section) => section.id == id);
         emit(DeleteSectionSuccessState(data.message));
+        // emit the GetSectionSuccessState to rebuild the sectionDetailsScreen
         emit(GetSectionsSuccessState(_sections));
+      },
+    );
+  }
+
+  /*>>>>>>>>>>>>>>> Service API'S <<<<<<<<<<<<<<<*/
+
+  Future<void> createService() async {
+    final response = await _repo.createService(serviceName.text,
+        servicePrice.text, "description", sectionDetails!.id.toString());
+    response.fold(
+      (error) {},
+      (data) {
+        sectionDetails!.service!.insert(
+          sectionDetails!.service!.length,
+          data.data!,
+        );
+        emit(
+          GetSectionInformationSuccessState(sectionDetails!),
+        );
       },
     );
   }
@@ -146,14 +170,18 @@ class SectionCubit extends Cubit<SectionState> {
     response.fold((e) {
       emit(EditServiceErrorState(e));
     }, (data) {
+      // Get the index of the service to edit
       int index = sectionDetails!.service!
           .indexWhere((element) => element.id == serviceId);
+      // Remove the old service from the section
       sectionDetails!.service!
           .removeWhere((element) => element.id == serviceId);
+      // Add the service after the edit in the same position
       sectionDetails!.service!.insert(index, data.data!);
       serviceName.clear();
       servicePrice.clear();
       emit(EditServiceSuccessState(data.data!));
+      // emit the GetSectionSuccessState to rebuild the sectionDetailsScreen
       emit(GetSectionInformationSuccessState(sectionDetails!));
     });
   }
@@ -162,11 +190,13 @@ class SectionCubit extends Cubit<SectionState> {
     final response = await _repo.deleteService(id);
     response.fold((e) => emit(DeleteServiceErrorState(e)), (e) {
       emit(DeleteServiceSuccessState(e.message));
+      // remove the service from the list and rebuild the sectionDetailsScreen
       sectionDetails!.service!.removeWhere((element) => element.id == id);
       emit(GetSectionInformationSuccessState(sectionDetails!));
     });
   }
 
+  // pick image for a section
   void pickSectionImage() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -180,12 +210,13 @@ class SectionCubit extends Cubit<SectionState> {
     }
   }
 
+  // Show the add service and edit service dialog
   Future<void> showServiceDialog({
     required BuildContext context,
-    required bool edit,
+    required ServiceCrud type,
     int? index,
   }) async {
-    if (edit) {
+    if (type == ServiceCrud.edit) {
       serviceName.text = sectionDetails!.service![index!].name;
       servicePrice.text = sectionDetails!.service![index].price;
     }
@@ -193,7 +224,7 @@ class SectionCubit extends Cubit<SectionState> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          edit ? 'Edit Service' : 'Add Service',
+          type == ServiceCrud.edit ? 'Edit Service' : 'Add Service',
           style: StyleManager.font30Bold,
         ),
         content: Form(
@@ -219,26 +250,35 @@ class SectionCubit extends Cubit<SectionState> {
             onPressed: () async {
               if (addServiceKey.currentState!.validate()) {
                 // Todo handle the edit
-                if (edit) {
+                if (type == ServiceCrud.edit) {
                   await editService(sectionDetails!.service![index!].id,
                           sectionDetails!.id.toString())
                       .then((e) {
+                    serviceName.clear();
+                    servicePrice.clear();
                     Navigator.of(context).pop();
                   });
-                } else {
+                } else if (type == ServiceCrud.addToList) {
                   addSectionService();
                   Navigator.of(context).pop();
+                } else {
+                  await createService().then((data) {
+                    serviceName.clear();
+                    servicePrice.clear();
+                    Navigator.of(context).pop();
+                  });
                 }
               }
             },
             currentState: ButtonState.idle,
-            label: edit ? "Edit" : "Add",
+            label: type == ServiceCrud.edit ? "Edit" : "Add",
           )
         ],
       ),
     );
   }
 
+  // add service to the list of service inside the addSectionScreen
   void addSectionService() {
     listKey.currentState!.insertItem(sectionServices.length,
         duration: const Duration(milliseconds: 500));
@@ -254,6 +294,7 @@ class SectionCubit extends Cubit<SectionState> {
     emit(AddSectionService());
   }
 
+  // remove service from the list of service inside the addSectionScreen
   void removeSectionService(int index) {
     SectionService item = sectionServices[index];
     listKey.currentState!.removeItem(

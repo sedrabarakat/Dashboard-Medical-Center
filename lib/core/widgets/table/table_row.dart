@@ -1,5 +1,6 @@
 import 'package:dashboad/core/data/models/user_model.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
+import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,13 @@ class MyTableRow extends StatelessWidget {
             child: Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    user.image,
-                  ),
+                  backgroundImage: user.image == null
+                      ? const AssetImage(
+                          AssetsManager.profileImage,
+                        )
+                      : NetworkImage(
+                          user.image!,
+                        ),
                   radius: 22,
                 ),
                 const SizedBox(

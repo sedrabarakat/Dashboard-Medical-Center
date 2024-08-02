@@ -6,7 +6,6 @@ import 'package:dashboad/core/domain/urls/app_url.dart';
 
 import 'package:dashboad/features/sections/data/models/section_model.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 class SectionRemoteDataSrouce {
   final ApiServices _apiServices;
@@ -14,9 +13,6 @@ class SectionRemoteDataSrouce {
 
   Future<BaseModel<SectionModel>> createSection(
       String name, Uint8List image) async {
-    print("_____________________________________________________-");
-    print(image);
-
     final response = await _apiServices.post(
       AppUrl.createSection,
       formData: FormData.fromMap(
@@ -69,9 +65,9 @@ class SectionRemoteDataSrouce {
     return BaseModel(data: null, message: "Section Deleted Successfully");
   }
 
-  Future<BaseModel> createService(
+  Future<BaseModel<SectionService>> createService(
       String name, String description, String price, String sectionId) async {
-    await _apiServices.post(
+    final response = await _apiServices.post(
       AppUrl.createService,
       body: {
         'name': name,
@@ -80,7 +76,8 @@ class SectionRemoteDataSrouce {
         'section_id': sectionId,
       },
     );
-    return BaseModel(data: null);
+    return BaseModel.fromJson(
+        response, (json) => SectionService.fromJson(json));
   }
 
   Future<BaseModel<SectionService>> editService(int serviceId, String name,
