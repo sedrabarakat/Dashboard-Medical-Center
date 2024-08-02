@@ -249,7 +249,6 @@ class SectionCubit extends Cubit<SectionState> {
           CustomStateButton(
             onPressed: () async {
               if (addServiceKey.currentState!.validate()) {
-                // Todo handle the edit
                 if (type == ServiceCrud.edit) {
                   await editService(sectionDetails!.service![index!].id,
                           sectionDetails!.id.toString())
