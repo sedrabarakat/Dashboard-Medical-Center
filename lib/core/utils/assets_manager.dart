@@ -14,4 +14,7 @@ class AssetsManager {
   /*>>>>>>>>>> animation <<<<<<<<<<*/
   static const loadingPatient = 'assets/animation/LoadingPatient.json';
 
+  static const heart = '${_imagePath}heart.png';
+  /*>>>>>>>>>> JPG <<<<<<<<<<*/
+  static const doctor = '${_imagePath}doctor.jpg';
 }

@@ -6,12 +6,14 @@ import 'package:dashboad/features/drawer_basiclayout/presentation/widgets/drawer
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
     super.key,
+    required this.navigationShell,
   });
-
+  final StatefulNavigationShell navigationShell;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -26,11 +28,13 @@ class CustomDrawer extends StatelessWidget {
               waveColor: ColorsHelper.blueDark,
               backgroundColor: Colors.white,
             ),
-            drawerList(context: context),
-           /* SvgPicture.asset(
+            drawerList(
+              navigationShell: navigationShell,
+            ),
+            SvgPicture.asset(
               AssetsManager.drawerImage,
               height: 440.h,
-            )*/
+            )
           ],
         ),
       ),

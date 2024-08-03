@@ -46,7 +46,7 @@ class CustomStateButton extends StatelessWidget {
       stateColors: {
         ButtonState.idle: ColorsHelper.blue,
         ButtonState.loading: ColorsHelper.blue,
-        ButtonState.fail: Colors.red.shade300,
+        ButtonState.fail: Colors.red.shade700,
         ButtonState.success: Colors.green.shade400
       },
       state: currentState,

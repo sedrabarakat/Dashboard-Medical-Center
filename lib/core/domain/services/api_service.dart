@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 abstract class ApiServices {
   Future<dynamic> get(
@@ -15,7 +14,6 @@ abstract class ApiServices {
   });
 
   Future postFiles(
-    BuildContext context,
     String path, {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,

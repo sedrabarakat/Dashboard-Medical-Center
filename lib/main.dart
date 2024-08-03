@@ -1,5 +1,5 @@
 import 'package:dashboad/core/routing/go_router.dart';
-import 'package:dashboad/features/drawer_basiclayout/presentation/cubits/basic_cubit.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +11,7 @@ import 'core/utils/theme_manager.dart';
 import 'features/auth/presentation/cubits/cubit/auth_cubit.dart';
 import 'features/patients/presentation/cubits/patient_cubit.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefrence.init();
   await TokenHelper.init();
@@ -28,9 +28,6 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (BuildContext context) => BasicCubit(),
-        ),
-        BlocProvider(
           create: (context) => AuthCubit(getIt()),
         ),
         BlocProvider(create: (context) => PatientCubit(getIt())..getPatients(),)
@@ -42,9 +39,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp.router(
           theme: ThemeManager.lightTheme,
           debugShowCheckedModeBanner: false,
-          routerDelegate: WebRouter.router.routerDelegate,
-          routeInformationParser: WebRouter.router.routeInformationParser,
-          routeInformationProvider: WebRouter.router.routeInformationProvider,
+          routerConfig: WebRouter.router,
         ),
       ),
     );

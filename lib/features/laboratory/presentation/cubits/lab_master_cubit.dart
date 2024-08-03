@@ -1,11 +1,17 @@
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/data/models/user_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
+import 'package:dashboad/core/domain/services/api_service.dart';
+import 'package:dashboad/core/domain/services/locator.dart';
 
 import 'package:dashboad/core/helpers/json_helper.dart';
 import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/laboratory/domain/repositories/lab_master_repo.dart';
+import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 part 'lab_master_state.dart';
@@ -14,6 +20,8 @@ class LabMasterCubit extends Cubit<LabMasterState> {
   final LabMasterRepo _repo;
   LabMasterCubit(this._repo) : super(LabMasterInitialState());
   List<UserModel> _labMaster = [];
+  Uint8List? pickedFile;
+  String? pickedFileName;
   Future<void> getLabMasters() async {
     List<String> cachedLabMasters =
         await SharedPrefrence.getListOfString('lab-masters');
