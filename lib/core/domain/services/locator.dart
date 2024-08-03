@@ -19,6 +19,9 @@ import 'package:dashboad/features/sections/domain/repositories/section_repo.dart
 import 'package:dashboad/features/sections/presentation/cubits/section_cubit.dart';
 import 'package:get_it/get_it.dart';
 import '../../../features/create_account/data/data_source/remote/create_remote.dart';
+import '../../../features/create_account/data/data_source/remote/get_sections_remote.dart';
+import '../../../features/create_account/data/repository/sections_repo_impl.dart';
+import '../../../features/create_account/domain/repository/get_sections_repo.dart';
 import '../../../features/director/data/datasource/remote/director_remote_data_source.dart';
 
 final getIt = GetIt.I;

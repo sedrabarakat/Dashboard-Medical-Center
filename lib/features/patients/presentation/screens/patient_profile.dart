@@ -36,55 +36,53 @@ class PatientProfile extends StatelessWidget {
         builder: (context, state) {
           PatientCubit cubit = PatientCubit.get(context);
           bool isEditing = cubit.isEditing;
-          return BaseLayout(
-            child: Padding(
-                padding: EdgeInsets.only(left: 30.w, right: 30.w),
-                child: ConditionalBuilder(
-                  condition: cubit.patientModel!=null,
-                  builder: (context) => Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 30.w, vertical: 50.h),
-                        height: 920.h,
-                        width: 900.w,
-                        decoration: StyleManager.rounded40(color: Colors.white),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              PicAndName(context:context),
-                              SizedBox(
-                                height: 20.h,
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  TextsCol(texts: fields1),
-                                  infoCol1(context: context),
-                                  SizedBox(width: 50.w,),
-                                  TextsCol(texts: fields2),
-                                  infoCol2(context: context),
-                                ],
-                              )
-                            ],
-                          ),
+          return Padding(
+              padding: EdgeInsets.only(left: 30.w, right: 30.w),
+              child: ConditionalBuilder(
+                condition: cubit.patientModel!=null,
+                builder: (context) => Row(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 30.w, vertical: 50.h),
+                      height: 920.h,
+                      width: 900.w,
+                      decoration: StyleManager.rounded40(color: Colors.white),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            PicAndName(context:context),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextsCol(texts: fields1),
+                                infoCol1(context: context),
+                                SizedBox(width: 50.w,),
+                                TextsCol(texts: fields2),
+                                infoCol2(context: context),
+                              ],
+                            )
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        width: 30.w,
-                      ),
-                      Container(
-                        ///tuqa's container...Gooood Luckk :)
-                        height: 920.h,
-                        width: 350.w,
-                        decoration: StyleManager.rounded40(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  fallback: (context) =>  Lottie.asset(
-                      AssetsManager.loadingPatient,width: 500.w,height: 500.h),
-                )),
-          );
+                    ),
+                    SizedBox(
+                      width: 30.w,
+                    ),
+                    Container(
+                      ///tuqa's container...Gooood Luckk :)
+                      height: 920.h,
+                      width: 350.w,
+                      decoration: StyleManager.rounded40(color: Colors.white),
+                    )
+                  ],
+                ),
+                fallback: (context) =>  Lottie.asset(
+                    AssetsManager.loadingPatient,width: 500.w,height: 500.h),
+              ));
         });
   }
 }

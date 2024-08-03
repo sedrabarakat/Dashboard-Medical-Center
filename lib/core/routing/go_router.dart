@@ -59,7 +59,7 @@ class WebRouter {
                 path: '/add_account',
                 name: kAddAccount,
                 builder: (context, state) {
-                  return const AddAccount();
+                  return AddAccount();
                 },
               ),
             ],
@@ -157,7 +157,7 @@ class WebRouter {
                     path: 'Patient_profile/:Patient_id',
                     name: kPatientProfile,
                     builder: (context, state) {
-                      return const PatientProfile();
+                      return PatientProfile(id: 1,);
                     },
                   ),
                 ],
