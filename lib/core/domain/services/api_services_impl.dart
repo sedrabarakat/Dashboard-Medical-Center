@@ -81,8 +81,7 @@ class ApiServicesImp implements ApiServices {
         path,
         queryParameters: queryParams,
         data: formData ?? body,
-        options:
-            Options(headers: _headers, contentType: Headers.jsonContentType),
+        options: Options(headers: _headers),
       );
 
       return _handleResponseAsJson(response);

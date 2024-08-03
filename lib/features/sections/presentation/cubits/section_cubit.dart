@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:dashboad/core/data/datasources/local.dart';
@@ -208,7 +209,8 @@ class SectionCubit extends Cubit<SectionState> {
     if (result != null) {
       final file = result.files.first;
 
-      pickedSectionImage = file.bytes!;
+      pickedSectionImage = file.bytes;
+
       sectionImageName.text = result.files.first.name;
     }
   }

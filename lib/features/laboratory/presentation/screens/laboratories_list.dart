@@ -10,7 +10,6 @@ import 'package:dashboad/features/laboratory/presentation/cubits/lab_master_cubi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class LaboratoriesList extends StatelessWidget {
   const LaboratoriesList({super.key});
 

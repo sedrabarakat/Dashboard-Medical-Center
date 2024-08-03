@@ -18,9 +18,7 @@ class SectionRemoteDataSrouce {
       formData: FormData.fromMap(
         {
           'name': name,
-
           'image': MultipartFile.fromBytes(image, filename: name),
-          // 'image': MultipartFile.fromBytes(image, filename: name),
         },
       ),
     );
