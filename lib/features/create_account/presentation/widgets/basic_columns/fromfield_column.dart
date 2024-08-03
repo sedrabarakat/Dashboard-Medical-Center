@@ -61,6 +61,14 @@ class FromfieldColumn extends StatelessWidget {
             Row(
               children: [
                 Text_TextFiled(
+                    text: 'Password',
+                    controller: cubit.Password,
+                    validator: (value) =>
+                        ValidatorManager.instance.validatePassword(value ?? '')),
+                SizedBox(
+                  width: 30.w,
+                ),
+                Text_TextFiled(
                     text: 'Phone Number',
                     controller: cubit.Phone,
                     isNum: true,
@@ -82,7 +90,7 @@ class FromfieldColumn extends StatelessWidget {
             ),
             if (cubit.SelectedIndex == 1)
               DoctorsFields(
-                cubit: cubit,
+                cubit: cubit,Buildcontext:context
               ),
             if (cubit.SelectedIndex == 2)
               PatientFields(
@@ -93,12 +101,13 @@ class FromfieldColumn extends StatelessWidget {
                 height: (cubit.SelectedIndex != 2)
                     ? (cubit.SelectedIndex != 1)
                         ? 247.h
-                        : 130.h
+                        : 55.h
                     : 50.h),
             Padding(
               padding: EdgeInsets.only(left: 750.w),
               child: CustomElevatedButton(
                 onPressed: () {
+                 // print(SharedPrefrence.getData(key: "token"));
                   if (formKey.currentState!.validate()) {
                     if (cubit.SelectedIndex == 0 ||
                         cubit.SelectedIndex == 3 ||

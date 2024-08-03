@@ -6,13 +6,15 @@ class ColorsHelper {
   static Color basicBackground = const Color.fromARGB(255, 247, 247, 248);
 
   static const Color omarColor = Color(0xFF2A2AC0);
+  static const Color onPressedColor = Color(0xFF3A3ACC);
+
 
   ///blue
-  static const Color blueLightest = Color(0xFFE1E1FF);      // Lightest blue
-  static const Color blueLighter = Color(0xFFB5C1FF);       // Lighter blue
+  static const Color backgroundBlue = Color(0xFFEBF1F5);
+  static const Color blueLightest = Color(0xFFC7DEFF);      // Lightest blue
+  static const Color blueLighter = Color(0xFFB5D3FF);       // Lighter blue
   static const Color blueLight = Color(0xFF7DA6FF);         // Light blue
-  static const Color blue = Color(0xFF2121C4);              // Base blue
-  static const Color blueLightDark = Color(0xFF1B1BC2);
+  static const Color blue = Color(0xFF2121BE);              // Base blue
   static const Color blueDark = Color(0xFF1F1F99);          // Dark blue
   static const Color blueDarker = Color(0xFF141473);        // Darker blue
   static const Color blueDarkest = Color(0xFF0A0A47);       // Darkest blue
@@ -57,6 +59,6 @@ class ColorsHelper {
 
   ///gray
   static const Color lightGry = Color(0XFFD5D5D6);
-  static const success =  Color(0xFF04A18F);
+  static const success = Color(0xFF2A2AC0);
   static const error = Color(0xffd9332c);
 }

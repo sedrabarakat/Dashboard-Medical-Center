@@ -10,11 +10,12 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       description: json['description'] as String,
       firstName: json['first_name'] as String,
       id: (json['id'] as num).toInt(),
-      image: json['image'] as String,
       lastName: json['last_name'] as String,
       phoneNumber: json['phone_number'] as String,
-      rememberToken: json['remember_token'] as String,
+      middleName: json['middle_name'] as String,
       userType: json['user_type'] as String,
+      image: json['image'] as String?,
+      rememberToken: json['remember_token'] as String?,
       updatedAt: json['updated_at'] as String?,
       createdAt: json['created_at'] as String?,
     );
@@ -22,6 +23,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'id': instance.id,
       'first_name': instance.firstName,
+      'middle_name': instance.middleName,
       'last_name': instance.lastName,
       'phone_number': instance.phoneNumber,
       'user_type': instance.userType,

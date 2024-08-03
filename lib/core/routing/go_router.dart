@@ -80,7 +80,7 @@ class WebRouter {
         name: kPatientProfile,
         pageBuilder: (context, state) {
           int Patient_id=int.parse(state.pathParameters['Patient_id']!);
-          return const MaterialPage(child: PatientProfile());
+          return MaterialPage(child: PatientProfile(id: Patient_id,));
         },
       ),
       GoRoute(

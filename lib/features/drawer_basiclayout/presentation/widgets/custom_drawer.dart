@@ -23,14 +23,14 @@ class CustomDrawer extends StatelessWidget {
           children: [
             liquedText(
               text: 'Medical Center',
-              waveColor: ColorsHelper.blue,
+              waveColor: ColorsHelper.blueDark,
               backgroundColor: Colors.white,
             ),
             drawerList(context: context),
-            SvgPicture.asset(
+           /* SvgPicture.asset(
               AssetsManager.drawerImage,
               height: 440.h,
-            )
+            )*/
           ],
         ),
       ),

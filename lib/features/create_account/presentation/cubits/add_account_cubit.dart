@@ -1,16 +1,24 @@
+import 'dart:async';
+
 import 'package:dashboad/features/create_account/presentation/cubits/add_account_states.dart';
+import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/constants/constants.dart';
 import '../../domain/repository/create_repo.dart';
+import '../../domain/repository/get_sections_repo.dart';
 
 class AddAccountCubit extends Cubit<AddAccountStates> {
-  AddAccountCubit(this.createRepo) : super(AddAccountInitState());
+  AddAccountCubit(this.createRepo,this.getSectionsRepo) : super(AddAccountInitState());
 
   static AddAccountCubit get(context) => BlocProvider.of(context);
 
+
   final CreateRepo createRepo;
+  final GetSectionsRepo getSectionsRepo;
 
   int SelectedIndex = -1;
 
@@ -26,11 +34,14 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
   var Last_name = TextEditingController();
   var Phone = TextEditingController(text: "+963 ");
   var Description = TextEditingController();
+  var Password = TextEditingController();
 
   //doctor
   String? Selected_Section;
+  int ?Section_id;
   var Day_In_Advance = TextEditingController();
   var Duration = TextEditingController();
+  String ? Selected_Day;
 
   //patient
   var Birth_Date = TextEditingController();
@@ -52,6 +63,11 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
 
   void Select_Section({required String item}) {
     Selected_Section = item;
+    emit(Select_Sections_State());
+  }
+
+  void Select_SectionId({required int id}) {
+    Section_id = id;
     emit(Select_Sections_State());
   }
 
@@ -95,7 +111,9 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
       last_name: Last_name.text,
       phone_number: Phone.text,
       description: Description.text,
+      password: Password.text,
       user_type: Selected_role_list[SelectedIndex]['name'],
+      image: MultipartFile.fromBytes(Image_Bytes!,filename:Image!.files.single.name)
     );
     response.fold((error) {
       emit(Error_Create_User(error));
@@ -129,11 +147,47 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
       value.fold((error) {
         emit(Error_Create_Patient(error));
       }, (user) {
-        print("sososososs");
         emit(Success_Create_Patient());
       });
     });
   }
+
+  Future<void>Create_Doctor()async{
+    final response = await createRepo.Create_Doctor(
+        first_name: First_name.text,
+        middle_name: Middle_name.text,
+        last_name: Last_name.text,
+        phone_number: Phone.text,
+        description: Description.text,
+        password: Password.text,
+        image: MultipartFile.fromBytes(Image_Bytes!,filename:Image!.files.single.name),
+        section_id: Section_id.toString(),
+        days_in_advance: Day_In_Advance.text,
+        session_durtion: Duration.text,
+    );
+  }
+
+ List<String>SectionNames=[];
+ List<Map<String,int>>Sections=[];
+  Future<void>getSection()async{
+    emit(Loading_Create_Section());
+    return await getSectionsRepo.getSections().then((value){
+      value.fold((error){
+        emit(Error_Get_Sections(error));
+      }, (sections){
+        emit(Success_Get_Sections());
+        for (var ele in sections) {
+          SectionNames.add(ele.name);
+          Sections.add({
+            ele.name:ele.id
+          });
+        }
+        emit(getDropDownList_state());
+      });
+    });
+  }
+
+
 
   ///
   int calculateAge(DateTime birthDate) {
@@ -148,4 +202,42 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     emit(Calc_age_State());
     return age;
   }
+
+  ///Add work days
+
+
+  Map<String,dynamic>Work_Days={
+    "monday":[],
+    "tuesday":[],
+    "wednesday":[],
+    "thursday":[],
+    "friday":[],
+    "saturday":[],
+    "sunday":[],
+  };
+
+  void selectDay({
+    required String value
+}){
+    Selected_Day=value;
+    emit(SelectDay_state());
+  }
+
+  List<int> ?Image_Bytes;
+  FilePickerResult? Image;
+  Future addImage()async {
+    Image= await FilePicker.platform.pickFiles(
+      allowMultiple: false,
+    );
+    if(Image!=null){
+      Image_Bytes=Image!.files.single.bytes;
+    }
+    emit(Add_Image_state());
+  }
+
+
+
+
 }
+
+

@@ -1,5 +1,6 @@
 class AssetsManager {
-  static const _imagePath = "images/";
+  static const _imagePath = "assets/images/";
+  static const _animationPath = "assets/animation/";
 
   /*>>>>>>>>>> SVG <<<<<<<<<<*/
   static const drawerImage = '${_imagePath}vaccination_pic.svg';
@@ -8,4 +9,9 @@ class AssetsManager {
 
   /*>>>>>>>>>> PNG <<<<<<<<<<*/
   static const profileImage = '${_imagePath}avatar_2.png';
+  static const DefImage = '${_imagePath}user.png';
+
+  /*>>>>>>>>>> animation <<<<<<<<<<*/
+  static const loadingPatient = 'assets/animation/LoadingPatient.json';
+
 }

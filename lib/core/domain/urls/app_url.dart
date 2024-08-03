@@ -17,16 +17,20 @@ class AppUrl {
   static const creatDoctor = '$baseUrl${dashboard}doctor/store';
   static const getDoctorsList = '$baseUrl${dashboard}doctor';
   static const deleteDoctor = '$baseUrl${dashboard}doctor/$delete';
+  static const updateDoctor = '$baseUrl${dashboard}doctor/update/';
+  static const getDoctorProfile = '$baseUrl${dashboard}doctor/';
   /*>>>>>>>>>>>>>>>>>>>> Patients <<<<<<<<<<<<<<<<<<<<*/
   static const creatPatient = '$baseUrl${dashboard}patient/store';
   static const getPatientsList = '$baseUrl${dashboard}patient';
   static const deletePatient = '$baseUrl${dashboard}patient/$delete';
+  static const getPatientProfile = '$baseUrl${dashboard}patient/';
+  static const updatePatientProfile = '$baseUrl${dashboard}patient/update/';
   /*>>>>>>>>>>>>>>>>>>>> Receptionist <<<<<<<<<<<<<<<<<<<<*/
   static const creatReceptionist = "$baseUrl${dashboard}receptionist/store";
   static const getReceptionsList = '$baseUrl${dashboard}receptionist';
   static const deleteReceptionist = '$baseUrl${dashboard}receptionist/$delete';
   /*>>>>>>>>>>>>>>>>>>>> Lab Master <<<<<<<<<<<<<<<<<<<<*/
-  static const creatLabMaster = "$baseUrl${dashboard}lab-master/store";
+  static const creatLabMaster = "$baseUrl${dashboard}lab_master/store";
   static const getLabMastersList = '$baseUrl${dashboard}lab_master';
   static const deleteLabMaster = '$baseUrl${dashboard}lab_master/$delete';
   /*>>>>>>>>>>>>>>>>>>>> Sections <<<<<<<<<<<<<<<<<<<<*/

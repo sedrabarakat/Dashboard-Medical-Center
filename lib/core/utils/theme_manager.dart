@@ -1,45 +1,39 @@
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /* The Application Theme */
 class ThemeManager {
   static final ThemeData lightTheme = ThemeData(
-    primaryColor: ColorsHelper.blue, // Base blue color
+    primaryColor: ColorsHelper.blueDark, // Base blue color
    // accentColor: ColorsHelper.blueLight, // Accent color
     scaffoldBackgroundColor: Colors.white, // Background color
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       color: ColorsHelper.blueDark,
       iconTheme: IconThemeData(color: Colors.white),
     ),
-    buttonTheme: ButtonThemeData(
+    buttonTheme: const ButtonThemeData(
       buttonColor: ColorsHelper.blue, // Base blue for buttons
       textTheme: ButtonTextTheme.primary,
     ),
-    textTheme: TextTheme(
-
+    textTheme: const TextTheme(
       headlineSmall: TextStyle(
         color: ColorsHelper.blueDarkest,
-        fontSize: 32,
         fontWeight: FontWeight.bold,
       ),
       bodyMedium: TextStyle(
         color: ColorsHelper.blueDark,
-        fontSize: 16,
+
       ),
       headlineMedium: TextStyle(
         color: ColorsHelper.blueDarker,
-        fontSize: 14,
+
       ),
     ),
-    cardTheme: CardTheme(
-      color: Colors.white,
-      shadowColor: ColorsHelper.blueLightest,
-      elevation: 4,
+    iconTheme: const IconThemeData(
+      color: ColorsHelper.blueDark,
     ),
-    iconTheme: IconThemeData(
-      color: ColorsHelper.blue,
-    ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: ColorsHelper.blue,
     ),
       datePickerTheme: DatePickerThemeData(
@@ -89,13 +83,13 @@ class ThemeManager {
         }),
         dayBackgroundColor: MaterialStateColor.resolveWith((states) {
           if (states.contains(MaterialState.selected)) {
-            return Colors.teal;
+            return ColorsHelper.blueLightest;
           }
           return Colors.white;
         }),
         todayBackgroundColor: MaterialStateColor.resolveWith((states) {
           if (states.contains(MaterialState.selected)) {
-            return Colors.teal;
+            return ColorsHelper.blueLightest;
           }
           return Colors.white;
         }),
@@ -105,7 +99,78 @@ class ThemeManager {
           }
           return ColorsHelper.blue;
         }),
-      )
+      ),
+    timePickerTheme: TimePickerThemeData(
+      backgroundColor: Colors.white, // Background color of the dialog
+      hourMinuteTextColor: ColorsHelper.white, // Text color of the hour/minute
+      hourMinuteColor: MaterialStateColor.resolveWith((states) =>
+      states.contains(MaterialState.selected)
+          ? ColorsHelper.blueLight // Color when selected
+          : ColorsHelper.blueDark), // Color when not selected
+      dayPeriodTextColor: MaterialStateColor.resolveWith((states) =>
+
+           ColorsHelper.white // AM/PM text color when selected
+      ), // AM/PM text color when not selected
+      dayPeriodColor: MaterialStateColor.resolveWith((states) =>
+      states.contains(MaterialState.selected)
+          ? ColorsHelper.blueDark // AM/PM button color when selected
+          : ColorsHelper.blueLightest), // AM/PM button color when not selected
+      dialHandColor: ColorsHelper.blueDarker, // Dial hand color
+      dialBackgroundColor: ColorsHelper.blueLightest, // Dial background color
+      entryModeIconColor: ColorsHelper.blueDark, // Entry mode switch button color
+      helpTextStyle: TextStyle(
+        color: ColorsHelper.blueDark, // Help text style
+        fontWeight: FontWeight.bold,
+      ),
+      hourMinuteTextStyle: TextStyle(
+        color: ColorsHelper.blueDarkest, // Hour/minute text style
+        fontSize: 40,
+        fontWeight: FontWeight.bold,
+      ),
+      dayPeriodTextStyle: TextStyle(
+        color: ColorsHelper.blueDark, // AM/PM text style
+        fontWeight: FontWeight.bold,
+      ),
+      cancelButtonStyle: ButtonStyle(
+        foregroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.pressed)) {
+            return Colors.white; // Pressed color
+          }
+          return ColorsHelper.white; // Default color
+        }),
+        backgroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.pressed)) {
+            return ColorsHelper.white; // Pressed color
+          }
+          return ColorsHelper.white; // Default color
+        }),
+      ),
+      confirmButtonStyle: ButtonStyle(
+        textStyle:MaterialStateProperty.resolveWith((states){
+          if (states.contains(MaterialState.pressed)) {
+            return const TextStyle(color: ColorsHelper.white);
+          }
+          return const TextStyle(color: ColorsHelper.blueDark);
+
+        } ),
+        foregroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.pressed)) {
+            return ColorsHelper.blueDark;// Pressed color
+          }
+          return ColorsHelper.blueDark; // Default color
+        }),
+        backgroundColor: MaterialStateProperty.resolveWith((states) {
+          if (states.contains(MaterialState.pressed)) {
+            return ColorsHelper.blueLightest; // Pressed color
+          }
+          return ColorsHelper.white; // Default color
+        }),
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0), // Dialog shape
+      ),
+    ),
   );
+
 
 }

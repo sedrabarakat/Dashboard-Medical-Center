@@ -88,7 +88,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                 : null,
             hintText: widget.hintText,
             hintStyle: StyleManager.fontRegular12,
-            focusedBorder: _buildBorder(ColorsHelper.blueLightDark),
+            focusedBorder: _buildBorder(ColorsHelper.blue),
             enabledBorder: _buildBorder(ColorsHelper.lightGry),
             errorBorder: _buildBorder(Colors.red),
             focusedErrorBorder: _buildBorder(Colors.red),

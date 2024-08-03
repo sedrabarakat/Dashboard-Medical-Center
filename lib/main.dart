@@ -9,6 +9,7 @@ import 'core/domain/services/locator.dart';
 import 'core/helpers/token_helper.dart';
 import 'core/utils/theme_manager.dart';
 import 'features/auth/presentation/cubits/cubit/auth_cubit.dart';
+import 'features/patients/presentation/cubits/patient_cubit.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ void main() async{
   await TokenHelper.init();
   await locatorSetUp();
   Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(getIt()),
         ),
+        BlocProvider(create: (context) => PatientCubit(getIt())..getPatients(),)
       ],
       child: ScreenUtilInit(
         designSize: const Size(1600, 1000),

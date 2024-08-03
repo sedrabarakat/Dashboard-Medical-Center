@@ -8,7 +8,7 @@ import '../../../../../core/widgets/text_from_field.dart';
 class Text_TextFiled extends StatelessWidget{
 
   String text;
-  TextEditingController controller;
+  TextEditingController ? controller;
    int? maxLine;
    final String? Function(String?)? validator;
    Function(String)? onChanged;
@@ -18,7 +18,7 @@ class Text_TextFiled extends StatelessWidget{
 
 
 
-  Text_TextFiled({required this.text,required this.controller,
+  Text_TextFiled({required this.text,this.controller,
     this.maxLine,this.onTap,this.onChanged,this.validator,this.isNum});
 
   @override

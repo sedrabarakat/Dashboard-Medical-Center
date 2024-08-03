@@ -11,7 +11,7 @@ Widget Cell({required int index, required AddAccountCubit cubit}) {
     padding: EdgeInsets.all(3.w),
     height: 30.h,
     width: 20.w,
-    decoration: StyleManager.Circle_Shape(color: ColorsHelper.black12),
+    decoration: StyleManager.Circle_Shape(color: ColorsHelper.blueLightest),
     child: (index==cubit.SelectedIndex)?Container(
       height: 25.h,
       width: 15.w,

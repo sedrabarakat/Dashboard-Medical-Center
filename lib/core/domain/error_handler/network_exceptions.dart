@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dashboad/core/data/models/error_model.dart';
 import 'package:dio/dio.dart';
 
 import 'package:flutter/foundation.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../data/models/error_model.dart';
 
 part 'network_exceptions.freezed.dart';
 

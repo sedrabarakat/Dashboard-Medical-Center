@@ -1,24 +1,22 @@
 List<Map<String, dynamic>> Selected_role_list = [
   {
-    "name": "director",
+    "name": "Director",
   },
   {
-    "name": "doctor",
+    "name": "Doctor",
   },
   {
-    "name": "patient",
+    "name": "Patient",
   },
   {
-    "name": "receptionist",
+    "name": "Receptionist",
   },
   {
-    "name": "lab_master",
+    "name": "Lab_Master",
   },
 ];
 
 List<String> Gender = ["female", "male"];
-
-List<String> Sections = ["Nervous", "Cardiology", "Digestive"];
 
 List<String> Matrial_Status_List = ["single", "married","divorced", "other"];
 
@@ -33,4 +31,14 @@ List<String> Blood_Type_List = [
   "AB-",
   "O+",
   "O-"
+];
+
+List<String> Days = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
 ];

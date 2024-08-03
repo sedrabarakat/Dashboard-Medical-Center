@@ -33,7 +33,7 @@ Widget Text_Animated_Row({
       else
         Text(
           "${Selected_role_list[cubit.SelectedIndex]["name"]} ",
-          style: StyleManager.font30Bold,
+          style: StyleManager.font35Bold,
         ),
     ],
   );

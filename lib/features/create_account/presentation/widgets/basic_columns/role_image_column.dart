@@ -16,7 +16,7 @@ class RoleImageColumn extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AddImage(),
+        AddImage(context: context),
         SizedBox(
           height: 80.h,
         ),

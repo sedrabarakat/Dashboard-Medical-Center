@@ -34,3 +34,21 @@ class Error_Create_Patient extends AddAccountStates{
   NetworkExceptions error;
   Error_Create_Patient(this.error);
 }
+
+
+class Loading_Create_Section extends AddAccountStates{}
+class Success_Get_Sections extends AddAccountStates{}
+class Error_Get_Sections extends AddAccountStates{
+  NetworkExceptions error;
+  Error_Get_Sections(this.error);
+}
+
+class getDropDownList_state extends AddAccountStates{}
+
+class SelectDay_state extends AddAccountStates{}
+
+class Add_Image_state extends AddAccountStates{}
+
+
+
+

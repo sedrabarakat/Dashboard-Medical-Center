@@ -15,13 +15,13 @@ Widget listTileWidget({
     ),
     leading: Icon(
       icon,
-      color: (index == spIndex) ? Colors.white : ColorsHelper.blue,
+      color: (index == spIndex) ? Colors.white : ColorsHelper.blueDark,
     ),
     title: Text(
       text,
-      style: TextStyle(color: (index == spIndex) ? Colors.white : ColorsHelper.blue),
+      style: TextStyle(color: (index == spIndex) ? Colors.white : ColorsHelper.blueDark),
     ),
-    tileColor: (index == spIndex) ? ColorsHelper.blue.withOpacity(.9) : null,
+    tileColor: (index == spIndex) ? ColorsHelper.blueDark : null,
     onTap: onTap,
   );
 }
