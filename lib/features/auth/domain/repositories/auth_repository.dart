@@ -15,7 +15,7 @@ class AuthRepository {
     }
   }
 
-  Future<Either<NetworkExceptions, String>> verfiycode(
+  Future<Either<NetworkExceptions, Map<String,dynamic>>> verifyCode(
       String phoneNumber, String code) async {
     try {
       final response = await _remoteDataSource.verifyCode(phoneNumber, code);

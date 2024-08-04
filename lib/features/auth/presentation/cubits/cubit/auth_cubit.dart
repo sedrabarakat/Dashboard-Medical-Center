@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
-import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -44,15 +43,17 @@ class AuthCubit extends Cubit<AuthState> {
     otpButtonState = ButtonState.loading;
     emit(const AuthState.verfiyCodeLoading());
     final response =
-        await _repo.verfiycode(phoneNumberController.text, otpCode);
+        await _repo.verifyCode(phoneNumberController.text, otpCode);
     response.fold((error) {
       otpButtonState = ButtonState.fail;
       emit(AuthState.verfiyCodeError(error));
       // ToastBar.onNetworkFailure(context, networkException: error);
     }, (data) {
+      debugPrint(data.toString()) ;
       otpButtonState = ButtonState.success;
       emit(const AuthState.verfiyCodeSuccess());
-      SharedPrefrence.saveData(key:'token', value:data);
+      SharedPrefrence.saveData(key:'token', value:data['token']);
+      SharedPrefrence.saveData(key:'role', value:data['user']['user_type']);
       DioHelper().addTokenInterceptor();
       /*ToastBar.onSuccess(
         context,

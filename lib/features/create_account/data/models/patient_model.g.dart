@@ -19,7 +19,9 @@ PatientModel _$PatientModelFromJson(Map<String, dynamic> json) => PatientModel(
       json['diabetes'] as bool,
       json['blood_pressure'] as bool,
       (json['wallet'] as num).toDouble(),
-      Usermodel.fromJson(json['user'] as Map<String, dynamic>),
+      json['user'] == null
+          ? null
+          : Usermodel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PatientModelToJson(PatientModel instance) =>

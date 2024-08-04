@@ -1,7 +1,6 @@
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/helpers/dimensions_helper.dart';
 import 'package:dashboad/core/helpers/responsive_helper.dart';
-import 'package:dashboad/core/routing/go_router.dart';
 import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:dashboad/features/auth/presentation/cubits/cubit/auth_cubit.dart';
