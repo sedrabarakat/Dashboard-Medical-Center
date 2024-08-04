@@ -10,7 +10,7 @@ class ToastWidget extends StatelessWidget {
     this.title = 'Title',
     this.icon,
     this.description = 'Description',
-    this.color = ColorsHelper.teal,
+    this.color = ColorsHelper.blue,
   });
 
   final String title;

@@ -12,7 +12,10 @@ class CustomElevatedButton extends StatelessWidget {
     this.elevation = 2.0,
     this.borderRadius = 20,
     this.padding = const EdgeInsets.all(16.0),
-  }) : super(key: key);
+    this.minimumSizeH=50,
+    this.minimumSizeW=100
+  }
+  ) : super(key: key);
 
   final VoidCallback onPressed;
   final String label;
@@ -22,12 +25,14 @@ class CustomElevatedButton extends StatelessWidget {
   final double elevation;
   final double borderRadius;
   final EdgeInsetsGeometry padding;
+  final double minimumSizeH;
+  final double minimumSizeW;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(100.w, 50.h),
+        minimumSize: Size(minimumSizeW, minimumSizeH),
         backgroundColor: buttonColor,
         elevation: elevation,
         shape: RoundedRectangleBorder(

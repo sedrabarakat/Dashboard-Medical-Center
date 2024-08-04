@@ -15,89 +15,90 @@ Widget drawerList({required BuildContext context}) {
       BasicCubit cubit = BasicCubit.get(context);
       int index = cubit.selectedIndex;
       return ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.all(10.r),
-          children: [
-            listTileWidget(
-                index: index,
-                spIndex: 1,
-                text: 'Add Account',
-                onTap: () {
-                  cubit.changeSelctedTap(index: 1);
-                  context.go('/add_account');
-                },
-                icon: Icons.add),
-            listTileWidget(
+        shrinkWrap: true,
+        padding: EdgeInsets.only(left: 10.r),
+        children: [
+          listTileWidget(
               index: index,
-              spIndex: 2,
-              text: 'Directors',
-              icon: Icons.people_outline_rounded,
+              spIndex: 1,
+              text: 'Add Account',
               onTap: () {
-                cubit.changeSelctedTap(index: 2);
-                context.go('/Directors_list');
+                cubit.changeSelctedTap(index: 1);
+                context.go('/add_account');
               },
-            ),
-            listTileWidget(
-              index: index,
-              spIndex: 3,
-              text: 'Reseptions',
-              icon: CupertinoIcons.person,
-              onTap: () {
-                cubit.changeSelctedTap(index: 3);
-                context.go('/Reseptions_list');
-              },
-            ),
-            listTileWidget(
-              index: index,
-              spIndex: 4,
-              text: 'Sections',
-              icon: Icons.add_business,
-              onTap: () {
-                cubit.changeSelctedTap(index: 4);
-                context.go('/Sections_list');
-              },
-            ),
-            listTileWidget(
-              index: index,
-              spIndex: 5,
-              text: 'Doctors',
-              icon: Icons.medical_services_rounded,
-              onTap: () {
-                cubit.changeSelctedTap(index: 5);
-                context.go('/Doctors_List');
-              },
-            ),
-            listTileWidget(
-              index: index,
-              spIndex: 6,
-              text: 'Patients',
-              icon: Icons.medication_liquid,
-              onTap: () {
-                cubit.changeSelctedTap(index: 6);
-                context.go('/Patients_List');
-              },
-            ),
-            listTileWidget(
-              index: index,
-              spIndex: 7,
-              text: 'Laboratory',
-              icon: CupertinoIcons.lab_flask,
-              onTap: () {
-                cubit.changeSelctedTap(index: 7);
-                context.go('/Laboratory');
-              },
-            ),
-            listTileWidget(
-              index: index,
-              spIndex: 8,
-              text: 'Inbox',
-              icon: Icons.forward_to_inbox,
-              onTap: () {
-                cubit.changeSelctedTap(index: 8);
-                context.go('/Inbox');
-              },
-            ),
-          ]);
+              icon: Icons.add),
+          listTileWidget(
+            index: index,
+            spIndex: 2,
+            text: 'Directors',
+            icon: Icons.people_outline_rounded,
+            onTap: () {
+              cubit.changeSelctedTap(index: 2);
+              context.go('/Directors_list');
+            },
+          ),
+          listTileWidget(
+            index: index,
+            spIndex: 3,
+            text: 'Reseptions',
+            icon: CupertinoIcons.person,
+            onTap: () {
+              cubit.changeSelctedTap(index: 3);
+              context.go('/Reseptions_list');
+            },
+          ),
+          listTileWidget(
+            index: index,
+            spIndex: 4,
+            text: 'Sections',
+            icon: Icons.add_business,
+            onTap: () {
+              cubit.changeSelctedTap(index: 4);
+              context.go('/Sections_list');
+            },
+          ),
+          listTileWidget(
+            index: index,
+            spIndex: 5,
+            text: 'Doctors',
+            icon: Icons.medical_services_rounded,
+            onTap: () {
+              cubit.changeSelctedTap(index: 5);
+              context.go('/Doctors_List');
+            },
+          ),
+          listTileWidget(
+            index: index,
+            spIndex: 6,
+            text: 'Patients',
+            icon: Icons.medication_liquid,
+            onTap: () {
+              cubit.changeSelctedTap(index: 6);
+              context.go('/Patients_List');
+            },
+          ),
+          listTileWidget(
+            index: index,
+            spIndex: 7,
+            text: 'Laboratory',
+            icon: CupertinoIcons.lab_flask,
+            onTap: () {
+              cubit.changeSelctedTap(index: 7);
+              context.go('/Laboratory');
+            },
+          ),
+          listTileWidget(
+            index: index,
+            spIndex: 8,
+            text: 'Inbox',
+            icon: Icons.forward_to_inbox,
+            onTap: () {
+              cubit.changeSelctedTap(index: 8);
+              context.go('/Inbox');
+            },
+          ),
+        ],
+      );
     },
   );
 }

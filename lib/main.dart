@@ -3,13 +3,13 @@ import 'package:dashboad/features/drawer_basiclayout/presentation/cubits/basic_c
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'core/cubits/bloc_observer.dart';
 import 'core/data/datasources/local.dart';
 import 'core/domain/services/locator.dart';
 import 'core/helpers/token_helper.dart';
 import 'core/utils/theme_manager.dart';
 import 'features/auth/presentation/cubits/cubit/auth_cubit.dart';
+import 'features/patients/presentation/cubits/patient_cubit.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +17,7 @@ void main() async{
   await TokenHelper.init();
   await locatorSetUp();
   Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,13 +33,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(getIt()),
         ),
+        BlocProvider(create: (context) => PatientCubit(getIt())..getPatients(),)
       ],
       child: ScreenUtilInit(
         designSize: const Size(1600, 1000),
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp.router(
-          theme: ThemeManager.myTheme,
+          theme: ThemeManager.lightTheme,
           debugShowCheckedModeBanner: false,
           routerDelegate: WebRouter.router.routerDelegate,
           routeInformationParser: WebRouter.router.routeInformationParser,

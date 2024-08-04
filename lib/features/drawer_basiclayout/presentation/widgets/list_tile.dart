@@ -1,4 +1,4 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 Widget listTileWidget({
   required int index,
@@ -14,13 +14,13 @@ Widget listTileWidget({
     ),
     leading: Icon(
       icon,
-      color: (index == spIndex) ? Colors.white : Colors.teal,
+      color: (index == spIndex) ? Colors.white : ColorsHelper.blueDark,
     ),
     title: Text(
       text,
-      style: TextStyle(color: (index == spIndex) ? Colors.white : Colors.teal),
+      style: TextStyle(color: (index == spIndex) ? Colors.white : ColorsHelper.blueDark),
     ),
-    tileColor: (index == spIndex) ? Colors.teal.withOpacity(.7) : null,
+    tileColor: (index == spIndex) ? ColorsHelper.blueDark : null,
     onTap: onTap,
   );
 }

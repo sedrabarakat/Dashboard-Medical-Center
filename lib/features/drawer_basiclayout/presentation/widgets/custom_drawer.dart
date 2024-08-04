@@ -27,7 +27,7 @@ class CustomDrawer extends StatelessWidget {
           children: [
             liquedText(
               text: 'Medical Center',
-              waveColor: ColorsHelper.tealLightDark,
+              waveColor: ColorsHelper.blueDark,
               backgroundColor: Colors.white,
             ),
             role == 'owner'

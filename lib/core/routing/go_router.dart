@@ -32,8 +32,8 @@ class WebRouter {
   static const kAppointment ='Appointment' ;
 
   static GoRouter router = GoRouter(
-
     initialLocation: TokenHelper.hasToken ? '/add_account' : '/',
+    //initialLocation:"/Patients_List/Patient_profile/:2",
     routes: [
       GoRoute(
         path: '/',
@@ -78,15 +78,15 @@ class WebRouter {
           pageBuilder: (context, state) {
             return const MaterialPage(child: PatientsList());
           },
-          routes: [
-            GoRoute(
-              path: 'Patient_profile/:Patient_id',
-              name: kPatientProfile,
-              pageBuilder: (context, state) {
-                return const MaterialPage(child: PatientProfile());
-              },
-            ),
-          ]),
+          ),
+      GoRoute(
+        path: '/Patients_List/Patient_profile/:Patient_id',
+        name: kPatientProfile,
+        pageBuilder: (context, state) {
+          int Patient_id=int.parse(state.pathParameters['Patient_id']!);
+          return MaterialPage(child: PatientProfile(id: Patient_id,));
+        },
+      ),
       GoRoute(
         path: '/Laboratory',
         name: kLaboratory,

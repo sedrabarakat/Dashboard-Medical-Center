@@ -4,8 +4,6 @@ import 'package:dashboad/features/create_account/presentation/widgets/select_rol
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/helpers/strings_helper.dart';
 import '../../../domain/constants/constants.dart';
 
 Widget SelectedCell({
@@ -15,12 +13,15 @@ Widget SelectedCell({
   return InkWell(
     onTap: (){
       cubit.changed_Select(index: index);
+      if(index==1) {
+        cubit.getSection();
+      }
     },
     child: Row(
       children: [
         Cell(index: index,cubit: cubit),
         SizedBox(width: 10.w,),
-        Text(capitalizeFirstLetter(Selected_role_list[index]["name"]),
+        Text(Selected_role_list[index]["name"],
           style: StyleManager.font20W600,)
       ],),
   );

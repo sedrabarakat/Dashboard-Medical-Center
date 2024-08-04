@@ -5,6 +5,22 @@ import 'package:flutter/material.dart';
 class ColorsHelper {
   static Color basicBackground = const Color.fromARGB(255, 247, 247, 248);
 
+  static const Color omarColor = Color(0xFF2A2AC0);
+  static const Color onPressedColor = Color(0xFF3A3ACC);
+
+
+  ///blue
+  static const Color backgroundBlue = Color(0xFFEBF1F5);
+  static const Color blueLightest = Color(0xFFC7DEFF);      // Lightest blue
+  static const Color blueLighter = Color(0xFFB5D3FF);       // Lighter blue
+  static const Color blueLight = Color(0xFF7DA6FF);         // Light blue
+  static const Color blue = Color(0xFF2121BE);              // Base blue
+  static const Color blueDark = Color(0xFF1F1F99);          // Dark blue
+  static const Color blueDarker = Color(0xFF141473);        // Darker blue
+  static const Color blueDarkest = Color(0xFF0A0A47);       // Darkest blue
+
+
+// HexColor("#009797") hexteal
   ///teal
   static const Color tealLightest = Color(0xFFE0F7FA); // Lightest teal
   static const Color tealLighter = Color(0xFFB2EBF2); // Lighter teal
@@ -13,8 +29,7 @@ class ColorsHelper {
   static Color tealLightDark = Colors.teal.shade600;
   static const Color tealDark = Color(0xFF00796B); // Dark teal
   static const Color tealDarker = Color(0xFF004D40); // Darker teal
-  static const Color tealDarkest = Color(0xFF00251A); // Darkest teal
-// HexColor("#009797") hexteal
+  static const Color tealDarkest = Color(0xFF00251A);
 
   ///gray
   static Color grey = Colors.grey;
@@ -44,6 +59,6 @@ class ColorsHelper {
 
   ///gray
   static const Color lightGry = Color(0XFFD5D5D6);
-  static const success =  Color(0xFF04A18F);
+  static const success = Color(0xFF2A2AC0);
   static const error = Color(0xffd9332c);
 }

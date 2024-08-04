@@ -31,6 +31,7 @@ class PatientModel{
   @JsonKey(name: "user")
   Usermodel? user;
 
+
   PatientModel(this.birth_date,this.age,this.gender,this.address,this.blood_type,this.marital_status,
       this.children_num,this.habits,this.proffesion,this.diabetes,this.blood_pressure,
       this.wallet,this.user);

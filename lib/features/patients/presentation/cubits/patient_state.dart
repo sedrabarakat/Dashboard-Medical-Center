@@ -25,3 +25,17 @@ class DeletePatientErrorState extends PatientState {
   NetworkExceptions error;
   DeletePatientErrorState(this.error);
 }
+
+class Loading_getProfile_State extends PatientState{}
+
+class Success_getProfile_State extends PatientState{}
+class Error_getProfile_State extends PatientState{}
+
+class Editing_ToggleProfile_State extends PatientState{}
+
+class Loading_UpdateProfile_State extends PatientState{}
+class Success_UpdateProfile_State extends PatientState{}
+class Error_UpdateProfile_State extends PatientState{}
+
+
+

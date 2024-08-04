@@ -1,12 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../helpers/colors_helper.dart';
 import '../utils/style_manager.dart';
 
 // ignore: must_be_immutable
-class TextFiled extends StatelessWidget {
-  TextFiled(
+class TextFild_def extends StatelessWidget {
+  TextFild_def(
       {super.key,
       this.textInputAction = TextInputAction.next,
       this.keyboardType = TextInputType.text,
@@ -20,14 +21,25 @@ class TextFiled extends StatelessWidget {
       this.onTap,
       this.autofocus = false,
       this.readOnly = false,
+        this.filled=true,
       this.maxLine = 1,
       this.minLine = 1,
       this.textFieldHintColor = Colors.white,
       this.helperText,
+      this.fillColor,
       this.suffixPressed,
-      required this.radius,
+        this.radius=40,
        this.isNum= false,
-       required this.borderStyle
+        this.labelText,
+        this.labelStyle,
+        this.CursorColor=Colors.grey,
+        this.textStyle,
+        this.borderStyle=const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(40)),
+          borderSide: BorderSide(
+            color: Color(0XE0E0E0FF),
+          ),
+        )
       });
 
   final TextInputAction textInputAction;
@@ -51,8 +63,13 @@ class TextFiled extends StatelessWidget {
   final double radius;
   bool isBorder = false;
   bool isNum=false;
-  InputBorder borderStyle=StyleManager.Border_round40;
-
+  final InputBorder borderStyle;
+   Color? fillColor;
+   final bool filled;
+  final Color CursorColor;
+  final TextStyle ? textStyle;
+  final String? labelText;
+  final TextStyle ? labelStyle;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -71,18 +88,21 @@ class TextFiled extends StatelessWidget {
       keyboardType: keyboardType,
       obscureText: obscureText,
       controller: controller,
-      cursorColor: Colors.grey,
+      cursorColor: CursorColor,
+      style: (textStyle!=null)?textStyle:null,
       inputFormatters: (isNum)?<TextInputFormatter>[
         FilteringTextInputFormatter.allow(RegExp(r'[0-9+]')),
       ]:null,
       decoration: InputDecoration(
           helperMaxLines: 2,
           helperText: helperText,
+          labelText: labelText,
+          labelStyle: labelStyle,
           border: borderStyle,
           enabledBorder: borderStyle,
           focusedBorder: borderStyle,
-          filled: true,
-          fillColor: Colors.grey.shade300,
+          filled: filled,
+          fillColor: (fillColor!=null)?fillColor:ColorsHelper.blueLightest,
           hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade800),
           prefixIcon: iconData == null
               ? null
