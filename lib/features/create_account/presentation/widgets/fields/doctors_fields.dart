@@ -28,7 +28,6 @@ class DoctorsFields extends StatelessWidget {
                 for (int j=0;j<cubit.SectionNames.length;j++ ) {
                   if(cubit.SectionNames[j]==value){
                     cubit.Select_SectionId(id: cubit.Sections[j][value]!);
-                    print(cubit.Sections[j][value]!);
                   }
                 }
               },

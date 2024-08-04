@@ -1,4 +1,6 @@
 import 'package:dashboad/core/routing/go_router.dart';
+import 'package:dashboad/features/create_account/presentation/cubits/add_account_cubit.dart';
+import 'package:dashboad/features/doctors/presentation/cubits/doctor_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +32,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(getIt()),
         ),
-        BlocProvider(create: (context) => PatientCubit(getIt())..getPatients(),)
+        BlocProvider(create: (context) => AddAccountCubit(getIt(),getIt())),
+        BlocProvider(create: (context) => PatientCubit(getIt())..getPatients(),),
+        BlocProvider(create: (context) => DoctorCubit(getIt())..getDoctors()..getSections(context: context),),
       ],
       child: ScreenUtilInit(
         designSize: const Size(1600, 1000),

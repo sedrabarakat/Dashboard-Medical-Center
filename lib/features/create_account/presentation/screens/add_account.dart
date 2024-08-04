@@ -41,6 +41,16 @@ class AddAccount extends StatelessWidget {
             if (state is Error_Create_User) {
               ToastBar.onNetworkFailure(context, networkException: state.error);
             }
+            if (state is Success_Create_Doctor) {
+              ToastBar.onSuccess(
+                context,
+                message: 'The Doctor Account has Created Successfully',
+                title: "Success",
+              );
+            }
+            if (state is Error_Create_Doctor) {
+              ToastBar.onNetworkFailure(context, networkException: state.error);
+            }
           },
           builder: (BuildContext context, state) {
             AddAccountCubit cubit = AddAccountCubit.get(context);

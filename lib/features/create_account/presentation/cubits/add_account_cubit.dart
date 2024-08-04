@@ -1,21 +1,19 @@
 import 'dart:async';
-
 import 'package:dashboad/features/create_account/presentation/cubits/add_account_states.dart';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../domain/constants/constants.dart';
 import '../../domain/repository/create_repo.dart';
 import '../../domain/repository/get_sections_repo.dart';
 
 class AddAccountCubit extends Cubit<AddAccountStates> {
-  AddAccountCubit(this.createRepo,this.getSectionsRepo) : super(AddAccountInitState());
+  AddAccountCubit(this.createRepo, this.getSectionsRepo)
+      : super(AddAccountInitState());
 
   static AddAccountCubit get(context) => BlocProvider.of(context);
-
 
   final CreateRepo createRepo;
   final GetSectionsRepo getSectionsRepo;
@@ -38,10 +36,10 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
 
   //doctor
   String? Selected_Section;
-  int ?Section_id;
+  int? Section_id;
   var Day_In_Advance = TextEditingController();
   var Duration = TextEditingController();
-  String ? Selected_Day;
+  String? Selected_Day;
 
   //patient
   var Birth_Date = TextEditingController();
@@ -106,15 +104,17 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
   Future<void> Create_User() async {
     emit(Loading_Create_User());
     final response = await createRepo.Create_User(
-      first_name: First_name.text,
-      middle_name: Middle_name.text,
-      last_name: Last_name.text,
-      phone_number: Phone.text,
-      description: Description.text,
-      password: Password.text,
-      user_type: Selected_role_list[SelectedIndex]['name'],
-      image: MultipartFile.fromBytes(Image_Bytes!,filename:Image!.files.single.name)
-    );
+        first_name: First_name.text,
+        middle_name: Middle_name.text,
+        last_name: Last_name.text,
+        phone_number: Phone.text,
+        description: Description.text,
+        password: Password.text,
+        user_type: Selected_role_list[SelectedIndex]['name'],
+        image: (Image_Bytes != null)
+            ? MultipartFile.fromBytes(Image_Bytes!,
+                filename: Image!.files.single.name)
+            : null);
     response.fold((error) {
       emit(Error_Create_User(error));
     }, (user) {
@@ -142,6 +142,10 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
             diabetes: (Diabetes == "Haven\'t") ? false : true,
             blood_pressure: (Pressure == "Haven\'t") ? false : true,
             wallet: int.parse(wallet.text),
+            image: (Image_Bytes != null)
+                ? MultipartFile.fromBytes(Image_Bytes!,
+                    filename: Image!.files.single.name)
+                : null,
             user_type: Selected_role_list[SelectedIndex]['name'])
         .then((value) {
       value.fold((error) {
@@ -152,42 +156,48 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     });
   }
 
-  Future<void>Create_Doctor()async{
+  Future<void> Create_Doctor() async {
     final response = await createRepo.Create_Doctor(
-        first_name: First_name.text,
-        middle_name: Middle_name.text,
-        last_name: Last_name.text,
-        phone_number: Phone.text,
-        description: Description.text,
-        password: Password.text,
-        image: MultipartFile.fromBytes(Image_Bytes!,filename:Image!.files.single.name),
-        section_id: Section_id.toString(),
-        days_in_advance: Day_In_Advance.text,
-        session_durtion: Duration.text,
-    );
+      first_name: First_name.text,
+      middle_name: Middle_name.text,
+      last_name: Last_name.text,
+      phone_number: Phone.text,
+      description: Description.text,
+      password: Password.text,
+      image: (Image_Bytes != null)
+          ? MultipartFile.fromBytes(Image_Bytes!,
+              filename: Image!.files.single.name)
+          : null,
+      section_id: Section_id.toString(),
+      days_in_advance: Day_In_Advance.text,
+      session_durtion: Duration.text,
+    ).then((value) {
+      value.fold((error) {
+        emit(Error_Create_Doctor(error));
+      }, (DoctorModel) {
+        emit(Success_Create_Doctor());
+      });
+    });
   }
 
- List<String>SectionNames=[];
- List<Map<String,int>>Sections=[];
-  Future<void>getSection()async{
+  List<String> SectionNames = [];
+  List<Map<String, int>> Sections = [];
+
+  Future<void> getSection() async {
     emit(Loading_Create_Section());
-    return await getSectionsRepo.getSections().then((value){
-      value.fold((error){
+    return await getSectionsRepo.getSections().then((value) {
+      value.fold((error) {
         emit(Error_Get_Sections(error));
-      }, (sections){
+      }, (sections) {
         emit(Success_Get_Sections());
         for (var ele in sections) {
           SectionNames.add(ele.name);
-          Sections.add({
-            ele.name:ele.id
-          });
+          Sections.add({ele.name: ele.id});
         }
         emit(getDropDownList_state());
       });
     });
   }
-
-
 
   ///
   int calculateAge(DateTime birthDate) {
@@ -205,39 +215,31 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
 
   ///Add work days
 
-
-  Map<String,dynamic>Work_Days={
-    "monday":[],
-    "tuesday":[],
-    "wednesday":[],
-    "thursday":[],
-    "friday":[],
-    "saturday":[],
-    "sunday":[],
+  Map<String, dynamic> Work_Days = {
+    "monday": [],
+    "tuesday": [],
+    "wednesday": [],
+    "thursday": [],
+    "friday": [],
+    "saturday": [],
+    "sunday": [],
   };
 
-  void selectDay({
-    required String value
-}){
-    Selected_Day=value;
+  void selectDay({required String value}) {
+    Selected_Day = value;
     emit(SelectDay_state());
   }
 
-  List<int> ?Image_Bytes;
+  List<int>? Image_Bytes;
   FilePickerResult? Image;
-  Future addImage()async {
-    Image= await FilePicker.platform.pickFiles(
+
+  Future addImage() async {
+    Image = await FilePicker.platform.pickFiles(
       allowMultiple: false,
     );
-    if(Image!=null){
-      Image_Bytes=Image!.files.single.bytes;
+    if (Image != null) {
+      Image_Bytes = Image!.files.single.bytes;
     }
     emit(Add_Image_state());
   }
-
-
-
-
 }
-
-

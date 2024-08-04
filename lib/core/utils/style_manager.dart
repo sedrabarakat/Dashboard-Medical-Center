@@ -130,6 +130,7 @@ class StyleManager {
     return BoxDecoration(
       shape: BoxShape.circle,
       color: color,
+
     );
   }
 

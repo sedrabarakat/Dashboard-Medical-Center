@@ -2,10 +2,12 @@ import 'package:dashboad/core/helpers/token_helper.dart';
 import 'package:dashboad/features/auth/presentation/screens/login_screen.dart';
 import 'package:dashboad/features/create_account/presentation/screens/add_account.dart';
 import 'package:dashboad/features/director/presentation/screens/directors_list.dart';
+import 'package:dashboad/features/doctors/presentation/cubits/doctor_cubit.dart';
 import 'package:dashboad/features/doctors/presentation/screens/doctors_list.dart';
 import 'package:dashboad/features/drawer_basiclayout/presentation/screens/baselayout.dart';
 import 'package:dashboad/features/inbox/presentation/screens/inbox.dart';
 import 'package:dashboad/features/laboratory/presentation/screens/laboratories_list.dart';
+import 'package:dashboad/features/patients/presentation/cubits/patient_cubit.dart';
 import 'package:dashboad/features/reseptions/presentation/screens/reseptions_list.dart';
 import 'package:dashboad/features/sections/presentation/screens/add_section_screen.dart';
 import 'package:dashboad/features/sections/presentation/screens/section_details.dart';
@@ -137,7 +139,12 @@ class WebRouter {
                     path: 'Doctor_profile/:Doctor_id',
                     name: kDoctorProfile,
                     builder: (context, state) {
-                      return const DoctorProfile();
+                      int Doctor_id=int.parse(state.pathParameters['Doctor_id']!);
+                      Future.delayed(const Duration(seconds: 2)).then((val){
+                        DoctorCubit.get(context).setId(id: Doctor_id);
+                        DoctorCubit.get(context).getDoctorProfile(id: Doctor_id);
+                      });
+                      return DoctorProfile(Doctor_id);
                     },
                   ),
                 ],
@@ -157,7 +164,12 @@ class WebRouter {
                     path: 'Patient_profile/:Patient_id',
                     name: kPatientProfile,
                     builder: (context, state) {
-                      return PatientProfile(id: 1,);
+                      int Patient_id=int.parse(state.pathParameters['Patient_id']!);
+                      Future.delayed(const Duration(seconds: 2)).then((val){
+                        PatientCubit.get(context).setId(id: Patient_id);
+                        PatientCubit.get(context).getPatientProfile(id: Patient_id);
+                      });
+                      return PatientProfile(id: Patient_id);
                     },
                   ),
                 ],

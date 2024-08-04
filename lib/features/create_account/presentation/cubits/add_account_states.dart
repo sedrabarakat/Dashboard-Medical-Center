@@ -50,5 +50,10 @@ class SelectDay_state extends AddAccountStates{}
 class Add_Image_state extends AddAccountStates{}
 
 
-
+class Loading_Create_Doctor extends AddAccountStates{}
+class Success_Create_Doctor extends AddAccountStates{}
+class Error_Create_Doctor extends AddAccountStates{
+  NetworkExceptions error;
+  Error_Create_Doctor(this.error);
+}
 

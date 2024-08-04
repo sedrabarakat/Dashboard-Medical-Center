@@ -57,8 +57,8 @@ class PatientRepo {
     required int children_num,
     required String habits,
     required String profession,
-    required bool diabetes,
-    required bool blood_pressure,
+    required int diabetes,
+    required int blood_pressure,
     required int wallet,
     var image
   })async{

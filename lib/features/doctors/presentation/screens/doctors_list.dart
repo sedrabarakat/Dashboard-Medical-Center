@@ -16,56 +16,53 @@ class DoctorList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DoctorCubit(getIt())..getDoctors(),
-      child: Padding(
-        padding: const EdgeInsets.all(
-          AppPadding.p30,
+    return Padding(
+      padding: const EdgeInsets.all(
+        AppPadding.p30,
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: ColorsHelper.lightGry,
+          ),
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: ColorsHelper.lightGry,
-            ),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            children: [
-              const TableHeader(),
-              BlocBuilder<DoctorCubit, DoctorState>(
-                  buildWhen: (previous, current) {
-                if (current is GetDoctorsLoadingState) {
-                  return true;
-                } else if (current is GetDoctorsSuccessState) {
-                  return true;
-                } else if (current is GetDoctorsErrorState) {
-                  return true;
-                } else if (current is DeleteDoctorSuccessState) {
-                  return true;
-                } else {
-                  return false;
-                }
-              }, builder: (context, state) {
-                if (state is GetDoctorsErrorState) {
-                  return Text(NetworkExceptions.getErrorMessage(state.error));
-                } else if (state is GetDoctorsLoadingState) {
-                  return Expanded(
-                    child: ListView.builder(
-                      itemBuilder: (context, index) =>
-                          const ShimmerTableRow(),
-                      itemCount: 10,
-                    ),
-                  );
-                } else if (state is GetDoctorsSuccessState) {
-                  return _buildTable(state.doctors);
-                } else if (state is DeleteDoctorSuccessState) {
-                  return _buildTable(state.directors);
-                } else {
-                  return const SizedBox();
-                }
-              }),
-            ],
-          ),
+        child: Column(
+          children: [
+            const TableHeader(),
+            BlocBuilder<DoctorCubit, DoctorState>(
+                buildWhen: (previous, current) {
+              if (current is GetDoctorsLoadingState) {
+                return true;
+              } else if (current is GetDoctorsSuccessState) {
+                return true;
+              } else if (current is GetDoctorsErrorState) {
+                return true;
+              } else if (current is DeleteDoctorSuccessState) {
+                return true;
+              } else {
+                return false;
+              }
+            }, builder: (context, state) {
+              if (state is GetDoctorsErrorState) {
+                return Text(NetworkExceptions.getErrorMessage(state.error));
+              } else if (state is GetDoctorsLoadingState) {
+                return Expanded(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) =>
+                        const ShimmerTableRow(),
+                    itemCount: 10,
+                  ),
+                );
+              } else if (state is GetDoctorsSuccessState) {
+                return _buildTable(state.doctors);
+              } else if (state is DeleteDoctorSuccessState) {
+                return _buildTable(state.directors);
+              } else {
+                return const SizedBox();
+              }
+            }),
+          ],
         ),
       ),
     );
@@ -77,7 +74,7 @@ class DoctorList extends StatelessWidget {
         itemBuilder: (context, index) => MyTableRow(
           user: doctors[index].userData,
           onEditPressed: () {
-            context.go('/Doctor_profile/:1');
+            context.go('/Doctors_List/Doctor_profile/${doctors[index].id}');
           },
           onRemovePressed: () {
             BlocProvider.of<DoctorCubit>(context)

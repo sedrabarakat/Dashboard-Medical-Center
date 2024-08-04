@@ -103,7 +103,7 @@ class CreateRemoteDataSource{
     required String days_in_advance,
     required String session_durtion,
 })async{
-    final Response =await  apiService.post(AppUrl.creatPatient,
+    final Response =await  apiService.post(AppUrl.creatDoctor,
     body:  {
       "first_name": first_name,
       "middle_name": middle_name,
