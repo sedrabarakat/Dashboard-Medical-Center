@@ -3,19 +3,20 @@ import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/core/widgets/animated_text.dart';
 import 'package:dashboad/features/drawer_basiclayout/presentation/widgets/drawer_items.dart';
-import 'package:dashboad/features/drawer_basiclayout/presentation/widgets/reception_drawer_items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String role;
 
   const CustomDrawer({
     super.key,
+    required this.navigationShell,
     required this.role,
   });
-
+  final StatefulNavigationShell navigationShell;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -30,6 +31,7 @@ class CustomDrawer extends StatelessWidget {
               waveColor: ColorsHelper.blueDark,
               backgroundColor: Colors.white,
             ),
+            SvgPicture.asset(
             role == 'owner'
                 ? receptionDrawerList(context: context)
                 : drawerList(context: context),

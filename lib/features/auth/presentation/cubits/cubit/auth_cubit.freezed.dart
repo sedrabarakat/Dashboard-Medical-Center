@@ -25,6 +25,7 @@ mixin _$AuthState {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$AuthState {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$AuthState {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,7 @@ mixin _$AuthState {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$AuthState {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$AuthState {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,12 +127,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.initial'));
   }
 
   @override
@@ -148,6 +160,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) {
     return initial();
   }
@@ -162,6 +175,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) {
     return initial?.call();
   }
@@ -176,6 +190,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -194,6 +209,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) {
     return initial(this);
   }
@@ -208,6 +224,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) {
     return initial?.call(this);
   }
@@ -222,6 +239,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -253,12 +271,20 @@ class __$$RequestCodeLoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
+class _$RequestCodeLoadingImpl
+    with DiagnosticableTreeMixin
+    implements _RequestCodeLoading {
   const _$RequestCodeLoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.requestCodeLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.requestCodeLoading'));
   }
 
   @override
@@ -280,6 +306,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) {
     return requestCodeLoading();
   }
@@ -294,6 +321,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) {
     return requestCodeLoading?.call();
   }
@@ -308,6 +336,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (requestCodeLoading != null) {
@@ -326,6 +355,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) {
     return requestCodeLoading(this);
   }
@@ -340,6 +370,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) {
     return requestCodeLoading?.call(this);
   }
@@ -354,6 +385,7 @@ class _$RequestCodeLoadingImpl implements _RequestCodeLoading {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (requestCodeLoading != null) {
@@ -385,12 +417,20 @@ class __$$RequestCodeSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
+class _$RequestCodeSuccessImpl
+    with DiagnosticableTreeMixin
+    implements _RequestCodeSuccess {
   const _$RequestCodeSuccessImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.requestCodeSuccess()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.requestCodeSuccess'));
   }
 
   @override
@@ -412,6 +452,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) {
     return requestCodeSuccess();
   }
@@ -426,6 +467,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) {
     return requestCodeSuccess?.call();
   }
@@ -440,6 +482,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (requestCodeSuccess != null) {
@@ -458,6 +501,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) {
     return requestCodeSuccess(this);
   }
@@ -472,6 +516,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) {
     return requestCodeSuccess?.call(this);
   }
@@ -486,6 +531,7 @@ class _$RequestCodeSuccessImpl implements _RequestCodeSuccess {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (requestCodeSuccess != null) {
@@ -542,15 +588,25 @@ class __$$RequestCodeErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RequestCodeErrorImpl implements _RequestCodeError {
+class _$RequestCodeErrorImpl
+    with DiagnosticableTreeMixin
+    implements _RequestCodeError {
   const _$RequestCodeErrorImpl(this.error);
 
   @override
   final NetworkExceptions error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.requestCodeError(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.requestCodeError'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -581,6 +637,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) {
     return requestCodeError(error);
   }
@@ -595,6 +652,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) {
     return requestCodeError?.call(error);
   }
@@ -609,6 +667,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (requestCodeError != null) {
@@ -627,6 +686,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) {
     return requestCodeError(this);
   }
@@ -641,6 +701,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) {
     return requestCodeError?.call(this);
   }
@@ -655,6 +716,7 @@ class _$RequestCodeErrorImpl implements _RequestCodeError {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (requestCodeError != null) {
@@ -692,12 +754,20 @@ class __$$VerifyCodeLoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
+class _$VerifyCodeLoadingImpl
+    with DiagnosticableTreeMixin
+    implements _VerifyCodeLoading {
   const _$VerifyCodeLoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.verfiyCodeLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.verfiyCodeLoading'));
   }
 
   @override
@@ -719,6 +789,7 @@ class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) {
     return verfiyCodeLoading();
   }
@@ -733,6 +804,7 @@ class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) {
     return verfiyCodeLoading?.call();
   }
@@ -747,6 +819,7 @@ class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (verfiyCodeLoading != null) {
@@ -765,6 +838,7 @@ class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) {
     return verfiyCodeLoading(this);
   }
@@ -779,6 +853,7 @@ class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) {
     return verfiyCodeLoading?.call(this);
   }
@@ -793,6 +868,7 @@ class _$VerifyCodeLoadingImpl implements _VerifyCodeLoading {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (verfiyCodeLoading != null) {
@@ -849,15 +925,25 @@ class __$$VerifyCodeErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VerifyCodeErrorImpl implements _VerifyCodeError {
+class _$VerifyCodeErrorImpl
+    with DiagnosticableTreeMixin
+    implements _VerifyCodeError {
   const _$VerifyCodeErrorImpl(this.error);
 
   @override
   final NetworkExceptions error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.verfiyCodeError(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AuthState.verfiyCodeError'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -888,6 +974,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) {
     return verfiyCodeError(error);
   }
@@ -902,6 +989,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) {
     return verfiyCodeError?.call(error);
   }
@@ -916,6 +1004,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (verfiyCodeError != null) {
@@ -934,6 +1023,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) {
     return verfiyCodeError(this);
   }
@@ -948,6 +1038,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) {
     return verfiyCodeError?.call(this);
   }
@@ -962,6 +1053,7 @@ class _$VerifyCodeErrorImpl implements _VerifyCodeError {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (verfiyCodeError != null) {
@@ -999,12 +1091,20 @@ class __$$VerifyCodeSuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
+class _$VerifyCodeSuccessImpl
+    with DiagnosticableTreeMixin
+    implements _VerifyCodeSuccess {
   const _$VerifyCodeSuccessImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AuthState.verfiyCodeSuccess()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.verfiyCodeSuccess'));
   }
 
   @override
@@ -1026,6 +1126,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     required TResult Function() verfiyCodeLoading,
     required TResult Function(NetworkExceptions error) verfiyCodeError,
     required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
   }) {
     return verfiyCodeSuccess();
   }
@@ -1040,6 +1141,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult? Function()? verfiyCodeLoading,
     TResult? Function(NetworkExceptions error)? verfiyCodeError,
     TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
   }) {
     return verfiyCodeSuccess?.call();
   }
@@ -1054,6 +1156,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult Function()? verfiyCodeLoading,
     TResult Function(NetworkExceptions error)? verfiyCodeError,
     TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (verfiyCodeSuccess != null) {
@@ -1072,6 +1175,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
     required TResult Function(_VerifyCodeError value) verfiyCodeError,
     required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
   }) {
     return verfiyCodeSuccess(this);
   }
@@ -1086,6 +1190,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult? Function(_VerifyCodeError value)? verfiyCodeError,
     TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
   }) {
     return verfiyCodeSuccess?.call(this);
   }
@@ -1100,6 +1205,7 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
     TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
     TResult Function(_VerifyCodeError value)? verfiyCodeError,
     TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
     required TResult orElse(),
   }) {
     if (verfiyCodeSuccess != null) {
@@ -1111,4 +1217,150 @@ class _$VerifyCodeSuccessImpl implements _VerifyCodeSuccess {
 
 abstract class _VerifyCodeSuccess implements AuthState {
   const factory _VerifyCodeSuccess() = _$VerifyCodeSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$ChangeTimerSecondsImplCopyWith<$Res> {
+  factory _$$ChangeTimerSecondsImplCopyWith(_$ChangeTimerSecondsImpl value,
+          $Res Function(_$ChangeTimerSecondsImpl) then) =
+      __$$ChangeTimerSecondsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ChangeTimerSecondsImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$ChangeTimerSecondsImpl>
+    implements _$$ChangeTimerSecondsImplCopyWith<$Res> {
+  __$$ChangeTimerSecondsImplCopyWithImpl(_$ChangeTimerSecondsImpl _value,
+      $Res Function(_$ChangeTimerSecondsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ChangeTimerSecondsImpl
+    with DiagnosticableTreeMixin
+    implements _ChangeTimerSeconds {
+  const _$ChangeTimerSecondsImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthState.changeTimerSeconds()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AuthState.changeTimerSeconds'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ChangeTimerSecondsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() requestCodeLoading,
+    required TResult Function() requestCodeSuccess,
+    required TResult Function(NetworkExceptions error) requestCodeError,
+    required TResult Function() verfiyCodeLoading,
+    required TResult Function(NetworkExceptions error) verfiyCodeError,
+    required TResult Function() verfiyCodeSuccess,
+    required TResult Function() changeTimerSeconds,
+  }) {
+    return changeTimerSeconds();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? requestCodeLoading,
+    TResult? Function()? requestCodeSuccess,
+    TResult? Function(NetworkExceptions error)? requestCodeError,
+    TResult? Function()? verfiyCodeLoading,
+    TResult? Function(NetworkExceptions error)? verfiyCodeError,
+    TResult? Function()? verfiyCodeSuccess,
+    TResult? Function()? changeTimerSeconds,
+  }) {
+    return changeTimerSeconds?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? requestCodeLoading,
+    TResult Function()? requestCodeSuccess,
+    TResult Function(NetworkExceptions error)? requestCodeError,
+    TResult Function()? verfiyCodeLoading,
+    TResult Function(NetworkExceptions error)? verfiyCodeError,
+    TResult Function()? verfiyCodeSuccess,
+    TResult Function()? changeTimerSeconds,
+    required TResult orElse(),
+  }) {
+    if (changeTimerSeconds != null) {
+      return changeTimerSeconds();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_RequestCodeLoading value) requestCodeLoading,
+    required TResult Function(_RequestCodeSuccess value) requestCodeSuccess,
+    required TResult Function(_RequestCodeError value) requestCodeError,
+    required TResult Function(_VerifyCodeLoading value) verfiyCodeLoading,
+    required TResult Function(_VerifyCodeError value) verfiyCodeError,
+    required TResult Function(_VerifyCodeSuccess value) verfiyCodeSuccess,
+    required TResult Function(_ChangeTimerSeconds value) changeTimerSeconds,
+  }) {
+    return changeTimerSeconds(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_RequestCodeLoading value)? requestCodeLoading,
+    TResult? Function(_RequestCodeSuccess value)? requestCodeSuccess,
+    TResult? Function(_RequestCodeError value)? requestCodeError,
+    TResult? Function(_VerifyCodeLoading value)? verfiyCodeLoading,
+    TResult? Function(_VerifyCodeError value)? verfiyCodeError,
+    TResult? Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult? Function(_ChangeTimerSeconds value)? changeTimerSeconds,
+  }) {
+    return changeTimerSeconds?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_RequestCodeLoading value)? requestCodeLoading,
+    TResult Function(_RequestCodeSuccess value)? requestCodeSuccess,
+    TResult Function(_RequestCodeError value)? requestCodeError,
+    TResult Function(_VerifyCodeLoading value)? verfiyCodeLoading,
+    TResult Function(_VerifyCodeError value)? verfiyCodeError,
+    TResult Function(_VerifyCodeSuccess value)? verfiyCodeSuccess,
+    TResult Function(_ChangeTimerSeconds value)? changeTimerSeconds,
+    required TResult orElse(),
+  }) {
+    if (changeTimerSeconds != null) {
+      return changeTimerSeconds(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ChangeTimerSeconds implements AuthState {
+  const factory _ChangeTimerSeconds() = _$ChangeTimerSecondsImpl;
 }

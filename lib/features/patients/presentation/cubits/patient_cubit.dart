@@ -90,6 +90,13 @@ class PatientCubit extends Cubit<PatientState> {
   var Pressure = TextEditingController();
   var image;
 
+  var Patient_id;
+
+  void setId({required int id}){
+    Patient_id=id;
+    print(Patient_id);
+  }
+
   bool isEditing = false;
 
   void editingToggle() {
@@ -98,8 +105,9 @@ class PatientCubit extends Cubit<PatientState> {
   }
 
   void cancelEditing() {
+    getPatientProfile(id: Patient_id);
     isEditing = false;
-    emit(Editing_ToggleProfile_State());
+    emit(Cancel_Editing_State());
   }
 
   PatientModel ? patientModel;
@@ -114,7 +122,7 @@ class PatientCubit extends Cubit<PatientState> {
       }, (PatientModel) {
         patientModel = PatientModel;
         First_name.text = PatientModel.userData.firstName;
-        Middle_name.text="hhh";
+        Middle_name.text=PatientModel.userData.middleName;
         Last_name.text = PatientModel.userData.lastName;
         Phone.text = PatientModel.userData.phoneNumber;
         Description.text = PatientModel.userData.description;
@@ -137,12 +145,10 @@ class PatientCubit extends Cubit<PatientState> {
     });
   }
 
-  Future<void> updatePatientProfile({
-    required int id,
-  }) async {
+  Future<void> updateProfile() async {
     emit(Loading_UpdateProfile_State());
     return await _repo.updatePatientProfile(
-        id: id,
+        id: Patient_id,
         first_name: First_name.text,
         middle_name: Middle_name.text,
         last_name: Last_name.text,
@@ -157,13 +163,14 @@ class PatientCubit extends Cubit<PatientState> {
         children_num: int.parse(Children_num.text),
         habits: Habit.text,
         profession: profession.text,
-        diabetes: bool.parse(Diabets.text),
-        blood_pressure: bool.parse(Pressure.text),
+        diabetes: patientModel!.diabetes ,
+        blood_pressure: patientModel!.bloodPressure,
         wallet: int.parse(wallet.text),
         ).then((value){
           value.fold((error){
            emit(Error_UpdateProfile_State());
           }, (PatientModel){
+            isEditing = false;
            emit(Success_UpdateProfile_State());
           });
     });

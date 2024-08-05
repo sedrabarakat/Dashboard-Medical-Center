@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import '../urls/app_url.dart';
 
 import 'api_service.dart';
@@ -34,10 +33,11 @@ class ApiServicesImp implements ApiServices {
   }
 
   @override
-  Future delete(String path,
-      {Map<String, dynamic>? queryParams,
-      Map<String, dynamic>? body,
-      }) async {
+  Future delete(
+    String path, {
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? body,
+  }) async {
     try {
       await setHeaders();
       final response = await _dio.delete(
@@ -53,8 +53,7 @@ class ApiServicesImp implements ApiServices {
   }
 
   @override
-  Future get(String path,
-      {Map<String, String>? queryParams}) async {
+  Future get(String path, {Map<String, String>? queryParams}) async {
     try {
       await setHeaders();
       final response = await _dio.get(
@@ -69,11 +68,12 @@ class ApiServicesImp implements ApiServices {
   }
 
   @override
-  Future post(String path,
-      {Map<String, dynamic>? queryParams,
-      Map<String, dynamic>? body,
-      FormData? formData,
-      }) async {
+  Future post(
+    String path, {
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? body,
+    FormData? formData,
+  }) async {
     try {
       await setHeaders();
 
@@ -81,8 +81,7 @@ class ApiServicesImp implements ApiServices {
         path,
         queryParameters: queryParams,
         data: formData ?? body,
-        options:
-            Options(headers: _headers, contentType: Headers.jsonContentType),
+        options: Options(headers: _headers),
       );
 
       return _handleResponseAsJson(response);
@@ -92,20 +91,22 @@ class ApiServicesImp implements ApiServices {
   }
 
   @override
-  Future postFiles(BuildContext context, String path,
-      {Map<String, dynamic>? queryParams,
-      Map<String, dynamic>? body,
-      String? key,
-      FormData? formData,
-       }) async {
+  Future postFiles(
+    String path, {
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? body,
+    String? key,
+    FormData? formData,
+  }) async {
     try {
       await setHeaders();
 
       final response = await _dio.post(path,
           queryParameters: queryParams,
           data: formData ?? body,
-          options:
-              Options(headers: _headers, contentType: Headers.jsonContentType),
+          options: Options(
+              headers: _headers,
+              contentType: Headers.multipartFormDataContentType),
           onSendProgress: (sent, total) {
         if (total != -1) {
           var progress = (sent / total * 100).toStringAsFixed(0);
@@ -128,11 +129,12 @@ class ApiServicesImp implements ApiServices {
   }
 
   @override
-  Future postList(String path,
-      {Map<String, String>? queryParams,
-      List? body,
-      FormData? formData,
-       }) async {
+  Future postList(
+    String path, {
+    Map<String, String>? queryParams,
+    List? body,
+    FormData? formData,
+  }) async {
     try {
       setHeaders();
       final response = await _dio.post(
@@ -149,11 +151,12 @@ class ApiServicesImp implements ApiServices {
   }
 
   @override
-  Future put(String path,
-      {Map<String, dynamic>? queryParams,
-      Map<String, dynamic>? body,
-      FormData? formData,
-       }) async {
+  Future put(
+    String path, {
+    Map<String, dynamic>? queryParams,
+    Map<String, dynamic>? body,
+    FormData? formData,
+  }) async {
     try {
       await setHeaders();
 

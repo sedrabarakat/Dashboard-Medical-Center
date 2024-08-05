@@ -37,6 +37,8 @@ class Loading_UpdateProfile_State extends PatientState{}
 class Success_UpdateProfile_State extends PatientState{}
 class Error_UpdateProfile_State extends PatientState{}
 
+class Cancel_Editing_State extends PatientState{}
+
 ////////////////////* Sessions state *//////////////////
 
 final class GetOpenSessionLoadingState extends PatientState{}

@@ -22,6 +22,15 @@ class ValidatorManager {
     return null;
   }
 
+  String? validateNumber(String value) {
+    try {
+      int.parse(value);
+      return null;
+    } catch (e) {
+      return "Must be a number";
+    }
+  }
+
   String? validateLastName(String value) {
     if (value.isEmpty) {
       return 'Please enter Last name';
@@ -40,19 +49,18 @@ class ValidatorManager {
   }
 
   String? validatePhone(String value) {
-    const int minLength=10;
+    const int minLength = 10;
     if (value.isEmpty) {
       return 'Please enter phone number';
     }
-    if (value.length<minLength) {
+    if (value.length < minLength) {
       return 'Please enter a valid $minLength-digit phone number';
     }
     return null;
   }
 
   String? validatePassword(String value) {
-
-    const int minLength=8;
+    const int minLength = 8;
 
     if (value.isEmpty) {
       return 'Please enter a password';
@@ -80,7 +88,7 @@ class ValidatorManager {
     return null;
   }
 
-  String? validate_EmptyState(String value,String phrase) {
+  String? validate_EmptyState(String value, String phrase) {
     if (value.isEmpty) {
       return 'Please enter $phrase';
     }
@@ -91,11 +99,9 @@ class ValidatorManager {
     if (value.isEmpty) {
       return 'Please enter Children Number';
     }
-    if(int.parse(value)<0)
-      return 'Please enter valid Number';
+    if (int.parse(value) < 0) return 'Please enter valid Number';
     return null;
   }
-
 }
 
 class RegularExpressions {

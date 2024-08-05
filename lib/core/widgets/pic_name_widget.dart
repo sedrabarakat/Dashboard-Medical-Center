@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/widgets/editing_buttons.dart';
-import '../../cubits/patient_cubit.dart';
-import 'image_widget.dart';
-import 'name_widget.dart';
+import 'editing/editing_buttons.dart';
+import '../../features/patients/presentation/cubits/patient_cubit.dart';
+import '../../features/patients/presentation/widgets/profile_widgets/image_widget.dart';
+import '../../features/patients/presentation/widgets/profile_widgets/name_widget.dart';
 
-Widget PicAndName({required context}){
-  PatientCubit cubit=PatientCubit.get(context);
+Widget PicAndName({required context, required cubit}){
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [

@@ -4,6 +4,8 @@ import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_network/image_network.dart';
 
 class MyTableRow extends StatelessWidget {
   const MyTableRow({
@@ -43,12 +45,12 @@ class MyTableRow extends StatelessWidget {
             flex: 4,
             child: Row(
               children: [
-                CircleAvatar(
-                  backgroundImage: user.image != null ? NetworkImage(
-                    user.image!,
-                  ) : AssetImage(AssetsManager.profileImage),
-                  radius: 22,
-                ),
+                Container(
+                clipBehavior: Clip.hardEdge,
+                height: 60.h,width: 60.h,
+                decoration: StyleManager.Circle_Shape(color: ColorsHelper.black26),
+                child: ( user.image!=null)?ImageNetwork(image: user.image!, height: 250.h, width: 200.w,fitWeb: BoxFitWeb.fill,):Image.asset(AssetsManager.DefImage,fit: BoxFit.cover)
+            ),
                 const SizedBox(
                   width: AppSize.s10,
                 ),

@@ -10,7 +10,6 @@ import 'package:dashboad/core/widgets/table/table_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../drawer_basiclayout/presentation/screens/baselayout.dart';
 
 class DirectorsList extends StatelessWidget {
   const DirectorsList({super.key});
@@ -19,55 +18,53 @@ class DirectorsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => DirectorCubit(getIt())..getDirectors(),
-      child: BaseLayout(
-        child: Padding(
-          padding: const EdgeInsets.all(
-            AppPadding.p30,
+      child: Padding(
+        padding: const EdgeInsets.all(
+          AppPadding.p30,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: ColorsHelper.lightGry,
+            ),
+            borderRadius: BorderRadius.circular(10),
           ),
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: ColorsHelper.lightGry,
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              children: [
-                const TableHeader(),
-                BlocBuilder<DirectorCubit, DirectorState>(
-                    buildWhen: (previous, current) {
-                  if (current is GetDirectorsLoadingState) {
-                    return true;
-                  } else if (current is GetDirectorsSuccessState) {
-                    return true;
-                  } else if (current is GetDirectorsErrorState) {
-                    return true;
-                  } else if (current is DeleteDirectorSuccessState) {
-                    return true;
-                  } else {
-                    return false;
-                  }
-                }, builder: (context, state) {
-                  if (state is GetDirectorsErrorState) {
-                    return Text(NetworkExceptions.getErrorMessage(state.error));
-                  } else if (state is GetDirectorsLoadingState) {
-                    return Expanded(
-                      child: ListView.builder(
-                        itemBuilder: (context, index) =>
-                            const ShimmerTableRow(),
-                        itemCount: 10,
-                      ),
-                    );
-                  } else if (state is GetDirectorsSuccessState) {
-                    return _buildTable(state.directors);
-                  } else if (state is DeleteDirectorSuccessState) {
-                    return _buildTable(state.directors);
-                  } else {
-                    return const SizedBox();
-                  }
-                }),
-              ],
-            ),
+          child: Column(
+            children: [
+              const TableHeader(),
+              BlocBuilder<DirectorCubit, DirectorState>(
+                  buildWhen: (previous, current) {
+                if (current is GetDirectorsLoadingState) {
+                  return true;
+                } else if (current is GetDirectorsSuccessState) {
+                  return true;
+                } else if (current is GetDirectorsErrorState) {
+                  return true;
+                } else if (current is DeleteDirectorSuccessState) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }, builder: (context, state) {
+                if (state is GetDirectorsErrorState) {
+                  return Text(NetworkExceptions.getErrorMessage(state.error));
+                } else if (state is GetDirectorsLoadingState) {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) =>
+                          const ShimmerTableRow(),
+                      itemCount: 10,
+                    ),
+                  );
+                } else if (state is GetDirectorsSuccessState) {
+                  return _buildTable(state.directors);
+                } else if (state is DeleteDirectorSuccessState) {
+                  return _buildTable(state.directors);
+                } else {
+                  return const SizedBox();
+                }
+              }),
+            ],
           ),
         ),
       ),

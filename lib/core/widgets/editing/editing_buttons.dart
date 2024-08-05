@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../helpers/colors_helper.dart';
+import '../../helpers/colors_helper.dart';
 
 Widget editingInfoButtons({
-  required cubit
+  required cubit,
 }){
   return Expanded(
     child: Row(
@@ -17,9 +17,7 @@ Widget editingInfoButtons({
         SizedBox(width: 10.w,),
         (cubit.isEditing)?CircleAvatar(
             backgroundColor: ColorsHelper.blueLightest.withOpacity(.3),
-            child: IconButton(onPressed: (){
-              cubit.updatePatientProfile;
-            },
+            child: IconButton(onPressed:cubit.updateProfile,
                 icon: const Icon(Icons.check, ))):SizedBox(),
         SizedBox(width: 10.w,),
         (cubit.isEditing)?CircleAvatar(

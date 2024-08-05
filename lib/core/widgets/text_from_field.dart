@@ -19,28 +19,28 @@ class TextFild_def extends StatelessWidget {
       this.validator,
       this.onChanged,
       this.onTap,
+      this.onFieldSubmitted,
       this.autofocus = false,
       this.readOnly = false,
-        this.filled=true,
+      this.filled = true,
       this.maxLine = 1,
       this.minLine = 1,
       this.textFieldHintColor = Colors.white,
       this.helperText,
       this.fillColor,
       this.suffixPressed,
-        this.radius=40,
-       this.isNum= false,
-        this.labelText,
-        this.labelStyle,
-        this.CursorColor=Colors.grey,
-        this.textStyle,
-        this.borderStyle=const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(40)),
-          borderSide: BorderSide(
-            color: Color(0XE0E0E0FF),
-          ),
-        )
-      });
+      this.radius = 40,
+      this.isNum = false,
+      this.labelText,
+      this.labelStyle,
+      this.CursorColor = Colors.grey,
+      this.textStyle,
+      this.borderStyle = const OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(40)),
+        borderSide: BorderSide(
+          color: Color(0XE0E0E0FF),
+        ),
+      )});
 
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
@@ -54,6 +54,7 @@ class TextFild_def extends StatelessWidget {
   bool obscureText;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
+  ValueChanged<String>? onFieldSubmitted;
   final VoidCallback? suffixPressed;
   final VoidCallback? onTap;
   final int? maxLine;
@@ -62,14 +63,15 @@ class TextFild_def extends StatelessWidget {
   final Color? textFieldHintColor;
   final double radius;
   bool isBorder = false;
-  bool isNum=false;
+  bool isNum = false;
   final InputBorder borderStyle;
-   Color? fillColor;
-   final bool filled;
+  Color? fillColor;
+  final bool filled;
   final Color CursorColor;
-  final TextStyle ? textStyle;
+  final TextStyle? textStyle;
   final String? labelText;
-  final TextStyle ? labelStyle;
+  final TextStyle? labelStyle;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -84,15 +86,18 @@ class TextFild_def extends StatelessWidget {
           },
       onChanged: onChanged,
       onTap: onTap,
+      onFieldSubmitted: onFieldSubmitted,
       textInputAction: textInputAction,
       keyboardType: keyboardType,
       obscureText: obscureText,
       controller: controller,
       cursorColor: CursorColor,
-      style: (textStyle!=null)?textStyle:null,
-      inputFormatters: (isNum)?<TextInputFormatter>[
-        FilteringTextInputFormatter.allow(RegExp(r'[0-9+]')),
-      ]:null,
+      style: (textStyle != null) ? textStyle : null,
+      inputFormatters: (isNum)
+          ? <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9+]')),
+            ]
+          : null,
       decoration: InputDecoration(
           helperMaxLines: 2,
           helperText: helperText,
@@ -102,7 +107,8 @@ class TextFild_def extends StatelessWidget {
           enabledBorder: borderStyle,
           focusedBorder: borderStyle,
           filled: filled,
-          fillColor: (fillColor!=null)?fillColor:ColorsHelper.blueLightest,
+          fillColor:
+              (fillColor != null) ? fillColor : ColorsHelper.blueLightest,
           hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade800),
           prefixIcon: iconData == null
               ? null

@@ -11,4 +11,5 @@ class AuthState with _$AuthState {
   const factory AuthState.verfiyCodeError(NetworkExceptions error) =
       _VerifyCodeError;
   const factory AuthState.verfiyCodeSuccess() = _VerifyCodeSuccess;
+  const factory AuthState.changeTimerSeconds() = _ChangeTimerSeconds;
 }

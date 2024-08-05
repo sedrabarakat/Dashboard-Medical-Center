@@ -61,3 +61,29 @@ class DeleteSectionErrorState extends SectionState {
   final NetworkExceptions error;
   DeleteSectionErrorState(this.error);
 }
+
+class DeleteServiceSuccessState extends SectionState {
+  final String message;
+  DeleteServiceSuccessState(this.message);
+}
+
+class DeleteServiceErrorState extends SectionState {
+  final NetworkExceptions error;
+  DeleteServiceErrorState(this.error);
+}
+
+class EditServiceSuccessState extends SectionState {
+  final SectionService service;
+  EditServiceSuccessState(this.service);
+}
+
+class EditServiceErrorState extends SectionState {
+  final NetworkExceptions error;
+  EditServiceErrorState(this.error);
+}
+
+class EditServiceLoadingState extends SectionState {}
+
+class AddSectionService extends SectionState {}
+
+class RemoveSectionService extends SectionState {}
