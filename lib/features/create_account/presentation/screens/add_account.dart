@@ -1,11 +1,9 @@
 import 'package:dashboad/features/create_account/presentation/cubits/add_account_cubit.dart';
-import 'package:dashboad/features/drawer_basiclayout/presentation/screens/baselayout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/domain/services/locator.dart';
-import '../../../../core/helpers/colors_helper.dart';
 import '../../../../core/utils/style_manager.dart';
 import '../../../../core/widgets/toast_bar.dart';
 import '../../domain/repository/create_repo.dart';
@@ -18,7 +16,7 @@ class AddAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     CreateRepo createRepo;
     return BlocProvider(
-        create: (BuildContext context) => AddAccountCubit(getIt(),getIt()),
+        create: (BuildContext context) => AddAccountCubit(getIt(),getIt())..getSection(),
         child: BlocConsumer<AddAccountCubit, AddAccountStates>(
           listener: (BuildContext context, state) {
             if (state is Success_Create_Patient) {

@@ -1,3 +1,4 @@
+import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/core/helpers/token_helper.dart';
 import 'package:dashboad/features/auth/presentation/screens/login_screen.dart';
 import 'package:dashboad/features/create_account/presentation/screens/add_account.dart';
@@ -13,6 +14,7 @@ import 'package:dashboad/features/sections/presentation/screens/add_section_scre
 import 'package:dashboad/features/sections/presentation/screens/section_details.dart';
 import 'package:dashboad/features/sections/presentation/screens/sections_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/doctors/presentation/screens/doctor_profile.dart';
 import '../../features/patients/presentation/screens/patient_profile.dart';
@@ -140,11 +142,19 @@ class WebRouter {
                     name: kDoctorProfile,
                     builder: (context, state) {
                       int Doctor_id=int.parse(state.pathParameters['Doctor_id']!);
-                      Future.delayed(const Duration(seconds: 2)).then((val){
+                      return BlocProvider(
+                        create: (context)=>DoctorCubit(getIt())..getSections(context: context)
+                          ..setId(id: Doctor_id)
+                        ..getDoctorProfile(id: Doctor_id)
+                        ..getDoctorSchedule(),
+                        child: DoctorProfile(Doctor_id),
+                      );
+                     /* Future.delayed(const Duration(seconds: 2)).then((val){
                         DoctorCubit.get(context).setId(id: Doctor_id);
                         DoctorCubit.get(context).getDoctorProfile(id: Doctor_id);
+                        DoctorCubit.get(context).getDoctorSchedule();
                       });
-                      return DoctorProfile(Doctor_id);
+                      return DoctorProfile(Doctor_id);*/
                     },
                   ),
                 ],

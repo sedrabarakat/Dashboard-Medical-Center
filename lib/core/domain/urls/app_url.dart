@@ -19,6 +19,8 @@ class AppUrl {
   static const deleteDoctor = '$baseUrl${dashboard}doctor/$delete';
   static const updateDoctor = '$baseUrl${dashboard}doctor/update/';
   static const getDoctorProfile = '$baseUrl${dashboard}doctor/';
+  static const postDoctorSchedule='$baseUrl${dashboard}doctor/';
+  static const getDoctorSchedule='$baseUrl${dashboard}doctor/';
   /*>>>>>>>>>>>>>>>>>>>> Patients <<<<<<<<<<<<<<<<<<<<*/
   static const creatPatient = '$baseUrl${dashboard}patient/store';
   static const getPatientsList = '$baseUrl${dashboard}patient';

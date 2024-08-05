@@ -32,7 +32,9 @@ class Text_DropDown extends StatelessWidget{
         SizedBox(height: 8.h,),
         SizedBox(
           width: 250.w,
-            child: Dropdown(dropdownItems: dropdownItems, OnChanged: OnChanged,selectedItem: selectedItem,hintText: "Select Section",
+            child: Dropdown(dropdownItems: dropdownItems, OnChanged: OnChanged,
+              //selectedItem: selectedItem,
+              hintText: "Select Section",
             borderStyle: StyleManager.Border_round40,validator: validator,)),
       ],
     );

@@ -46,3 +46,17 @@ class Error_Update_Doctor extends DoctorState{
 }
 
 class Select_Sections_State extends DoctorState{}
+
+class Loading_Post_Schedule extends DoctorState{}
+class Success_Post_Schedule extends DoctorState{}
+class Error_Post_Schedule extends DoctorState{
+  NetworkExceptions error;
+  Error_Post_Schedule(this.error);
+}
+
+class Loading_Get_Schedule extends DoctorState{}
+class Success_Get_Schedule extends DoctorState{}
+class Error_Get_Schedule extends DoctorState{
+  NetworkExceptions error;
+  Error_Get_Schedule(this.error);
+}

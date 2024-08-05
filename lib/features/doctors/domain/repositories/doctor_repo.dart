@@ -48,7 +48,7 @@ class DoctorRepo {
       required String Section_id,
       required String Session_duration,
       required String Day_In_Advanced,
-    //  required Working_hour,
+      //  required Working_hour,
       var image}) async {
     try {
       BaseModel model = await _remote.updateProfile(
@@ -64,6 +64,26 @@ class DoctorRepo {
           image: image);
       return right(model.data);
     } catch (error) {
+      return left(NetworkExceptions.getException(error));
+    }
+  }
+
+  Future<Either<NetworkExceptions, Map>> postDoctorSchedule({required int id}) async{
+    try {
+      BaseModel baseModel=await _remote.addDoctorSchedule(id: id);
+      return right(baseModel.data);
+    }
+    catch (error) {
+      return left(NetworkExceptions.getException(error));
+    }
+  }
+
+  Future<Either<NetworkExceptions, Map<String,dynamic> >>getDoctorSchedule({required int id})async{
+    try {
+      BaseModel baseModel=await _remote.getDoctorShedule(id: id);
+      return right(baseModel.data);
+    }
+    catch (error) {
       return left(NetworkExceptions.getException(error));
     }
   }

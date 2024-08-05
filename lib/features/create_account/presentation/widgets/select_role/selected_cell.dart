@@ -13,9 +13,6 @@ Widget SelectedCell({
   return InkWell(
     onTap: (){
       cubit.changed_Select(index: index);
-      if(index==1) {
-        cubit.getSection();
-      }
     },
     child: Row(
       children: [

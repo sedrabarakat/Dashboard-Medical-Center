@@ -1,6 +1,6 @@
 import 'package:dashboad/features/create_account/presentation/widgets/texts_and_fields/text&drop_down.dart';
 import 'package:dashboad/features/create_account/presentation/widgets/texts_and_fields/text&text_filed.dart';
-import 'package:dashboad/features/create_account/presentation/widgets/work_days.dart';
+import 'package:dashboad/features/doctors/presentation/widgets/profile_widget/work_days.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,14 +24,14 @@ class DoctorsFields extends StatelessWidget {
               text: "Section",
               dropdownItems: cubit.SectionNames,
               OnChanged: (value) {
-                cubit.Select_Section(item: value);
-                for (int j=0;j<cubit.SectionNames.length;j++ ) {
-                  if(cubit.SectionNames[j]==value){
-                    cubit.Select_SectionId(id: cubit.Sections[j][value]!);
+                //cubit.Select_Section(item: value);
+                for (var section in cubit.Sections) {
+                  if (section.containsKey(value)) {
+                    cubit.Select_SectionId(id: section[value]!);
                   }
                 }
               },
-              selectedItem: cubit.Selected_Section,
+              //selectedItem: cubit.Selected_Section,
               validator: (value) => ValidatorManager.instance
                   .validate_EmptyState(value ?? '', 'Section'),
             ),
@@ -58,16 +58,17 @@ class DoctorsFields extends StatelessWidget {
         SizedBox(
           height: 50.h,
         ),
-        Text_TextFiled(
+      /*  Text_TextFiled(
           text: 'Working Hours',
           onTap: () {
             showCupertinoDialog(
                 context: context,
-                builder: (_) => AlertDialouge(myctx: Buildcontext));
+                builder: (_) => AlertDialouge(myctx: Buildcontext,onPressed: (){
+                }));
           },
           validator: (value) => ValidatorManager.instance
               .validate_EmptyState(value ?? '', "Working hour...At least one"),
-        ),
+        ),*/
       ],
     );
   }

@@ -1,9 +1,14 @@
 import 'package:dashboad/core/widgets/editing/editing_dropdown.dart';
-import 'package:dashboad/features/create_account/presentation/cubits/add_account_cubit.dart';
 import 'package:dashboad/features/doctors/presentation/cubits/doctor_cubit.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/helpers/colors_helper.dart';
+import '../../../../../core/utils/style_manager.dart';
+import '../../../../../core/utils/validator_manager.dart';
 import '../../../../../core/widgets/editing/editing_field.dart';
+import '../../../../../core/widgets/text_from_field.dart';
+import '../../../../create_account/presentation/widgets/texts_and_fields/text&text_filed.dart';
+import 'work_days.dart';
 
 Widget infoCol1({required context}){
   DoctorCubit cubit=DoctorCubit.get(context);
@@ -23,9 +28,9 @@ Widget infoCol1({required context}){
           selection: "Select Section" ,
           is_Editig: isEditing,
         onChanged: (value){
-          for (int j=0;j<cubit.SectionsName!.length;j++ ) {
-            if(cubit.SectionsName![j]==value){
-              cubit.Select_SectionId(id: cubit.Sections[j][value]!);
+          for (var section in cubit.Sections) {
+            if (section.containsKey(value)) {
+              cubit.Select_SectionId(id: section[value]!);
             }
           }
         }
@@ -33,8 +38,6 @@ Widget infoCol1({required context}){
       editingFields(
           controller: cubit.Description,
           is_Editig: isEditing),
-
-
     ],
   );
 }
@@ -51,6 +54,28 @@ Widget infoCol2({required context}){
       editingFields(
           controller: cubit.Day_In_Advance,
           is_Editig: isEditing),
+      if(isEditing)
+        SizedBox(
+          width: 210.w,
+          child: Padding(
+            padding: EdgeInsets.only(top: 10.h, left: 10.w),
+            child: TextFild_def(
+              hintText: 'Working Hours',
+              onTap: () {
+                showCupertinoDialog(
+                    context: context,
+                    builder: (_) => AlertDialouge(Submit_onPressed: (){
+                      cubit.addDoctorSchedule();
+                    }));
+              },
+              textStyle: StyleManager.fontRegular20.copyWith(color: ColorsHelper.blueDarkest),
+              fillColor: ColorsHelper.blueLightest.withOpacity(.3),
+              borderStyle: StyleManager.Border_round40Blue,
+              validator: (value) => ValidatorManager.instance
+                  .validate_EmptyState(value ?? '', "Working hour...At least one"),
+            ),
+          ),
+        ),
     ],
   );
 }

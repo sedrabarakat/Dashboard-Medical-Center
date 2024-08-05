@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../create_account/presentation/cubits/add_account_cubit.dart';
+import '../../data/model/schedule_model.dart';
 
 part 'doctor_state.dart';
 
@@ -90,11 +91,11 @@ class DoctorCubit extends Cubit<DoctorState> {
   DoctorModel? doctorModel;
 
   Future<void> getDoctorProfile({required int id}) async {
+    emit(Loading_Get_Doctor());
     await _repo.getProfile(id: id).then((value) {
       value.fold((error) {
         emit(Error_Get_Doctor(error));
       }, (DoctorModel) {
-        doctorModel = DoctorModel;
         First_name.text = DoctorModel.userData.firstName;
         Middle_name.text = DoctorModel.userData.middleName;
         Last_name.text = DoctorModel.userData.lastName;
@@ -105,6 +106,7 @@ class DoctorCubit extends Cubit<DoctorState> {
         Section.text = DoctorModel.section!.sectionName.toString();
         Section_id = DoctorModel.section!.id;
         image = DoctorModel.userData.image;
+        doctorModel = DoctorModel;
         emit(Success_Get_Doctor());
       });
     });
@@ -162,4 +164,35 @@ class DoctorCubit extends Cubit<DoctorState> {
       });
     });
   }
+
+  Future<void>addDoctorSchedule()async{
+    emit(Loading_Post_Schedule());
+    await _repo.postDoctorSchedule(id: Doctor_id!).then((value){
+      value.fold((error){
+        emit(Error_Post_Schedule(error));
+      }, (map){
+        emit(Success_Post_Schedule());
+      });
+    });
+  }
+
+  List<ScheduleModel>working_hours=[];
+  Future<void>getDoctorSchedule()async{
+    emit(Loading_Get_Schedule());
+    working_hours=[];
+    await _repo.getDoctorSchedule(id: Doctor_id!).then((value){
+      value.fold((error){
+        emit(Error_Get_Schedule(error));
+      }, (workingMap){
+        workingMap.forEach((day,times){
+          ScheduleModel scheduleModel=ScheduleModel(day,times);
+          working_hours.add(scheduleModel);
+          print(working_hours.length);
+        });
+        emit(Success_Get_Schedule());
+      });
+    });
+  }
+
+
 }

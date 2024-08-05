@@ -61,22 +61,21 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
 
   void Select_Section({required String item}) {
     Selected_Section = item;
-    emit(Select_Sections_State());
+    //emit(Select_Sections_State());
   }
 
   void Select_SectionId({required int id}) {
     Section_id = id;
-    emit(Select_Sections_State());
   }
 
   void Select_Gender({required String value}) {
     Selected_Gender = value;
-    emit(Select_Gender_State());
+   // emit(Select_Gender_State());
   }
 
   void Select_Status({required String value}) {
     Status = value;
-    emit(Select_MatrialStates_State());
+   // emit(Select_MatrialStates_State());
   }
 
   void Select_Boolean({required String type, required String value}) {
@@ -85,12 +84,12 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     else
       Pressure = value;
 
-    emit(Select_Boolean_State());
+   // emit(Select_Boolean_State());
   }
 
   void Select_BloodType({required String value}) {
     Selected_Blood_Type = value;
-    emit(Select_BloodType_State());
+    //emit(Select_BloodType_State());
   }
 
   void Select_Date(String val) {
@@ -212,24 +211,6 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     emit(Calc_age_State());
     return age;
   }
-
-  ///Add work days
-
-  Map<String, dynamic> Work_Days = {
-    "monday": [],
-    "tuesday": [],
-    "wednesday": [],
-    "thursday": [],
-    "friday": [],
-    "saturday": [],
-    "sunday": [],
-  };
-
-  void selectDay({required String value}) {
-    Selected_Day = value;
-    emit(SelectDay_state());
-  }
-
   List<int>? Image_Bytes;
   FilePickerResult? Image;
 
@@ -242,4 +223,8 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     }
     emit(Add_Image_state());
   }
+
+  ///Add work days
+
+
 }

@@ -44,7 +44,7 @@ class CreateRepoImpl extends CreateRepo {
   }
 
   @override
-  Future<Either<NetworkExceptions, DoctorModel>> Create_Doctor({
+  Future<Either<NetworkExceptions, Usermodel>> Create_Doctor({
     required String first_name,
     required String middle_name,
     required String last_name,
@@ -67,7 +67,7 @@ class CreateRepoImpl extends CreateRepo {
           section_id: section_id,
           days_in_advance: days_in_advance,
           session_durtion: session_durtion);
-      DoctorModel doctorModel = DoctorModel.fromJson(response.data);
+      Usermodel doctorModel = Usermodel.fromJson(response.data['user']);
       return right(doctorModel);
     } catch (error) {
       return left(NetworkExceptions.getException(error));
