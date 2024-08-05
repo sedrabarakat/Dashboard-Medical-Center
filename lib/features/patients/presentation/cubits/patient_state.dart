@@ -37,5 +37,42 @@ class Loading_UpdateProfile_State extends PatientState{}
 class Success_UpdateProfile_State extends PatientState{}
 class Error_UpdateProfile_State extends PatientState{}
 
+////////////////////* Sessions state *//////////////////
+
+final class GetOpenSessionLoadingState extends PatientState{}
+final class GetOpenSessionSuccessState extends PatientState{
+  final List<Session> sessions;
+  GetOpenSessionSuccessState(this.sessions);
+}
+final class GetOpenSessionErrorState extends PatientState{
+  final String error;
+
+  GetOpenSessionErrorState (this.error);
+}
+
+final class AddSessionSuccess extends PatientState{}
+final class AddSessionError extends PatientState{
+  final String error;
+
+  AddSessionError (this.error);
+}
+
+final class CloseSessionSuccess extends PatientState{}
+final class CloseSessionError extends PatientState{
+  final String error;
+
+  CloseSessionError (this.error);
+}
+
+final class FileUploadSuccessState extends PatientState {
+  final String response;
+  FileUploadSuccessState(this.response);
+}
+
+final class FileUploadErrorState extends PatientState {
+  final String error;
+  FileUploadErrorState(this.error);
+}
+
 
 

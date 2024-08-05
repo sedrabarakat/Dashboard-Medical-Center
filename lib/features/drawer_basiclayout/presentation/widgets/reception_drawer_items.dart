@@ -1,10 +1,12 @@
 import 'package:dashboad/features/drawer_basiclayout/presentation/cubits/basic_cubit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/helpers/colors_helper.dart';
+import '../../../../core/utils/style_manager.dart';
+import '../../../../core/widgets/drop_down.dart';
 import '../cubits/basic_states.dart';
 import 'list_tile.dart';
 
@@ -34,31 +36,40 @@ Widget receptionDrawerList({required BuildContext context}) {
               text: 'Patients',
               icon: Icons.medication_liquid,
               onTap: () {
-                cubit.changeSelctedTap(index:2);
+                cubit.changeSelctedTap(index: 2);
                 context.go('/Patients_List');
               },
             ),
-            listTileWidget(
-              index: index,
-              spIndex: 3,
-              icon: Icons.book_online,
-              text: 'Session',
+            ListTile(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(40)),
+              ),
+              leading: Icon(
+                Icons.book_online,
+                color: (index == 3) ? Colors.white : ColorsHelper.blueDark,
+              ),
+              title: Dropdown(
+                dropdownItems: const [
+                  'View All Appointments',
+                  'Add New Appointment'
+                ],
+                OnChanged: (value) {
+                  cubit.selectAppointmentAction(value);
+                  if (value == 'View All Appointments') {
+                    context.go('/appointment');
+                  } else if (value == 'Add New Appointment') {
+                    context.go('/addAppointment');
+                  }
+                },
+                hintText: 'Appointments',
+                borderStyle: StyleManager.Border_round40,
+                fillColor: ColorsHelper.blueLightest,
+              ),
+              tileColor: (index == 3) ? ColorsHelper.blueDark : null,
               onTap: () {
                 cubit.changeSelctedTap(index: 3);
-                context.go('/session');
               },
             ),
-            listTileWidget(
-              index: index,
-              spIndex: 4,
-              icon: Icons.book_online,
-              text: 'Appointments',
-              onTap: () {
-                cubit.changeSelctedTap(index: 4);
-                context.go('/appointment');
-              },
-            ),
-
           ]);
     },
   );

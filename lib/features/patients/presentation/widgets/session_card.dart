@@ -1,7 +1,7 @@
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:flutter/material.dart';
-import '../../data/model/session_model.dart';
+import '../../../patients/data/models/session_model.dart';
 
 class SessionCard extends StatelessWidget {
   final Session session;
@@ -17,9 +17,9 @@ class SessionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Card(shadowColor: ColorsHelper.backgroundBlue  ,
       elevation: 5,
-        surfaceTintColor: ColorsHelper.tealLighter,
+        //surfaceTintColor: ColorsHelper.tealLighter,
        shape:  RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
       child: ListTile(
         title: Text('Date: '  ' ${session.createdDate}'),
@@ -30,14 +30,14 @@ class SessionCard extends StatelessWidget {
               return AlertDialog(
                 title: Text('Confirm Close this session', style: StyleManager.fontMedium24,),
                 content: Text(
-                  'Price:${session.total}\$\nAre you sure you want to close this session?'
+                  'Price: ''${session.total}\$\n\nAre you sure you want to close this session?'
                 ),
                 actions: [
                   TextButton(onPressed: (){Navigator.of(context).pop();}, child:const Text('Cancel')),
                   TextButton(onPressed: (){
                     onClose() ;
                     Navigator.of(context).pop();
-                    }, child:  Text('Close', style: StyleManager.font30Bold,)),
+                    }, child:  Text('Close', style: StyleManager.font20Bold,)),
                 ],
               ) ;
             }) ;

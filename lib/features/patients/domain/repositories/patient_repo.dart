@@ -1,8 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:dartz/dartz.dart';
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 
 import 'package:dashboad/features/patients/data/datasources/patient_remote_data_source.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../data/models/patient_model.dart';
 
@@ -90,5 +93,46 @@ class PatientRepo {
       return left(NetworkExceptions.getException(error));
     }
   }
+
+
+  ///////////////////* Sessions *//////////////////////
+
+  Future<Either<NetworkExceptions, Unit>> addSession(int patientId) async{
+    try{
+      _remote.addSession(patientId) ;
+      return right(unit) ;
+    }catch(exception){
+      return left(NetworkExceptions.getException(exception));
+    }
+  }
+  Future<Either<NetworkExceptions, Unit>> closeSession(int sessionId )async{
+    try{
+      _remote.closeSession(sessionId) ;
+      return right(unit) ;
+    }catch(exception){
+      return left(NetworkExceptions.getException(exception));
+    }
+  }
+  Future<Either<NetworkExceptions, BaseModels>> getOpenSessionForAPatient(int patientId)async{
+    try{
+      debugPrint('here you are in session repository try 11111111111111111111111111111');
+      final response = await _remote.getOpenSession(patientId);
+      debugPrint('here you are in session repository try 11111111111111111111111111111');
+      return right(response);
+    }catch(exception){
+      debugPrint('here you are in session repository catch 11111111111111111111111111111$exception');
+      return left(NetworkExceptions.getException(exception));
+    }
+  }
+  Future<Either<NetworkExceptions, Unit>> uploadFile(Uint8List fileBytes,String fileName,  int sessionId)async{
+    try{
+
+      _remote.uploadFile(fileBytes, fileName, sessionId) ;
+      return right(unit) ;
+    }catch(exception){
+      return left(NetworkExceptions.getException(exception)) ;
+    }
+  }
+
 
 }

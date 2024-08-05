@@ -1,4 +1,5 @@
 import 'package:dashboad/core/helpers/token_helper.dart';
+import 'package:dashboad/features/appointment/presentation/screens/add_appointment.dart';
 import 'package:dashboad/features/auth/presentation/screens/login_screen.dart';
 import 'package:dashboad/features/create_account/presentation/screens/add_account.dart';
 import 'package:dashboad/features/director/presentation/screens/directors_list.dart';
@@ -6,10 +7,10 @@ import 'package:dashboad/features/doctors/presentation/screens/doctors_list.dart
 import 'package:dashboad/features/inbox/presentation/screens/inbox.dart';
 import 'package:dashboad/features/laboratory/presentation/screens/laboratories_list.dart';
 import 'package:dashboad/features/sections/presentation/screens/sections_list.dart';
-import 'package:dashboad/features/session/presentation/test_session.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../features/appointment/presentation/screens/appointment_screen.dart';
+import '../../features/appointment/presentation/screens/all_appointment_screen.dart';
+import '../../features/appointment/presentation/screens/test_appointmenet.dart';
 import '../../features/doctors/presentation/screens/doctor_profile.dart';
 import '../../features/patients/presentation/screens/patient_profile.dart';
 import '../../features/patients/presentation/screens/patients_list.dart';
@@ -28,8 +29,9 @@ class WebRouter {
   static const kReseptionsList = 'Reseptions_list';
   static const kSectionsList = 'Seconts_list';
   static const kInbox = 'Inbox';
-  static const kSession ='Session' ;
-  static const kAppointment ='Appointment' ;
+ // static const kSession ='Session' ;
+  static const kAllAppointment ='Appointments' ;
+  static const kAddAppointment ='AddAppointment' ;
 
   static GoRouter router = GoRouter(
     initialLocation: TokenHelper.hasToken ? '/add_account' : '/',
@@ -108,11 +110,11 @@ class WebRouter {
           return const MaterialPage(child: Inbox());
         },
       ),
-      GoRoute(path: '/session', name: kSession, pageBuilder: (context, state) {
-        return const MaterialPage(child: TestSession()) ;
+      GoRoute(path: '/appointment', name: kAllAppointment, pageBuilder: (context, state){
+        return const MaterialPage(child: AllAppointmentScreen());
       }),
-      GoRoute(path: '/appointment', name: kAppointment, pageBuilder: (context, state){
-        return const MaterialPage(child: AppointmentScreen());
+      GoRoute(path: '/addAppointment', name: kAddAppointment, pageBuilder: (context, state){
+        return const MaterialPage(child: TestAppointment());
       })
     ],
   );

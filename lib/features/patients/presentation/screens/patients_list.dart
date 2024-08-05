@@ -79,6 +79,7 @@ class PatientsList extends StatelessWidget {
           onEditPressed: () {
             context.go('/Patients_List/Patient_profile/${patients[index].id}');
             PatientCubit.get(context).getPatientProfile(id: patients[index].id);
+            PatientCubit.get(context).getOpenSession(id: patients[index].id) ;
           },
           onRemovePressed: () {
             BlocProvider.of<PatientCubit>(context)

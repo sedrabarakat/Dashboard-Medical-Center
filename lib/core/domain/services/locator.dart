@@ -14,7 +14,6 @@ import 'package:dashboad/features/laboratory/data/data_sources/laboratory_remote
 import 'package:dashboad/features/laboratory/domain/repositories/lab_master_repo.dart';
 import 'package:dashboad/features/patients/data/datasources/patient_remote_data_source.dart';
 import 'package:dashboad/features/patients/domain/repositories/patient_repo.dart';
-import 'package:dashboad/features/session/data/data_sources/remote/session_remote.dart';
 import 'package:dashboad/features/reseptions/data/datasource/remote/reseptions_remote_data_source.dart';
 import 'package:dashboad/features/reseptions/domain/repository/reseptions_repo.dart';
 import 'package:dashboad/features/sections/data/data_sources/section_remote_data_srouce.dart';
@@ -26,7 +25,6 @@ import '../../../features/create_account/data/data_source/remote/get_sections_re
 import '../../../features/create_account/data/repository/sections_repo_impl.dart';
 import '../../../features/create_account/domain/repository/get_sections_repo.dart';
 import '../../../features/director/data/datasource/remote/director_remote_data_source.dart';
-import '../../../features/session/domain/repositories/session_repository.dart';
 
 final getIt = GetIt.I;
 
@@ -76,12 +74,6 @@ Future locatorSetUp() async {
   getIt.registerLazySingleton<CreateRemoteDataSource>(
     () => CreateRemoteDataSource(getIt()),
   );
-  getIt.registerLazySingleton<SessionRemoteDataSources>(
-    () => SessionRemoteDataSources(apiServices: getIt()),
-  );
-  getIt.registerLazySingleton<SessionRepository>(
-      () => SessionRepository(getIt<SessionRemoteDataSources>()));
-
   getIt.registerLazySingleton<AppointmentRemote>(
       () => AppointmentRemote(getIt()));
   getIt.registerLazySingleton<AppointmentRepo>(()=>AppointmentRepo(getIt())) ;

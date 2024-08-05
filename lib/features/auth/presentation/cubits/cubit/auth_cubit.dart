@@ -38,7 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
     otpButtonState = ButtonState.loading;
     emit(const AuthState.verfiyCodeLoading());
     final response =
-        await _repo.verfiycode(phoneNumberController.text, otpCode);
+        await _repo.verifyCode(phoneNumberController.text, otpCode);
     response.fold((error) {
       otpButtonState = ButtonState.fail;
       emit(AuthState.verfiyCodeError(error));

@@ -5,12 +5,11 @@ import 'package:dashboad/features/drawer_basiclayout/presentation/screens/basela
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_masonry_view/flutter_masonry_view.dart';
-import 'package:shaky_animated_listview/animators/grid_animator.dart';
 
 import '../../../../core/domain/error_handler/network_exceptions.dart';
 
-class AppointmentScreen extends StatelessWidget {
-  const AppointmentScreen({super.key});
+class AllAppointmentScreen extends StatelessWidget {
+  const AllAppointmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +66,8 @@ class AppointmentScreen extends StatelessWidget {
                               ),
                             );
                           },
-                          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
                             return const Icon(Icons.error);
                           },
                         ), //Image.asset(item),

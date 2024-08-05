@@ -1,34 +1,38 @@
 import 'package:dashboad/core/domain/services/locator.dart';
-import 'package:dashboad/features/session/presentation/cubit/session_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helpers/colors_helper.dart';
 import '../../../../core/utils/style_manager.dart';
 import '../../../../core/widgets/elevated_button.dart';
 import '../../../../core/widgets/table/shimmer_table_row.dart';
 import '../../../../core/widgets/toast_bar.dart';
-import '../cubit/session_cubit.dart';
+import '../../../patients/presentation/cubits/patient_cubit.dart';
 import 'session_card.dart';
 
 class SessionContainer extends StatelessWidget {
-  const SessionContainer({super.key});
+  final int id  ;
+  const SessionContainer({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => SessionCubit(getIt())..getOpenSession(),
-      child: BlocBuilder<SessionCubit, SessionState>(
+      create: (BuildContext context) => PatientCubit(getIt())..getOpenSession(id: id),
+      child: BlocBuilder<PatientCubit, PatientState>(
         builder: (context, state) {
           return Container(
-            padding:const EdgeInsets.all(10),
-            height: 920,
-            width: 350,
+            decoration: StyleManager.rounded40(color: Colors.white),
+            padding: EdgeInsets.all(30.h),
+            height: 920.h,
+            width: 350.w,
             child: Column(
+              //crossAxisAlignment: ,
               children: [
                 Text(
                   'Open Sessions:',
                   style: StyleManager.font30Bold_Lobster,
                 ),
+                const SizedBox(height: 10,),
                 Expanded(
                   child: Builder(
                     builder: (builderContext) {
@@ -49,40 +53,38 @@ class SessionContainer extends StatelessWidget {
                           itemCount: sessions.length,
                           itemBuilder: (context, index) {
                             final session = sessions[index];
-                            return SessionCard(
-                              session: session,
-                              onClose: () {
-                                debugPrint('click on close button');
-                                context
-                                    .read<SessionCubit>()
-                                    .closeSession(session.id);
-                              },
-                              onEdit: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      title: const Text('Upload laboratory tests \nand radiographic images \n(As files) to this Session:\n '),
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
+                            return Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: SessionCard(
+                                session: session,
+                                onClose: () {
+                                  debugPrint('click on close button');
+                                  context
+                                      .read<PatientCubit>()
+                                      .closeSession(session.id, id);
+                                },
+                                onEdit: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        title: Text('Upload laboratory tests \nand radiographic images \n(As files) to this Session:\n ', style: StyleManager.font20W600,),
+                                        actions: [
                                           CustomElevatedButton(
                                             onPressed: () {
                                               builderContext
-                                                  .read<SessionCubit>()
+                                                  .read<PatientCubit>()
                                                   .uploadFile(session.id)
                                                   .then((_) {
                                                 ToastBar.onSuccess(
                                                   context,
                                                   message:
-                                                      'the file has been added successfully',
+                                                  'the file has been added successfully',
                                                   title: "Success",
                                                 );
                                                 builderContext
-                                                    .read<SessionCubit>()
-                                                    .getOpenSession();
+                                                    .read<PatientCubit>()
+                                                    .getOpenSession(id: id);
                                               }).catchError((error) {
                                                 ToastBar.onError(
                                                   context,
@@ -92,22 +94,20 @@ class SessionContainer extends StatelessWidget {
                                               });
                                             },
                                             label: 'Add File',
-                                            buttonColor: ColorsHelper.teal,
+                                            buttonColor: ColorsHelper.blue,
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: const Text('Save'),
                                           ),
                                         ],
-                                      ),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: const Text('Save'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              },
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                             );
                           },
                         );
@@ -122,11 +122,12 @@ class SessionContainer extends StatelessWidget {
                 ),
                 CustomElevatedButton(
                   onPressed: () {
-                    context.read<SessionCubit>().addSession(context);
+                    context.read<PatientCubit>().addSession(context, id);
                   },
                   label: 'Add New Session',
-                  buttonColor: ColorsHelper.teal,
+                  buttonColor: ColorsHelper.blue,
                 ),
+
 
                 //const SizedBox(height: 10,),
               ],
