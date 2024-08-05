@@ -42,22 +42,20 @@ class AuthCubit extends Cubit<AuthState> {
     otpButtonState = ButtonState.loading;
     emit(const AuthState.verfiyCodeLoading());
     final response =
-        await _repo.verifyCode(phoneNumberController.text, otpCode);
-    response.fold(
-      (error) {
-        otpButtonState = ButtonState.fail;
-        emit(AuthState.verfiyCodeError(error));
-      },
-      (data) {
-        otpButtonState = ButtonState.success;
-        emit(const AuthState.verfiyCodeSuccess());
-        SharedPrefrence.saveData(key: 'token', value: data);
-        DioHelper().addTokenInterceptor();
-      },
-    );
+    await _repo.verifyCode(phoneNumberController.text, otpCode);
+    response.fold((error) {
+      otpButtonState = ButtonState.fail;
+      emit(AuthState.verfiyCodeError(error));
+    }, (data) {
+      otpButtonState = ButtonState.success;
+      emit(const AuthState.verfiyCodeSuccess());
+      SharedPrefrence.saveData(key:'token', value:data['token']);
+      SharedPrefrence.saveData(key:'role', value:data['user']['user_type']);
+      DioHelper().addTokenInterceptor();
+    });
   }
 
-  void updateTimerSeconds() {
+void updateTimerSeconds() {
     timerSeconds *= 2;
   }
 }

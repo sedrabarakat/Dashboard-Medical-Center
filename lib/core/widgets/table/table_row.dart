@@ -20,6 +20,7 @@ class MyTableRow extends StatelessWidget {
     this.borderColor = ColorsHelper.lightGry,
     this.editIcon = Icons.settings,
     this.removeIcon = Icons.remove_circle,
+    this.thereEdit=false
   });
   final UserModel user;
   final void Function()? onEditPressed;
@@ -28,6 +29,7 @@ class MyTableRow extends StatelessWidget {
   final Color borderColor;
   final IconData editIcon;
   final IconData removeIcon;
+  final bool thereEdit;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -103,7 +105,7 @@ class MyTableRow extends StatelessWidget {
             child: Wrap(
               clipBehavior: Clip.hardEdge,
               children: [
-                InkWell(
+                (thereEdit)?InkWell(
                   borderRadius: BorderRadius.circular(10),
                   onTap: onEditPressed,
                   child: Row(
@@ -122,7 +124,7 @@ class MyTableRow extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
+                ):SizedBox(),
                 const SizedBox(
                   width: AppSize.s8,
                 ),

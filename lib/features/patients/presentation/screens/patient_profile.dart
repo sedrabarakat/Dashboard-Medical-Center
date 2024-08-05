@@ -12,6 +12,7 @@ import '../../../../core/utils/style_manager.dart';
 import '../../../../core/widgets/columns_of_texts.dart';
 import '../../domain/constants/consts.dart';
 import '../../../../core/widgets/pic_name_widget.dart';
+import '../widgets/session_container.dart';
 
 class PatientProfile extends StatelessWidget {
   int id;
@@ -65,12 +66,7 @@ class PatientProfile extends StatelessWidget {
                       SizedBox(
                         width: 30.w,
                       ),
-                      Container(
-                        ///tuqa's container...Gooood Luckk :)
-                        height: 920.h,
-                        width: 350.w,
-                        decoration: StyleManager.rounded40(color: Colors.white),
-                      )
+                      Flexible(child: SessionContainer(id: id)),
                     ],
                   );
                 },

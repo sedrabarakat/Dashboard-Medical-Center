@@ -29,6 +29,12 @@ class StyleManager {
     fontWeight: FontWeight.bold,
     fontFamily: "Lobster-Regular",
   );
+  static TextStyle font17Lobster =  TextStyle(
+    fontSize: 17.sp,
+    fontWeight: FontWeight.w400,
+    color: Colors.white,
+    fontFamily: "Lobster-Regular",
+  );
   /*>>>>>>>>>> Bold <<<<<<<<<<*/
   static TextStyle fontBold32 = TextStyle(
     fontSize: 32.sp,

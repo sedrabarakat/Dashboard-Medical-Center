@@ -23,7 +23,7 @@ Widget doctorSchedule({
         children: [
           Text(
             "Doctor\'s Schedule",
-            style: StyleManager.font30Bold
+            style: StyleManager.font30Bold_Lobster
                 .copyWith(color: ColorsHelper.blueLight),
           ),
           SizedBox(
@@ -52,14 +52,14 @@ Widget ScheduleColumn({required ScheduleModel object}) {
       children: [
         Container(
           height: 50,
-          width: 140,
+          width: 120,
           decoration: BoxDecoration(
               color: ColorsHelper.blueDark,
               borderRadius: BorderRadius.circular(50)),
           child: Center(
             child: Text(
               object.day,
-              style: StyleManager.fontRegular20,
+              style: StyleManager.font17Lobster,
             ),
           ),
         ),
@@ -76,7 +76,7 @@ Widget ScheduleColumn({required ScheduleModel object}) {
                   children: [
                     Text(
                         "From : ",
-                        style:StyleManager.fontRegular20.copyWith(
+                        style:StyleManager.font17Lobster.copyWith(
                             color: Colors.grey
                         )
                     ),
@@ -89,7 +89,7 @@ Widget ScheduleColumn({required ScheduleModel object}) {
                       child: Center(
                         child: Text(
                           "${spl_times[0]}",
-                          style: StyleManager.fontRegular20,
+                          style: StyleManager.font17Lobster,
                         ),
                       ),
                     ),
@@ -98,7 +98,7 @@ Widget ScheduleColumn({required ScheduleModel object}) {
                     ),
                     Text(
                       "To : ",
-                      style: StyleManager.fontRegular20.copyWith(
+                      style: StyleManager.font17Lobster.copyWith(
                           color: Colors.grey
                       ),
                     ),
@@ -111,7 +111,7 @@ Widget ScheduleColumn({required ScheduleModel object}) {
                       child: Center(
                         child: Text(
                           "${spl_times[1]}",
-                          style: StyleManager.fontRegular20,
+                          style: StyleManager.font17Lobster,
                         ),
                       ),
                     ),

@@ -1,5 +1,4 @@
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
-import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:dashboad/core/widgets/table/shimmer_table_row.dart';
@@ -10,7 +9,6 @@ import 'package:dashboad/features/patients/presentation/cubits/patient_cubit.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import '../../../drawer_basiclayout/presentation/screens/baselayout.dart';
 
 class PatientsList extends StatelessWidget {
   const PatientsList({super.key});
@@ -73,6 +71,7 @@ class PatientsList extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         itemBuilder: (context, index) => MyTableRow(
+          thereEdit: true,
           user: patients[index].userData,
           onEditPressed: () {
             context.go('/Patients_List/Patient_profile/${patients[index].id}');

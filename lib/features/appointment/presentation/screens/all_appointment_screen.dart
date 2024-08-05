@@ -1,7 +1,7 @@
 import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/features/appointment/presentation/cubit/appointment_cubit.dart';
 import 'package:dashboad/features/appointment/presentation/cubit/appointment_state.dart';
-import 'package:dashboad/features/drawer_basiclayout/presentation/screens/baselayout.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_masonry_view/flutter_masonry_view.dart';
@@ -15,8 +15,7 @@ class AllAppointmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AppointmentCubit(getIt())..getAppointment(),
-      child: BaseLayout(
-        child: Column(
+      child:Column(
           children: [
             BlocBuilder<AppointmentCubit, AppointmentState>(
                 buildWhen: (previous, current) {
@@ -80,7 +79,7 @@ class AllAppointmentScreen extends StatelessWidget {
             }),
           ],
         ),
-      ),
+
     );
   }
 }

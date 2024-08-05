@@ -72,6 +72,7 @@ class DoctorList extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         itemBuilder: (context, index) => MyTableRow(
+          thereEdit: true,
           user: doctors[index].userData,
           onEditPressed: () {
             context.go('/Doctors_List/Doctor_profile/${doctors[index].id}');
