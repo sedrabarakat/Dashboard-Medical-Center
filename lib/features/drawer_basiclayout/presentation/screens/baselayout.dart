@@ -14,32 +14,45 @@ class BaseLayout extends StatelessWidget {
     return Scaffold(
       key: BasicCubit.get(context).scaffoldKey,
       backgroundColor: ColorsHelper.basicBackground,
-      drawer: const CustomDrawer(),
-      body: !ResponsiveHelper.isDesktop(context)
-          ? Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    BasicCubit.get(context).controlMenu();
-                  },
-                  icon: const Icon(
-                    Icons.menu,
-                  ),
-                ),
-                Expanded(
-                  child: child,
-                )
-              ],
-            )
-          : Row(
-              children: [
-                const CustomDrawer(),
-                Expanded(
-                  child: child,
-                ),
-              ],
-            ),
+      body: FutureBuilder<String?>(
+        future: BasicCubit.get(context).getRole(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text('No role found'));
+          } else {
+            final role = snapshot.data!;
+            return !ResponsiveHelper.isDesktop(context)
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          BasicCubit.get(context).controlMenu();
+                        },
+                        icon: const Icon(
+                          Icons.menu,
+                        ),
+                      ),
+                      Expanded(
+                        child: child,
+                      )
+                    ],
+                  )
+                : Row(
+                    children: [
+                      CustomDrawer(role: role),
+                      Expanded(
+                        child: child,
+                      ),
+                    ],
+                  );
+          }
+        },
+      ),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:dashboad/core/domain/services/api_service.dart';
 import 'package:dashboad/core/domain/services/api_services_impl.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
+import 'package:dashboad/features/appointment/data/data_sources/remote/appointment_remote.dart';
+import 'package:dashboad/features/appointment/domain/repositories/appointment_repo.dart';
 import 'package:dashboad/features/auth/data/datasrouces/remote/auth_remote.dart';
 import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
 import 'package:dashboad/features/create_account/data/repository/create_repo_impl.dart';
@@ -67,11 +69,15 @@ Future locatorSetUp() async {
   );
   /*>>>>>>>>>> Create Account <<<<<<<<<<*/
   getIt.registerLazySingleton<CreateRepo>(
-    () => CreateRepoImpl(getIt()),
+      ()=> CreateRepoImpl(getIt()),
   );
   getIt.registerLazySingleton<CreateRemoteDataSource>(
     () => CreateRemoteDataSource(getIt()),
   );
+  getIt.registerLazySingleton<AppointmentRemote>(
+      () => AppointmentRemote(getIt()));
+  getIt.registerLazySingleton<AppointmentRepo>(()=>AppointmentRepo(getIt())) ;
+
   /*>>>>>>>>>> Lab Master <<<<<<<<<<*/
   getIt.registerLazySingleton<LaboratoryRemoteDataSource>(
     () => LaboratoryRemoteDataSource(getIt()),

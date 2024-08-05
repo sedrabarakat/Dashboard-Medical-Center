@@ -25,7 +25,7 @@ class SectionsList extends StatelessWidget {
           child: BaseLayout(
               child: Center(
             child: ElevatedButton(
-              child: Text('Get Sections'),
+              child:const Text('Get Sections'),
               onPressed: () async {
                 await BlocProvider.of<SectionCubit>(context).updateSection(2);
               },

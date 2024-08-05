@@ -1,9 +1,12 @@
-const baseServ = "http://127.0.0.1:8001/";
+const baseServ = "http://192.168.5.1:8000/";
+//const baseServ = "http://127.0.0.1:8001/";
 //const baseServ = "http://192.168.1.8:8000/";
 const baseUrl = "${baseServ}api/";
 const auth = "auth/";
 const dashboard = 'dashboard/';
 const delete = 'destroy/';
+const session = 'session/' ;
+const appintment = 'appointment' ;
 
 class AppUrl {
   /*>>>>>>>>>>>>>>>>>>>> Auth <<<<<<<<<<<<<<<<<<<<*/
@@ -39,4 +42,11 @@ class AppUrl {
   static const getSectionInformation = "$baseUrl${dashboard}section/";
   static const updateSection = "$baseUrl${dashboard}section/update/";
   static const deleteSection = "$baseUrl${dashboard}section/";
+  /*>>>>>>>>>>>>>>>>>>>>  Session <<<<<<<<<<<<<<<<<<<<<<<*/
+  static const addSession = "$baseUrl$dashboard${session}add/" ;
+  static const closeSession ="$baseUrl$dashboard${session}close/" ;
+  static const getOpenSessionForAPatient = "$baseUrl$dashboard${session}open-sessions/" ;
+  static const uploadFile = '$baseUrl$dashboard${session}upload-file/';
+  /*>>>>>>>>>>>>>>>>>>>> Appointment <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+  static const getAppointment = "$baseUrl$dashboard$appintment" ;
 }

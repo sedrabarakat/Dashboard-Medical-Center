@@ -66,6 +66,10 @@ dependencies:
   progress_state_button: ^1.0.4
   progress_loading_button: ^2.0.2
   shimmer: ^3.0.0
+  equatable: ^2.0.5
+  open_file: ^3.3.2
+  flutter_masonry_view: ^0.0.2
+  shaky_animated_listview: ^0.0.5
 
   web_socket_channel: ^3.0.1
 
@@ -74,8 +78,8 @@ dependencies:
   lottie: ^3.1.2
 
   image_network: ^2.5.6
-
-  file_picker: ^8.0.6
+  file_picker: ^8.0.0+1
+  flutter_staggered_animations: ^1.1.1
 
 
 dev_dependencies:

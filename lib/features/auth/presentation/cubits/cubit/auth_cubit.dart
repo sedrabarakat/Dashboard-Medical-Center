@@ -27,7 +27,7 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((error) {
       loginButtonState = ButtonState.idle;
       emit(AuthState.requestCodeError(error));
-      // ToastBar.onNetworkFailure(context, networkException: error);
+     // ToastBar.onNetworkFailure(context, networkException: error);
     }, (data) {
       loginButtonState = ButtonState.success;
       emit(const AuthState.requestCodeSuccess());
@@ -38,14 +38,15 @@ class AuthCubit extends Cubit<AuthState> {
     otpButtonState = ButtonState.loading;
     emit(const AuthState.verfiyCodeLoading());
     final response =
-        await _repo.verfiycode(phoneNumberController.text, otpCode);
+        await _repo.verifyCode(phoneNumberController.text, otpCode);
     response.fold((error) {
       otpButtonState = ButtonState.fail;
       emit(AuthState.verfiyCodeError(error));
     }, (data) {
       otpButtonState = ButtonState.success;
       emit(const AuthState.verfiyCodeSuccess());
-      SharedPrefrence.saveData(key: 'token', value: data);
+      SharedPrefrence.saveData(key:'token', value:data['token']);
+      SharedPrefrence.saveData(key:'role', value:data['user']['user_type']);
       DioHelper().addTokenInterceptor();
     });
   }

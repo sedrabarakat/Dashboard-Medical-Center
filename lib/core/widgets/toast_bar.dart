@@ -47,6 +47,16 @@ class ToastBar {
     );
   }
 
+  static onError(BuildContext context,
+      {required String message, required String title}) {
+    showTOAST(
+      context,
+      textToast: message,
+      title: title,
+      status: ToastStatus.failure,
+    );
+  }
+
   static onNetworkFailure(BuildContext context,
       {required NetworkExceptions networkException, String? title}) {
     showTOAST(

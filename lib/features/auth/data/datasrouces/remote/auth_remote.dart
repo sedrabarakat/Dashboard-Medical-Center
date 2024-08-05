@@ -16,7 +16,7 @@ class AuthRemoteDataSource {
     return BaseModel(data: null, message: response['message']);
   }
 
-  Future<BaseModel<String>> verifyCode(String phoneNumber, String code) async {
+  Future<BaseModel<Map<String, dynamic>>> verifyCode(String phoneNumber, String code) async {
     final response = await _apiServices.post(
       AppUrl.verifyCode,
       body: {
@@ -24,6 +24,6 @@ class AuthRemoteDataSource {
         'code': code,
       },
     );
-    return BaseModel(data: response['token'], message: "Success");
+    return BaseModel(data: response, message: "Success");
   }
 }
