@@ -28,12 +28,15 @@ class SectionRemoteDataSrouce {
     );
   }
 
-  Future<BaseModel<SectionModel>> updateSection(int id, String name) async {
+  Future<BaseModel<SectionModel>> updateSection(
+      int id, String name, Uint8List image) async {
     final response = await _apiServices.post(
       "${AppUrl.updateSection}$id",
-      body: {
+      //todo fix the image
+      formData: FormData.fromMap({
         "name": name,
-      },
+        "image": MultipartFile.fromBytes(image, filename: name + ".jpg"),
+      }),
     );
     return BaseModel.fromJson(
       response,

@@ -1,3 +1,4 @@
+import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/helpers/dimensions_helper.dart';
 import 'package:dashboad/core/helpers/responsive_helper.dart';
@@ -31,9 +32,9 @@ class LoginPage extends StatelessWidget {
             // snackbar & Go to the otp card
             requestCodeSuccess: () {
               BlocProvider.of<AuthCubit>(context).pageController.nextPage(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeIn,
-              );
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
               ToastBar.onSuccess(
                 context,
                 message: 'the code has been sent successfully',
@@ -50,7 +51,12 @@ class LoginPage extends StatelessWidget {
                 message: "Welcome Back",
                 title: 'Success',
               );
-              context.go('/add_account');
+              print(
+                  "________________________________________________________O");
+              print("Success");
+              SharedPrefrence.getData(key: "role") == 'owner'
+                  ? context.go('/add_account')
+                  : context.go('/Doctors_List');
             },
             verfiyCodeError: (error) {
               ToastBar.onNetworkFailure(context, networkException: error);
@@ -105,17 +111,17 @@ class LoginPage extends StatelessWidget {
                                 )
                               ],
                               color:
-                              isMobile ? Colors.transparent : Colors.white,
+                                  isMobile ? Colors.transparent : Colors.white,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             constraints: BoxConstraints(
                               maxWidth: isDesktop
                                   ? DimensionsHelper.widthPercentage(
-                                  context, 30)
+                                      context, 30)
                                   : isTablet
-                                  ? DimensionsHelper.widthPercentage(
-                                  context, 70)
-                                  : DimensionsHelper.screenWidth(context),
+                                      ? DimensionsHelper.widthPercentage(
+                                          context, 70)
+                                      : DimensionsHelper.screenWidth(context),
                               maxHeight: isMobile
                                   ? DimensionsHelper.screenHeight(context)
                                   : 500,
@@ -125,50 +131,50 @@ class LoginPage extends StatelessWidget {
                                 return PageView(
                                   physics: const NeverScrollableScrollPhysics(),
                                   controller:
-                                  BlocProvider.of<AuthCubit>(context)
-                                      .pageController,
+                                      BlocProvider.of<AuthCubit>(context)
+                                          .pageController,
                                   children: [
                                     LoginCard(
                                       phoneNumberController:
-                                      BlocProvider.of<AuthCubit>(context)
-                                          .phoneNumberController,
+                                          BlocProvider.of<AuthCubit>(context)
+                                              .phoneNumberController,
                                       passwordController:
-                                      BlocProvider.of<AuthCubit>(context)
-                                          .passwordController,
+                                          BlocProvider.of<AuthCubit>(context)
+                                              .passwordController,
                                       textColor: isMobile
                                           ? ColorsHelper.white
                                           : ColorsHelper.black,
                                       onPressed: () async {
                                         await BlocProvider.of<AuthCubit>(
-                                            context)
+                                                context)
                                             .requestCode(context);
                                       },
                                       buttonCurrentState:
-                                      BlocProvider.of<AuthCubit>(context)
-                                          .loginButtonState,
+                                          BlocProvider.of<AuthCubit>(context)
+                                              .loginButtonState,
                                     ),
                                     OtpCard(
                                       timerDuration: Duration(
                                         seconds:
-                                        BlocProvider.of<AuthCubit>(context)
-                                            .timerSeconds,
+                                            BlocProvider.of<AuthCubit>(context)
+                                                .timerSeconds,
                                       ),
                                       buttonCurrentState:
-                                      BlocProvider.of<AuthCubit>(context)
-                                          .otpButtonState,
+                                          BlocProvider.of<AuthCubit>(context)
+                                              .otpButtonState,
                                       textColor: isMobile
                                           ? ColorsHelper.white
                                           : ColorsHelper.black,
                                       onPressed: () async {
                                         await BlocProvider.of<AuthCubit>(
-                                            context)
+                                                context)
                                             .verfiyCode(context);
                                       },
                                       onCompleted: (otpCode) async {
                                         BlocProvider.of<AuthCubit>(context)
                                             .otpCode = otpCode;
                                         await BlocProvider.of<AuthCubit>(
-                                            context)
+                                                context)
                                             .verfiyCode(context);
                                       },
                                     ),
@@ -190,4 +196,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-

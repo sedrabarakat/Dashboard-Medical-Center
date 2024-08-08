@@ -3,6 +3,7 @@ import 'package:dashboad/features/sections/data/models/section_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'doctor_model.g.dart';
 
+//todo check if the section_id and some other stuff return int in all api's not string in some and the other int
 @JsonSerializable()
 class DoctorModel {
   final int id;

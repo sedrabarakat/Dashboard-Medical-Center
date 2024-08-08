@@ -33,11 +33,22 @@ class AddSectionScreen extends StatelessWidget {
               listener: (context, state) {
                 if (state is CreateSectionSuccessState) {
                   ToastBar.onSuccess(context,
-                      message: edit
-                          ? "Section edited Successfully"
-                          : "Section created Successfully",
+                      message: "Section created Successfully",
                       title: "Success");
                 } else if (state is CreateSectionErrorState) {
+                  ToastBar.onNetworkFailure(
+                    context,
+                    networkException: state.error,
+                  );
+                } else if (state is UpdateSectionSuccessState) {
+                  ToastBar.onSuccess(
+                    context,
+                    message: "Section edited Successfully",
+                    title: 'Success',
+                  );
+
+                  context.pop();
+                } else if (state is UpdateSectionErrorState) {
                   ToastBar.onNetworkFailure(
                     context,
                     networkException: state.error,
@@ -118,65 +129,85 @@ class AddSectionScreen extends StatelessWidget {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Section Services",
-                                    style: StyleManager.fontregular14.copyWith(
-                                      color: Colors.black54,
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  IconButton(
-                                    onPressed: () async {
-                                      await BlocProvider.of<SectionCubit>(
-                                              builderContext)
-                                          .showServiceDialog(
-                                        context: builderContext,
-                                        type: ServiceCrud.addToList,
-                                      );
-                                    },
-                                    icon: const Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    ),
-                                    style: IconButton.styleFrom(
-                                      padding: EdgeInsets.zero,
-                                      iconSize: 14,
-                                      minimumSize: const Size(26, 26),
-                                      maximumSize: const Size(26, 26),
-                                      backgroundColor: ColorsHelper.teal,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Expanded(
-                                child: BlocBuilder<SectionCubit, SectionState>(
-                                  builder: (builderContext, state) =>
-                                      AddServiceList(
-                                    animationDuration:
-                                        const Duration(milliseconds: 500),
-                                    listKey: BlocProvider.of<SectionCubit>(
-                                            builderContext)
-                                        .listKey,
-                                    items: edit
-                                        ? BlocProvider.of<SectionCubit>(
-                                                builderContext)
-                                            .sectionDetails!
-                                            .service!
-                                        : BlocProvider.of<SectionCubit>(
-                                                builderContext)
-                                            .sectionServices,
-                                    onRemovePressed:
-                                        BlocProvider.of<SectionCubit>(
-                                                builderContext)
-                                            .removeSectionService,
-                                  ),
-                                ),
-                              ),
+                              !edit
+                                  ? Expanded(
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "Section Services",
+                                                style: StyleManager
+                                                    .fontregular14
+                                                    .copyWith(
+                                                  color: Colors.black54,
+                                                ),
+                                              ),
+                                              const Spacer(),
+                                              IconButton(
+                                                onPressed: () async {
+                                                  await BlocProvider.of<
+                                                              SectionCubit>(
+                                                          builderContext)
+                                                      .showServiceDialog(
+                                                    context: builderContext,
+                                                    type: ServiceCrud.addToList,
+                                                  );
+                                                },
+                                                icon: const Icon(
+                                                  Icons.add,
+                                                  color: Colors.white,
+                                                ),
+                                                style: IconButton.styleFrom(
+                                                  padding: EdgeInsets.zero,
+                                                  iconSize: 14,
+                                                  minimumSize:
+                                                      const Size(26, 26),
+                                                  maximumSize:
+                                                      const Size(26, 26),
+                                                  backgroundColor:
+                                                      ColorsHelper.blue,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          Expanded(
+                                            child: BlocBuilder<SectionCubit,
+                                                SectionState>(
+                                              builder:
+                                                  (builderContext, state) =>
+                                                      AddServiceList(
+                                                animationDuration:
+                                                    const Duration(
+                                                        milliseconds: 500),
+                                                listKey: BlocProvider.of<
+                                                            SectionCubit>(
+                                                        builderContext)
+                                                    .listKey,
+                                                items: edit
+                                                    ? BlocProvider.of<
+                                                                SectionCubit>(
+                                                            builderContext)
+                                                        .sectionDetails!
+                                                        .service!
+                                                    : BlocProvider.of<
+                                                                SectionCubit>(
+                                                            builderContext)
+                                                        .sectionServices,
+                                                onRemovePressed: BlocProvider
+                                                        .of<SectionCubit>(
+                                                            builderContext)
+                                                    .removeSectionService,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  : const SizedBox(),
                               BlocBuilder<SectionCubit, SectionState>(
                                 builder: (builderContext, state) {
                                   return CustomStateButton(
@@ -186,14 +217,29 @@ class AddSectionScreen extends StatelessWidget {
                                           .addSectionKey
                                           .currentState!
                                           .validate()) {
-                                        await BlocProvider.of<SectionCubit>(
-                                                builderContext)
-                                            .createSection();
+                                        !edit
+                                            ? await BlocProvider.of<
+                                                        SectionCubit>(
+                                                    builderContext)
+                                                .createSection()
+                                            : await BlocProvider.of<
+                                                        SectionCubit>(
+                                                    builderContext)
+                                                .updateSection(
+                                                BlocProvider.of<SectionCubit>(
+                                                        builderContext)
+                                                    .sectionDetails!
+                                                    .id,
+                                              );
                                       }
                                     },
-                                    currentState: BlocProvider.of<SectionCubit>(
-                                            builderContext)
-                                        .createSectionButtonState,
+                                    currentState: !edit
+                                        ? BlocProvider.of<SectionCubit>(
+                                                builderContext)
+                                            .createSectionButtonState
+                                        : BlocProvider.of<SectionCubit>(
+                                                builderContext)
+                                            .updateSectionButtonState,
                                     label: edit ? "Edit" : "Create",
                                   );
                                 },

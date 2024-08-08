@@ -48,8 +48,7 @@ class PatientsList extends StatelessWidget {
               } else if (state is GetPatientsLoadingState) {
                 return Expanded(
                   child: ListView.builder(
-                    itemBuilder: (context, index) =>
-                        const ShimmerTableRow(),
+                    itemBuilder: (context, index) => const ShimmerTableRow(),
                     itemCount: 10,
                   ),
                 );

@@ -19,7 +19,7 @@ void main() async {
   await TokenHelper.init();
   await locatorSetUp();
   Bloc.observer = MyBlocObserver();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -32,9 +32,13 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => AuthCubit(getIt()),
         ),
-        BlocProvider(create: (context) => AddAccountCubit(getIt(),getIt())),
-        BlocProvider(create: (context) => PatientCubit(getIt())..getPatients(),),
-        BlocProvider(create: (context) => DoctorCubit(getIt())..getDoctors(),),
+        BlocProvider(create: (context) => AddAccountCubit(getIt(), getIt())),
+        BlocProvider(
+          create: (context) => PatientCubit(getIt())..getPatients(),
+        ),
+        BlocProvider(
+          create: (context) => DoctorCubit(getIt())..getDoctors(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(1600, 1000),

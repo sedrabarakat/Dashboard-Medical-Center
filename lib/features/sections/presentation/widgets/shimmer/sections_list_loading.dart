@@ -49,7 +49,7 @@ class SectionCardShimmer extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: ColorsHelper.tealLightest,
+            color: ColorsHelper.blueLightest,
             width: 1,
           ),
           boxShadow: const [

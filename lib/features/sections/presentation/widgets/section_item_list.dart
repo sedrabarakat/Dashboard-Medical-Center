@@ -26,7 +26,7 @@ class SectionItemList extends StatelessWidget {
             color: ColorsHelper.white,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: ColorsHelper.teal.withOpacity(.2),
+              color: ColorsHelper.blue.withOpacity(.2),
             ),
           ),
           child: Row(

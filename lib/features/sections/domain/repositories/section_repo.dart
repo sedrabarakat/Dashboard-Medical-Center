@@ -26,9 +26,9 @@ class SectionRepo {
   }
 
   Future<Either<NetworkExceptions, BaseModel<SectionModel>>> updateSection(
-      int id, String name) async {
+      int id, String name, Uint8List image) async {
     try {
-      final response = await _remote.updateSection(id, name);
+      final response = await _remote.updateSection(id, name, image);
       return right(response);
     } catch (e) {
       return left(NetworkExceptions.getException(e));

@@ -10,51 +10,40 @@ import '../../../../../core/widgets/text_from_field.dart';
 import '../../../../create_account/presentation/widgets/texts_and_fields/text&text_filed.dart';
 import 'work_days.dart';
 
-Widget infoCol1({required context}){
-  DoctorCubit cubit=DoctorCubit.get(context);
+Widget infoCol1({required context}) {
+  DoctorCubit cubit = DoctorCubit.get(context);
   bool isEditing = cubit.isEditing;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      editingFields(
-          controller: cubit.Middle_name,
-          is_Editig: isEditing),
-      editingFields(
-          controller: cubit.Phone,
-          is_Editig: isEditing),
+      editingFields(controller: cubit.middleName, is_Editig: isEditing),
+      editingFields(controller: cubit.phone, is_Editig: isEditing),
       editingDropDown(
-          dropdownItems: cubit.SectionsName!,
-          selectedItem: cubit.Section.text,
-          selection: "Select Section" ,
+          dropdownItems: cubit.sectionsName!,
+          selectedItem: cubit.section.text,
+          selection: "Select Section",
           is_Editig: isEditing,
-        onChanged: (value){
-          for (var section in cubit.Sections) {
-            if (section.containsKey(value)) {
-              cubit.Select_SectionId(id: section[value]!);
+          onChanged: (value) {
+            for (var section in cubit.sections) {
+              if (section.containsKey(value)) {
+                cubit.selectSectionId(id: section[value]!);
+              }
             }
-          }
-        }
-      ),
-      editingFields(
-          controller: cubit.Description,
-          is_Editig: isEditing),
+          }),
+      editingFields(controller: cubit.description, is_Editig: isEditing),
     ],
   );
 }
 
-Widget infoCol2({required context}){
-  DoctorCubit cubit=DoctorCubit.get(context);
+Widget infoCol2({required context}) {
+  DoctorCubit cubit = DoctorCubit.get(context);
   bool isEditing = cubit.isEditing;
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      editingFields(
-          controller: cubit.Duration,
-          is_Editig: isEditing),
-      editingFields(
-          controller: cubit.Day_In_Advance,
-          is_Editig: isEditing),
-      if(isEditing)
+      editingFields(controller: cubit.duration, is_Editig: isEditing),
+      editingFields(controller: cubit.dayInAdvance, is_Editig: isEditing),
+      if (isEditing)
         SizedBox(
           width: 210.w,
           child: Padding(
@@ -64,19 +53,20 @@ Widget infoCol2({required context}){
               onTap: () {
                 showCupertinoDialog(
                     context: context,
-                    builder: (_) => AlertDialouge(Submit_onPressed: (){
-                      cubit.addDoctorSchedule();
-                    }));
+                    builder: (_) => AlertDialouge(Submit_onPressed: () {
+                          cubit.addDoctorSchedule();
+                        }));
               },
-              textStyle: StyleManager.fontRegular20.copyWith(color: ColorsHelper.blueDarkest),
+              textStyle: StyleManager.fontRegular20
+                  .copyWith(color: ColorsHelper.blueDarkest),
               fillColor: ColorsHelper.blueLightest.withOpacity(.3),
               borderStyle: StyleManager.Border_round40Blue,
               validator: (value) => ValidatorManager.instance
-                  .validate_EmptyState(value ?? '', "Working hour...At least one"),
+                  .validate_EmptyState(
+                      value ?? '', "Working hour...At least one"),
             ),
           ),
         ),
     ],
   );
 }
-

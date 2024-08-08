@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:dashboad/core/data/datasources/local.dart';
@@ -26,6 +25,7 @@ class SectionCubit extends Cubit<SectionState> {
   TextEditingController sectionName = TextEditingController();
   TextEditingController sectionImageName = TextEditingController();
   ButtonState createSectionButtonState = ButtonState.idle;
+  ButtonState updateSectionButtonState = ButtonState.idle;
   GlobalKey<FormState> addSectionKey = GlobalKey<FormState>();
   List<SectionModel> _sections = [];
   SectionModel? sectionDetails;
@@ -74,11 +74,28 @@ class SectionCubit extends Cubit<SectionState> {
 
   // Todo
   Future<void> updateSection(int id) async {
+    updateSectionButtonState = ButtonState.loading;
     emit(UpdateSectionLoadingState());
-    final response = await _repo.updateSection(id, 'Updated Section');
+    final response =
+        await _repo.updateSection(id, sectionName.text, pickedSectionImage!);
     response.fold(
-      (e) => emit(UpdateSectionErrorState(e)),
-      (data) => emit(UpdateSectionSuccessState(data.data!)),
+      (e) {
+        updateSectionButtonState = ButtonState.fail;
+        emit(UpdateSectionErrorState(e));
+      },
+      (data) {
+        updateSectionButtonState = ButtonState.idle;
+        pickedSectionImage = null;
+        sectionImageName.clear();
+        sectionName.clear();
+        emit(UpdateSectionSuccessState(data.data!));
+        int index =
+            _sections.indexWhere((section) => section.id == data.data!.id);
+        _sections.removeAt(index);
+        _sections.insert(index, data.data!);
+        SharedPrefrence.saveListOfObject(_sections, 'sections');
+        emit(GetSectionsSuccessState(_sections));
+      },
     );
   }
 

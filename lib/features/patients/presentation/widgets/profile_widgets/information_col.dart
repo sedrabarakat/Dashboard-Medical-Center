@@ -11,29 +11,29 @@ Widget infoCol1({required context}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      editingFields(controller: cubit.Age, is_Editig: isEditing),
+      editingFields(controller: cubit.age, is_Editig: isEditing),
       editingDropDown(
           dropdownItems: Gender,
-          selectedItem: cubit.Gender.text,
+          selectedItem: cubit.gender.text,
           selection: 'Gender',
           is_Editig: isEditing,
           onChanged: (value) {
-            cubit.Gender.text = value.toString();
+            cubit.gender.text = value.toString();
           }),
-      editingFields(controller: cubit.Phone, is_Editig: isEditing),
+      editingFields(controller: cubit.phone, is_Editig: isEditing),
       editingFields(controller: cubit.profession, is_Editig: isEditing),
       editingFields(controller: cubit.wallet, is_Editig: isEditing),
       editingDropDown(
           dropdownItems: Blood_Type_List,
-          selectedItem: cubit.Blood_Type.text,
+          selectedItem: cubit.bloodType.text,
           selection: 'Blood Type',
           is_Editig: isEditing,
           onChanged: (value) {
-            cubit.Blood_Type.text = value.toString();
+            cubit.bloodType.text = value.toString();
           }),
       editingFields(
-          controller: cubit.Address, is_Editig: isEditing, isAddress: true),
-      editingFields(controller: cubit.Description, is_Editig: isEditing),
+          controller: cubit.address, is_Editig: isEditing, isAddress: true),
+      editingFields(controller: cubit.description, is_Editig: isEditing),
     ],
   );
 }
@@ -44,33 +44,33 @@ Widget infoCol2({required context}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      editingFields(controller: cubit.Birth_Date, is_Editig: isEditing),
+      editingFields(controller: cubit.birthDate, is_Editig: isEditing),
       editingDropDown(
           dropdownItems: Matrial_Status_List,
-          selectedItem: cubit.Matrial_Status.text,
+          selectedItem: cubit.matrialStatus.text,
           selection: 'Material Status',
           is_Editig: isEditing,
           onChanged: (value) {
-            cubit.Matrial_Status.text = value.toString();
+            cubit.matrialStatus.text = value.toString();
           }),
-      editingFields(controller: cubit.Children_num, is_Editig: isEditing),
+      editingFields(controller: cubit.childrenNum, is_Editig: isEditing),
       editingDropDown(
           dropdownItems: Boolean_List,
-          selectedItem: cubit.Diabets.text,
+          selectedItem: cubit.diabets.text,
           selection: 'Diabetes',
           is_Editig: isEditing,
           onChanged: (value) {
-            cubit.Diabets.text = value.toString();
+            cubit.diabets.text = value.toString();
           }),
       editingDropDown(
           dropdownItems: Boolean_List,
-          selectedItem: cubit.Pressure.text,
+          selectedItem: cubit.pressure.text,
           selection: 'Pressure',
           is_Editig: isEditing,
           onChanged: (value) {
-            cubit.Pressure.text = value.toString();
+            cubit.pressure.text = value.toString();
           }),
-      editingFields(controller: cubit.Habit, is_Editig: isEditing),
+      editingFields(controller: cubit.habit, is_Editig: isEditing),
     ],
   );
 }

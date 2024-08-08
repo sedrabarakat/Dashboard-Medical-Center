@@ -1,11 +1,11 @@
-const baseServ = "http://127.0.0.1:8001/";
-//const baseServ = "http://192.168.1.8:8000/";
+// const baseServ = "http://127.0.0.1:8001/";
+const baseServ = "http://192.168.1.10:8000/";
 const baseUrl = "${baseServ}api/";
 const auth = "auth/";
 const dashboard = 'dashboard/';
 const delete = 'destroy/';
-const session = 'session/' ;
-const appintment = 'appointment' ;
+const session = 'session/';
+const appintment = 'appointment';
 
 class AppUrl {
   /*>>>>>>>>>>>>>>>>>>>> Auth <<<<<<<<<<<<<<<<<<<<*/
@@ -14,15 +14,15 @@ class AppUrl {
   /*>>>>>>>>>>>>>>>>>>>> Directors <<<<<<<<<<<<<<<<<<<<*/
   static const creatDirector = '$baseUrl${dashboard}director/store';
   static const getDirectorsList = '$baseUrl${dashboard}director';
-  static const deleteDirector = '$baseUrl${dashboard}director/$delete';
+  static const deleteDirector = '$baseUrl${dashboard}director/';
   /*>>>>>>>>>>>>>>>>>>>> Doctors <<<<<<<<<<<<<<<<<<<<*/
   static const creatDoctor = '$baseUrl${dashboard}doctor/store';
   static const getDoctorsList = '$baseUrl${dashboard}doctor';
   static const deleteDoctor = '$baseUrl${dashboard}doctor/$delete';
   static const updateDoctor = '$baseUrl${dashboard}doctor/update/';
   static const getDoctorProfile = '$baseUrl${dashboard}doctor/';
-  static const postDoctorSchedule='$baseUrl${dashboard}doctor/';
-  static const getDoctorSchedule='$baseUrl${dashboard}doctor/';
+  static const postDoctorSchedule = '$baseUrl${dashboard}doctor/';
+  static const getDoctorSchedule = '$baseUrl${dashboard}doctor/';
   /*>>>>>>>>>>>>>>>>>>>> Patients <<<<<<<<<<<<<<<<<<<<*/
   static const creatPatient = '$baseUrl${dashboard}patient/store';
   static const getPatientsList = '$baseUrl${dashboard}patient';
@@ -49,10 +49,11 @@ class AppUrl {
   static const deleteService = "$baseUrl${dashboard}service/destroy/";
   //static const deleteSection = "$baseUrl${dashboard}section/";
   /*>>>>>>>>>>>>>>>>>>>>  Session <<<<<<<<<<<<<<<<<<<<<<<*/
-  static const addSession = "$baseUrl$dashboard${session}add/" ;
-  static const closeSession ="$baseUrl$dashboard${session}close/" ;
-  static const getOpenSessionForAPatient = "$baseUrl$dashboard${session}open-sessions/" ;
+  static const addSession = "$baseUrl$dashboard${session}add/";
+  static const closeSession = "$baseUrl$dashboard${session}close/";
+  static const getOpenSessionForAPatient =
+      "$baseUrl$dashboard${session}open-sessions/";
   static const uploadFile = '$baseUrl$dashboard${session}upload-file/';
   /*>>>>>>>>>>>>>>>>>>>> Appointment <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-  static const getAppointment = "$baseUrl$dashboard$appintment" ;
+  static const getAppointment = "$baseUrl$dashboard$appintment";
 }

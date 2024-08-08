@@ -24,6 +24,6 @@ Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
       'patient_id': instance.patientId,
       'date': instance.date,
       'start_min': instance.startMin,
-      'patient': instance.patient.ToJson(),
+      'patient': instance.patient.toJson(),
       'doctor': instance.doctor.toJson(),
     };

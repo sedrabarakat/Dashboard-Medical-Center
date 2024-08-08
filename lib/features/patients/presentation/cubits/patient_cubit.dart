@@ -1,12 +1,11 @@
 import 'dart:typed_data';
-
-import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/date_helper.dart';
 import 'package:dashboad/core/helpers/json_helper.dart';
 import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/patients/data/models/patient_model.dart';
+
 import 'package:dashboad/features/patients/domain/repositories/patient_repo.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class PatientCubit extends Cubit<PatientState> {
 
   Future<void> getPatients() async {
     List<String> patientCachedList =
-    await SharedPrefrence.getListOfString('patients');
+        await SharedPrefrence.getListOfString('patients');
     // Check if there is cached data if true then return the cached data
     if (patientCachedList.isNotEmpty) {
       _patients = JsonHelper.convertListOfStringToListOfObjects<PatientModel>(
@@ -44,7 +43,7 @@ class PatientCubit extends Cubit<PatientState> {
       emit(GetPatientsErrorState(error));
     }, (data) {
       List<PatientModel> listOfPatients =
-      data.list.map((patient) => patient as PatientModel).toList();
+          data.list.map((patient) => patient as PatientModel).toList();
       _patients = listOfPatients;
       SharedPrefrence.saveListOfObject(_patients, 'patients');
       emit(GetPatientSuccessState(_patients));
@@ -53,7 +52,7 @@ class PatientCubit extends Cubit<PatientState> {
 
   Future<void> deletePatient(BuildContext context, int id) async {
     PatientModel removedPatient =
-    _patients.firstWhere((patient) => patient.id == id);
+        _patients.firstWhere((patient) => patient.id == id);
     _patients.removeWhere((patient) => patient.id == id);
     final response = await _repo.deletePatient(id);
     response.fold((error) {
@@ -70,152 +69,182 @@ class PatientCubit extends Cubit<PatientState> {
   }
 
   ///profiles
-  var First_name = TextEditingController();
-  var Middle_name = TextEditingController();
-  var Last_name = TextEditingController();
-  var Phone = TextEditingController();
-  var Description = TextEditingController();
+  TextEditingController firstName = TextEditingController();
+  TextEditingController middleName = TextEditingController();
+  TextEditingController lastName = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController birthDate = TextEditingController();
+  TextEditingController age = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController bloodType = TextEditingController();
+  TextEditingController matrialStatus = TextEditingController();
+  TextEditingController childrenNum = TextEditingController();
+  TextEditingController habit = TextEditingController();
+  TextEditingController profession = TextEditingController();
+  TextEditingController wallet = TextEditingController();
+  TextEditingController gender = TextEditingController();
+  TextEditingController diabets = TextEditingController();
+  TextEditingController pressure = TextEditingController();
+  String? image;
 
-  var Birth_Date = TextEditingController();
-  var Age = TextEditingController();
-  var Address = TextEditingController();
-  var Blood_Type = TextEditingController();
-  var Matrial_Status = TextEditingController();
-  var Children_num = TextEditingController();
-  var Habit = TextEditingController();
-  var profession = TextEditingController();
-  var wallet = TextEditingController();
-  var Gender = TextEditingController();
-  var Diabets = TextEditingController();
-  var Pressure = TextEditingController();
-  var image;
+  late int patientId;
 
-  var Patient_id;
-
-  void setId({required int id}){
-    Patient_id=id;
-    print(Patient_id);
+  void setId({required int id}) {
+    patientId = id;
   }
 
   bool isEditing = false;
 
   void editingToggle() {
     isEditing = !isEditing;
-    emit(Editing_ToggleProfile_State());
+    emit(EditingToggleProfileState());
   }
 
   void cancelEditing() {
-    getPatientProfile(id: Patient_id);
+    getPatientProfile(id: patientId);
     isEditing = false;
-    emit(Cancel_Editing_State());
+    emit(CancelEditingState());
   }
 
-  PatientModel ? patientModel;
+  PatientModel? patientModel;
 
-  Future<void> getPatientProfile({
-    required int id
-  }) async {
-    emit(Loading_getProfile_State());
-    return await _repo.getPatientProfile(id: id).then((val) {
-      val.fold((error) {
-        emit(Error_getProfile_State());
-      }, (PatientModel) {
-        patientModel = PatientModel;
-        First_name.text = PatientModel.userData.firstName;
-        Middle_name.text=PatientModel.userData.middleName;
-        Last_name.text = PatientModel.userData.lastName;
-        Phone.text = PatientModel.userData.phoneNumber;
-        Description.text = PatientModel.userData.description;
-        Birth_Date.text = DateHelper.Convert_DateTime_DashString(
-            dateTime: PatientModel.birthDate);
-        Age.text = PatientModel.age;
-        Address.text = PatientModel.address;
-        Blood_Type.text = PatientModel.bloodType;
-        Matrial_Status.text = PatientModel.maritalStatus;
-        Children_num.text = PatientModel.childrenNum.toString();
-        Habit.text = PatientModel.habits;
-        profession.text = PatientModel.proffesion;
-        wallet.text = PatientModel.wallet.toString();
-        Gender.text = PatientModel.gender.toString();
-        Diabets.text = (PatientModel.diabetes == 1) ? "Have" : "Haven\'t";
-        Pressure.text = (PatientModel.bloodPressure == 1) ? "Have" : "Haven\'t";
-        image = PatientModel.userData.image;
-        emit(Success_getProfile_State());
-      });
+  Future<void> getPatientProfile({required int id}) async {
+    patientModel = null;
+    emit(LoadingGetProfileState());
+    final response = await _repo.getPatientProfile(id: id);
+    response.fold((e) {
+      emit(ErrorGetProfileState());
+    }, (patient) async {
+      patientModel = patient;
+
+      firstName.text = patient.userData.firstName;
+      middleName.text = patient.userData.middleName;
+      lastName.text = patient.userData.lastName;
+      phone.text = patient.userData.phoneNumber;
+      description.text = patient.userData.description;
+      birthDate.text =
+          DateHelper.Convert_DateTime_DashString(dateTime: patient.birthDate);
+      age.text = patient.age;
+      address.text = patient.address;
+      bloodType.text = patient.bloodType;
+      matrialStatus.text = patient.maritalStatus;
+      childrenNum.text = patient.childrenNum.toString();
+      habit.text = patient.habits;
+      profession.text = patient.proffesion;
+      wallet.text = patient.wallet.toString();
+      gender.text = patient.gender.toString();
+      diabets.text = (patient.diabetes == 1) ? "Have" : "Haven't";
+      pressure.text = (patient.bloodPressure == 1) ? "Have" : "Haven't";
+      image = patient.userData.image;
+      await getOpenSession(id: id);
+      emit(SuccessGetProfileState());
     });
+    // return await _repo.getPatientProfile(id: id).then((val) {
+    //   val.fold((error) {
+    //     emit(ErrorGetProfileState());
+    //   }, (patient) {
+    //     patientModel = patient;
+
+    //     firstName.text = patient.userData.firstName;
+    //     middleName.text = patient.userData.middleName;
+    //     lastName.text = patient.userData.lastName;
+    //     phone.text = patient.userData.phoneNumber;
+    //     description.text = patient.userData.description;
+    //     birthDate.text =
+    //         DateHelper.Convert_DateTime_DashString(dateTime: patient.birthDate);
+    //     age.text = patient.age;
+    //     address.text = patient.address;
+    //     bloodType.text = patient.bloodType;
+    //     matrialStatus.text = patient.maritalStatus;
+    //     childrenNum.text = patient.childrenNum.toString();
+    //     habit.text = patient.habits;
+    //     profession.text = patient.proffesion;
+    //     wallet.text = patient.wallet.toString();
+    //     gender.text = patient.gender.toString();
+    //     diabets.text = (patient.diabetes == 1) ? "Have" : "Haven't";
+    //     pressure.text = (patient.bloodPressure == 1) ? "Have" : "Haven't";
+    //     image = patient.userData.image;
+    //     emit(SuccessGetProfileState());
+    //   });
+    // });
   }
 
   Future<void> updateProfile() async {
-    emit(Loading_UpdateProfile_State());
-    return await _repo.updatePatientProfile(
-        id: Patient_id,
-        first_name: First_name.text,
-        middle_name: Middle_name.text,
-        last_name: Last_name.text,
-        phone_number: Phone.text,
-        description: Description.text,
-        birth_date: Birth_Date.text,
-        age: Age.text,
-        gender: Gender.text,
-        address: Address.text,
-        bloodType: Blood_Type.text,
-        marital_status: Matrial_Status.text,
-        children_num: int.parse(Children_num.text),
-        habits: Habit.text,
-        profession: profession.text,
-        diabetes: patientModel!.diabetes ,
-        blood_pressure: patientModel!.bloodPressure,
-        wallet: int.parse(wallet.text),
-        ).then((value){
-          value.fold((error){
-           emit(Error_UpdateProfile_State());
-          }, (PatientModel){
-            isEditing = false;
-           emit(Success_UpdateProfile_State());
-          });
+    emit(LoadingUpdateProfileState());
+    final response = await _repo.updatePatientProfile(
+      id: patientId,
+      firstName: firstName.text,
+      middleName: middleName.text,
+      lastName: lastName.text,
+      phoneNumber: phone.text,
+      description: description.text,
+      birthDate: birthDate.text,
+      age: age.text,
+      gender: gender.text,
+      address: address.text,
+      bloodType: bloodType.text,
+      martialStatus: matrialStatus.text,
+      childrenNum: int.parse(childrenNum.text),
+      habits: habit.text,
+      profession: profession.text,
+      diabetes: patientModel!.diabetes,
+      bloodPressure: patientModel!.bloodPressure,
+      wallet: int.parse(wallet.text),
+    );
+    response.fold((error) {
+      emit(ErrorUpdateProfileState());
+    }, (patient) {
+      isEditing = false;
+      int patientIndex = _patients.indexWhere((p) => p.id == patient.id);
+      _patients.removeAt(patientIndex);
+      _patients.insert(patientIndex, patient);
+      SharedPrefrence.saveListOfObject(_patients, 'sections');
+
+      emit(SuccessUpdateProfileState());
+      emit(GetPatientSuccessState(_patients));
     });
   }
 
-
-
   //////////////////////* Sessions *//////////////////////
-  List<Session> sessions =[] ;
+  List<Session> sessions = [];
   ButtonState addSessionButtonState = ButtonState.idle;
 
-  Future<void> getOpenSession({required int id})async{
+  Future<void> getOpenSession({required int id}) async {
     emit(GetOpenSessionLoadingState());
     final response = await _repo.getOpenSessionForAPatient(id);
-    response.fold((error){
-      emit(GetOpenSessionErrorState(error.toString())) ;
-    }, (data)async{
-      List<Session> sessionsList = data.list.map((sessions)=>sessions as Session).toList();
-      sessions = sessionsList ;
+    response.fold((error) {
+      emit(GetOpenSessionErrorState(error.toString()));
+    }, (data) async {
+      List<Session> sessionsList =
+          data.list.map((sessions) => sessions as Session).toList();
+      sessions = sessionsList;
       emit(GetOpenSessionSuccessState(sessions));
     });
   }
 
-  Future<void> addSession(BuildContext context, int id) async{
-    final response = await _repo.addSession(id) ;
-    response.fold((error){
+  Future<void> addSession(BuildContext context, int id) async {
+    final response = await _repo.addSession(id);
+    response.fold((error) {
       debugPrint(error.toString());
       addSessionButtonState = ButtonState.idle;
       emit(AddSessionError(error.toString()));
-    }, (data){
+    }, (data) {
       debugPrint('success $data');
-      addSessionButtonState = ButtonState.success ;
-      emit(AddSessionSuccess()) ;
+      addSessionButtonState = ButtonState.success;
+      emit(AddSessionSuccess());
       getOpenSession(id: id);
     });
   }
 
-  Future<void> closeSession(int sessionId, int patientId)async{
+  Future<void> closeSession(int sessionId, int patientId) async {
     debugPrint('close session to api ');
     final response = await _repo.closeSession(sessionId);
-    response.fold((error){
+    response.fold((error) {
       debugPrint(error.toString());
       emit(CloseSessionError(error.toString()));
-    }, (data){
-      debugPrint('success $data') ;
+    }, (data) {
+      debugPrint('success $data');
       emit(CloseSessionSuccess());
       getOpenSession(id: patientId);
     });
@@ -248,7 +277,8 @@ class PatientCubit extends Cubit<PatientState> {
     }
   }
 
-  Future<void> _uploadFileWeb(Uint8List fileBytes, String fileName, int sessionId) async {
+  Future<void> _uploadFileWeb(
+      Uint8List fileBytes, String fileName, int sessionId) async {
     try {
       final response = await _repo.uploadFile(fileBytes, fileName, sessionId);
       debugPrint('File uploaded successfully: $response');
@@ -260,12 +290,10 @@ class PatientCubit extends Cubit<PatientState> {
         sessions = data.list.map((sessions) => sessions as Session).toList();
         emit(GetOpenSessionSuccessState(sessions));
         emit(FileUploadSuccessState(response.toString()));
-      }) ;
+      });
     } catch (e) {
       debugPrint('Upload failed: $e');
       emit(FileUploadErrorState('Upload failed: $e'));
     }
   }
-
-
 }

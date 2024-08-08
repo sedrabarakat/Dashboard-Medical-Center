@@ -8,16 +8,13 @@ import '../../../../../core/utils/style_manager.dart';
 import '../../../data/model/schedule_model.dart';
 import '../../screens/doctor_profile.dart';
 
-Widget doctorSchedule({
-  required cubit
-}){
+Widget doctorSchedule({required cubit}) {
   return Container(
     height: 920.h,
     width: 350.w,
     decoration: StyleManager.rounded40(color: Colors.white),
     child: Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: 30.w, vertical: 40.h),
+      padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 40.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,13 +29,11 @@ Widget doctorSchedule({
           Expanded(
               child: ListView.separated(
                   itemBuilder: (context, index) =>
-                      ScheduleColumn(
-                          object: cubit.working_hours[index]),
-                  separatorBuilder: (context, index) =>
-                      SizedBox(
+                      ScheduleColumn(object: cubit.workingHours[index]),
+                  separatorBuilder: (context, index) => SizedBox(
                         height: 20.h,
                       ),
-                  itemCount: cubit.working_hours.length))
+                  itemCount: cubit.workingHours.length))
         ],
       ),
     ),
@@ -74,12 +69,9 @@ Widget ScheduleColumn({required ScheduleModel object}) {
                 var spl_times = TimeHelper.splitTime(time: object.times[index]);
                 return Row(
                   children: [
-                    Text(
-                        "From : ",
-                        style:StyleManager.font17Lobster.copyWith(
-                            color: Colors.grey
-                        )
-                    ),
+                    Text("From : ",
+                        style: StyleManager.font17Lobster
+                            .copyWith(color: Colors.grey)),
                     Container(
                       height: 50,
                       width: 75,
@@ -98,9 +90,8 @@ Widget ScheduleColumn({required ScheduleModel object}) {
                     ),
                     Text(
                       "To : ",
-                      style: StyleManager.font17Lobster.copyWith(
-                          color: Colors.grey
-                      ),
+                      style: StyleManager.font17Lobster
+                          .copyWith(color: Colors.grey),
                     ),
                     Container(
                       height: 50,
@@ -119,13 +110,14 @@ Widget ScheduleColumn({required ScheduleModel object}) {
                 );
               },
               separatorBuilder: (context, index) => SizedBox(
-                height: 25.h,
-              ),
+                    height: 25.h,
+                  ),
               itemCount: object.times.length),
         ),
-        if(object.times.isEmpty) Center(child: Text("There is NO Times For That Day",
-            style: StyleManager.fontregular14)),
-
+        if (object.times.isEmpty)
+          Center(
+              child: Text("There is NO Times For That Day",
+                  style: StyleManager.fontregular14)),
         SizedBox(
           height: 20.h,
         ),

@@ -86,12 +86,12 @@ class _CountDownTimerState extends State<CountDownTimer> {
                 },
                 style: TextButton.styleFrom(
                   padding: EdgeInsets.zero,
-                  overlayColor: Colors.teal.withOpacity(.2),
+                  overlayColor: Colors.blue.withOpacity(.2),
                 ),
                 child: Text(
                   "Send again",
                   style: StyleManager.fontregular14.copyWith(
-                    color: ColorsHelper.teal,
+                    color: ColorsHelper.blue,
                   ),
                 ),
               ),

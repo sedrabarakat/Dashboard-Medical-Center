@@ -1,7 +1,6 @@
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:flutter/material.dart';
 
-// Todo add the header text style property
 class TableHeader extends StatelessWidget {
   const TableHeader({
     super.key,
@@ -20,7 +19,7 @@ class TableHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         border: Border(
           bottom: BorderSide(
             color: ColorsHelper.lightGry,

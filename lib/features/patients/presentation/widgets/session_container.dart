@@ -11,13 +11,14 @@ import '../../../patients/presentation/cubits/patient_cubit.dart';
 import 'session_card.dart';
 
 class SessionContainer extends StatelessWidget {
-  final int id  ;
+  final int id;
   const SessionContainer({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => PatientCubit(getIt())..getOpenSession(id: id),
+      create: (BuildContext context) =>
+          PatientCubit(getIt())..getOpenSession(id: id),
       child: BlocBuilder<PatientCubit, PatientState>(
         builder: (context, state) {
           return Container(
@@ -32,7 +33,9 @@ class SessionContainer extends StatelessWidget {
                   'Open Sessions:',
                   style: StyleManager.font30Bold_Lobster,
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 Expanded(
                   child: Builder(
                     builder: (builderContext) {
@@ -68,7 +71,10 @@ class SessionContainer extends StatelessWidget {
                                     context: context,
                                     builder: (context) {
                                       return AlertDialog(
-                                        title: Text('Upload laboratory tests \nand radiographic images \n(As files) to this Session:\n ', style: StyleManager.font20W600,),
+                                        title: Text(
+                                          'Upload laboratory tests \nand radiographic images \n(As files) to this Session:\n ',
+                                          style: StyleManager.font20W600,
+                                        ),
                                         actions: [
                                           CustomElevatedButton(
                                             onPressed: () {
@@ -79,7 +85,7 @@ class SessionContainer extends StatelessWidget {
                                                 ToastBar.onSuccess(
                                                   context,
                                                   message:
-                                                  'the file has been added successfully',
+                                                      'the file has been added successfully',
                                                   title: "Success",
                                                 );
                                                 builderContext
@@ -127,7 +133,6 @@ class SessionContainer extends StatelessWidget {
                   label: 'Add New Session',
                   buttonColor: ColorsHelper.blue,
                 ),
-
 
                 //const SizedBox(height: 10,),
               ],

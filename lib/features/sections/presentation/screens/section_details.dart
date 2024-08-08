@@ -123,7 +123,7 @@ class SectionDetails extends StatelessWidget {
                         } else if (state is GetSectionInformationLoadingState) {
                           return const Center(
                             child: CircularProgressIndicator(
-                              color: ColorsHelper.teal,
+                              color: ColorsHelper.blue,
                             ),
                           );
                         } else if (state is GetSectionInformationErrorState) {

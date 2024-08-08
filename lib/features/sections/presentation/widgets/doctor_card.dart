@@ -46,7 +46,7 @@ class _DoctorCardState extends State<DoctorCard> {
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
               width: isFocus ? 2 : 1,
-              color: isFocus ? ColorsHelper.teal : Colors.grey.shade400,
+              color: isFocus ? ColorsHelper.blue : Colors.grey.shade400,
             ),
           ),
           child: Column(

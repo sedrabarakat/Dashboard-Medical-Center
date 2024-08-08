@@ -26,37 +26,46 @@ class DeleteDoctorErrorState extends DoctorState {
   DeleteDoctorErrorState(this.error);
 }
 
-class Loading_Get_Doctor extends DoctorState{}
-class Success_Get_Doctor extends DoctorState{}
-class Error_Get_Doctor extends DoctorState{
+class LoadingGetDoctor extends DoctorState {}
+
+class SuccessGetDoctor extends DoctorState {}
+
+class ErrorGetDoctor extends DoctorState {
   NetworkExceptions error;
-  Error_Get_Doctor(this.error);
-}
-class Editing_ToggleProfile_State extends DoctorState{}
-
-class Cancel_Editing_State extends DoctorState{}
-
-class Get_Section_State extends DoctorState{}
-
-class Loading_Update_Doctor extends DoctorState{}
-class Success_Update_Doctor extends DoctorState{}
-class Error_Update_Doctor extends DoctorState{
-  NetworkExceptions error;
-  Error_Update_Doctor(this.error);
+  ErrorGetDoctor(this.error);
 }
 
-class Select_Sections_State extends DoctorState{}
+class EditingToggleProfileState extends DoctorState {}
 
-class Loading_Post_Schedule extends DoctorState{}
-class Success_Post_Schedule extends DoctorState{}
-class Error_Post_Schedule extends DoctorState{
+class CancelEditingState extends DoctorState {}
+
+class GetSectionState extends DoctorState {}
+
+class LoadingUpdateDoctor extends DoctorState {}
+
+class SuccessUpdateDoctor extends DoctorState {}
+
+class ErrorUpdateDoctor extends DoctorState {
   NetworkExceptions error;
-  Error_Post_Schedule(this.error);
+  ErrorUpdateDoctor(this.error);
 }
 
-class Loading_Get_Schedule extends DoctorState{}
-class Success_Get_Schedule extends DoctorState{}
-class Error_Get_Schedule extends DoctorState{
+class SelectSectionState extends DoctorState {}
+
+class LoadingPostSchedule extends DoctorState {}
+
+class SuccessPostSchedule extends DoctorState {}
+
+class ErrorPostSchedule extends DoctorState {
+  NetworkExceptions error;
+  ErrorPostSchedule(this.error);
+}
+
+class LoadingGetSchedule extends DoctorState {}
+
+class SuccessGetSchedule extends DoctorState {}
+
+class Error_Get_Schedule extends DoctorState {
   NetworkExceptions error;
   Error_Get_Schedule(this.error);
 }

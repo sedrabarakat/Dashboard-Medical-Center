@@ -18,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
   @override
   Widget build(BuildContext context) {
-   var Role= SharedPrefrence.getData(key: 'role');
+    var role = SharedPrefrence.getData(key: 'role');
     return Drawer(
       backgroundColor: Colors.white,
       shape: StyleManager.rounded50,
@@ -31,10 +31,12 @@ class CustomDrawer extends StatelessWidget {
               waveColor: ColorsHelper.blueDark,
               backgroundColor: Colors.white,
             ),
-            (Role=="receptionist")?receptionDrawerList(navigationShell: navigationShell):
-            drawerList(
-              navigationShell: navigationShell,
-            ),
+            (role == "owner")
+                ? drawerList(
+                    navigationShell: navigationShell,
+                  )
+                : receptionDrawerList(
+                    navigationShell: navigationShell, context: context),
             SvgPicture.asset(
               AssetsManager.drawerImage,
               height: 440.h,

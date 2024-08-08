@@ -23,7 +23,7 @@ class SectionDetailsHeader extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       height: DimensionsHelper.heightPercentage(context, 10),
       decoration: BoxDecoration(
-        color: ColorsHelper.teal.withAlpha(155),
+        color: ColorsHelper.blue.withOpacity(.9),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -54,11 +54,11 @@ class SectionDetailsHeader extends StatelessWidget {
               color: Colors.white,
             ),
             style: IconButton.styleFrom(
-              padding: EdgeInsets.zero,
+              padding: const EdgeInsets.all(5),
               iconSize: 22,
               maximumSize: const Size(32, 32),
               minimumSize: const Size(32, 32),
-              backgroundColor: ColorsHelper.tealDark,
+              backgroundColor: ColorsHelper.blueDarker,
             ),
           ),
           const SizedBox(
@@ -73,7 +73,7 @@ class SectionDetailsHeader extends StatelessWidget {
               color: Colors.white,
             ),
             style: IconButton.styleFrom(
-              padding: EdgeInsets.zero,
+              padding: const EdgeInsets.all(5),
               iconSize: 22,
               maximumSize: const Size(32, 32),
               minimumSize: const Size(32, 32),

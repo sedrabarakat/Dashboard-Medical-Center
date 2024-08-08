@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +17,8 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
           text: 'Add Account',
           onTap: () {
             // cubit.changeSelctedTap(index: 1);
-            navigationShell.goBranch(0);
+            navigationShell.goBranch(0,
+                initialLocation: index == navigationShell.currentIndex);
 
             // context.go('/add_account');
           },
@@ -30,7 +30,8 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
         icon: Icons.people_outline_rounded,
         onTap: () {
           // cubit.changeSelctedTap(index: 2);
-          navigationShell.goBranch(1);
+          navigationShell.goBranch(1,
+              initialLocation: index == navigationShell.currentIndex);
 
           // context.go('/Directors_list');
         },
@@ -42,7 +43,8 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
         icon: CupertinoIcons.person,
         onTap: () {
           // cubit.changeSelctedTap(index: 3);
-          navigationShell.goBranch(2);
+          navigationShell.goBranch(2,
+              initialLocation: index == navigationShell.currentIndex);
           // context.go('/Reseptions_list');
         },
       ),
@@ -66,7 +68,8 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
         icon: Icons.medical_services_rounded,
         onTap: () {
           // cubit.changeSelctedTap(index: 5);
-          navigationShell.goBranch(4);
+          navigationShell.goBranch(4,
+              initialLocation: index == navigationShell.currentIndex);
 
           // context.go('/Doctors_List');
         },
@@ -77,7 +80,8 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
         text: 'Patients',
         icon: Icons.medication_liquid,
         onTap: () {
-          navigationShell.goBranch(5);
+          navigationShell.goBranch(5,
+              initialLocation: index == navigationShell.currentIndex);
 
           // cubit.changeSelctedTap(index: 6);
           // context.go('/Patients_List');
@@ -89,7 +93,8 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
         text: 'Laboratory',
         icon: CupertinoIcons.lab_flask,
         onTap: () {
-          navigationShell.goBranch(6);
+          navigationShell.goBranch(6,
+              initialLocation: index == navigationShell.currentIndex);
 
           // cubit.changeSelctedTap(index: 7);
           // context.go('/Laboratory');
@@ -97,11 +102,12 @@ Widget drawerList({required StatefulNavigationShell navigationShell}) {
       ),
       listTileWidget(
         index: index,
-        spIndex: 8,
+        spIndex: 7,
         text: 'Inbox',
         icon: Icons.forward_to_inbox,
         onTap: () {
-          navigationShell.goBranch(7);
+          navigationShell.goBranch(7,
+              initialLocation: index == navigationShell.currentIndex);
 
           // cubit.changeSelctedTap(index: 8);
           // context.go('/Inbox');

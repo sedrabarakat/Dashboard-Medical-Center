@@ -46,7 +46,6 @@ class SectionsList extends StatelessWidget {
                             .clear();
                         context.go('/Sections_list/add_section');
                       },
-                      backgroundColor: ColorsHelper.teal,
                       child: const Icon(
                         Icons.add,
                         color: Colors.white,

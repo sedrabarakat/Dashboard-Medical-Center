@@ -37,7 +37,7 @@ class ServicesList extends StatelessWidget {
                 child: Text(
                   "Add Service",
                   style: StyleManager.fontMedium14.copyWith(
-                    color: ColorsHelper.teal,
+                    color: ColorsHelper.blue,
                   ),
                 ),
               ),

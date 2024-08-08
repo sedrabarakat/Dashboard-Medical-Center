@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/json_helper.dart';
@@ -69,130 +68,127 @@ class DoctorCubit extends Cubit<DoctorState> {
 
   bool isEditing = false;
 
-  int? Doctor_id;
+  int? doctorId;
 
   void setId({required int id}) {
-    Doctor_id = id;
-    print(Doctor_id);
+    doctorId = id;
   }
 
-  var First_name = TextEditingController();
-  var Middle_name = TextEditingController();
-  var Last_name = TextEditingController();
-  var Phone = TextEditingController(text: "+963 ");
-  var Description = TextEditingController();
-  var Password = TextEditingController();
-  var Day_In_Advance = TextEditingController();
-  var Duration = TextEditingController();
-  var Section = TextEditingController();
-  var Section_id;
-  var image;
+  TextEditingController firstName = TextEditingController();
+  TextEditingController middleName = TextEditingController();
+  TextEditingController lastName = TextEditingController();
+  TextEditingController phone = TextEditingController(text: "+963 ");
+  TextEditingController description = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController dayInAdvance = TextEditingController();
+  TextEditingController duration = TextEditingController();
+  TextEditingController section = TextEditingController();
+  late int sectionId;
+  String? image;
 
   DoctorModel? doctorModel;
 
   Future<void> getDoctorProfile({required int id}) async {
-    emit(Loading_Get_Doctor());
+    emit(LoadingGetDoctor());
     await _repo.getProfile(id: id).then((value) {
       value.fold((error) {
-        emit(Error_Get_Doctor(error));
-      }, (DoctorModel) {
-        First_name.text = DoctorModel.userData.firstName;
-        Middle_name.text = DoctorModel.userData.middleName;
-        Last_name.text = DoctorModel.userData.lastName;
-        Phone.text = DoctorModel.userData.phoneNumber;
-        Description.text = DoctorModel.userData.description;
-        Day_In_Advance.text = DoctorModel.daysInAdvance.toString();
-        Duration.text = DoctorModel.sessionDuration.toString();
-        Section.text = DoctorModel.section!.sectionName.toString();
-        Section_id = DoctorModel.section!.id;
-        image = DoctorModel.userData.image;
-        doctorModel = DoctorModel;
-        emit(Success_Get_Doctor());
+        emit(ErrorGetDoctor(error));
+      }, (doctor) {
+        firstName.text = doctor.userData.firstName;
+        middleName.text = doctor.userData.middleName;
+        lastName.text = doctor.userData.lastName;
+        phone.text = doctor.userData.phoneNumber;
+        description.text = doctor.userData.description;
+        dayInAdvance.text = doctor.daysInAdvance.toString();
+        duration.text = doctor.sessionDuration.toString();
+        section.text = doctor.section!.sectionName.toString();
+        sectionId = doctor.section!.id;
+        image = doctor.userData.image;
+        doctorModel = doctor;
+        emit(SuccessGetDoctor());
       });
     });
   }
 
   void editingToggle() {
     isEditing = !isEditing;
-    emit(Editing_ToggleProfile_State());
+    emit(EditingToggleProfileState());
   }
 
   void cancelEditing() {
-    getDoctorProfile(id: Doctor_id!);
+    getDoctorProfile(id: doctorId!);
     isEditing = false;
-    emit(Cancel_Editing_State());
+    emit(CancelEditingState());
   }
 
   ///Sections for update
-  List<String>? SectionsName;
-  List<Map<String, int>> Sections = [];
+  List<String>? sectionsName;
+  List<Map<String, int>> sections = [];
 
   void getSections({required context}) {
     AddAccountCubit.get(context).getSection();
-    SectionsName = AddAccountCubit.get(context).SectionNames;
-    Sections = AddAccountCubit.get(context).Sections;
-    emit(Get_Section_State());
+    sectionsName = AddAccountCubit.get(context).SectionNames;
+    sections = AddAccountCubit.get(context).Sections;
+    emit(GetSectionState());
   }
 
-  void Select_SectionId({required int id}) {
-    Section_id = id;
-    emit(Select_Sections_State());
+  void selectSectionId({required int id}) {
+    sectionId = id;
+    emit(SelectSectionState());
   }
 
   ///
 
   Future<void> updateProfile() async {
-    emit(Loading_Update_Doctor());
-    return _repo.updateProfile(
-      id: Doctor_id!,
-      first_name: First_name.text,
-      middle_name: Middle_name.text,
-      last_name: Last_name.text,
-      phone_number: Phone.text,
-      description: Description.text ,
-      Section_id: Section_id.toString(),
-      Session_duration: Duration.text,
-      Day_In_Advanced: Day_In_Advance.text,
+    emit(LoadingUpdateDoctor());
+    return _repo
+        .updateProfile(
+      id: doctorId!,
+      first_name: firstName.text,
+      middle_name: middleName.text,
+      last_name: lastName.text,
+      phone_number: phone.text,
+      description: description.text,
+      Section_id: sectionId.toString(),
+      Session_duration: duration.text,
+      Day_In_Advanced: dayInAdvance.text,
       //   Working_hour: ""
     )
         .then((value) {
       value.fold((error) {
-        emit(Error_Update_Doctor(error));
-      }, (DoctorModel) {
-        isEditing=false;
-        emit(Success_Update_Doctor());
+        emit(ErrorUpdateDoctor(error));
+      }, (doctorModel) {
+        isEditing = false;
+        emit(SuccessUpdateDoctor());
       });
     });
   }
 
-  Future<void>addDoctorSchedule()async{
-    emit(Loading_Post_Schedule());
-    await _repo.postDoctorSchedule(id: Doctor_id!).then((value){
-      value.fold((error){
-        emit(Error_Post_Schedule(error));
-      }, (map){
-        emit(Success_Post_Schedule());
+  Future<void> addDoctorSchedule() async {
+    emit(LoadingPostSchedule());
+    await _repo.postDoctorSchedule(id: doctorId!).then((value) {
+      value.fold((error) {
+        emit(ErrorPostSchedule(error));
+      }, (map) {
+        emit(SuccessPostSchedule());
       });
     });
   }
 
-  List<ScheduleModel>working_hours=[];
-  Future<void>getDoctorSchedule()async{
-    emit(Loading_Get_Schedule());
-    working_hours=[];
-    await _repo.getDoctorSchedule(id: Doctor_id!).then((value){
-      value.fold((error){
+  List<ScheduleModel> workingHours = [];
+  Future<void> getDoctorSchedule() async {
+    emit(LoadingGetSchedule());
+    workingHours = [];
+    await _repo.getDoctorSchedule(id: doctorId!).then((value) {
+      value.fold((error) {
         emit(Error_Get_Schedule(error));
-      }, (workingMap){
-        workingMap.forEach((day,times){
-          ScheduleModel scheduleModel=ScheduleModel(day,times);
-          working_hours.add(scheduleModel);
-          print(working_hours.length);
+      }, (workingMap) {
+        workingMap.forEach((day, times) {
+          ScheduleModel scheduleModel = ScheduleModel(day, times);
+          workingHours.add(scheduleModel);
         });
-        emit(Success_Get_Schedule());
+        emit(SuccessGetSchedule());
       });
     });
   }
-
-
 }

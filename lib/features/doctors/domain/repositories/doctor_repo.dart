@@ -62,28 +62,29 @@ class DoctorRepo {
           Session_duration: Session_duration,
           Day_In_Advanced: Day_In_Advanced,
           image: image);
+
       return right(model.data);
     } catch (error) {
       return left(NetworkExceptions.getException(error));
     }
   }
 
-  Future<Either<NetworkExceptions, Map>> postDoctorSchedule({required int id}) async{
+  Future<Either<NetworkExceptions, Map>> postDoctorSchedule(
+      {required int id}) async {
     try {
-      BaseModel baseModel=await _remote.addDoctorSchedule(id: id);
+      BaseModel baseModel = await _remote.addDoctorSchedule(id: id);
       return right(baseModel.data);
-    }
-    catch (error) {
+    } catch (error) {
       return left(NetworkExceptions.getException(error));
     }
   }
 
-  Future<Either<NetworkExceptions, Map<String,dynamic> >>getDoctorSchedule({required int id})async{
+  Future<Either<NetworkExceptions, Map<String, dynamic>>> getDoctorSchedule(
+      {required int id}) async {
     try {
-      BaseModel baseModel=await _remote.getDoctorShedule(id: id);
+      BaseModel baseModel = await _remote.getDoctorShedule(id: id);
       return right(baseModel.data);
-    }
-    catch (error) {
+    } catch (error) {
       return left(NetworkExceptions.getException(error));
     }
   }

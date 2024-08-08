@@ -45,7 +45,7 @@ class _SerivcesTileState extends State<SerivcesTile> {
         decoration: BoxDecoration(
           border: isHover
               ? Border.all(
-                  color: ColorsHelper.teal,
+                  color: ColorsHelper.blue,
                 )
               : null,
           borderRadius: BorderRadius.only(
@@ -133,7 +133,7 @@ class _SerivcesTileState extends State<SerivcesTile> {
                                     padding: const EdgeInsets.all(5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: ColorsHelper.teal,
+                                      color: ColorsHelper.blue,
                                     ),
                                     child: const Center(
                                       child: Icon(
