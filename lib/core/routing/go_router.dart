@@ -190,8 +190,7 @@ class WebRouter {
                         PatientCubit.get(context)
                             .getPatientProfile(id: Patient_id);
                       });
-                      print("From the go router");
-                      print("_____________________");
+                      
                       return PatientProfile(id: Patient_id);
                     },
                   ),

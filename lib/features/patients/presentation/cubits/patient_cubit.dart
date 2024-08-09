@@ -130,7 +130,7 @@ class PatientCubit extends Cubit<PatientState> {
       bloodType.text = patient.bloodType;
       matrialStatus.text = patient.maritalStatus;
       childrenNum.text = patient.childrenNum.toString();
-      habit.text = patient.habits;
+      habit.text = patient.habits ?? "";
       profession.text = patient.proffesion;
       wallet.text = patient.wallet.toString();
       gender.text = patient.gender.toString();

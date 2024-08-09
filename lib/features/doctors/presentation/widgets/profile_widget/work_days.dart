@@ -37,30 +37,31 @@ Widget AlertDialouge({
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                workDaysButton(Selected_Day: Selected_Day,onPressed: (item) {
-                  setState(() {
-                    Selected_Day = item;
-                  });
-                }),
+                workDaysButton(
+                    Selected_Day: Selected_Day,
+                    onPressed: (item) {
+                      setState(() {
+                        Selected_Day = item;
+                      });
+                    }),
                 SizedBox(
                   height: 40.h,
                 ),
-                TimesButtons(Add_onPressed:  () {
+                TimesButtons(Add_onPressed: () {
                   setState(() {
                     if (counter < 6) counter++;
                   });
-                },
-                    Remove_onPressed: () {
-                      setState(() {
-                        if (counter > 0){
-                          counter--;
-                        }
-                      });
-                    }, Vication_onPressed: () {
-                      setState(() {
-                        DateAppear = !DateAppear;
-                      });
-                    }),
+                }, Remove_onPressed: () {
+                  setState(() {
+                    if (counter > 0) {
+                      counter--;
+                    }
+                  });
+                }, Vication_onPressed: () {
+                  setState(() {
+                    DateAppear = !DateAppear;
+                  });
+                }),
                 SizedBox(
                   height: 30.h,
                 ),
@@ -112,39 +113,35 @@ Widget AlertDialouge({
   });
 }
 
-Widget workDaysButton({
-  required Selected_Day,
-  required onPressed
-}){
+Widget workDaysButton({required Selected_Day, required onPressed}) {
   return Row(
     children: Days.map((item) => Padding(
-      padding: EdgeInsets.only(left: 10.w),
-      child: CustomElevatedButton(
-        onPressed: (){
-          onPressed(item);
-        },
-        label: item,
-        minimumSizeH: 50,
-        minimumSizeW: 140.w,
-        buttonColor: (Selected_Day == item)
-            ? ColorsHelper.onPressedColor
-            : ColorsHelper.blueDark,
-      ),
-    )).toList(),
+          padding: EdgeInsets.only(left: 10.w),
+          child: CustomElevatedButton(
+            onPressed: () {
+              onPressed(item);
+            },
+            label: item,
+            minimumSizeH: 50,
+            minimumSizeW: 140.w,
+            buttonColor: (Selected_Day == item)
+                ? ColorsHelper.onPressedColor
+                : ColorsHelper.blueDark,
+          ),
+        )).toList(),
   );
 }
 
-Widget TimesButtons({
-  required Add_onPressed,
-  required Remove_onPressed,
-  required Vication_onPressed
-}){
-  return  Row(
+Widget TimesButtons(
+    {required Add_onPressed,
+    required Remove_onPressed,
+    required Vication_onPressed}) {
+  return Row(
     children: [
       Text(
         "Times",
-        style: StyleManager.font30Bold_Lobster.copyWith(
-            color: ColorsHelper.blueDark, fontSize: 20.sp),
+        style: StyleManager.font30Bold_Lobster
+            .copyWith(color: ColorsHelper.blueDark, fontSize: 20.sp),
       ),
       SizedBox(
         width: 100.w,
@@ -252,25 +249,30 @@ Widget TimesRow(context, selectedDay, index) {
             width: 30.w,
           ),
           IconButton(
-              onPressed: () {
-                if (Startcontroller.text.isNotEmpty &&
-                    Endcontroller.text.isNotEmpty)
-                  addItemToDay(selectedDay,
-                      "${Startcontroller.text}-${Endcontroller.text}");
-                print(Work_Days);
-              },
-              icon: Icon(Icons.add_circle_outline)),
+            onPressed: () {
+              if (Startcontroller.text.isNotEmpty &&
+                  Endcontroller.text.isNotEmpty) {
+                addItemToDay(selectedDay,
+                    "${Startcontroller.text}-${Endcontroller.text}");
+              }
+            },
+            icon: const Icon(Icons.add_circle_outline),
+          ),
           SizedBox(
             width: 10.w,
           ),
-          IconButton(onPressed: (){
-            Startcontroller.clear();
-            Endcontroller.clear();
-            if (index < Work_Days[selectedDay].length){
-              Work_Days[selectedDay].removeAt(index);
-            }
-            print(Work_Days);
-          }, icon: Icon(Icons.cancel_outlined,color: ColorsHelper.error,))
+          IconButton(
+              onPressed: () {
+                Startcontroller.clear();
+                Endcontroller.clear();
+                if (index < Work_Days[selectedDay].length) {
+                  Work_Days[selectedDay].removeAt(index);
+                }
+              },
+              icon: Icon(
+                Icons.cancel_outlined,
+                color: ColorsHelper.error,
+              ))
         ],
       ),
     ],

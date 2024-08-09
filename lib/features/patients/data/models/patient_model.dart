@@ -7,21 +7,24 @@ class PatientModel {
   final int id;
   @JsonKey(name: 'user_id')
   final int userId;
+
   @JsonKey(name: 'birth_date')
   final DateTime birthDate;
   final String age;
   final String gender;
   final String address;
+
   @JsonKey(name: 'blood_type')
   final String bloodType;
   @JsonKey(name: 'marital_status')
   final String maritalStatus;
   @JsonKey(name: 'children_num')
-  final int childrenNum;
-  final String habits;
+  final int? childrenNum;
+  final String? habits;
   final String proffesion;
+  @JsonKey(readValue: transferBooleanToInt)
   final int diabetes;
-  @JsonKey(name: 'blood_pressure')
+  @JsonKey(name: 'blood_pressure', readValue: transferBooleanToInt)
   final int bloodPressure;
   final int wallet;
   @JsonKey(name: 'user')
@@ -46,4 +49,13 @@ class PatientModel {
   factory PatientModel.fromJson(Map<String, dynamic> json) =>
       _$PatientModelFromJson(json);
   Map<String, dynamic> toJson() => _$PatientModelToJson(this);
+
+  // Made this function because the blood_type and the diabets sometimes come from the back end as a boolean and other time int
+  static transferBooleanToInt(map, key) {
+    if (map[key] is bool) {
+      return map[key] ? 1 : 0;
+    } else {
+      return map[key];
+    }
+  }
 }

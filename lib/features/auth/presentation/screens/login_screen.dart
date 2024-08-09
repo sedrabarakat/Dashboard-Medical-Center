@@ -51,9 +51,7 @@ class LoginPage extends StatelessWidget {
                 message: "Welcome Back",
                 title: 'Success',
               );
-              print(
-                  "________________________________________________________O");
-              print("Success");
+
               SharedPrefrence.getData(key: "role") == 'owner'
                   ? context.go('/add_account')
                   : context.go('/Doctors_List');
