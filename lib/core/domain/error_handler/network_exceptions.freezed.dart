@@ -25,6 +25,7 @@ mixin _$NetworkExceptions {
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -48,6 +49,7 @@ mixin _$NetworkExceptions {
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -71,6 +73,7 @@ mixin _$NetworkExceptions {
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -95,6 +98,7 @@ mixin _$NetworkExceptions {
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -118,6 +122,7 @@ mixin _$NetworkExceptions {
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -141,6 +146,7 @@ mixin _$NetworkExceptions {
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -230,6 +236,7 @@ class _$RequestCancelledImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -256,6 +263,7 @@ class _$RequestCancelledImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -282,6 +290,7 @@ class _$RequestCancelledImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -312,6 +321,7 @@ class _$RequestCancelledImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -338,6 +348,7 @@ class _$RequestCancelledImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -364,6 +375,7 @@ class _$RequestCancelledImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -472,6 +484,7 @@ class _$UnauthorizedRequestImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -498,6 +511,7 @@ class _$UnauthorizedRequestImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -524,6 +538,7 @@ class _$UnauthorizedRequestImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -554,6 +569,7 @@ class _$UnauthorizedRequestImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -580,6 +596,7 @@ class _$UnauthorizedRequestImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -606,6 +623,7 @@ class _$UnauthorizedRequestImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -691,6 +709,7 @@ class _$LoggingInRequiredImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -717,6 +736,7 @@ class _$LoggingInRequiredImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -743,6 +763,7 @@ class _$LoggingInRequiredImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -773,6 +794,7 @@ class _$LoggingInRequiredImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -799,6 +821,7 @@ class _$LoggingInRequiredImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -825,6 +848,7 @@ class _$LoggingInRequiredImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -901,6 +925,7 @@ class _$BadRequestImpl with DiagnosticableTreeMixin implements BadRequest {
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -927,6 +952,7 @@ class _$BadRequestImpl with DiagnosticableTreeMixin implements BadRequest {
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -953,6 +979,7 @@ class _$BadRequestImpl with DiagnosticableTreeMixin implements BadRequest {
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -983,6 +1010,7 @@ class _$BadRequestImpl with DiagnosticableTreeMixin implements BadRequest {
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -1009,6 +1037,7 @@ class _$BadRequestImpl with DiagnosticableTreeMixin implements BadRequest {
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1035,6 +1064,7 @@ class _$BadRequestImpl with DiagnosticableTreeMixin implements BadRequest {
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1139,6 +1169,7 @@ class _$NotFoundImpl with DiagnosticableTreeMixin implements NotFound {
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -1165,6 +1196,7 @@ class _$NotFoundImpl with DiagnosticableTreeMixin implements NotFound {
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -1191,6 +1223,7 @@ class _$NotFoundImpl with DiagnosticableTreeMixin implements NotFound {
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -1221,6 +1254,7 @@ class _$NotFoundImpl with DiagnosticableTreeMixin implements NotFound {
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -1247,6 +1281,7 @@ class _$NotFoundImpl with DiagnosticableTreeMixin implements NotFound {
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1273,6 +1308,7 @@ class _$NotFoundImpl with DiagnosticableTreeMixin implements NotFound {
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1357,6 +1393,7 @@ class _$MethodNotAllowedImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -1383,6 +1420,7 @@ class _$MethodNotAllowedImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -1409,6 +1447,7 @@ class _$MethodNotAllowedImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -1439,6 +1478,7 @@ class _$MethodNotAllowedImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -1465,6 +1505,7 @@ class _$MethodNotAllowedImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1491,6 +1532,7 @@ class _$MethodNotAllowedImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1570,6 +1612,7 @@ class _$NotAcceptableImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -1596,6 +1639,7 @@ class _$NotAcceptableImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -1622,6 +1666,7 @@ class _$NotAcceptableImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -1652,6 +1697,7 @@ class _$NotAcceptableImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -1678,6 +1724,7 @@ class _$NotAcceptableImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1704,6 +1751,7 @@ class _$NotAcceptableImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1727,6 +1775,258 @@ class _$NotAcceptableImpl
 
 abstract class NotAcceptable implements NetworkExceptions {
   const factory NotAcceptable() = _$NotAcceptableImpl;
+}
+
+/// @nodoc
+abstract class _$$TooManyRequestImplCopyWith<$Res> {
+  factory _$$TooManyRequestImplCopyWith(_$TooManyRequestImpl value,
+          $Res Function(_$TooManyRequestImpl) then) =
+      __$$TooManyRequestImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String reason});
+}
+
+/// @nodoc
+class __$$TooManyRequestImplCopyWithImpl<$Res>
+    extends _$NetworkExceptionsCopyWithImpl<$Res, _$TooManyRequestImpl>
+    implements _$$TooManyRequestImplCopyWith<$Res> {
+  __$$TooManyRequestImplCopyWithImpl(
+      _$TooManyRequestImpl _value, $Res Function(_$TooManyRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reason = null,
+  }) {
+    return _then(_$TooManyRequestImpl(
+      null == reason
+          ? _value.reason
+          : reason // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TooManyRequestImpl
+    with DiagnosticableTreeMixin
+    implements TooManyRequest {
+  const _$TooManyRequestImpl(this.reason);
+
+  @override
+  final String reason;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'NetworkExceptions.tooManyRequest(reason: $reason)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'NetworkExceptions.tooManyRequest'))
+      ..add(DiagnosticsProperty('reason', reason));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TooManyRequestImpl &&
+            (identical(other.reason, reason) || other.reason == reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reason);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TooManyRequestImplCopyWith<_$TooManyRequestImpl> get copyWith =>
+      __$$TooManyRequestImplCopyWithImpl<_$TooManyRequestImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() requestCancelled,
+    required TResult Function(String reason) unauthorizedRequest,
+    required TResult Function() loggingInRequired,
+    required TResult Function() badRequest,
+    required TResult Function(String reason) notFound,
+    required TResult Function() methodNotAllowed,
+    required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
+    required TResult Function() requestTimeout,
+    required TResult Function() sendTimeout,
+    required TResult Function(String reason) unprocessableEntity,
+    required TResult Function() conflict,
+    required TResult Function() internalServerError,
+    required TResult Function() notImplemented,
+    required TResult Function() serviceUnavailable,
+    required TResult Function() noInternetConnection,
+    required TResult Function() formatException,
+    required TResult Function() unableToProcess,
+    required TResult Function(String error) defaultError,
+    required TResult Function() unexpectedError,
+  }) {
+    return tooManyRequest(reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? requestCancelled,
+    TResult? Function(String reason)? unauthorizedRequest,
+    TResult? Function()? loggingInRequired,
+    TResult? Function()? badRequest,
+    TResult? Function(String reason)? notFound,
+    TResult? Function()? methodNotAllowed,
+    TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
+    TResult? Function()? requestTimeout,
+    TResult? Function()? sendTimeout,
+    TResult? Function(String reason)? unprocessableEntity,
+    TResult? Function()? conflict,
+    TResult? Function()? internalServerError,
+    TResult? Function()? notImplemented,
+    TResult? Function()? serviceUnavailable,
+    TResult? Function()? noInternetConnection,
+    TResult? Function()? formatException,
+    TResult? Function()? unableToProcess,
+    TResult? Function(String error)? defaultError,
+    TResult? Function()? unexpectedError,
+  }) {
+    return tooManyRequest?.call(reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? requestCancelled,
+    TResult Function(String reason)? unauthorizedRequest,
+    TResult Function()? loggingInRequired,
+    TResult Function()? badRequest,
+    TResult Function(String reason)? notFound,
+    TResult Function()? methodNotAllowed,
+    TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
+    TResult Function()? requestTimeout,
+    TResult Function()? sendTimeout,
+    TResult Function(String reason)? unprocessableEntity,
+    TResult Function()? conflict,
+    TResult Function()? internalServerError,
+    TResult Function()? notImplemented,
+    TResult Function()? serviceUnavailable,
+    TResult Function()? noInternetConnection,
+    TResult Function()? formatException,
+    TResult Function()? unableToProcess,
+    TResult Function(String error)? defaultError,
+    TResult Function()? unexpectedError,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequest != null) {
+      return tooManyRequest(reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(RequestCancelled value) requestCancelled,
+    required TResult Function(UnauthorizedRequest value) unauthorizedRequest,
+    required TResult Function(LoggingInRequired value) loggingInRequired,
+    required TResult Function(BadRequest value) badRequest,
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(MethodNotAllowed value) methodNotAllowed,
+    required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
+    required TResult Function(RequestTimeout value) requestTimeout,
+    required TResult Function(SendTimeout value) sendTimeout,
+    required TResult Function(UnprocessableEntity value) unprocessableEntity,
+    required TResult Function(Conflict value) conflict,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(NotImplemented value) notImplemented,
+    required TResult Function(ServiceUnavailable value) serviceUnavailable,
+    required TResult Function(NoInternetConnection value) noInternetConnection,
+    required TResult Function(FormatException value) formatException,
+    required TResult Function(UnableToProcess value) unableToProcess,
+    required TResult Function(DefaultError value) defaultError,
+    required TResult Function(UnexpectedError value) unexpectedError,
+  }) {
+    return tooManyRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(RequestCancelled value)? requestCancelled,
+    TResult? Function(UnauthorizedRequest value)? unauthorizedRequest,
+    TResult? Function(LoggingInRequired value)? loggingInRequired,
+    TResult? Function(BadRequest value)? badRequest,
+    TResult? Function(NotFound value)? notFound,
+    TResult? Function(MethodNotAllowed value)? methodNotAllowed,
+    TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
+    TResult? Function(RequestTimeout value)? requestTimeout,
+    TResult? Function(SendTimeout value)? sendTimeout,
+    TResult? Function(UnprocessableEntity value)? unprocessableEntity,
+    TResult? Function(Conflict value)? conflict,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(NotImplemented value)? notImplemented,
+    TResult? Function(ServiceUnavailable value)? serviceUnavailable,
+    TResult? Function(NoInternetConnection value)? noInternetConnection,
+    TResult? Function(FormatException value)? formatException,
+    TResult? Function(UnableToProcess value)? unableToProcess,
+    TResult? Function(DefaultError value)? defaultError,
+    TResult? Function(UnexpectedError value)? unexpectedError,
+  }) {
+    return tooManyRequest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(RequestCancelled value)? requestCancelled,
+    TResult Function(UnauthorizedRequest value)? unauthorizedRequest,
+    TResult Function(LoggingInRequired value)? loggingInRequired,
+    TResult Function(BadRequest value)? badRequest,
+    TResult Function(NotFound value)? notFound,
+    TResult Function(MethodNotAllowed value)? methodNotAllowed,
+    TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
+    TResult Function(RequestTimeout value)? requestTimeout,
+    TResult Function(SendTimeout value)? sendTimeout,
+    TResult Function(UnprocessableEntity value)? unprocessableEntity,
+    TResult Function(Conflict value)? conflict,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(NotImplemented value)? notImplemented,
+    TResult Function(ServiceUnavailable value)? serviceUnavailable,
+    TResult Function(NoInternetConnection value)? noInternetConnection,
+    TResult Function(FormatException value)? formatException,
+    TResult Function(UnableToProcess value)? unableToProcess,
+    TResult Function(DefaultError value)? defaultError,
+    TResult Function(UnexpectedError value)? unexpectedError,
+    required TResult orElse(),
+  }) {
+    if (tooManyRequest != null) {
+      return tooManyRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TooManyRequest implements NetworkExceptions {
+  const factory TooManyRequest(final String reason) = _$TooManyRequestImpl;
+
+  String get reason;
+  @JsonKey(ignore: true)
+  _$$TooManyRequestImplCopyWith<_$TooManyRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1783,6 +2083,7 @@ class _$RequestTimeoutImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -1809,6 +2110,7 @@ class _$RequestTimeoutImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -1835,6 +2137,7 @@ class _$RequestTimeoutImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -1865,6 +2168,7 @@ class _$RequestTimeoutImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -1891,6 +2195,7 @@ class _$RequestTimeoutImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1917,6 +2222,7 @@ class _$RequestTimeoutImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -1994,6 +2300,7 @@ class _$SendTimeoutImpl with DiagnosticableTreeMixin implements SendTimeout {
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -2020,6 +2327,7 @@ class _$SendTimeoutImpl with DiagnosticableTreeMixin implements SendTimeout {
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -2046,6 +2354,7 @@ class _$SendTimeoutImpl with DiagnosticableTreeMixin implements SendTimeout {
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -2076,6 +2385,7 @@ class _$SendTimeoutImpl with DiagnosticableTreeMixin implements SendTimeout {
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -2102,6 +2412,7 @@ class _$SendTimeoutImpl with DiagnosticableTreeMixin implements SendTimeout {
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2128,6 +2439,7 @@ class _$SendTimeoutImpl with DiagnosticableTreeMixin implements SendTimeout {
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2236,6 +2548,7 @@ class _$UnprocessableEntityImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -2262,6 +2575,7 @@ class _$UnprocessableEntityImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -2288,6 +2602,7 @@ class _$UnprocessableEntityImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -2318,6 +2633,7 @@ class _$UnprocessableEntityImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -2344,6 +2660,7 @@ class _$UnprocessableEntityImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2370,6 +2687,7 @@ class _$UnprocessableEntityImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2452,6 +2770,7 @@ class _$ConflictImpl with DiagnosticableTreeMixin implements Conflict {
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -2478,6 +2797,7 @@ class _$ConflictImpl with DiagnosticableTreeMixin implements Conflict {
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -2504,6 +2824,7 @@ class _$ConflictImpl with DiagnosticableTreeMixin implements Conflict {
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -2534,6 +2855,7 @@ class _$ConflictImpl with DiagnosticableTreeMixin implements Conflict {
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -2560,6 +2882,7 @@ class _$ConflictImpl with DiagnosticableTreeMixin implements Conflict {
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2586,6 +2909,7 @@ class _$ConflictImpl with DiagnosticableTreeMixin implements Conflict {
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2666,6 +2990,7 @@ class _$InternalServerErrorImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -2692,6 +3017,7 @@ class _$InternalServerErrorImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -2718,6 +3044,7 @@ class _$InternalServerErrorImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -2748,6 +3075,7 @@ class _$InternalServerErrorImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -2774,6 +3102,7 @@ class _$InternalServerErrorImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2800,6 +3129,7 @@ class _$InternalServerErrorImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -2879,6 +3209,7 @@ class _$NotImplementedImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -2905,6 +3236,7 @@ class _$NotImplementedImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -2931,6 +3263,7 @@ class _$NotImplementedImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -2961,6 +3294,7 @@ class _$NotImplementedImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -2987,6 +3321,7 @@ class _$NotImplementedImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3013,6 +3348,7 @@ class _$NotImplementedImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3092,6 +3428,7 @@ class _$ServiceUnavailableImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -3118,6 +3455,7 @@ class _$ServiceUnavailableImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -3144,6 +3482,7 @@ class _$ServiceUnavailableImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -3174,6 +3513,7 @@ class _$ServiceUnavailableImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -3200,6 +3540,7 @@ class _$ServiceUnavailableImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3226,6 +3567,7 @@ class _$ServiceUnavailableImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3306,6 +3648,7 @@ class _$NoInternetConnectionImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -3332,6 +3675,7 @@ class _$NoInternetConnectionImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -3358,6 +3702,7 @@ class _$NoInternetConnectionImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -3388,6 +3733,7 @@ class _$NoInternetConnectionImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -3414,6 +3760,7 @@ class _$NoInternetConnectionImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3440,6 +3787,7 @@ class _$NoInternetConnectionImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3519,6 +3867,7 @@ class _$FormatExceptionImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -3545,6 +3894,7 @@ class _$FormatExceptionImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -3571,6 +3921,7 @@ class _$FormatExceptionImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -3601,6 +3952,7 @@ class _$FormatExceptionImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -3627,6 +3979,7 @@ class _$FormatExceptionImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3653,6 +4006,7 @@ class _$FormatExceptionImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3732,6 +4086,7 @@ class _$UnableToProcessImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -3758,6 +4113,7 @@ class _$UnableToProcessImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -3784,6 +4140,7 @@ class _$UnableToProcessImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -3814,6 +4171,7 @@ class _$UnableToProcessImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -3840,6 +4198,7 @@ class _$UnableToProcessImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3866,6 +4225,7 @@ class _$UnableToProcessImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -3970,6 +4330,7 @@ class _$DefaultErrorImpl with DiagnosticableTreeMixin implements DefaultError {
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -3996,6 +4357,7 @@ class _$DefaultErrorImpl with DiagnosticableTreeMixin implements DefaultError {
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -4022,6 +4384,7 @@ class _$DefaultErrorImpl with DiagnosticableTreeMixin implements DefaultError {
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -4052,6 +4415,7 @@ class _$DefaultErrorImpl with DiagnosticableTreeMixin implements DefaultError {
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -4078,6 +4442,7 @@ class _$DefaultErrorImpl with DiagnosticableTreeMixin implements DefaultError {
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -4104,6 +4469,7 @@ class _$DefaultErrorImpl with DiagnosticableTreeMixin implements DefaultError {
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,
@@ -4188,6 +4554,7 @@ class _$UnexpectedErrorImpl
     required TResult Function(String reason) notFound,
     required TResult Function() methodNotAllowed,
     required TResult Function() notAcceptable,
+    required TResult Function(String reason) tooManyRequest,
     required TResult Function() requestTimeout,
     required TResult Function() sendTimeout,
     required TResult Function(String reason) unprocessableEntity,
@@ -4214,6 +4581,7 @@ class _$UnexpectedErrorImpl
     TResult? Function(String reason)? notFound,
     TResult? Function()? methodNotAllowed,
     TResult? Function()? notAcceptable,
+    TResult? Function(String reason)? tooManyRequest,
     TResult? Function()? requestTimeout,
     TResult? Function()? sendTimeout,
     TResult? Function(String reason)? unprocessableEntity,
@@ -4240,6 +4608,7 @@ class _$UnexpectedErrorImpl
     TResult Function(String reason)? notFound,
     TResult Function()? methodNotAllowed,
     TResult Function()? notAcceptable,
+    TResult Function(String reason)? tooManyRequest,
     TResult Function()? requestTimeout,
     TResult Function()? sendTimeout,
     TResult Function(String reason)? unprocessableEntity,
@@ -4270,6 +4639,7 @@ class _$UnexpectedErrorImpl
     required TResult Function(NotFound value) notFound,
     required TResult Function(MethodNotAllowed value) methodNotAllowed,
     required TResult Function(NotAcceptable value) notAcceptable,
+    required TResult Function(TooManyRequest value) tooManyRequest,
     required TResult Function(RequestTimeout value) requestTimeout,
     required TResult Function(SendTimeout value) sendTimeout,
     required TResult Function(UnprocessableEntity value) unprocessableEntity,
@@ -4296,6 +4666,7 @@ class _$UnexpectedErrorImpl
     TResult? Function(NotFound value)? notFound,
     TResult? Function(MethodNotAllowed value)? methodNotAllowed,
     TResult? Function(NotAcceptable value)? notAcceptable,
+    TResult? Function(TooManyRequest value)? tooManyRequest,
     TResult? Function(RequestTimeout value)? requestTimeout,
     TResult? Function(SendTimeout value)? sendTimeout,
     TResult? Function(UnprocessableEntity value)? unprocessableEntity,
@@ -4322,6 +4693,7 @@ class _$UnexpectedErrorImpl
     TResult Function(NotFound value)? notFound,
     TResult Function(MethodNotAllowed value)? methodNotAllowed,
     TResult Function(NotAcceptable value)? notAcceptable,
+    TResult Function(TooManyRequest value)? tooManyRequest,
     TResult Function(RequestTimeout value)? requestTimeout,
     TResult Function(SendTimeout value)? sendTimeout,
     TResult Function(UnprocessableEntity value)? unprocessableEntity,

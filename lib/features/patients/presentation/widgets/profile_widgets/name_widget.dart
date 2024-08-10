@@ -23,7 +23,7 @@ Widget nameWidget(
                   fillColor: Colors.white,
                   controller: first_name,
                   readOnly: (is_Editig) ? false : true,
-                  textStyle: StyleManager.font30Bold.copyWith(color: ColorsHelper.blueDark),
+                  textStyle: StyleManager.font30Bold_Lobster.copyWith(color: ColorsHelper.blueDark),
                 )),
             SizedBox(
                 width: 150.w,
@@ -34,7 +34,7 @@ Widget nameWidget(
                   fillColor: Colors.white,
                   controller: Last_name,
                   readOnly: (is_Editig) ? false : true,
-                  textStyle: StyleManager.font30Bold.copyWith(color: ColorsHelper.blueDark),
+                  textStyle: StyleManager.font30Bold_Lobster.copyWith(color: ColorsHelper.blueDark),
                 )),
           ],
         )
@@ -42,7 +42,7 @@ Widget nameWidget(
           children: [
             Text(
               first_name.text,
-              style: StyleManager.font30Bold
+              style: StyleManager.font30Bold_Lobster
                   .copyWith(color: ColorsHelper.blueDark),
             ),
             SizedBox(
@@ -50,7 +50,7 @@ Widget nameWidget(
             ),
             Text(
               Last_name.text,
-              style: StyleManager.font30Bold
+              style: StyleManager.font30Bold_Lobster
                   .copyWith(color: ColorsHelper.blueDark),
             )
           ],

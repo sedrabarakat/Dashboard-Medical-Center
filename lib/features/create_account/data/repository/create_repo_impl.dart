@@ -3,10 +3,11 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
-import 'package:dashboad/features/create_account/data/models/patient_model.dart';
+
 import 'package:dashboad/features/create_account/data/models/usermodel.dart';
 import 'package:dashboad/features/create_account/domain/repository/create_repo.dart';
 import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
+import 'package:dashboad/features/patients/data/models/patient_model.dart';
 
 import '../data_source/remote/create_remote.dart';
 
@@ -44,7 +45,7 @@ class CreateRepoImpl extends CreateRepo {
   }
 
   @override
-  Future<Either<NetworkExceptions, DoctorModel>> Create_Doctor({
+  Future<Either<NetworkExceptions, Usermodel>> Create_Doctor({
     required String first_name,
     required String middle_name,
     required String last_name,
@@ -67,7 +68,7 @@ class CreateRepoImpl extends CreateRepo {
           section_id: section_id,
           days_in_advance: days_in_advance,
           session_durtion: session_durtion);
-      DoctorModel doctorModel = DoctorModel.fromJson(response.data);
+      Usermodel doctorModel = Usermodel.fromJson(response.data['user']);
       return right(doctorModel);
     } catch (error) {
       return left(NetworkExceptions.getException(error));

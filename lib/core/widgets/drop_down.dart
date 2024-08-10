@@ -3,7 +3,7 @@ import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Dropdown extends StatelessWidget {
+class Dropdown extends StatefulWidget {
   Dropdown(
       {required this.dropdownItems,
       required this.OnChanged,
@@ -24,28 +24,38 @@ class Dropdown extends StatelessWidget {
   final Color ? fillColor;
 
   @override
+  State<Dropdown> createState() => _DropdownState();
+}
+
+class _DropdownState extends State<Dropdown> {
+  @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButtonFormField<String>(
           decoration: InputDecoration(
-              border:        borderStyle,
-              enabledBorder: borderStyle,
-              focusedBorder: borderStyle,
-              filled: filled,
-              fillColor: (fillColor!=null)?fillColor:ColorsHelper.blueLightest,
+              border:        widget.borderStyle,
+              enabledBorder: widget.borderStyle,
+              focusedBorder: widget.borderStyle,
+              filled: widget.filled,
+              fillColor: (widget.fillColor!=null)?widget.fillColor:ColorsHelper.blueLightest,
               hintStyle: TextStyle(fontSize: 14, color: Colors.grey.shade800),
-              hintText: hintText),
-          value: selectedItem,
+              hintText: widget.hintText),
+          value: widget.selectedItem,
           focusColor: ColorsHelper.blueLightest,
-          hint: Text(hintText),
-          items: dropdownItems.map((String item) {
+          hint: Text(widget.hintText),
+          items: widget.dropdownItems.map((String item) {
             return DropdownMenuItem<String>(
               value: item,
               child: Text(item),
             );
           }).toList(),
-          validator: validator,
-          onChanged: OnChanged),
+          validator: widget.validator,
+          onChanged: (value){
+            setState(() {
+              widget.selectedItem=value;
+            });
+            widget.OnChanged(value);
+          }),
     );
   }
 }

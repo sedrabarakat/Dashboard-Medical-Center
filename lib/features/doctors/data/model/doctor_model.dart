@@ -1,7 +1,9 @@
 import 'package:dashboad/core/data/models/user_model.dart';
+import 'package:dashboad/features/sections/data/models/section_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'doctor_model.g.dart';
 
+//todo check if the section_id and some other stuff return int in all api's not string in some and the other int
 @JsonSerializable()
 class DoctorModel {
   final int id;
@@ -15,27 +17,17 @@ class DoctorModel {
   final int daysInAdvance;
   @JsonKey(name: 'user')
   final UserModel userData;
-  final SectionModel section;
+  final SectionModel? section;
   DoctorModel({
     required this.daysInAdvance,
     required this.id,
-    required this.section,
     required this.sectionId,
     required this.sessionDuration,
     required this.userData,
     required this.userId,
+    this.section,
   });
   factory DoctorModel.fromJson(Map<String, dynamic> json) =>
       _$DoctorModelFromJson(json);
   Map<String, dynamic> toJson() => _$DoctorModelToJson(this);
-}
-
-@JsonSerializable()
-class SectionModel {
-  final int id;
-  final String name;
-  SectionModel({required this.id, required this.name});
-  factory SectionModel.fromJson(Map<String, dynamic> json) =>
-      _$SectionModelFromJson(json);
-  Map<String, dynamic> toJson() => _$SectionModelToJson(this);
 }

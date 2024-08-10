@@ -14,7 +14,7 @@ class FromfieldColumn extends StatelessWidget {
   AddAccountCubit cubit;
   BuildContext context;
 
-  FromfieldColumn({required this.cubit, required this.context});
+  FromfieldColumn({super.key, required this.cubit, required this.context});
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +63,8 @@ class FromfieldColumn extends StatelessWidget {
                 Text_TextFiled(
                     text: 'Password',
                     controller: cubit.Password,
-                    validator: (value) =>
-                        ValidatorManager.instance.validatePassword(value ?? '')),
+                    validator: (value) => ValidatorManager.instance
+                        .validatePassword(value ?? '')),
                 SizedBox(
                   width: 30.w,
                 ),
@@ -89,9 +89,7 @@ class FromfieldColumn extends StatelessWidget {
               height: 70.h,
             ),
             if (cubit.SelectedIndex == 1)
-              DoctorsFields(
-                cubit: cubit,Buildcontext:context
-              ),
+              DoctorsFields(cubit: cubit, Buildcontext: context),
             if (cubit.SelectedIndex == 2)
               PatientFields(
                 cubit: cubit,
@@ -107,11 +105,12 @@ class FromfieldColumn extends StatelessWidget {
               padding: EdgeInsets.only(left: 750.w),
               child: CustomElevatedButton(
                 onPressed: () {
-                 // print(SharedPrefrence.getData(key: "token"));
+                  // print(SharedPrefrence.getData(key: "token"));
                   if (formKey.currentState!.validate()) {
                     if (cubit.SelectedIndex == 0 ||
                         cubit.SelectedIndex == 3 ||
                         cubit.SelectedIndex == 4) cubit.Create_User();
+                    if (cubit.SelectedIndex == 1) cubit.Create_Doctor();
                     if (cubit.SelectedIndex == 2) cubit.Create_Patient();
                   }
                 },

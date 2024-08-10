@@ -2,9 +2,9 @@ import 'package:dashboad/core/widgets/text_from_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../helpers/colors_helper.dart';
-import '../utils/style_manager.dart';
-import '../utils/validator_manager.dart';
+import '../../helpers/colors_helper.dart';
+import '../../utils/style_manager.dart';
+import '../../utils/validator_manager.dart';
 
 Widget editingFields(
     {required TextEditingController controller,

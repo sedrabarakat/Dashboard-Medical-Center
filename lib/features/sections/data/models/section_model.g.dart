@@ -9,8 +9,12 @@ part of 'section_model.dart';
 SectionModel _$SectionModelFromJson(Map<String, dynamic> json) => SectionModel(
       id: (json['id'] as num).toInt(),
       sectionName: json['name'] as String,
+      image: SectionModel.imageValue(json, 'image') as String,
+      service: (json['service'] as List<dynamic>?)
+          ?.map((e) => SectionService.fromJson(e as Map<String, dynamic>))
+          .toList(),
       doctor: (json['doctor'] as List<dynamic>?)
-          ?.map((e) => TempModel.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => DoctorModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -18,21 +22,21 @@ Map<String, dynamic> _$SectionModelToJson(SectionModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.sectionName,
+      'image': instance.image,
       'doctor': instance.doctor,
+      'service': instance.service,
     };
 
-TempModel _$TempModelFromJson(Map<String, dynamic> json) => TempModel(
-      daysInAdvance: (json['days_in_advance'] as num).toInt(),
+SectionService _$SectionServiceFromJson(Map<String, dynamic> json) =>
+    SectionService(
+      name: json['name'] as String,
+      price: json['price'] as String,
       id: (json['id'] as num).toInt(),
-      sectionId: (json['section_id'] as num).toInt(),
-      sessionDuration: (json['session_durtion'] as num).toInt(),
-      userId: (json['user_id'] as num).toInt(),
     );
 
-Map<String, dynamic> _$TempModelToJson(TempModel instance) => <String, dynamic>{
+Map<String, dynamic> _$SectionServiceToJson(SectionService instance) =>
+    <String, dynamic>{
       'id': instance.id,
-      'user_id': instance.userId,
-      'section_id': instance.sectionId,
-      'session_durtion': instance.sessionDuration,
-      'days_in_advance': instance.daysInAdvance,
+      'name': instance.name,
+      'price': instance.price,
     };

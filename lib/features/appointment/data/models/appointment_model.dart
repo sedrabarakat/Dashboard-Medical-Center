@@ -1,5 +1,5 @@
+import 'package:dashboad/features/patients/data/models/patient_model.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../../../create_account/data/models/patient_model.dart';
 import '../../../doctors/data/model/doctor_model.dart';
 
 part 'appointment_model.g.dart';
@@ -27,6 +27,7 @@ class AppointmentModel {
     required this.doctor,
   });
 
-  factory AppointmentModel.fromJson(Map<String, dynamic> json) => _$AppointmentModelFromJson(json);
+  factory AppointmentModel.fromJson(Map<String, dynamic> json) =>
+      _$AppointmentModelFromJson(json);
   Map<String, dynamic> toJson() => _$AppointmentModelToJson(this);
 }

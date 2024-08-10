@@ -2,7 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
+import 'package:dashboad/core/routing/go_router.dart';
 import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:progress_state_button/progress_button.dart';
@@ -19,6 +21,8 @@ class AuthCubit extends Cubit<AuthState> {
   ButtonState loginButtonState = ButtonState.idle;
   ButtonState otpButtonState = ButtonState.idle;
   String otpCode = '';
+  bool isTimerFinished = false;
+  int timerSeconds = 5;
   Future<void> requestCode(BuildContext context) async {
     loginButtonState = ButtonState.loading;
     emit(const AuthState.requestCodeLoading());
@@ -27,9 +31,10 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((error) {
       loginButtonState = ButtonState.idle;
       emit(AuthState.requestCodeError(error));
-     // ToastBar.onNetworkFailure(context, networkException: error);
+      // ToastBar.onNetworkFailure(context, networkException: error);
     }, (data) {
       loginButtonState = ButtonState.success;
+      updateTimerSeconds();
       emit(const AuthState.requestCodeSuccess());
     });
   }
@@ -42,12 +47,19 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold((error) {
       otpButtonState = ButtonState.fail;
       emit(AuthState.verfiyCodeError(error));
-    }, (data) {
+    }, (data) async {
       otpButtonState = ButtonState.success;
-      emit(const AuthState.verfiyCodeSuccess());
-      SharedPrefrence.saveData(key:'token', value:data['token']);
-      SharedPrefrence.saveData(key:'role', value:data['user']['user_type']);
+
+      await SharedPrefrence.saveData(key: 'token', value: data['token']);
+      await SharedPrefrence.saveData(
+          key: 'role', value: data['user']['user_type']);
       DioHelper().addTokenInterceptor();
+      WebRouter.getTheCurrentDrawer();
+      emit(const AuthState.verfiyCodeSuccess());
     });
+  }
+
+  void updateTimerSeconds() {
+    timerSeconds *= 2;
   }
 }

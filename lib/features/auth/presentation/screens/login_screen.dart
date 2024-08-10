@@ -1,3 +1,4 @@
+import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/helpers/dimensions_helper.dart';
 import 'package:dashboad/core/helpers/responsive_helper.dart';
@@ -10,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
 import '../../../../core/widgets/toast_bar.dart';
 
 // Todo try to make the performance better
@@ -51,7 +51,10 @@ class LoginPage extends StatelessWidget {
                 message: "Welcome Back",
                 title: 'Success',
               );
-              context.go('/add_account');
+
+              SharedPrefrence.getData(key: "role") == 'owner'
+                  ? context.go('/add_account')
+                  : context.go('/Doctors_List');
             },
             verfiyCodeError: (error) {
               ToastBar.onNetworkFailure(context, networkException: error);
@@ -149,6 +152,11 @@ class LoginPage extends StatelessWidget {
                                               .loginButtonState,
                                     ),
                                     OtpCard(
+                                      timerDuration: Duration(
+                                        seconds:
+                                            BlocProvider.of<AuthCubit>(context)
+                                                .timerSeconds,
+                                      ),
                                       buttonCurrentState:
                                           BlocProvider.of<AuthCubit>(context)
                                               .otpButtonState,

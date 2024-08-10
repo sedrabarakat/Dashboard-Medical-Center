@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
-import 'package:dashboad/features/doctors/data/model/doctor_model.dart';
+import 'package:dashboad/features/patients/data/models/patient_model.dart';
 import '../../../../core/domain/error_handler/network_exceptions.dart';
-import 'package:dashboad/features/create_account/data/models/patient_model.dart';
 import '../../data/models/usermodel.dart';
 
 abstract class CreateRepo {
@@ -18,7 +15,7 @@ abstract class CreateRepo {
     required String password,
   });
 
-  Future<Either<NetworkExceptions, DoctorModel>> Create_Doctor({
+  Future<Either<NetworkExceptions, Usermodel>> Create_Doctor({
     required String first_name,
     required String middle_name,
     required String last_name,
@@ -29,7 +26,7 @@ abstract class CreateRepo {
     required String section_id,
     required String days_in_advance,
     required String session_durtion,
-});
+  });
 
   Future<Either<NetworkExceptions, PatientModel>> Create_Patient(
       {required String first_name,

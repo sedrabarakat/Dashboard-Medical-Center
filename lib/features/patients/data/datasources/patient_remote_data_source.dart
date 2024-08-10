@@ -21,60 +21,58 @@ class PatientRemoteDataSource {
 
   Future<void> deletePatient(int id) async {
     await _apiServices.delete(
-      AppUrl.deletePatient + "$id",
+      "${AppUrl.deletePatient}$id",
     );
   }
 
-  Future<BaseModel>getPatientProfile({required int id})async{
-    final response= await _apiServices.get("${AppUrl.getPatientProfile}$id");
+  Future<BaseModel> getPatientProfile({required int id}) async {
+    final response = await _apiServices.get("${AppUrl.getPatientProfile}$id");
 
-   return BaseModel(data: response['data'],message: response['message']);
+    return BaseModel(data: response['data'], message: response['message']);
   }
 
-  Future<BaseModel>updatePatientProfile({
-    required int id,
-    required String first_name,
-    required String middle_name,
-    required String last_name,
-    required String phone_number,
-    required String description,
-    required String birth_date,
-    required String age,
-    required String gender,
-    required String address,
-    required String bloodType,
-    required String marital_status,
-    required int children_num,
-    required String habits,
-    required String profession,
-    required bool diabetes,
-    required bool blood_pressure,
-    required int wallet,
-    var image
-})async{
-    final response= await _apiServices.post("${AppUrl.updatePatientProfile}$id",
-        body: {
-          "first_name":  first_name,
-          "middle_name": middle_name ,
-          "last_name":  last_name,
-          "phone_number":  phone_number,
-          "description":  description,
-          "birth_date": birth_date,
-          "age":  age,
-          "gender": gender,
-          "address":  address,
-          "blood_type":  bloodType,
-          "marital_status": marital_status,
-          "children_num": children_num,
-          "habits":  habits,
-          "proffesion":  profession,
-          "diabetes": diabetes,
-          "blood_pressure": blood_pressure,
-          "wallet": wallet,
-          if(image!=null) "image":image
-        }
-    );
-    return BaseModel(data: response['data'],message: response['message']);
+  Future<BaseModel> updatePatientProfile(
+      {required int id,
+      String? firstName,
+      String? middleName,
+      String? lastName,
+      String? phoneNumber,
+      String? description,
+      required String birthDate,
+      required String age,
+      required String gender,
+      required String address,
+      required String bloodType,
+      required String maritalStatus,
+      int? childrenNum,
+      String? habits,
+      required String profession,
+      required int diabetes,
+      required int bloodPressure,
+      required int wallet,
+      var image}) async {
+    final response =
+        await _apiServices.post("${AppUrl.updatePatientProfile}$id", body: {
+      if (firstName != null) "first_name": firstName,
+      if (middleName != null) "middle_name": middleName,
+      if (lastName != null) "last_name": lastName,
+      if (phoneNumber != null) "phone_number": phoneNumber,
+      if (description != null) "description": description,
+      "birth_date": birthDate,
+      "age": age,
+      "gender": gender,
+      "address": address,
+      "blood_type": bloodType,
+      "marital_status": maritalStatus,
+      if (childrenNum != null) "children_num": childrenNum,
+      if (habits != null) "habits": habits,
+      "proffesion": profession,
+      "diabetes": diabetes,
+      "blood_pressure": bloodPressure,
+      "wallet": wallet,
+      if (image != null) "image": image
+    });
+    return BaseModel(data: response['data'], message: response['message']);
   }
 
   ///////////////////////////* Sessions *///////////////////////////
@@ -102,29 +100,27 @@ class PatientRemoteDataSource {
     final response = await _apiServices.get(
         '${AppUrl.getOpenSessionForAPatient}${patientId.toString()}',
         queryParams: {'id': patientId.toString()});
-    debugPrint('here you are inside the session remote if 12121212$response') ;
+    debugPrint('here you are inside the session remote if 12121212$response');
     final List<dynamic> data = response["data"];
     final List<Session> sessions =
-    data.map((json) => Session.fromJson(json)).toList();
-    debugPrint('here you are inside the session remote if 222222222222222222$sessions') ;
-    debugPrint('here you are inside the session remote if 222222222222222222$data') ;
+        data.map((json) => Session.fromJson(json)).toList();
+    debugPrint(
+        'here you are inside the session remote if 222222222222222222$sessions');
+    debugPrint(
+        'here you are inside the session remote if 222222222222222222$data');
     return BaseModels(list: sessions);
-
   }
 
-  Future<BaseModel> uploadFile(Uint8List fileBytes,String fileName, int sessionId)async{
-    final response = await _apiServices.post(
-        '${AppUrl.uploadFile}${sessionId.toString()}',
-        formData: FormData.fromMap(
-          {
-            'file': MultipartFile.fromBytes(fileBytes, filename: fileName),
-          },
-        ),
-        queryParams: {
-          'id' : sessionId
-        }
-    );
-    return BaseModel(data: null, message: response['message']) ;
+  Future<BaseModel> uploadFile(
+      Uint8List fileBytes, String fileName, int sessionId) async {
+    final response =
+        await _apiServices.post('${AppUrl.uploadFile}${sessionId.toString()}',
+            formData: FormData.fromMap(
+              {
+                'file': MultipartFile.fromBytes(fileBytes, filename: fileName),
+              },
+            ),
+            queryParams: {'id': sessionId});
+    return BaseModel(data: null, message: response['message']);
   }
-
 }

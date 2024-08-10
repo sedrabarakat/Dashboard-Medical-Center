@@ -1,9 +1,7 @@
 import 'package:dashboad/core/helpers/dimensions_helper.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
-import 'package:dashboad/features/drawer_basiclayout/presentation/screens/baselayout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-
 import '../../../../core/helpers/colors_helper.dart';
 import '../../../../core/utils/values_manager.dart';
 
@@ -12,8 +10,7 @@ class TestAppointment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseLayout(
-        child: Padding(
+    return Padding(
       padding: const EdgeInsets.all(
         AppPadding.p30,
       ),
@@ -132,6 +129,6 @@ class TestAppointment extends StatelessWidget {
           ],
         ),
       ),
-    ));
+    );
   }
 }
