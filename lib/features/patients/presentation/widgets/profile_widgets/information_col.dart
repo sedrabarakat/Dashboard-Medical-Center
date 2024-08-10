@@ -50,7 +50,8 @@ Widget infoCol2({required context}){
       editingFields(
           controller: cubit.Birth_Date,
           is_Editig: isEditing),
-      editingDropDown(dropdownItems: Matrial_Status_List, selectedItem: cubit.Matrial_Status.text, selection: 'Matrial_Status',
+      editingDropDown(
+          dropdownItems: Matrial_Status_List, selectedItem: cubit.Matrial_Status.text, selection: 'Matrial_Status',
           is_Editig:isEditing),
       editingFields(
           controller: cubit.Children_num,

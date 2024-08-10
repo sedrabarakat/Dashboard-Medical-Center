@@ -1,4 +1,4 @@
-part of 'doctor_cubit.dart';
+  part of 'doctor_cubit.dart';
 
 abstract class DoctorState {}
 

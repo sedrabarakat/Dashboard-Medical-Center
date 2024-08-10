@@ -46,7 +46,7 @@ class TestAppointment extends StatelessWidget {
                 children: List.generate(
                     66,
                     (index) => AnimationConfiguration.staggeredGrid(
-                        duration: const Duration(milliseconds: 1500),
+                        duration: const Duration(milliseconds: 2000),
                         position: index,
                         columnCount: 2,
                         child: FadeInAnimation(
@@ -56,16 +56,16 @@ class TestAppointment extends StatelessWidget {
                               elevation: 4,
                               margin:const EdgeInsets.all(10),
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(30),
                               ),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
+                                borderRadius: BorderRadius.circular(20),
                                 child: Stack(
                                   fit: StackFit.expand,
                                   children: [
                                     Image.asset(
-                                      'assets/images/appointment_background.jpg',
-                                      fit: BoxFit.cover,
+                                      'assets/images/appointment_background1.jpg',
+                                      fit: BoxFit.fill,
                                     ),
                                     Container(
                                       decoration: BoxDecoration(
@@ -79,31 +79,23 @@ class TestAppointment extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    const Positioned(
-                                      bottom: 20,
-                                      left: 20,
+                                    const Center(
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center ,
                                         children: [
+                                          //SizedBox(height: 50,),
                                           Text(
-                                            'Doctor name',
+                                            'Doctor : Tuba baker',
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 24,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          SizedBox(height: 4),
+                                         // SizedBox(height: 5),
                                           Text(
-                                            'Section',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                            ),
-                                          ),
-                                          SizedBox(height: 8),
-                                          Text(
-                                            'Patient: ',
+                                            'Patient: tuba ',
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 16,
@@ -129,7 +121,7 @@ class TestAppointment extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                            )
+                            ) ,
                             // Container(
                             //     color: Colors.blue,
                             //     child: Center(child: Text('animation'))),
