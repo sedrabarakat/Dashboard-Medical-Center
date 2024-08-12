@@ -29,7 +29,7 @@ class StyleManager {
     fontWeight: FontWeight.bold,
     fontFamily: "Lobster-Regular",
   );
-  static TextStyle font17Lobster =  TextStyle(
+  static TextStyle font17Lobster = TextStyle(
     fontSize: 17.sp,
     fontWeight: FontWeight.w400,
     color: Colors.white,
@@ -52,8 +52,13 @@ class StyleManager {
     fontWeight: FontWeight.w600,
     color: ColorsHelper.black,
   );
+  static TextStyle fontSemiBold14 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: ColorsHelper.black,
+  );
   static TextStyle fontSemiBold12 = TextStyle(
-    fontSize: 12,
+    fontSize: 12.sp,
     fontWeight: FontWeight.w600,
     color: ColorsHelper.black,
   );
@@ -73,18 +78,18 @@ class StyleManager {
     color: ColorsHelper.black,
     fontWeight: FontWeight.w500,
   );
-  static TextStyle fontMedium14 =  TextStyle(
+  static TextStyle fontMedium14 = TextStyle(
     fontSize: 14.sp,
     color: ColorsHelper.white,
     fontWeight: FontWeight.w500,
   );
   /*>>>>>>>>>> Regular <<<<<<<<<<*/
-  static TextStyle fontRegular20 =  TextStyle(
+  static TextStyle fontRegular20 = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeight.w400,
     color: Colors.white,
   );
-  static TextStyle fontregular14 =  TextStyle(
+  static TextStyle fontregular14 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
     color: ColorsHelper.lightGry,
@@ -94,7 +99,7 @@ class StyleManager {
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
   );
-  static TextStyle fontRegular12 =  TextStyle(
+  static TextStyle fontRegular12 = TextStyle(
     color: ColorsHelper.lightGry,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
@@ -122,21 +127,14 @@ class StyleManager {
   );
   static InputBorder Border_round40Blue = OutlineInputBorder(
     borderRadius: BorderRadius.circular(40),
-    borderSide: BorderSide(
-      color: ColorsHelper.blueDark,
-      width: 1.5.w
-    ),
+    borderSide: BorderSide(color: ColorsHelper.blueDark, width: 1.5.w),
   );
-
-
-
 
   ///shapes BoxDecoration
   static BoxDecoration Circle_Shape({required Color color}) {
     return BoxDecoration(
       shape: BoxShape.circle,
       color: color,
-
     );
   }
 

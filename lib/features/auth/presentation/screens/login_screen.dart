@@ -51,10 +51,12 @@ class LoginPage extends StatelessWidget {
                 message: "Welcome Back",
                 title: 'Success',
               );
-
-              SharedPrefrence.getData(key: "role") == 'owner'
+              final String role = SharedPrefrence.getData(key: "role");
+              role == 'owner'
                   ? context.go('/add_account')
-                  : context.go('/Doctors_List');
+                  : role == 'lab_master'
+                      ? context.go('/patient_queue')
+                      : context.go('/Doctors_List');
             },
             verfiyCodeError: (error) {
               ToastBar.onNetworkFailure(context, networkException: error);

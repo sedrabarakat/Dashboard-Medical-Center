@@ -3,6 +3,7 @@ import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/assets_manager.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
 import 'package:dashboad/core/widgets/animated_text.dart';
+import 'package:dashboad/features/drawer_basiclayout/widgets/lab_master_drawer.dart';
 import 'package:dashboad/features/drawer_basiclayout/widgets/reception_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,8 +36,10 @@ class CustomDrawer extends StatelessWidget {
                 ? drawerList(
                     navigationShell: navigationShell,
                   )
-                : receptionDrawerList(
-                    navigationShell: navigationShell, context: context),
+                : (role == 'receptionist')
+                    ? receptionDrawerList(
+                        navigationShell: navigationShell, context: context)
+                    : labMasterDrawer(navigationShell: navigationShell),
             SvgPicture.asset(
               AssetsManager.drawerImage,
               height: 440.h,

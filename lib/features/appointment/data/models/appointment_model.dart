@@ -1,31 +1,42 @@
-import 'package:dashboad/features/patients/data/models/patient_model.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../../../doctors/data/model/doctor_model.dart';
 
 part 'appointment_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AppointmentModel {
+  @JsonKey(name: 'appointment_id')
   final int id;
+  @JsonKey(name: 'patient_firstName')
+  final String patientFirstName;
+
+  @JsonKey(name: 'patient_lastName')
+  final String patientLastName;
   @JsonKey(name: 'doctor_id')
   final int doctorId;
-  @JsonKey(name: 'patient_id')
-  final int patientId;
+  @JsonKey(name: 'doctor_firstName')
+  final String doctorFirstname;
+  @JsonKey(name: 'doctor_lastName')
+  final String doctorLastName;
+  @JsonKey(name: 'section_id')
+  final int secionId;
+  @JsonKey(name: 'section_name')
+  final String sectionName;
+
   final String date;
   @JsonKey(name: 'start_min')
   final String startMin;
-  final PatientModel patient;
-  final DoctorModel doctor;
 
-  AppointmentModel({
-    required this.id,
-    required this.doctorId,
-    required this.patientId,
-    required this.date,
-    required this.startMin,
-    required this.patient,
-    required this.doctor,
-  });
+  AppointmentModel(
+      {required this.date,
+      required this.doctorFirstname,
+      required this.doctorId,
+      required this.doctorLastName,
+      required this.id,
+      required this.patientFirstName,
+      required this.patientLastName,
+      required this.secionId,
+      required this.sectionName,
+      required this.startMin});
 
   factory AppointmentModel.fromJson(Map<String, dynamic> json) =>
       _$AppointmentModelFromJson(json);

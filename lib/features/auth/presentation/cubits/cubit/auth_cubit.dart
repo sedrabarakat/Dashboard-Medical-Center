@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dashboad/core/data/datasources/local.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
 import 'package:dashboad/core/helpers/dio_helper.dart';
-import 'package:dashboad/core/routing/go_router.dart';
+
 import 'package:dashboad/features/auth/domain/repositories/auth_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +54,6 @@ class AuthCubit extends Cubit<AuthState> {
       await SharedPrefrence.saveData(
           key: 'role', value: data['user']['user_type']);
       DioHelper().addTokenInterceptor();
-      WebRouter.getTheCurrentDrawer();
       emit(const AuthState.verfiyCodeSuccess());
     });
   }

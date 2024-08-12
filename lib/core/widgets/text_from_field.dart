@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../helpers/colors_helper.dart';
-import '../utils/style_manager.dart';
 
 // ignore: must_be_immutable
 class TextFild_def extends StatelessWidget {

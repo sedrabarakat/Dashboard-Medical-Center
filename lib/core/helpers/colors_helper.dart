@@ -8,17 +8,16 @@ class ColorsHelper {
   static const Color omarColor = Color(0xFF2A2AC0);
   static const Color onPressedColor = Color(0xFF3A3ACC);
 
-
   ///blue
   static const Color backgroundBlue = Color(0xFFEBF1F5);
-  static const Color blueLightest = Color(0xFFC7DEFF);      // Lightest blue
-  static const Color blueLighter = Color(0xFFB5D3FF);       // Lighter blue
-  static const Color blueLight = Color(0xFF7DA6FF);         // Light blue
-  static const Color blue = Color(0xFF2121BE);              // Base blue
-  static const Color blueDark = Color(0xFF1F1F99);          // Dark blue
-  static const Color blueDarker = Color(0xFF141473);        // Darker blue
-  static const Color blueDarkest = Color(0xFF0A0A47);       // Darkest blue
-
+  static const Color blueLightest = Color(0xFFC7DEFF); // Lightest blue
+  static const Color blueLighter = Color(0xFFB5D3FF); // Lighter blue
+  static const Color blueLight = Color(0xFF7DA6FF); // Light blue
+  static const Color blue = Color(0xFF2121BE); // Base blue
+  static const Color blueDark = Color(0xFF1F1F99); // Dark blue
+  static const Color blueDarker = Color(0xFF141473); // Darker blue
+  static const Color blueDarkest = Color(0xFF0A0A47); // Darkest blue
+  static const Color test = Color(0xffB3C8FF);
 
 // HexColor("#009797") hexteal
   ///teal
@@ -44,6 +43,7 @@ class ColorsHelper {
   static Color grey800 = Colors.grey[800]!;
   static Color grey850 = Colors.grey[850]!;
   static Color grey900 = Colors.grey[900]!;
+  static Color darkGrey = const Color(0XFF333333);
 
   ///black
   static Color black = Colors.black;

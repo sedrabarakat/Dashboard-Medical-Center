@@ -14,9 +14,9 @@ import '../../../../core/widgets/pic_name_widget.dart';
 import '../widgets/profile_widget/doctor_schedule.dart';
 
 class DoctorProfile extends StatelessWidget {
-  int id;
+  final int id;
 
-  DoctorProfile(this.id);
+  const DoctorProfile({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,7 @@ class DoctorProfile extends StatelessWidget {
                     SizedBox(
                       width: 30.w,
                     ),
-                    doctorSchedule(cubit:cubit)
+                    doctorSchedule(cubit: cubit)
                   ],
                 ),
                 fallback: (context) => Lottie.asset(
@@ -75,4 +75,3 @@ class DoctorProfile extends StatelessWidget {
         });
   }
 }
-

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'editing/editing_buttons.dart';
-import '../../features/patients/presentation/cubits/patient_cubit.dart';
 import '../../features/patients/presentation/widgets/profile_widgets/image_widget.dart';
 import '../../features/patients/presentation/widgets/profile_widgets/name_widget.dart';
 
