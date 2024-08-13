@@ -57,4 +57,10 @@ class AppUrl {
   static const uploadFile = '$baseUrl$dashboard${session}upload-file/';
   /*>>>>>>>>>>>>>>>>>>>> Appointment <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   static const getAppointment = "$baseUrl$dashboard$appintment";
+  /*>>>>>>>>>>>>>>>>>>>> Lab <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+  static const getLabRequest = "$baseUrl${dashboard}lab/sessions-details";
+  static const makeItDone = "$baseUrl${dashboard}lab/done/";
+  static const makeItFail = "$baseUrl${dashboard}lab/fail/";
+  static const getServices = '$baseUrl${dashboard}service';
+  static const uploadLabFile = '$baseUrl${dashboard}session/details/';
 }

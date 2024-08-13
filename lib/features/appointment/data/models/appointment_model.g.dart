@@ -6,20 +6,19 @@ part of 'appointment_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) {
-  return AppointmentModel(
-    date: json['date'] as String,
-    doctorFirstname: json['doctor_firstName'] as String,
-    doctorId: (json['doctor_id'] as num).toInt(),
-    doctorLastName: json['doctor_lastName'] as String,
-    id: (json['appointment_id'] as num).toInt(),
-    patientFirstName: json['patient_firstName'] as String,
-    patientLastName: json['patient_lastName'] as String,
-    secionId: (json['section_id'] as num).toInt(),
-    sectionName: json['section_name'] as String,
-    startMin: json['start_min'] as String,
-  );
-}
+AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
+    AppointmentModel(
+      date: json['date'] as String,
+      doctorFirstname: json['doctor_firstName'] as String,
+      doctorId: (json['doctor_id'] as num).toInt(),
+      doctorLastName: json['doctor_lastName'] as String,
+      id: (json['appointment_id'] as num).toInt(),
+      patientFirstName: json['patient_firstName'] as String,
+      patientLastName: json['patient_lastName'] as String,
+      secionId: (json['section_id'] as num).toInt(),
+      sectionName: json['section_name'] as String,
+      startMin: json['start_min'] as String,
+    );
 
 Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
     <String, dynamic>{

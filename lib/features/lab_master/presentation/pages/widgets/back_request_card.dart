@@ -40,7 +40,7 @@ class BackRequestCard extends StatelessWidget {
                   await controller.flipCard();
                 },
                 icon: const Icon(
-                  Icons.more_horiz,
+                  Icons.flip_to_front_outlined,
                   color: Colors.black,
                   size: 18,
                 ),

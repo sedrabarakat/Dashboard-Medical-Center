@@ -37,7 +37,7 @@ class FlipCardWidgetState extends State<FlipCardWidget>
 
     controller = AnimationController(
         duration: const Duration(milliseconds: 800), vsync: this);
-    print("INIT STATE");
+
     widget.controller._state = this;
   }
 

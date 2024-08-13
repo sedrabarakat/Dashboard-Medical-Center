@@ -3,9 +3,25 @@ import 'package:dashboad/features/lab_master/presentation/pages/widgets/flip_car
 import 'package:flutter/material.dart';
 
 class FrontRequestCard extends StatefulWidget {
-  const FrontRequestCard({super.key, required this.controller});
+  const FrontRequestCard({
+    super.key,
+    required this.controller,
+    required this.date,
+    required this.patientName,
+    required this.serviceName,
+    required this.makeItDoneOnPressed,
+    required this.makeItFailOnPressed,
+    this.status,
+    this.description,
+  });
   final FlipCardController controller;
-
+  final String patientName;
+  final String date;
+  final String serviceName;
+  final String? status;
+  final String? description;
+  final void Function()? makeItDoneOnPressed;
+  final void Function()? makeItFailOnPressed;
   @override
   State<FrontRequestCard> createState() => _FrontRequestCardState();
 }
@@ -34,7 +50,7 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
               Row(
                 children: [
                   Text(
-                    "2024-12-11",
+                    widget.date,
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -49,18 +65,13 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
                       color: ColorsHelper.darkGrey,
                     ),
                     onPressed: () {
-                      setState(() {
-                        opacityLevel = opacityLevel == 0 ? 1.0 : 0.0;
-                        if (opacityLevel == 1) {
-                          isVisible = true;
-                        }
-                      });
+                      hideTheMenu();
                     },
                   ),
                 ],
               ),
               Text(
-                "Patient Name",
+                widget.patientName,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -68,7 +79,9 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
                 ),
               ),
               Text(
-                "description description description description description description description  ",
+                widget.description != null
+                    ? widget.description!
+                    : 'No description',
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -81,7 +94,7 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
               Row(
                 children: [
                   Text(
-                    "Service Name",
+                    widget.serviceName,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -89,21 +102,27 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
                     ),
                   ),
                   const Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.orangeAccent,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.all(5),
-                    child: const Text(
-                      "Pending",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  )
+                  widget.status != null
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: widget.status == 'pending'
+                                ? Colors.orangeAccent
+                                : widget.status == 'done'
+                                    ? Colors.greenAccent
+                                    : Colors.redAccent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: Text(
+                            widget.status!,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        )
+                      : const SizedBox(),
                 ],
               ),
             ],
@@ -112,7 +131,6 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
         Positioned(
           top: 30,
           right: 35,
-
           child: AnimatedOpacity(
             opacity: opacityLevel,
             onEnd: () {
@@ -161,7 +179,10 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        hideTheMenu();
+                        widget.makeItDoneOnPressed!();
+                      },
                       style: TextButton.styleFrom(
                         overlayColor: ColorsHelper.darkGrey,
                         fixedSize: const Size(100, 20),
@@ -173,7 +194,10 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        hideTheMenu();
+                        widget.makeItFailOnPressed!();
+                      },
                       style: TextButton.styleFrom(
                         overlayColor: ColorsHelper.darkGrey,
                         fixedSize: const Size(100, 20),
@@ -192,5 +216,14 @@ class _FrontRequestCardState extends State<FrontRequestCard> {
         ),
       ],
     );
+  }
+
+  void hideTheMenu() {
+    setState(() {
+      opacityLevel = opacityLevel == 0 ? 1.0 : 0.0;
+      if (opacityLevel == 1) {
+        isVisible = true;
+      }
+    });
   }
 }

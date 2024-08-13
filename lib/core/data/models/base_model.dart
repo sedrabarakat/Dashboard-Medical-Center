@@ -33,11 +33,14 @@ class BaseModels {
   BaseModels({required this.list});
 }
 
-_$BaseModelsFromJson(json, fromJsonT) => BaseModels(
-      list: (json as List).map((e) {
-        return fromJsonT(e as Map<String, dynamic>);
-      }).toList(),
-    );
+_$BaseModelsFromJson(json, fromJsonT) {
+  return BaseModels(
+    list: (json as List).map((e) {
+      return fromJsonT(e as Map<String, dynamic>);
+    }).toList(),
+  );
+}
+
 Map<String, dynamic> _$BaseModelsToJson(BaseModels instance) =>
     <String, dynamic>{
       'list': instance.list.map((e) => e.toJson()).toList(),

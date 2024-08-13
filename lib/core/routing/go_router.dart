@@ -156,7 +156,7 @@ class WebRouter {
                           ..setId(id: Doctor_id)
                           ..getDoctorProfile(id: Doctor_id)
                           ..getDoctorSchedule(),
-                        child: DoctorProfile(Doctor_id),
+                        child: DoctorProfile(id: Doctor_id),
                       );
                       /* Future.delayed(const Duration(seconds: 2)).then((val){
                         DoctorCubit.get(context).setId(id: Doctor_id);
