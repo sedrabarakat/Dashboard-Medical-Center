@@ -70,7 +70,8 @@ class DoctorProfile extends StatelessWidget {
                     AssetsManager.loadingPatient,
                     width: 500.w,
                     height: 500.h),
-              ));
+              )
+          );
         });
   }
 }
