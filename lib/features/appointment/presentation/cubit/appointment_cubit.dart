@@ -5,22 +5,24 @@ import 'package:flutter/cupertino.dart';
 
 import '../../data/models/appointment_model.dart';
 
-class AppointmentCubit  extends Cubit<AppointmentState>{
-  final AppointmentRepo _repo ;
+class AppointmentCubit extends Cubit<AppointmentState> {
+  final AppointmentRepo _repo;
 
-  AppointmentCubit(this._repo):super(AppointmentInitialState());
-  List<AppointmentModel> _appointments  = [] ;
+  AppointmentCubit(this._repo) : super(AppointmentInitialState());
+  List<AppointmentModel> _appointments = [];
 
-  Future<void> getAppointment()async{
-    emit(GetAppointmentLoadingState()) ;
+  Future<void> getAppointment() async {
+    emit(GetAppointmentLoadingState());
     final response = await _repo.getAppointment();
-    response.fold((error){
+    response.fold((error) {
       emit(GetAppointmentErrorState(error));
-    }, (data){
-      List<AppointmentModel> listAllAppointments=data.list.map((appointment) =>appointment as AppointmentModel).toList() ;
-      _appointments = listAllAppointments ;
-      debugPrint(_appointments.toString()) ;
-      emit(GetAppointmentSuccessState(_appointments)) ;
-    }) ;
+    }, (data) {
+      List<AppointmentModel> listAllAppointments = data.list
+          .map((appointment) => appointment as AppointmentModel)
+          .toList();
+      _appointments = listAllAppointments;
+      debugPrint(_appointments.toString());
+      emit(GetAppointmentSuccessState(_appointments));
+    });
   }
 }

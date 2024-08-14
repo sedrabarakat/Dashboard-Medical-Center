@@ -10,6 +10,8 @@ import 'package:dashboad/features/create_account/domain/repository/create_repo.d
 import 'package:dashboad/features/director/domain/repository/director_repo.dart';
 import 'package:dashboad/features/doctors/data/datasources/doctor_remote_data_source.dart';
 import 'package:dashboad/features/doctors/domain/repositories/doctor_repo.dart';
+import 'package:dashboad/features/lab_master/data/datasources/lab_remote.dart';
+import 'package:dashboad/features/lab_master/domain/repositories/lab_repo.dart';
 import 'package:dashboad/features/laboratory/data/data_sources/laboratory_remote_data_source.dart';
 import 'package:dashboad/features/laboratory/domain/repositories/lab_master_repo.dart';
 import 'package:dashboad/features/patients/data/datasources/patient_remote_data_source.dart';
@@ -69,14 +71,14 @@ Future locatorSetUp() async {
   );
   /*>>>>>>>>>> Create Account <<<<<<<<<<*/
   getIt.registerLazySingleton<CreateRepo>(
-      ()=> CreateRepoImpl(getIt()),
+    () => CreateRepoImpl(getIt()),
   );
   getIt.registerLazySingleton<CreateRemoteDataSource>(
     () => CreateRemoteDataSource(getIt()),
   );
   getIt.registerLazySingleton<AppointmentRemote>(
       () => AppointmentRemote(getIt()));
-  getIt.registerLazySingleton<AppointmentRepo>(()=>AppointmentRepo(getIt())) ;
+  getIt.registerLazySingleton<AppointmentRepo>(() => AppointmentRepo(getIt()));
 
   /*>>>>>>>>>> Lab Master <<<<<<<<<<*/
   getIt.registerLazySingleton<LaboratoryRemoteDataSource>(
@@ -98,9 +100,16 @@ Future locatorSetUp() async {
   );
   /*>>>>>>>>>> GetSections in Create <<<<<<<<<<*/
   getIt.registerLazySingleton<GetSectionsRemote>(
-        () => GetSectionsRemote(getIt()),
+    () => GetSectionsRemote(getIt()),
   );
   getIt.registerLazySingleton<GetSectionsRepo>(
-        () => GetSectionsRepoImp(getIt()),
+    () => GetSectionsRepoImp(getIt()),
+  );
+  /*>>>>>>>>>> Lab <<<<<<<<<<*/
+  getIt.registerLazySingleton<LabRemoteDataSource>(
+    () => LabRemoteDataSource(getIt()),
+  );
+  getIt.registerLazySingleton<LabRepo>(
+    () => LabRepo(getIt()),
   );
 }

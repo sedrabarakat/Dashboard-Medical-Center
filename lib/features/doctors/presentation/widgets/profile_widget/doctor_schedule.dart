@@ -6,7 +6,6 @@ import '../../../../../core/helpers/colors_helper.dart';
 import '../../../../../core/helpers/time_helper.dart';
 import '../../../../../core/utils/style_manager.dart';
 import '../../../data/model/schedule_model.dart';
-import '../../screens/doctor_profile.dart';
 
 Widget doctorSchedule({required cubit}) {
   return Container(

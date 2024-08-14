@@ -1,5 +1,4 @@
-import 'package:dashboad/core/data/datasources/local.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dashboad/features/lab_master/presentation/pages/patient_queue.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -44,6 +43,7 @@ class WebRouter {
   static const kInbox = 'Inbox';
   static const kAllAppointment = 'Appointments';
   static const kAddAppointment = 'AddAppointment';
+  static const kLabMasterPatientQueue = 'patient_queue';
 
   static GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
@@ -156,7 +156,7 @@ class WebRouter {
                           ..setId(id: Doctor_id)
                           ..getDoctorProfile(id: Doctor_id)
                           ..getDoctorSchedule(),
-                        child: DoctorProfile(Doctor_id),
+                        child: DoctorProfile(id: Doctor_id),
                       );
                       /* Future.delayed(const Duration(seconds: 2)).then((val){
                         DoctorCubit.get(context).setId(id: Doctor_id);
@@ -190,7 +190,7 @@ class WebRouter {
                         PatientCubit.get(context)
                             .getPatientProfile(id: Patient_id);
                       });
-                      
+
                       return PatientProfile(id: Patient_id);
                     },
                   ),
@@ -236,213 +236,15 @@ class WebRouter {
               ),
             ],
           ),
+          StatefulShellBranch(routes: [
+            GoRoute(
+              path: '/patient_queue',
+              name: kLabMasterPatientQueue,
+              builder: (context, state) => const LabMasterPatientQueue(),
+            ),
+          ])
         ],
       ),
     ],
   );
-  static void getTheCurrentDrawer() {
-    String role = SharedPrefrence.getData(key: 'role');
-    router = GoRouter(
-      navigatorKey: _rootNavigatorKey,
-      initialLocation: TokenHelper.hasToken
-          ? role == 'owner'
-              ? '/add_account'
-              : '/appointment'
-          : '/',
-      routes: [
-        GoRoute(
-          path: '/',
-          name: kLogin,
-          pageBuilder: (context, state) => MaterialPage(
-            child: LoginPage(),
-          ),
-        ),
-        StatefulShellRoute.indexedStack(
-          builder: (BuildContext context, GoRouterState state,
-              StatefulNavigationShell navigationShell) {
-            return BaseLayout(
-              navigationShell: navigationShell,
-            );
-          },
-          branches: role == 'owner'
-              ? [
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/add_account',
-                        name: kAddAccount,
-                        builder: (context, state) {
-                          return AddAccount();
-                        },
-                      ),
-                    ],
-                  ),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/Directors_list',
-                        name: kDirectorsList,
-                        builder: (context, state) {
-                          return const DirectorsList();
-                        },
-                      ),
-                    ],
-                  ),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/Reseptions_list',
-                        name: kReseptionsList,
-                        builder: (context, state) {
-                          return const ReseptionsList();
-                        },
-                      ),
-                    ],
-                  ),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/Sections_list',
-                        name: kSectionsList,
-                        builder: (context, state) {
-                          return const SectionsList();
-                        },
-                        routes: [
-                          GoRoute(
-                            path: 'section_details/:id/:name',
-                            name: kSectionDetails,
-                            builder: (context, state) {
-                              int id = int.parse(state.pathParameters['id']!);
-                              String name = state.pathParameters['name']!;
-                              return SectionDetails(
-                                id: id,
-                                name: name,
-                              );
-                            },
-                          ),
-                          GoRoute(
-                            path: 'add_section',
-                            name: kAddSection,
-                            builder: (context, state) => const AddSectionScreen(
-                              edit: false,
-                            ),
-                          ),
-                          GoRoute(
-                            path: 'edit_section',
-                            name: kEditSection,
-                            builder: (context, state) =>
-                                const AddSectionScreen(edit: true),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/Doctors_List',
-                        name: kDoctorList,
-                        builder: (context, state) {
-                          return const DoctorList();
-                        },
-                        routes: [
-                          GoRoute(
-                            path: 'Doctor_profile/:Doctor_id',
-                            name: kDoctorProfile,
-                            builder: (context, state) {
-                              int Doctor_id =
-                                  int.parse(state.pathParameters['Doctor_id']!);
-                              return BlocProvider(
-                                create: (context) => DoctorCubit(getIt())
-                                  ..getSections(context: context)
-                                  ..setId(id: Doctor_id)
-                                  ..getDoctorProfile(id: Doctor_id)
-                                  ..getDoctorSchedule(),
-                                child: DoctorProfile(Doctor_id),
-                              );
-                              /* Future.delayed(const Duration(seconds: 2)).then((val){
-                        DoctorCubit.get(context).setId(id: Doctor_id);
-                        DoctorCubit.get(context).getDoctorProfile(id: Doctor_id);
-                        DoctorCubit.get(context).getDoctorSchedule();
-                      });
-                      return DoctorProfile(Doctor_id);*/
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/Patients_List',
-                        name: kPatientList,
-                        builder: (context, state) {
-                          return const PatientsList();
-                        },
-                        routes: [
-                          GoRoute(
-                            path: 'Patient_profile/:Patient_id',
-                            name: kPatientProfile,
-                            builder: (context, state) {
-                              int Patient_id = int.parse(
-                                  state.pathParameters['Patient_id']!);
-                              Future.delayed(const Duration(seconds: 2))
-                                  .then((val) {
-                                PatientCubit.get(context).setId(id: Patient_id);
-                                PatientCubit.get(context)
-                                    .getPatientProfile(id: Patient_id);
-                              });
-                              return PatientProfile(id: Patient_id);
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/Laboratory',
-                        name: kLaboratory,
-                        builder: (context, state) {
-                          return const LaboratoriesList();
-                        },
-                      ),
-                    ],
-                  ),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/Inbox',
-                        name: kInbox,
-                        builder: (context, state) {
-                          return const Inbox();
-                        },
-                      ),
-                    ],
-                  ),
-                ]
-              : [
-                  StatefulShellBranch(routes: [
-                    GoRoute(
-                      path: '/appointment',
-                      builder: (context, state) => const AllAppointmentScreen(),
-                      name: kAllAppointment,
-                    ),
-                  ]),
-                  StatefulShellBranch(
-                    routes: [
-                      GoRoute(
-                        path: '/addAppointment',
-                        name: kAddAppointment,
-                        builder: (context, state) => const TestAppointment(),
-                      ),
-                    ],
-                  ),
-                ],
-        ),
-      ],
-    );
-  }
 }

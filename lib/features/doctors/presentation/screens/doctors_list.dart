@@ -1,5 +1,4 @@
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
-import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:dashboad/features/doctors/data/model/doctor_model.dart';

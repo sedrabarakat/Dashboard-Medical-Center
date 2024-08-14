@@ -7,7 +7,6 @@ import '../../../../../core/utils/style_manager.dart';
 import '../../../../../core/utils/validator_manager.dart';
 import '../../../../../core/widgets/editing/editing_field.dart';
 import '../../../../../core/widgets/text_from_field.dart';
-import '../../../../create_account/presentation/widgets/texts_and_fields/text&text_filed.dart';
 import 'work_days.dart';
 
 Widget infoCol1({required context}) {
