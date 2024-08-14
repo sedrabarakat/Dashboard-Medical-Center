@@ -16,7 +16,7 @@ class DoctorRemoteDataSource {
 
   Future<void> deleteDoctor(int id) async {
     await _apiServices.get(
-      AppUrl.deleteDoctor + "$id",
+      "${AppUrl.deleteDoctor}$id",
     );
   }
 
@@ -28,27 +28,27 @@ class DoctorRemoteDataSource {
 
   Future<BaseModel> updateProfile(
       {required int id,
-      String? first_name,
-      String? middle_name,
-      String? last_name,
-      String? phone_number,
+      String? firstName,
+      String? middleName,
+      String? lastName,
+      String? phoneNumber,
       String? description,
-      required String Section_id,
-      required String Session_duration,
-      required String Day_In_Advanced,
-      var Working_hour,
+      required String sectionId,
+      required String sessionDuration,
+      required String dayInAdvanced,
+      var workingHour,
       var image}) async {
     final response =
         await _apiServices.post("${AppUrl.updateDoctor}$id", body: {
-      if (first_name != null) "first_name": first_name,
-      if (middle_name != null) "middle_name": middle_name,
-      if (last_name != null) "last_name": last_name,
-      if (phone_number != null) "phone_number": phone_number,
+      if (firstName != null) "first_name": firstName,
+      if (middleName != null) "middle_name": middleName,
+      if (lastName != null) "last_name": lastName,
+      if (phoneNumber != null) "phone_number": phoneNumber,
       if (description != null) "description": description,
       if (image != null) "image": image,
-      "section_id": Section_id,
-      "days_in_advance": Day_In_Advanced,
-      "session_durtion": Session_duration,
+      "section_id": sectionId,
+      "days_in_advance": dayInAdvanced,
+      "session_durtion": sessionDuration,
       //"working_hours ":Working_hour
     });
 

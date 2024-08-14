@@ -8,12 +8,18 @@ import '../../../../../core/utils/style_manager.dart';
 
 Widget Image_widget({
   required var image,
-
-}){
+}) {
   return Container(
-    clipBehavior: Clip.hardEdge,
-    height: 250.h,width: 200.w,
-    decoration: StyleManager.Circle_Shape(color: ColorsHelper.black26),
-    child: (image!=null)?ImageNetwork(image:image, height: 250.h, width: 200.w,fitWeb: BoxFitWeb.fill,):Image.asset(AssetsManager.DefImage,fit: BoxFit.contain)
-  );
+      clipBehavior: Clip.hardEdge,
+      height: 250.h,
+      width: 200.w,
+      decoration: StyleManager.Circle_Shape(color: ColorsHelper.black26),
+      child: (image != null)
+          ? ImageNetwork(
+              image: image,
+              height: 250.h,
+              width: 200.w,
+              fitWeb: BoxFitWeb.fill,
+            )
+          : Image.asset(AssetsManager.defImage, fit: BoxFit.contain));
 }

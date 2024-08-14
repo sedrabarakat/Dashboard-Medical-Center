@@ -144,14 +144,14 @@ class DoctorCubit extends Cubit<DoctorState> {
     return _repo
         .updateProfile(
       id: doctorId!,
-      first_name: firstName.text,
-      middle_name: middleName.text,
-      last_name: lastName.text,
-      phone_number: phone.text,
+      firstName: firstName.text,
+      middleName: middleName.text,
+      lastName: lastName.text,
+      phoneNumber: phone.text,
       description: description.text,
-      Section_id: sectionId.toString(),
-      Session_duration: duration.text,
-      Day_In_Advanced: dayInAdvance.text,
+      sectionId: sectionId.toString(),
+      sessionDuration: duration.text,
+      dayInAdvanced: dayInAdvance.text,
       //   Working_hour: ""
     )
         .then((value) {

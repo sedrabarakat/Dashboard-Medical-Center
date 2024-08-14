@@ -2,7 +2,6 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:dashboad/features/doctors/domain/constants/const.dart';
 import 'package:dashboad/features/doctors/presentation/cubits/doctor_cubit.dart';
 import 'package:dashboad/features/doctors/presentation/widgets/profile_widget/info_col.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

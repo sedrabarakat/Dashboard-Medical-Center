@@ -1,8 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/services/api_service.dart';
 import 'package:dashboad/core/domain/urls/app_url.dart';
 import 'package:dashboad/features/lab_master/data/models/request_model.dart';
 import 'package:dashboad/features/sections/data/models/section_model.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class LabRemoteDataSource {
   final ApiServices _apiServices;
@@ -35,8 +39,18 @@ class LabRemoteDataSource {
         response['data'], (itemJson) => SectionService.fromJson(itemJson));
   }
 
-  Future<void> uploadFile(int sessionDetailsId) async {
-    final response = await _apiServices
-        .postFiles("${AppUrl.uploadLabFile}$sessionDetailsId/upload-file");
+  Future<BaseModel> uploadFile(int sessionDetailsId, Uint8List file,
+      String fileType, String fileName, BuildContext context) async {
+    await _apiServices.postFiles(
+      "${AppUrl.uploadLabFile}$sessionDetailsId/upload-file",
+      context,
+      formData: FormData.fromMap(
+        {
+          'file': MultipartFile.fromBytes(file, filename: fileName),
+          'file_type': fileType,
+        },
+      ),
+    );
+    return BaseModel(data: null, message: "File uploaded successfully");
   }
 }

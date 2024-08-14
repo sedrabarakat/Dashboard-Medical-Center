@@ -3,6 +3,7 @@ import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/values_manager.dart';
 import 'package:dashboad/core/widgets/toast_bar.dart';
 import 'package:dashboad/features/lab_master/presentation/cubit/lab_cubit.dart';
+import 'package:dashboad/features/lab_master/presentation/cubit/upload_file_cubit.dart';
 import 'package:dashboad/features/lab_master/presentation/pages/widgets/back_request_card.dart';
 import 'package:dashboad/features/lab_master/presentation/pages/widgets/custom_drop_down_button.dart';
 import 'package:dashboad/features/lab_master/presentation/pages/widgets/flip_card_animation.dart';
@@ -19,8 +20,16 @@ class LabMasterPatientQueue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LabCubit(getIt())..getLabRequest(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LabCubit(getIt())..getLabRequest(),
+        ),
+        BlocProvider(
+          create: (context) => UploadFileCubit(getIt()),
+          lazy: false,
+        ),
+      ],
       child: Builder(builder: (context) {
         return BlocListener<LabCubit, LabState>(
           listener: (context, state) {
@@ -146,6 +155,7 @@ class LabMasterPatientQueue extends StatelessWidget {
                                         state.requests[index].description,
                                   ),
                                   back: BackRequestCard(
+                                    sessionDetailsId: state.requests[index].id,
                                     controller:
                                         BlocProvider.of<LabCubit>(context)
                                             .cardControllers[index],

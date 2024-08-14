@@ -40,27 +40,27 @@ class DoctorRepo {
 
   Future<Either<NetworkExceptions, Map>> updateProfile(
       {required int id,
-      String? first_name,
-      String? middle_name,
-      String? last_name,
-      String? phone_number,
+      String? firstName,
+      String? middleName,
+      String? lastName,
+      String? phoneNumber,
       String? description,
-      required String Section_id,
-      required String Session_duration,
-      required String Day_In_Advanced,
+      required String sectionId,
+      required String sessionDuration,
+      required String dayInAdvanced,
       //  required Working_hour,
       var image}) async {
     try {
       BaseModel model = await _remote.updateProfile(
           id: id,
-          Section_id: Section_id,
-          first_name: first_name,
-          middle_name: middle_name,
-          last_name: last_name,
-          phone_number: phone_number,
+          sectionId: sectionId,
+          firstName: firstName,
+          middleName: middleName,
+          lastName: lastName,
+          phoneNumber: phoneNumber,
           description: description,
-          Session_duration: Session_duration,
-          Day_In_Advanced: Day_In_Advanced,
+          sessionDuration: sessionDuration,
+          dayInAdvanced: dayInAdvanced,
           image: image);
 
       return right(model.data);

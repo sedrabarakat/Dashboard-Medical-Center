@@ -35,3 +35,15 @@ class MakeItFailErrorState extends LabState {
   final NetworkExceptions error;
   MakeItFailErrorState(this.error);
 }
+
+class UploadFileErrorState extends LabState {
+  final NetworkExceptions error;
+  UploadFileErrorState(this.error);
+}
+
+class UploadFileSuccessState extends LabState {
+  final String message;
+  UploadFileSuccessState(this.message);
+}
+
+class UploadFileLoadingState extends LabState {}
