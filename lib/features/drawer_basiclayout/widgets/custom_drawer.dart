@@ -16,7 +16,9 @@ class CustomDrawer extends StatelessWidget {
     super.key,
     required this.navigationShell,
   });
+
   final StatefulNavigationShell navigationShell;
+
   @override
   Widget build(BuildContext context) {
     var role = SharedPrefrence.getData(key: 'role');
@@ -33,9 +35,11 @@ class CustomDrawer extends StatelessWidget {
               backgroundColor: Colors.white,
             ),
             (role == "owner")
-                ? drawerList(
-                    navigationShell: navigationShell,
-                  )
+                ? receptionDrawerList(
+                navigationShell: navigationShell, context: context)
+                //drawerList(
+                //                     navigationShell: navigationShell,
+                //                   )
                 : (role == 'receptionist')
                     ? receptionDrawerList(
                         navigationShell: navigationShell, context: context)

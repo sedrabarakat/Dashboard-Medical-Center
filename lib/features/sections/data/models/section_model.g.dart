@@ -27,13 +27,12 @@ Map<String, dynamic> _$SectionModelToJson(SectionModel instance) =>
       'service': instance.service,
     };
 
-SectionService _$SectionServiceFromJson(Map<String, dynamic> json) {
-  return SectionService(
-    name: json['name'] as String,
-    price: json['price'] as String,
-    id: (json['id'] as num).toInt(),
-  );
-}
+SectionService _$SectionServiceFromJson(Map<String, dynamic> json) =>
+    SectionService(
+      name: json['name'] as String,
+      price: json['price'] as String,
+      id: (json['id'] as num).toInt(),
+    );
 
 Map<String, dynamic> _$SectionServiceToJson(SectionService instance) =>
     <String, dynamic>{

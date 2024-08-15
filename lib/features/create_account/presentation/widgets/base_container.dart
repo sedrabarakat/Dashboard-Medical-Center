@@ -15,8 +15,8 @@ class BaseContainer extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return  Container(
-      padding: EdgeInsets.symmetric(
-          horizontal: 40.w, vertical: 50.h),
+      // padding: EdgeInsets.symmetric(
+      //     horizontal: 40.w, vertical: 50.h),
       height: 750.h,
       decoration: StyleManager.rounded40(
           color: Colors.white),

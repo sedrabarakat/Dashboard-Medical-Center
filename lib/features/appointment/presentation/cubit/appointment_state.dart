@@ -28,3 +28,18 @@ class GetAppointmentErrorState extends AppointmentState{
   List<Object> get props =>[message] ;
 
 }
+
+class DeleteAppointmentSuccessState extends AppointmentState{
+  final List<AppointmentModel> appointments  ;
+  const DeleteAppointmentSuccessState(this.appointments) ;
+
+  @override
+  List<Object> get props =>[appointments] ;
+}
+class DeleteAppointmentErrorState extends AppointmentState{
+  final NetworkExceptions error ;
+  const DeleteAppointmentErrorState(this.error) ;
+
+  @override
+  List<Object> get props =>[error] ;
+}

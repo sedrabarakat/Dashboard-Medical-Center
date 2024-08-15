@@ -74,7 +74,7 @@ class DirectorsList extends StatelessWidget {
   Widget _buildTable(List<UserModel> directors) {
     return Expanded(
       child: ListView.builder(
-        itemBuilder: (context, index) => MyTableRow(
+          itemBuilder: (context, index) => MyTableRow(
           user: directors[index],
           onEditPressed: () {},
           onRemovePressed: () {

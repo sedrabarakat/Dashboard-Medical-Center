@@ -16,4 +16,13 @@ class AppointmentRepo{
       return left(NetworkExceptions.getException(error)); 
     }
   }
+
+  Future<Either<NetworkExceptions, Unit>> deleteAppointment(int id)async{
+    try{
+      final response = await _appointmentRemote.deleteAppointment(id ) ;
+      return right(unit) ;
+    }catch(e){
+      return left(NetworkExceptions.getException(e)) ;
+    }
+  }
 }

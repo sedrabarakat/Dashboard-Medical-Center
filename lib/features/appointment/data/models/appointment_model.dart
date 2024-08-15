@@ -18,7 +18,7 @@ class AppointmentModel {
   @JsonKey(name: 'doctor_lastName')
   final String doctorLastName;
   @JsonKey(name: 'section_id')
-  final int secionId;
+  final int sectionId;
   @JsonKey(name: 'section_name')
   final String sectionName;
 
@@ -34,7 +34,7 @@ class AppointmentModel {
       required this.id,
       required this.patientFirstName,
       required this.patientLastName,
-      required this.secionId,
+      required this.sectionId,
       required this.sectionName,
       required this.startMin});
 

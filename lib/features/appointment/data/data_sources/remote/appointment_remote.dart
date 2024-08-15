@@ -14,4 +14,8 @@ class AppointmentRemote {
     return BaseModels.fromJson(
         response['data'], (itemJson) => AppointmentModel.fromJson(itemJson));
   }
+  
+  Future<void> deleteAppointment(int id)async{
+    await _apiServices.delete("${AppUrl.deleteAppointment}$id",) ;
+  }
 }

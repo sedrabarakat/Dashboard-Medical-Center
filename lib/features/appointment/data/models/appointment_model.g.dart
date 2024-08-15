@@ -15,7 +15,7 @@ AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
       id: (json['appointment_id'] as num).toInt(),
       patientFirstName: json['patient_firstName'] as String,
       patientLastName: json['patient_lastName'] as String,
-      secionId: (json['section_id'] as num).toInt(),
+      sectionId: (json['section_id'] as num).toInt(),
       sectionName: json['section_name'] as String,
       startMin: json['start_min'] as String,
     );
@@ -28,7 +28,7 @@ Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
       'doctor_id': instance.doctorId,
       'doctor_firstName': instance.doctorFirstname,
       'doctor_lastName': instance.doctorLastName,
-      'section_id': instance.secionId,
+      'section_id': instance.sectionId,
       'section_name': instance.sectionName,
       'date': instance.date,
       'start_min': instance.startMin,

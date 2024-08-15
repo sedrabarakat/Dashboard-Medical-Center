@@ -57,6 +57,7 @@ class LoginPage extends StatelessWidget {
                   : role == 'lab_master'
                       ? context.go('/patient_queue')
                       : context.go('/Doctors_List');
+
             },
             verfiyCodeError: (error) {
               ToastBar.onNetworkFailure(context, networkException: error);

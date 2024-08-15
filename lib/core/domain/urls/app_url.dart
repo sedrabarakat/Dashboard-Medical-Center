@@ -1,5 +1,5 @@
 // const baseServ = "http://127.0.0.1:8001/";
-const baseServ = "http://192.168.1.10:8000/";
+const baseServ = "http://192.168.1.103:8000/";
 const baseUrl = "${baseServ}api/";
 const auth = "auth/";
 const dashboard = 'dashboard/';
@@ -56,6 +56,7 @@ class AppUrl {
   static const uploadFile = '$baseUrl$dashboard${session}upload-file/';
   /*>>>>>>>>>>>>>>>>>>>> Appointment <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   static const getAppointment = "$baseUrl$dashboard$appintment";
+  static const deleteAppointment = '$baseUrl${dashboard}appointment/$delete';
   /*>>>>>>>>>>>>>>>>>>>> Lab <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   static const getLabRequest = "$baseUrl${dashboard}lab/sessions-details";
   static const makeItDone = "$baseUrl${dashboard}lab/done/";
