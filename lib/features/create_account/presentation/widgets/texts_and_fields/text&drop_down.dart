@@ -5,20 +5,19 @@ import '../../../../../core/helpers/colors_helper.dart';
 import '../../../../../core/utils/style_manager.dart';
 import '../../../../../core/widgets/drop_down.dart';
 
-class Text_DropDown extends StatelessWidget{
-
+class Text_DropDown extends StatelessWidget {
   String text;
   List<String> dropdownItems;
   ValueChanged OnChanged;
-  String ? selectedItem;
+  String? selectedItem;
   final String? Function(String?)? validator;
 
-  Text_DropDown({required this.text
-    ,required this.OnChanged,
-    required this.dropdownItems,
-    this.selectedItem,
-    this.validator
-  });
+  Text_DropDown(
+      {required this.text,
+      required this.OnChanged,
+      required this.dropdownItems,
+      this.selectedItem,
+      this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +25,24 @@ class Text_DropDown extends StatelessWidget{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding:  EdgeInsets.only(left: 10.w),
-          child: Text(text,style: StyleManager.fontRegular20.copyWith(color: ColorsHelper.black54),),
+          padding: EdgeInsets.only(left: 10.w),
+          child: Text(
+            text,
+            style: StyleManager.fontRegular20
+                .copyWith(color: ColorsHelper.black54),
+          ),
         ),
-        SizedBox(height: 8.h,),
         SizedBox(
-          width: 250.w,
-            child: Dropdown(dropdownItems: dropdownItems, OnChanged: OnChanged,
+          height: 8.h,
+        ),
+        SizedBox(
+            width: 250.w,
+            child: Dropdown(
+              dropdownItems: dropdownItems, onChanged: OnChanged,
               //selectedItem: selectedItem,
               hintText: "Select Section",
-            borderStyle: StyleManager.Border_round40,validator: validator,)),
+              borderStyle: StyleManager.Border_round40, validator: validator,
+            )),
       ],
     );
   }

@@ -43,7 +43,7 @@ Widget receptionDrawerList(
       ),
       title: Dropdown(
         dropdownItems: const ['View All Appointments', 'Add New Appointment'],
-        OnChanged: (value) {
+        onChanged: (value) {
           if (value == 'View All Appointments') {
             context.go('/appointment');
           } else if (value == 'Add New Appointment') {

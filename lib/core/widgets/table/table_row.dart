@@ -59,7 +59,7 @@ class MyTableRow extends StatelessWidget {
                             width: 200.w,
                             fitWeb: BoxFitWeb.fill,
                           )
-                        : Image.asset(AssetsManager.DefImage,
+                        : Image.asset(AssetsManager.defImage,
                             fit: BoxFit.cover)),
                 const SizedBox(
                   width: AppSize.s10,

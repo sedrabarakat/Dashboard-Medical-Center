@@ -6,33 +6,39 @@ import '../../utils/style_manager.dart';
 import '../../utils/validator_manager.dart';
 import '../drop_down.dart';
 
-Widget editingDropDown({
-  required List<String>dropdownItems,
-  required String selectedItem,
-  required String selection,
-  required bool is_Editig,
-  var onChanged
-}){
+Widget editingDropDown(
+    {required List<String> dropdownItems,
+    required String selectedItem,
+    required String selection,
+    required bool is_Editig,
+    var onChanged}) {
   return Padding(
-    padding:EdgeInsets.only(top: 18.h, right: 20.w,left: 10.w),
+    padding: EdgeInsets.only(top: 18.h, right: 20.w, left: 10.w),
     child: SizedBox(
-        width: 200.w,height: 60.h,
-        child: (is_Editig)?Dropdown(
-          filled: (is_Editig) ? true : false,
-          fillColor: (is_Editig)
-              ? ColorsHelper.blueLightest.withOpacity(.3)
-              : Colors.white,
-          dropdownItems: dropdownItems,
-          selectedItem: selectedItem,
-          hintText: "Select $selection",
-          borderStyle: (is_Editig)
-              ? StyleManager.Border_round40Blue
-              : StyleManager.FieldBorder_round40,
-          validator:  (value)=>ValidatorManager.instance.validate_EmptyState(selectedItem, "That field"),
-          OnChanged: (value) {
-            onChanged(value);
-          },):
-        Text("  $selectedItem",style: StyleManager.fontRegular20
-            .copyWith(color: ColorsHelper.blueDarkest),)),
+        width: 200.w,
+        height: 60.h,
+        child: (is_Editig)
+            ? Dropdown(
+                filled: (is_Editig) ? true : false,
+                fillColor: (is_Editig)
+                    ? ColorsHelper.blueLightest.withOpacity(.3)
+                    : Colors.white,
+                dropdownItems: dropdownItems,
+                selectedItem: selectedItem,
+                hintText: "Select $selection",
+                borderStyle: (is_Editig)
+                    ? StyleManager.Border_round40Blue
+                    : StyleManager.FieldBorder_round40,
+                validator: (value) => ValidatorManager.instance
+                    .validate_EmptyState(selectedItem, "That field"),
+                onChanged: (value) {
+                  onChanged(value);
+                },
+              )
+            : Text(
+                "  $selectedItem",
+                style: StyleManager.fontRegular20
+                    .copyWith(color: ColorsHelper.blueDarkest),
+              )),
   );
 }

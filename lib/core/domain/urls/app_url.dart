@@ -1,5 +1,6 @@
 // const baseServ = "http://127.0.0.1:8001/";
-const baseServ = "http://192.168.1.103:8000/";
+const baseServ = "http://192.168.1.7:8000/";
+
 const baseUrl = "${baseServ}api/";
 const auth = "auth/";
 const dashboard = 'dashboard/';

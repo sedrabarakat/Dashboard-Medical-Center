@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+import 'package:dashboad/features/lab_master/presentation/cubit/upload_file_cubit.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../urls/app_url.dart';
 
 import 'api_service.dart';
@@ -92,7 +95,8 @@ class ApiServicesImp implements ApiServices {
 
   @override
   Future postFiles(
-    String path, {
+    String path,
+    BuildContext context, {
     Map<String, dynamic>? queryParams,
     Map<String, dynamic>? body,
     String? key,
@@ -109,10 +113,10 @@ class ApiServicesImp implements ApiServices {
               contentType: Headers.multipartFormDataContentType),
           onSendProgress: (sent, total) {
         if (total != -1) {
-          var progress = (sent / total * 100).toStringAsFixed(0);
-          //Todo handle the progress ui
-          // BlocProvider.of<UploadManagerCubit>(context)
-          //     .uploadFile(key: key, progress: progress);
+          double progress = (sent / total * 100);
+
+          BlocProvider.of<UploadFileCubit>(context)
+              .uploadingFileProgress(progress);
         }
       }, onReceiveProgress: (sent, total) {
         if (total != -1) {
