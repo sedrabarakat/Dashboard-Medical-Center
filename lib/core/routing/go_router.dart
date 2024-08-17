@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../features/appointment/presentation/screens/all_appointment_screen.dart';
-import '../../features/appointment/presentation/screens/test_appointmenet.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/create_account/presentation/screens/add_account.dart';
 import '../../features/director/presentation/screens/directors_list.dart';
@@ -232,7 +231,7 @@ class WebRouter {
               GoRoute(
                 path: '/addAppointment',
                 name: kAddAppointment,
-                builder: (context, state) => const TestAppointment(),
+                builder: (context, state) => const AllAppointmentScreen(),
               ),
             ],
           ),

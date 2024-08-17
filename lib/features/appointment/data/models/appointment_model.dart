@@ -14,9 +14,9 @@ class AppointmentModel {
   @JsonKey(name: 'doctor_id')
   final int doctorId;
   @JsonKey(name: 'doctor_firstName')
-  final String doctorFirstname;
+  late final String doctorFirstname;
   @JsonKey(name: 'doctor_lastName')
-  final String doctorLastName;
+  late final String doctorLastName;
   @JsonKey(name: 'section_id')
   final int sectionId;
   @JsonKey(name: 'section_name')

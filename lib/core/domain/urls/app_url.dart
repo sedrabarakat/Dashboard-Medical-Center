@@ -1,5 +1,5 @@
 // const baseServ = "http://127.0.0.1:8001/";
-const baseServ = "http://192.168.1.7:8000/";
+const baseServ = "http://192.168.1.101:8000/";
 
 const baseUrl = "${baseServ}api/";
 const auth = "auth/";
@@ -58,6 +58,9 @@ class AppUrl {
   /*>>>>>>>>>>>>>>>>>>>> Appointment <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   static const getAppointment = "$baseUrl$dashboard$appintment";
   static const deleteAppointment = '$baseUrl${dashboard}appointment/$delete';
+  static const updateAppointment = '$baseUrl${dashboard}appointment/update/';
+  static const getDoctorScheduleTime = '$baseUrl${dashboard}doctor/schedule/';
+
   /*>>>>>>>>>>>>>>>>>>>> Lab <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   static const getLabRequest = "$baseUrl${dashboard}lab/sessions-details";
   static const makeItDone = "$baseUrl${dashboard}lab/done/";

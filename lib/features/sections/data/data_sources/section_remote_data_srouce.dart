@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+  import 'dart:typed_data';
 
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/services/api_service.dart';
