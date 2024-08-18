@@ -28,39 +28,46 @@ class PatientProfile extends StatelessWidget {
               builder: (context) {
                 return Row(
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 30.w, vertical: 50.h),
-                      height: 920.h,
-                      width: 900.w,
-                      decoration: StyleManager.rounded40(color: Colors.white),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            PicAndName(context: context, cubit: cubit),
-                            SizedBox(
-                              height: 20.h,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextsCol(texts: fields1),
-                                infoCol1(context: context),
-                                SizedBox(
-                                  width: 50.w,
-                                ),
-                                TextsCol(texts: fields2),
-                                infoCol2(context: context),
-                              ],
-                            )
-                          ],
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 30.w, vertical: 50.h),
+                        height: 920.h,
+                        width: 1100.w,
+                        decoration: StyleManager.rounded40(color: Colors.white),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              PicAndName(context: context, cubit: cubit),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Flexible(child: TextsCol(texts: fields1)),
+                                  SizedBox(width: 40.w,),
+                                  Flexible(child: infoCol1(context: context)),
+                                  SizedBox(
+                                    width: 120.w,
+                                  ),
+                                  Flexible(child: TextsCol(texts: fields2)),
+                                  SizedBox(width: 40.w,),
+                                  Flexible(child: infoCol2(context: context)),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: 30.w,
                     ),
-                    Flexible(child: SessionContainer(id: id)),
+                    Expanded(
+                      flex: 1,
+                        child: SessionContainer(id: id)),
                   ],
                 );
               },

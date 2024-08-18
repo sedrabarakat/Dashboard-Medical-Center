@@ -11,9 +11,9 @@ Widget editingFields(
     required bool is_Editig,
     bool isAddress = false}) {
   return Padding(
-    padding: EdgeInsets.only(top: 10.h, right: 20.w, left: 10.w),
+    padding: EdgeInsets.only(top: 10.h, right: 10.w, left: 10.w),
     child: SizedBox(
-        width: 200.w,
+        width: 500.w,
         child: TextFild_def(
           radius: 2,
           maxLine: (isAddress) ? 2 : 4,

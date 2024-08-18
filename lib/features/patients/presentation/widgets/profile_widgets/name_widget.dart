@@ -10,47 +10,51 @@ Widget nameWidget(
     required TextEditingController Last_name,
     required bool is_Editig}) {
   return (is_Editig)
-      ? Row(
-          children: [
-            Container(
-                width: 150.w,
-                child: TextFild_def(
-                  radius: 2,
-                  borderStyle: StyleManager.FieldBorder_round40,
-                  filled: false,
-                  fillColor: Colors.white,
-                  controller: first_name,
-                  readOnly: (is_Editig) ? false : true,
-                  textStyle: StyleManager.font30Bold_Lobster.copyWith(color: ColorsHelper.blueDark),
-                )),
-            SizedBox(
-                width: 150.w,
-                child: TextFild_def(
-                  radius: 2,
-                  borderStyle: StyleManager.FieldBorder_round40,
-                  filled: false,
-                  fillColor: Colors.white,
-                  controller: Last_name,
-                  readOnly: (is_Editig) ? false : true,
-                  textStyle: StyleManager.font30Bold_Lobster.copyWith(color: ColorsHelper.blueDark),
-                )),
-          ],
-        )
-      : Row(
-          children: [
-            Text(
-              first_name.text,
-              style: StyleManager.font30Bold_Lobster
-                  .copyWith(color: ColorsHelper.blueDark),
-            ),
-            SizedBox(
-              width: 5.w,
-            ),
-            Text(
-              Last_name.text,
-              style: StyleManager.font30Bold_Lobster
-                  .copyWith(color: ColorsHelper.blueDark),
-            )
-          ],
-        );
+      ? Flexible(
+        child: Row(
+            children: [
+              Container(
+                  width: 150.w,
+                  child: TextFild_def(
+                    radius: 2,
+                    borderStyle: StyleManager.FieldBorder_round40,
+                    filled: false,
+                    fillColor: Colors.white,
+                    controller: first_name,
+                    readOnly: (is_Editig) ? false : true,
+                    textStyle: StyleManager.font30Bold_Lobster.copyWith(color: ColorsHelper.blueDark),
+                  )),
+              SizedBox(
+                  width: 150.w,
+                  child: TextFild_def(
+                    radius: 2,
+                    borderStyle: StyleManager.FieldBorder_round40,
+                    filled: false,
+                    fillColor: Colors.white,
+                    controller: Last_name,
+                    readOnly: (is_Editig) ? false : true,
+                    textStyle: StyleManager.font30Bold_Lobster.copyWith(color: ColorsHelper.blueDark),
+                  )),
+            ],
+          ),
+      )
+      : Flexible(
+        child: Row(
+            children: [
+              Text(
+                first_name.text,
+                style: StyleManager.font30Bold_Lobster
+                    .copyWith(color: ColorsHelper.blueDark),
+              ),
+              SizedBox(
+                width: 5.w,
+              ),
+              Text(
+                Last_name.text,
+                style: StyleManager.font30Bold_Lobster
+                    .copyWith(color: ColorsHelper.blueDark),
+              )
+            ],
+          ),
+      );
 }

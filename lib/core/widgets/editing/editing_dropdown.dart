@@ -13,10 +13,9 @@ Widget editingDropDown(
     required bool is_Editig,
     var onChanged}) {
   return Padding(
-    padding: EdgeInsets.only(top: 18.h, right: 20.w, left: 10.w),
+    padding: EdgeInsets.only(top: 18.h, right: 10.w, left: 10.w),
     child: SizedBox(
-        width: 200.w,
-        height: 60.h,
+        width: 500.w,
         child: (is_Editig)
             ? Dropdown(
                 filled: (is_Editig) ? true : false,
@@ -25,7 +24,7 @@ Widget editingDropDown(
                     : Colors.white,
                 dropdownItems: dropdownItems,
                 selectedItem: selectedItem,
-                hintText: "Select $selection",
+                hintText: "$selection",
                 borderStyle: (is_Editig)
                     ? StyleManager.Border_round40Blue
                     : StyleManager.FieldBorder_round40,

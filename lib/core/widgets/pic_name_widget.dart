@@ -9,7 +9,7 @@ Widget PicAndName({required context, required cubit}) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Image_widget(image: cubit.image),
+      Flexible(child: Image_widget(image: cubit.image)),
       SizedBox(
         width: 30.w,
       ),
@@ -21,7 +21,8 @@ Widget PicAndName({required context, required cubit}) {
           is_Editig: cubit.isEditing,
         ),
       ),
-      editingInfoButtons(cubit: cubit)
+      SizedBox(width: 50.w,),
+      Flexible(child: editingInfoButtons(cubit: cubit))
     ],
   );
 }

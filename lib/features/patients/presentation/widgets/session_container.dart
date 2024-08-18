@@ -17,15 +17,14 @@ class SessionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>
-          PatientCubit(getIt())..getOpenSession(id: id),
+      create: (BuildContext context) => PatientCubit(getIt())..getOpenSession(id: id),
       child: BlocBuilder<PatientCubit, PatientState>(
         builder: (context, state) {
           return Container(
             decoration: StyleManager.rounded40(color: Colors.white),
             padding: EdgeInsets.all(30.h),
             height: 920.h,
-            width: 350.w,
+            width: 500.w,
             child: Column(
               //crossAxisAlignment: ,
               children: [
