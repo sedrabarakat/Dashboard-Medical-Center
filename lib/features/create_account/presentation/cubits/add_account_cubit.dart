@@ -117,6 +117,7 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     response.fold((error) {
       emit(Error_Create_User(error));
     }, (user) {
+      clearTextField();
       emit(Success_Create_User());
     });
   }
@@ -141,6 +142,7 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
             diabetes: (Diabetes == "Haven\'t") ? false : true,
             blood_pressure: (Pressure == "Haven\'t") ? false : true,
             wallet: int.parse(wallet.text),
+            password: Password.text,
             image: (Image_Bytes != null)
                 ? MultipartFile.fromBytes(Image_Bytes!,
                     filename: Image!.files.single.name)
@@ -150,6 +152,8 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
       value.fold((error) {
         emit(Error_Create_Patient(error));
       }, (user) {
+        clearTextField();
+        clearPatientFields();
         emit(Success_Create_Patient());
       });
     });
@@ -174,6 +178,8 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
       value.fold((error) {
         emit(Error_Create_Doctor(error));
       }, (DoctorModel) {
+        clearTextField();
+        clearDoctorFields();
         emit(Success_Create_Doctor());
       });
     });
@@ -223,7 +229,28 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     }
     emit(Add_Image_state());
   }
-
+  void clearTextField(){
+    First_name.clear();
+    Middle_name.clear();
+    Last_name.clear();
+    Phone.clear();
+    Description.clear();
+    Password.clear();
+  }
+  void clearDoctorFields(){
+    Day_In_Advance.clear();
+    Duration.clear();
+    Section_id=null;
+  }
+  void clearPatientFields(){
+    Address.clear();
+    Age.clear();
+    Birth_Date.clear();
+    Children_num.clear();
+    Habit.clear();
+    profession.clear();
+    wallet.clear();
+  }
   ///Add work days
 
 

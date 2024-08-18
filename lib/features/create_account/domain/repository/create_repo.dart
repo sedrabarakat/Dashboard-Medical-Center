@@ -47,5 +47,6 @@ abstract class CreateRepo {
       required bool blood_pressure,
       required int wallet,
       required String user_type,
+        required String password,
       var image});
 }

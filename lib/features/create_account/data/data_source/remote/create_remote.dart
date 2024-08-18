@@ -60,6 +60,7 @@ class CreateRemoteDataSource {
       required bool blood_pressure,
       required int wallet,
       required String user_type,
+        required String password,
       var image}) async {
     final response = await apiService.post(AppUrl.creatPatient, body: {
       "first_name": first_name,
@@ -80,6 +81,7 @@ class CreateRemoteDataSource {
       "diabetes": diabetes,
       "blood_pressure": blood_pressure,
       "wallet": wallet,
+      "password":password,
       if (image != null) "image": base64Decode(image)
     });
     return BaseModel(data: response["data"], message: response["message"]);

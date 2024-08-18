@@ -93,6 +93,7 @@ class CreateRepoImpl extends CreateRepo {
       required bool blood_pressure,
       required int wallet,
       required String user_type,
+        required String password,
       var image}) async {
     try {
       BaseModel baseModel = await remoteDataSource.create_patient(
@@ -114,7 +115,8 @@ class CreateRepoImpl extends CreateRepo {
           blood_pressure: blood_pressure,
           wallet: wallet,
           user_type: user_type,
-          image: image);
+          image: image,
+      password: password);
 
       PatientModel patientModel = PatientModel.fromJson(baseModel.data);
       return right(patientModel);
