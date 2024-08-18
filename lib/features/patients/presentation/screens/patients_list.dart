@@ -42,7 +42,8 @@ class PatientsList extends StatelessWidget {
               } else {
                 return false;
               }
-            }, builder: (context, state) {
+            },
+                builder: (context, state) {
               if (state is GetPatientsErrorState) {
                 return Text(NetworkExceptions.getErrorMessage(state.error));
               } else if (state is GetPatientsLoadingState) {

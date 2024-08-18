@@ -60,7 +60,8 @@ class AppUrl {
   static const deleteAppointment = '$baseUrl${dashboard}appointment/$delete';
   static const updateAppointment = '$baseUrl${dashboard}appointment/update/';
   static const getDoctorScheduleTime = '$baseUrl${dashboard}doctor/schedule/';
-
+  static const getAvailableTime = '$baseUrl${dashboard}appointment/getAvailableTime/';
+  static const addNewAppointment = '$baseUrl${dashboard}appointment/store';
   /*>>>>>>>>>>>>>>>>>>>> Lab <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   static const getLabRequest = "$baseUrl${dashboard}lab/sessions-details";
   static const makeItDone = "$baseUrl${dashboard}lab/done/";

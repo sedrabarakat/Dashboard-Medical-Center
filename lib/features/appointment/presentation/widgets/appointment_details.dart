@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../core/data/datasources/local.dart';
 import '../../../../core/helpers/colors_helper.dart';
@@ -26,6 +27,7 @@ class AppointmentDetails extends StatefulWidget {
 
 class _AppointmentDetailsState extends State<AppointmentDetails> {
   late DateTime selectedDate;
+  late String formattedSelectedDate;
 
   String? selectedTime;
   bool isEditing = false;
@@ -39,7 +41,7 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
     } catch (e) {
       selectedDate = DateTime.now();
     }
-    selectedTime = widget.appointment.startMin;
+    selectedTime = widget.appointment.startTime;
 
     context
         .read<AppointmentCubit>()
@@ -62,13 +64,13 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Doctor: ${widget.appointment.doctorFirstname + widget.appointment.doctorLastName}',
+                    'Doctor: ${widget.appointment.doctor.userData.firstName + widget.appointment.doctor.userData.lastName}',
                     style: StyleManager.font20W600
                         .copyWith(color: ColorsHelper.blueDarkest),
                   ),
                   const SizedBox(height: AppSize.s4),
                   Text(
-                    'Patient:  ${widget.appointment.patientFirstName + widget.appointment.patientLastName}',
+                    'Patient:  ${widget.appointment.patient.userData.firstName + widget.appointment.patient.userData.firstName}',
                     style: StyleManager.fontRegular16,
                   ),
                   const SizedBox(height: AppSize.s4),
@@ -86,7 +88,7 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
                   InkWell(
                     onTap: isEditing ? _selectTime : null,
                     child: Text(
-                      'Time:     ${widget.appointment.startMin.toString()}',
+                      'Time:     ${widget.appointment.startTime.toString()}',
                       style: StyleManager.fontRegular16.copyWith(
                         decoration: isEditing ? TextDecoration.underline : null,
                         color: isEditing ? Colors.blue : Colors.black,
@@ -194,6 +196,8 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
       setState(() {
         selectedDate = picked;
         debugPrint(selectedDate.toString());
+        formattedSelectedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+        debugPrint('Selected date: $formattedSelectedDate');
         selectedTime = null;
       });
     }
@@ -242,18 +246,18 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
           ),
           content: availableTimeSlots.isNotEmpty
               ? SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: availableTimeSlots.map((time) {
-                return ListTile(
-                  title: Text(time),
-                  onTap: () {
-                    Navigator.pop(context, time);
-                  },
-                );
-              }).toList(),
-            ),
-          )
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: availableTimeSlots.map((time) {
+                      return ListTile(
+                        title: Text(time),
+                        onTap: () {
+                          Navigator.pop(context, time);
+                        },
+                      );
+                    }).toList(),
+                  ),
+                )
               : Text("No available time slots for $dayOfWeek"),
         );
       },
@@ -278,7 +282,8 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
   }
 
   List<PatientModel> _patients = [];
-  Future<int> getPatientId(String firstName, String lastName)async{
+
+  Future<int> getPatientId(String firstName, String lastName) async {
     List<String> patientCachedList =
         await SharedPrefrence.getListOfString('patients');
     // Check if there is cached data if true then return the cached data
@@ -287,24 +292,24 @@ class _AppointmentDetailsState extends State<AppointmentDetails> {
         patientCachedList,
         PatientModel.fromJson,
       );
-  }
-    for(int i = 0 ; i <_patients.length; i++){
-      if(_patients[i].userData.firstName == firstName && _patients[i].userData.lastName == lastName) {
-        return _patients[i].id ;
+    }
+    for (int i = 0; i < _patients.length; i++) {
+      if (_patients[i].userData.firstName == firstName &&
+          _patients[i].userData.lastName == lastName) {
+        return _patients[i].id;
       }
     }
-    return -1 ;
-    }
+    return -1;
+  }
 
-  void _submitChanges()async {
-    int patientId = await getPatientId(widget.appointment.patientFirstName, widget.appointment.patientLastName);
-        context.read<AppointmentCubit>().updateAppointment(
-      widget.appointment.id,
-      patientId,
-      widget.appointment.doctorId,
-      selectedDate.toString(),
-      selectedTime ?? widget.appointment.startMin,
-    );
+  void _submitChanges() async {
+    context.read<AppointmentCubit>().updateAppointment(
+          widget.appointment.id,
+          widget.appointment.patientId,
+          widget.appointment.doctorId,
+          formattedSelectedDate.toString(),
+          selectedTime ?? widget.appointment.startTime,
+        );
 
     debugPrint('submit changes done');
     debugPrint(selectedTime.toString());

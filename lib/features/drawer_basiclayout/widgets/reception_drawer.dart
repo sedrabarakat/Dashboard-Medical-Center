@@ -14,6 +14,18 @@ Widget receptionDrawerList(
   int index = navigationShell.currentIndex;
   return ListView(shrinkWrap: true, padding: EdgeInsets.all(10.r), children: [
     listTileWidget(
+        index: index,
+        spIndex: 0,
+        text: 'Add Patient',
+        onTap: () {
+          // cubit.changeSelctedTap(index: 1);
+          navigationShell.goBranch(0,
+              initialLocation: index == navigationShell.currentIndex);
+
+          // context.go('/add_account');
+        },
+        icon: Icons.add),
+    listTileWidget(
       index: index,
       spIndex: 4,
       text: 'Doctors',

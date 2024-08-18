@@ -2,6 +2,7 @@ import 'package:dashboad/features/create_account/presentation/cubits/add_account
 import 'package:dashboad/features/create_account/presentation/widgets/select_role/selected_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/data/datasources/local.dart';
 import '../../../domain/constants/constants.dart';
 
 
@@ -13,7 +14,9 @@ class SelecteRoleList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    var role = SharedPrefrence.getData(key: 'reception');
+    return (role == "owner")?SelectedCell(index: 2, cubit: cubit):
+     ListView.separated(
         shrinkWrap: true,
         itemBuilder: (context, index) =>
             SelectedCell(index: index, cubit: cubit),

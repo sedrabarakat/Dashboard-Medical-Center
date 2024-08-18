@@ -141,4 +141,26 @@ class StyleManager {
   static BoxDecoration rounded40({required Color color}) {
     return BoxDecoration(color: color, borderRadius: BorderRadius.circular(40));
   }
+
+  static TextStyle fontExtraBold14White = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
+    color: ColorsHelper.white,
+  );
+  static const TextStyle fontRegular14grey = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: ColorsHelper.blueLighter,
+  );
+  static TextStyle fontExtraBold14Black = const TextStyle(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
+    color: ColorsHelper.blueDarkest,
+  );
+
+  static TextStyle fontMedium16White = const TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: ColorsHelper.white,
+  );
 }

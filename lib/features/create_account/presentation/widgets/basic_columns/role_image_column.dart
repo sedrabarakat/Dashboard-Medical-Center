@@ -1,6 +1,7 @@
 import 'package:dashboad/features/create_account/presentation/widgets/select_role/selected_role_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/data/datasources/local.dart';
 import '../../../../../core/helpers/colors_helper.dart';
 import '../../../../../core/utils/style_manager.dart';
 import '../../cubits/add_account_cubit.dart';
@@ -13,6 +14,7 @@ class RoleImageColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var role = SharedPrefrence.getData(key: 'role');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

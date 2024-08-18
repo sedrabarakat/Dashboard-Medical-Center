@@ -1,11 +1,17 @@
 import 'package:bloc/bloc.dart';
+import 'package:dashboad/features/appointment/data/models/available_time_model.dart';
 import 'package:dashboad/features/appointment/data/models/working_hours_model.dart';
 import 'package:dashboad/features/appointment/domain/repositories/appointment_repo.dart';
 import 'package:dashboad/features/appointment/presentation/cubit/appointment_state.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:progress_state_button/progress_button.dart';
 
+import '../../../../core/data/datasources/local.dart';
+import '../../../../core/helpers/json_helper.dart';
 import '../../../../core/widgets/toast_bar.dart';
 import '../../../doctors/data/model/doctor_model.dart';
+import '../../../patients/data/models/patient_model.dart';
 import '../../../sections/data/models/section_model.dart';
 import '../../data/models/appointment_model.dart';
 
@@ -23,7 +29,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
 
   void init(AppointmentModel appointment){
     selectedDate = DateTime.parse(appointment.date);
-    selectedTime = appointment.startMin;
+    selectedTime = appointment.startTime;
     //getScheduleForDoctor(appointment.doctorId);
   }
 
@@ -89,7 +95,140 @@ class AppointmentCubit extends Cubit<AppointmentState> {
       int index = _appointments.indexWhere((appointment) => appointment.id == data.data!.id) ;
       _appointments.removeAt(index) ;
       _appointments.insert(index, data.data!) ;
+      getAppointment() ;
       emit(GetAppointmentSuccessState(_appointments)) ;
+    }) ;
+  }
+
+
+  ///////////////////////////////..Add appointment..///////////////////////////////
+  ButtonState bookButtonState = ButtonState.idle;
+  List<PatientModel> _patients = [];
+  List<DoctorModel> _doctors = [];
+  int addAppointmentDoctorId = 1;
+  late int addAppointmentPatientId ;
+  late DateTime addAppointmentSelectedDate ;
+  late String addAppointmentDayOfWeek ;
+  late AvailableTimeModel availableTimeModel ;
+  late String formattedDate ;
+
+  int? selectedPatientId;
+
+  void setSelectedPatientId(int patientId) {
+    selectedPatientId = patientId;
+    emit(AppointmentPatientUpdatedState());
+  }
+  void setSelectedDoctorId(int doctorId) {
+    selectedPatientId = doctorId;
+    emit(AppointmentDoctorUpdatedState());
+  }
+  String _getDayOfWeek(DateTime date) {
+    return [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ][date.weekday % 7];
+  }
+  Future<void> getPatients() async {
+    List<String> patientCachedList =
+    await SharedPrefrence.getListOfString('patients');
+    // Check if there is cached data if true then return the cached data
+    if (patientCachedList.isNotEmpty) {
+      _patients = JsonHelper.convertListOfStringToListOfObjects<PatientModel>(
+        patientCachedList,
+        PatientModel.fromJson,
+      );
+      emit(GetPatientSuccessState(_patients));
+      return;
+    }
+    emit(GetPatientsLoadingState());
+
+    final response = await _repo.getPatients();
+    response.fold((error) {
+      emit(GetPatientsErrorState(error));
+    }, (data) {
+      List<PatientModel> listOfPatients =
+      data.list.map((patient) => patient as PatientModel).toList();
+      _patients = listOfPatients;
+      SharedPrefrence.saveListOfObject(_patients, 'patients');
+      emit(GetPatientSuccessState(_patients));
+    });
+  }
+
+  Future<void> getDoctors() async {
+    List<String> cachedDoctors =
+    await SharedPrefrence.getListOfString('doctors');
+    if (cachedDoctors.isNotEmpty) {
+      _doctors = JsonHelper.convertListOfStringToListOfObjects<DoctorModel>(
+        cachedDoctors,
+        DoctorModel.fromJson,
+      );
+      addAppointmentDoctorId = _doctors[0].id ;
+      emit(GetDoctorsSuccessState(_doctors));
+      return;
+    }
+    emit(GetDoctorsLoadingState());
+    final response = await _repo.getDoctors();
+    response.fold((error) {
+      emit(GetDoctorsErrorState(error));
+    }, (data) async {
+      List<DoctorModel> listOfDoctors =
+      data.list.map((doctors) => doctors as DoctorModel).toList();
+      _doctors = listOfDoctors;
+      SharedPrefrence.saveListOfObject(_doctors, 'doctors');
+      emit(GetDoctorsSuccessState(_doctors));
+    });
+  }
+
+  void onDateSelected(DateTime selectedDate) {
+    print('Selected Date: $selectedDate');
+    addAppointmentSelectedDate = selectedDate ;
+    addAppointmentDayOfWeek = _getDayOfWeek(addAppointmentSelectedDate);
+    formattedDate = DateFormat('yyyy-MM-dd').format(selectedDate);
+    debugPrint(formattedDate) ;
+  }
+
+  Future<void> getAvailableTime(int doctorId)async{
+    emit(GetAvailableLoadingState()) ;
+    final response = await _repo.getAvailableTime(doctorId, formattedDate, addAppointmentDayOfWeek) ;
+    response.fold((error){
+      emit(GetAvailableErrorState(error)) ;
+    }, (data){
+      //emit(GetAvailableSuccessState(availableTimeModel)) ;
+      debugPrint('12121212120') ;
+      debugPrint(data.data.toString()) ;
+      availableTimeModel = data.data;
+      debugPrint(availableTimeModel.toString()) ;
+      debugPrint(availableTimeModel.toString()) ;
+      emit(GetAvailableSuccessState(availableTimeModel)) ;
+    }) ;
+  }
+
+  void setAppointmentPatientId(int patientId) {
+    addAppointmentPatientId = patientId;
+    emit(AppointmentPatientUpdatedState());
+  }
+void setAppointmentDoctorId(int doctorId) {
+    addAppointmentDoctorId = doctorId;
+    emit(AppointmentDoctorIdUpdatedState(addAppointmentDoctorId));
+  }
+
+  Future<void> addNewAppointment()async{
+    bookButtonState = ButtonState.loading ;
+    debugPrint("$addAppointmentPatientId$addAppointmentPatientId$addAppointmentDayOfWeek$formattedDate");
+    emit(AddNewAppointmentLoadingState()) ;
+    final response = await _repo.addNewAppointment(addAppointmentDoctorId, addAppointmentPatientId,formattedDate, addAppointmentDayOfWeek) ;
+    debugPrint(response.toString()) ;
+    response.fold((error){
+      bookButtonState = ButtonState.fail ;
+      emit(AddNewAppointmentErrorState(error));
+    }, (data){
+      bookButtonState = ButtonState.success ;
+      emit(AddNewAppointmentSuccessState(data.data)) ;
     }) ;
   }
 

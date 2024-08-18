@@ -8,28 +8,22 @@ part of 'appointment_model.dart';
 
 AppointmentModel _$AppointmentModelFromJson(Map<String, dynamic> json) =>
     AppointmentModel(
-      date: json['date'] as String,
-      doctorFirstname: json['doctor_firstName'] as String,
+      id: (json['id'] as num).toInt(),
       doctorId: (json['doctor_id'] as num).toInt(),
-      doctorLastName: json['doctor_lastName'] as String,
-      id: (json['appointment_id'] as num).toInt(),
-      patientFirstName: json['patient_firstName'] as String,
-      patientLastName: json['patient_lastName'] as String,
-      sectionId: (json['section_id'] as num).toInt(),
-      sectionName: json['section_name'] as String,
-      startMin: json['start_min'] as String,
+      patientId: (json['patient_id'] as num).toInt(),
+      date: json['date'] as String,
+      startTime: json['start_min'] as String,
+      doctor: DoctorModel.fromJson(json['doctor'] as Map<String, dynamic>),
+      patient: PatientModel.fromJson(json['patient'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AppointmentModelToJson(AppointmentModel instance) =>
     <String, dynamic>{
-      'appointment_id': instance.id,
-      'patient_firstName': instance.patientFirstName,
-      'patient_lastName': instance.patientLastName,
+      'id': instance.id,
       'doctor_id': instance.doctorId,
-      'doctor_firstName': instance.doctorFirstname,
-      'doctor_lastName': instance.doctorLastName,
-      'section_id': instance.sectionId,
-      'section_name': instance.sectionName,
+      'patient_id': instance.patientId,
       'date': instance.date,
-      'start_min': instance.startMin,
+      'start_min': instance.startTime,
+      'doctor': instance.doctor,
+      'patient': instance.patient,
     };

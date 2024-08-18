@@ -2,6 +2,7 @@ import 'package:dashboad/features/lab_master/presentation/pages/patient_queue.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import '../../features/appointment/presentation/screens/add_appointment.dart';
 import '../../features/appointment/presentation/screens/all_appointment_screen.dart';
 import '../../features/auth/presentation/screens/login_screen.dart';
 import '../../features/create_account/presentation/screens/add_account.dart';
@@ -219,19 +220,17 @@ class WebRouter {
               ),
             ],
           ),
-          StatefulShellBranch(routes: [
-            GoRoute(
-              path: '/appointment',
-              builder: (context, state) => const AllAppointmentScreen(),
-              name: kAllAppointment,
-            ),
-          ]),
           StatefulShellBranch(
             routes: [
               GoRoute(
+                path: '/appointment',
+                name: kAllAppointment,
+                builder: (context, state) => const AllAppointmentScreen(),
+              ),
+              GoRoute(
                 path: '/addAppointment',
                 name: kAddAppointment,
-                builder: (context, state) => const AllAppointmentScreen(),
+                builder: (context, state) =>const AddAppointment(),
               ),
             ],
           ),
