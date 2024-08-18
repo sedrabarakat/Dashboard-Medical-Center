@@ -39,17 +39,20 @@ class AddAppointment extends StatelessWidget {
                     'Book new Appointment:',
                     style: StyleManager.font30Bold_Lobster,
                   ),
-                  SizedBox(height: DimensionsHelper.heightPercentage(context, 5)),
+                  SizedBox(
+                      height: DimensionsHelper.heightPercentage(context, 5)),
                   _buildPatientsSection(context, state),
-                  SizedBox(height: DimensionsHelper.heightPercentage(context, 2)),
+                  SizedBox(
+                      height: DimensionsHelper.heightPercentage(context, 2)),
                   _buildDoctorsSection(context, state, cubit),
                   const SizedBox(height: AppSize.s20),
                   CustomStateButton(
                     label: 'Book',
                     onPressed: () {
-                      debugPrint('click on book') ;
-                      debugPrint("${cubit.addAppointmentPatientId}${cubit.addAppointmentPatientId}${cubit.addAppointmentDayOfWeek}${cubit.formattedDate}");
-                      cubit.addNewAppointment() ;
+                      debugPrint('click on book');
+                      debugPrint(
+                          "${cubit.addAppointmentPatientId}${cubit.addAppointmentPatientId}${cubit.addAppointmentDayOfWeek}${cubit.formattedDate}");
+                      cubit.addNewAppointment();
                     },
                     currentState: cubit.bookButtonState,
                   ),
@@ -75,7 +78,7 @@ class AddAppointment extends StatelessWidget {
           buildWhen: (previous, current) {
             return current is GetPatientsLoadingState ||
                 current is GetPatientSuccessState ||
-                current is GetPatientsErrorState||
+                current is GetPatientsErrorState ||
                 current is AppointmentPatientIdUpdatedState;
           },
           builder: (context, state) {
@@ -88,8 +91,7 @@ class AddAppointment extends StatelessWidget {
                   itemBuilder: (context, index) => const ShimmerTableRow(),
                 ),
               );
-            }
-            else if (state is GetPatientSuccessState) {
+            } else if (state is GetPatientSuccessState) {
               return SizedBox(
                 height: 200.h,
                 child: ListView.builder(
@@ -101,9 +103,8 @@ class AddAppointment extends StatelessWidget {
                       isSelected: cubit.selectedPatientId == patient.id,
                       onTap: () {
                         print('Selected Patient ID: ${patient.id}');
-                        cubit .setAppointmentPatientId(patient.id);
+                        cubit.setAppointmentPatientId(patient.id);
                         cubit.setSelectedPatientId(patient.id);
-
                       },
                     );
                   },
@@ -118,7 +119,8 @@ class AddAppointment extends StatelessWidget {
     );
   }
 
-  Widget _buildDoctorsSection(BuildContext context, AppointmentState state, AppointmentCubit cubit) {
+  Widget _buildDoctorsSection(
+      BuildContext context, AppointmentState state, AppointmentCubit cubit) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -144,8 +146,7 @@ class AddAppointment extends StatelessWidget {
                   itemBuilder: (context, index) => const ShimmerTableRow(),
                 ),
               );
-            }
-            else if (state is GetDoctorsSuccessState) {
+            } else if (state is GetDoctorsSuccessState) {
               return Column(
                 children: [
                   SizedBox(
@@ -158,7 +159,9 @@ class AddAppointment extends StatelessWidget {
                           doctor: doctor,
                           onTap: () {
                             debugPrint('Selected Doctor ID: ${doctor.id}');
-                            context.read<AppointmentCubit>().getScheduleForDoctor(doctor.id);
+                            context
+                                .read<AppointmentCubit>()
+                                .getScheduleForDoctor(doctor.id);
                             cubit.addAppointmentDoctorId = doctor.id;
                             cubit.setSelectedPatientId(doctor.id);
                           },
@@ -166,17 +169,28 @@ class AddAppointment extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(height: DimensionsHelper.heightPercentage(context, 5)),
+                  SizedBox(
+                      height: DimensionsHelper.heightPercentage(context, 5)),
                   Text(
                     'Choose date',
                     style: StyleManager.fontExtraBold14Black,
                   ),
-                  SizedBox(height: DimensionsHelper.heightPercentage(context, 5)),
+                  SizedBox(
+                      height: DimensionsHelper.heightPercentage(context, 5)),
                   CustomCalender(
-                    lastDay: state.doctors[cubit.addAppointmentDoctorId].daysInAdvance,
-                    onDateSelected: (date) {
+                    dayInAdvance: state
+                        .doctors[cubit.addAppointmentDoctorId].daysInAdvance,
+                    onCalenderIniti: (day) {
+                      BlocProvider.of<AppointmentCubit>(context).selectedDate =
+                          day;
+                      BlocProvider.of<AppointmentCubit>(context)
+                          .getAvailableTime(
+                              state.doctors[cubit.addAppointmentDoctorId].id);
+                    },
+                    onDaySelected: (date) {
                       cubit.onDateSelected(date);
-                      context.read<AppointmentCubit>().getAvailableTime(state.doctors[cubit.addAppointmentDoctorId].id);
+                      context.read<AppointmentCubit>().getAvailableTime(
+                          state.doctors[cubit.addAppointmentDoctorId].id);
                     },
                   ),
                   BlocBuilder<AppointmentCubit, AppointmentState>(
@@ -191,7 +205,8 @@ class AddAppointment extends StatelessWidget {
                           height: 200.h,
                           child: ListView.builder(
                             itemCount: 10,
-                            itemBuilder: (context, index) => const ShimmerTableRow(),
+                            itemBuilder: (context, index) =>
+                                const ShimmerTableRow(),
                           ),
                         );
                       } else if (state is GetAvailableSuccessState) {
@@ -205,7 +220,8 @@ class AddAppointment extends StatelessWidget {
                             const SizedBox(height: AppSize.s24),
                             SizedBox(
                               height: 200.h,
-                              child: AvailableTimeList(times:state.availableTimeModel.availableTimes,
+                              child: AvailableTimeList(
+                                times: state.availableTimeModel.availableTimes,
                                 numberOfColumn: 4,
                               ),
                             ),

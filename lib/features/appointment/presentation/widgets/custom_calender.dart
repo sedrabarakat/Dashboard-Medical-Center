@@ -1,32 +1,43 @@
-import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
-import '../../../../core/utils/icon_manager.dart';
-import '../../../../core/utils/style_manager.dart';
-import '../../../../core/utils/values_manager.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CustomCalender extends StatefulWidget {
-  final int lastDay ;
-  final Function(DateTime selectedDate) onDateSelected;
-  const CustomCalender({
-    super.key, required this.lastDay, required this.onDateSelected,
-  });
+import '../../../../core/helpers/colors_helper.dart';
+import '../../../../core/utils/style_manager.dart';
+import '../../../../core/utils/values_manager.dart';
 
+class CustomCalender extends StatefulWidget {
+  const CustomCalender({
+    super.key,
+    required this.dayInAdvance,
+    required this.onDaySelected,
+    required this.onCalenderIniti,
+  });
+  final int dayInAdvance;
+  final void Function(DateTime)? onDaySelected;
+  final void Function(DateTime)? onCalenderIniti;
   @override
   State<CustomCalender> createState() => _MyCalenderState();
 }
 
 class _MyCalenderState extends State<CustomCalender> {
-  DateTime selectedDay = DateTime.now();
+  late DateTime selectedDay;
+
+  @override
+  void initState() {
+    selectedDay = getTheFirstDay();
+    widget.onCalenderIniti!(selectedDay);
+    super.initState();
+  }
+
   final BoxDecoration _buildBoxDecoration = const BoxDecoration(
     shape: BoxShape.rectangle,
   );
   @override
   Widget build(BuildContext context) {
-      return TableCalendar(
-      weekendDays: const [DateTime.saturday, DateTime.friday],
+    return TableCalendar(
+     // locale: AppLocalizations.of(context)!.localeName,
+      weekendDays: const [DateTime.friday],
       currentDay: selectedDay,
       daysOfWeekHeight: 52,
       rowHeight: 52,
@@ -37,9 +48,9 @@ class _MyCalenderState extends State<CustomCalender> {
         formatButtonVisible: false,
         titleCentered: true,
         titleTextFormatter: (date, locale) => DateFormat('MMMM').format(date),
-        titleTextStyle: StyleManager.font20W600,
-        leftChevronIcon: IconManager.arrowBackIcon,
-        rightChevronIcon: IconManager.arrowForwardIcon,
+        titleTextStyle: StyleManager.font20Bold,
+       // leftChevronIcon: IconManager.arrowBackIcon,
+       // rightChevronIcon: IconManager.arrowForwardIcon,
         leftChevronMargin: const EdgeInsets.all(0),
         leftChevronPadding: const EdgeInsets.only(
           left: AppPadding.p10,
@@ -50,18 +61,18 @@ class _MyCalenderState extends State<CustomCalender> {
         ),
       ),
       focusedDay: selectedDay,
-      firstDay: DateTime.now(),
+      firstDay: getTheFirstDay(),
       lastDay: DateTime(
         DateTime.now().year,
-        DateTime.now().month + 1,
-        DateTime.now().day + widget.lastDay,
+        DateTime.now().month,
+        DateTime.now().day + widget.dayInAdvance,
       ),
       daysOfWeekStyle: DaysOfWeekStyle(
         dowTextFormatter: (date, locale) => DateFormat('EE').format(date)[0],
       ),
       calendarStyle: CalendarStyle(
         todayDecoration: BoxDecoration(
-          color: ColorsHelper.blueDark,
+          color: ColorsHelper.blue,
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(10),
         ),
@@ -82,10 +93,19 @@ class _MyCalenderState extends State<CustomCalender> {
       ),
       onDaySelected: (currentDay, toDay) {
         setState(() {
-          selectedDay = toDay;
+          if (toDay.weekday != DateTime.friday) {
+            selectedDay = toDay;
+            widget.onDaySelected!(toDay);
+          }
         });
-        widget.onDateSelected(toDay);
       },
     );
+  }
+
+  DateTime getTheFirstDay() {
+    if (DateTime.now().weekday == DateTime.friday) {
+      return DateTime.now().add(const Duration(days: 1));
+    }
+    return DateTime.now();
   }
 }
