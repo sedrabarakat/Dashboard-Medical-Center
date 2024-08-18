@@ -20,18 +20,26 @@ class RoleImageColumn extends StatelessWidget {
       children: [
         AddImage(context: context),
         SizedBox(
-          height: 80.h,
+          height: 30.h,
         ),
-        Text("Role",
-            style:
-                StyleManager.font20W600.copyWith(color: ColorsHelper.black54)),
-        SizedBox(
-          height: 25.h,
+        Padding(
+          padding: EdgeInsets.only(left: 35.w),
+          child: Text("Role",
+              style: StyleManager.font20W600.copyWith(color: ColorsHelper.black54)),
         ),
         SizedBox(
-          width: 200.w,
-          child: SelecteRoleList(
-            cubit: cubit,
+          height: 20.h,
+        ),
+        Flexible(
+          child: Padding(
+            padding: EdgeInsets.only(left:35.w),
+            child: SizedBox(
+              width: 250.w,
+              height: 800.h,
+              child: SelecteRoleList(
+                cubit: cubit,
+              ),
+            ),
           ),
         )
       ],

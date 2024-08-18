@@ -22,7 +22,7 @@ class StyleManager {
   );
 
   static TextStyle font20W600 = TextStyle(
-      fontSize: 20.sp, color: Colors.black54, fontWeight: FontWeight.w600);
+      fontSize: 26.sp, color: Colors.black54, fontWeight: FontWeight.w600);
 
   static TextStyle font30Bold_Lobster = TextStyle(
     fontSize: 30.sp,

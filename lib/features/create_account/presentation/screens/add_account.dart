@@ -57,7 +57,7 @@ class AddAccount extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      height: 150.h,
+                      height: 130.h,
                       decoration: StyleManager.rounded40(color: Colors.white),
                       child: Text_Animated_Row(cubit: cubit),
                     ),

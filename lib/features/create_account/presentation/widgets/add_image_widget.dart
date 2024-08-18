@@ -13,14 +13,16 @@ Widget AddImage({
   required context
 }){
   AddAccountCubit cubit=AddAccountCubit.get(context);
-  return Container(
-    clipBehavior: Clip.hardEdge,
-    height: 250.h,width: 200.w,
-    decoration: StyleManager.Circle_Shape(color: ColorsHelper.blueLightest),
-    child: IconButton(onPressed: (){
-      cubit.addImage();
-    },icon: (cubit.Image_Bytes!=null)?Image.memory(
-        Uint8List.fromList(cubit.Image_Bytes!,),fit: BoxFit.fill,
-    ):Icon(Icons.add_a_photo,size: 30.w,color: Colors.white,),),
+  return Expanded(
+    child: Container(
+      clipBehavior: Clip.hardEdge,
+      height: 250.h,width: 300.w,
+      decoration: StyleManager.Circle_Shape(color: ColorsHelper.blueLightest),
+      child: IconButton(onPressed: (){
+        cubit.addImage();
+      },icon: (cubit.Image_Bytes!=null)?Image.memory(
+          Uint8List.fromList(cubit.Image_Bytes!,),fit: BoxFit.fill,
+      ):Icon(Icons.add_a_photo,size: 30.w,color: Colors.white,),),
+    ),
   );
 }

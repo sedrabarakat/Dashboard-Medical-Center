@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: ScreenUtilInit(
-        designSize: const Size(1600, 1000),
+        designSize: screenSize,//const Size(1600, 1000),
         minTextAdapt: true,
         splitScreenMode: true,
         child: MaterialApp.router(

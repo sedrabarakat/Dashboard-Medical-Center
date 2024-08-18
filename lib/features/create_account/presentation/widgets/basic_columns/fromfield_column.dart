@@ -37,7 +37,7 @@ class FromfieldColumn extends StatelessWidget {
                       ValidatorManager.instance.validateName(value ?? ''),
                 ),
                 SizedBox(
-                  width: 30.w,
+                  width: 40.w,
                 ),
                 Text_TextFiled(
                     text: 'Middle Name',
@@ -45,7 +45,7 @@ class FromfieldColumn extends StatelessWidget {
                     validator: (value) => ValidatorManager.instance
                         .validateMiddleName(value ?? '')),
                 SizedBox(
-                  width: 30.w,
+                  width: 40.w,
                 ),
                 Text_TextFiled(
                   text: 'Last Name',
@@ -56,7 +56,7 @@ class FromfieldColumn extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 50.h,
+              height: 30.h,
             ),
             Row(
               children: [
@@ -66,7 +66,7 @@ class FromfieldColumn extends StatelessWidget {
                     validator: (value) => ValidatorManager.instance
                         .validatePassword(value ?? '')),
                 SizedBox(
-                  width: 30.w,
+                  width: 40.w,
                 ),
                 Text_TextFiled(
                     text: 'Phone Number',
@@ -75,7 +75,7 @@ class FromfieldColumn extends StatelessWidget {
                     validator: (value) =>
                         ValidatorManager.instance.validatePhone(value ?? '')),
                 SizedBox(
-                  width: 30.w,
+                  width: 40.w,
                 ),
                 Text_TextFiled(
                     text: 'Description',
@@ -86,7 +86,7 @@ class FromfieldColumn extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 70.h,
+              height: 50.h,
             ),
             if (cubit.SelectedIndex == 1)
               DoctorsFields(cubit: cubit, Buildcontext: context),
@@ -99,10 +99,10 @@ class FromfieldColumn extends StatelessWidget {
                 height: (cubit.SelectedIndex != 2)
                     ? (cubit.SelectedIndex != 1)
                         ? 247.h
-                        : 55.h
-                    : 50.h),
+                        : 100.h
+                    : 40.h),
             Padding(
-              padding: EdgeInsets.only(left: 750.w),
+              padding: EdgeInsets.only(left: 820.w),
               child: CustomElevatedButton(
                 onPressed: () {
                   // print(SharedPrefrence.getData(key: "token"));

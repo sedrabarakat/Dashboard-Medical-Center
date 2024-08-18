@@ -31,7 +31,7 @@ class PatientFields extends StatelessWidget {
                   ValidatorManager.instance.validate_EmptyState(value ?? '','Gender'),
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_TextFiled(
               text: 'Birth Date',
@@ -53,7 +53,7 @@ class PatientFields extends StatelessWidget {
               },
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_TextFiled(
               text: 'Age',
@@ -63,7 +63,7 @@ class PatientFields extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 40.h,
+          height: 30.h,
         ),
         Row(
           children: [
@@ -74,7 +74,7 @@ class PatientFields extends StatelessWidget {
                   ValidatorManager.instance.validate_EmptyState(value ?? '',"Address"),
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_DropDown(
               text: "Matrial Status",
@@ -87,7 +87,7 @@ class PatientFields extends StatelessWidget {
               selectedItem: cubit.Status,
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_TextFiled(
               isNum: true,
@@ -99,7 +99,7 @@ class PatientFields extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 20.h,
+          height: 30.h,
         ),
         Row(
           children: [
@@ -114,7 +114,7 @@ class PatientFields extends StatelessWidget {
                   ValidatorManager.instance.validate_EmptyState(value ?? '','Blood Type'),
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_DropDown(
               text: "Diabetes",
@@ -127,7 +127,7 @@ class PatientFields extends StatelessWidget {
                   ValidatorManager.instance.validate_EmptyState(value ?? '','that field'),
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_DropDown(
               text: "Pressure",
@@ -143,7 +143,7 @@ class PatientFields extends StatelessWidget {
           ],
         ),
         SizedBox(
-          height: 20.h,
+          height: 30.h,
         ),
         Row(
           children: [
@@ -153,14 +153,14 @@ class PatientFields extends StatelessWidget {
               maxLine: 10,
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_TextFiled(
               text: 'Job',
               controller: cubit.profession,
             ),
             SizedBox(
-              width: 30.w,
+              width: 40.w,
             ),
             Text_TextFiled(
               text: 'Wallet',

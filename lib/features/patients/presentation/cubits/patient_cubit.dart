@@ -127,7 +127,7 @@ class PatientCubit extends Cubit<PatientState> {
           DateHelper.Convert_DateTime_DashString(dateTime: patient.birthDate);
       age.text = patient.age;
       address.text = patient.address;
-      bloodType.text = patient.bloodType;
+      bloodType.text = patient.bloodType!;
       matrialStatus.text = patient.maritalStatus;
       childrenNum.text = patient.childrenNum.toString();
       habit.text = patient.habits ?? "";

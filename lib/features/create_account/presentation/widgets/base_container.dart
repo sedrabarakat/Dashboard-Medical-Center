@@ -14,21 +14,23 @@ class BaseContainer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return  Container(
-      // padding: EdgeInsets.symmetric(
-      //     horizontal: 40.w, vertical: 50.h),
-      height: 750.h,
-      decoration: StyleManager.rounded40(
-          color: Colors.white),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          RoleImageColumn(cubit: cubit,),
-          SizedBox(
-            width: 100.w,
-          ),
-          FromfieldColumn(cubit: cubit,context: context,),
-        ],
+    return  Flexible(
+      child: Container(
+        padding: EdgeInsets.symmetric(
+            horizontal: 80.w, vertical: 50.h),
+        height: 700.h,
+        decoration: StyleManager.rounded40(
+            color: Colors.white),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RoleImageColumn(cubit: cubit,),
+            SizedBox(
+              width: 100.w,
+            ),
+            Expanded(child: FromfieldColumn(cubit: cubit,context: context,)),
+          ],
+        ),
       ),
     );
   }

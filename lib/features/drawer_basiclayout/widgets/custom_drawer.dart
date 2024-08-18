@@ -35,11 +35,9 @@ class CustomDrawer extends StatelessWidget {
               backgroundColor: Colors.white,
             ),
             (role == "owner")
-                ? receptionDrawerList(
-                navigationShell: navigationShell, context: context)
-                //drawerList(
-                //                     navigationShell: navigationShell,
-                //                   )
+                ? drawerList(
+                    navigationShell: navigationShell,
+                  )
                 : (role == 'receptionist')
                     ? receptionDrawerList(
                         navigationShell: navigationShell, context: context)

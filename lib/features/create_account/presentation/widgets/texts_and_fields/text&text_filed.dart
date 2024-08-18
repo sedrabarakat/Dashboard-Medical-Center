@@ -23,23 +23,25 @@ class Text_TextFiled extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding:  EdgeInsets.only(left: 10.w),
-          child: Text(text,style: StyleManager.fontRegular20.copyWith(color: ColorsHelper.black54),),
-        ),
-        SizedBox(height: 10.h,),
-        SizedBox(
-            width: 250.w,
-            child: TextFild_def(radius: 40,controller: controller,
-              onTap: onTap,onChanged: onChanged,validator: validator,maxLine: maxLine,
-              isNum: (isNum!=null)?isNum!:false,
-              readOnly: (ReadOnly!=null)?ReadOnly!:false,
-              borderStyle: StyleManager.Border_round40,
-            )),
-      ],
+    return Flexible(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding:  EdgeInsets.only(left: 10.w),
+            child: Text(text,style: StyleManager.fontRegular20.copyWith(color: ColorsHelper.black54),),
+          ),
+          SizedBox(height: 10.h,),
+          SizedBox(
+              width: 250.w,
+              child: TextFild_def(radius: 40,controller: controller,
+                onTap: onTap,onChanged: onChanged,validator: validator,maxLine: maxLine,
+                isNum: (isNum!=null)?isNum!:false,
+                readOnly: (ReadOnly!=null)?ReadOnly!:false,
+                borderStyle: StyleManager.Border_round40,
+              )),
+        ],
+      ),
     );
   }
 }
