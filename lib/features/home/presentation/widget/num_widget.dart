@@ -2,20 +2,22 @@ import 'dart:ui';
 
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:dashboad/core/utils/style_manager.dart';
+import 'package:dashboad/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget rowNumWidget(){
+Widget rowNumWidget(context){
+  HomeCubit cubit=HomeCubit.get(context);
   return Row(
     children: [
-      numWidget(num: 22, icon: Icons.people_outline_sharp,type: 'Admin',
+      numWidget(num: cubit.count['employee'], icon: Icons.people_outline_sharp,type: 'Admin',
       color: ColorsHelper.blue.withOpacity(.9)),
       SizedBox(width: 22.w,),
-      numWidget(num: 20, icon: Icons.medical_services_rounded,type: 'Doctors',
+      numWidget(num: cubit.count['doctors'], icon: Icons.medical_services_rounded,type: 'Doctors',
           color: ColorsHelper.blue.withOpacity(.8)),
       SizedBox(width: 22.w,),
-      numWidget(num: 30, icon: CupertinoIcons.person_fill,type: 'Patient',
+      numWidget(num: cubit.count['patient'], icon: CupertinoIcons.person_fill,type: 'Patient',
           color: ColorsHelper.blue.withOpacity(.9))
     ],
   );

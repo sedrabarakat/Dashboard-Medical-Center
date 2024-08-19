@@ -11,7 +11,7 @@ import '../../features/doctors/presentation/cubits/doctor_cubit.dart';
 import '../../features/doctors/presentation/screens/doctor_profile.dart';
 import '../../features/doctors/presentation/screens/doctors_list.dart';
 import '../../features/drawer_basiclayout/screens/baselayout.dart';
-import '../../features/home/presintation/screen/home.dart';
+import '../../features/home/presentation/screen/home.dart';
 import '../../features/inbox/presentation/screens/inbox.dart';
 import '../../features/laboratory/presentation/screens/laboratories_list.dart';
 import '../../features/patients/presentation/cubits/patient_cubit.dart';

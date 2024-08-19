@@ -70,4 +70,8 @@ class AppUrl {
   static const uploadLabFile = '$baseUrl${dashboard}session/details/';
   /*>>>>>>>>>>>>>>>>>>>> inbox <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   static const getInbox = '${baseUrl}complaints';
+  /*>>>>>>>>>>>>>>>>>>>> Home <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+  static const getNum = '${baseUrl}${dashboard}statistic/all';
+  static const getGender = '${baseUrl}${dashboard}statistic/patientByGender';
+  static const getAppointmentss = '${baseUrl}${dashboard}statistic/appointments';
 }

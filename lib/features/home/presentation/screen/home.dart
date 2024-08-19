@@ -1,3 +1,4 @@
+import 'package:dashboad/core/domain/services/locator.dart';
 import 'package:dashboad/core/helpers/colors_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,11 @@ class Home extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create:(context)=> HomeCubit(),
+    return BlocProvider(create:(context)=> HomeCubit(getIt())..getNums()..getGender()..getAppointment(),
       child: BlocConsumer<HomeCubit,HomeStates>(
         listener: (context,states){},
         builder: (context,states){
+          HomeCubit cubit=HomeCubit.get(context);
           return Column(
             children: [
               WelcomeCon(),
@@ -40,8 +42,10 @@ class Home extends StatelessWidget{
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          rowNumWidget(),
+                          if(cubit.count.length>0)
+                          rowNumWidget(context),
                           SizedBox(height: 50.h,),
+                          if(cubit.appointmentList.length>0)
                           Container(
                             height: 550.h,
                             width: 940.w,
@@ -66,6 +70,7 @@ class Home extends StatelessWidget{
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(height: 200,width: 200,),
+                          if(cubit.genderList.length>0)
                           Container(
                             height: 480.h,
                             width: 500.w,
