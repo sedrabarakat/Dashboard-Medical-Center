@@ -11,6 +11,7 @@ import '../../features/doctors/presentation/cubits/doctor_cubit.dart';
 import '../../features/doctors/presentation/screens/doctor_profile.dart';
 import '../../features/doctors/presentation/screens/doctors_list.dart';
 import '../../features/drawer_basiclayout/screens/baselayout.dart';
+import '../../features/home/presintation/screen/home.dart';
 import '../../features/inbox/presentation/screens/inbox.dart';
 import '../../features/laboratory/presentation/screens/laboratories_list.dart';
 import '../../features/patients/presentation/cubits/patient_cubit.dart';
@@ -45,6 +46,8 @@ class WebRouter {
   static const kAddAppointment = 'AddAppointment';
   static const kLabMasterPatientQueue = 'patient_queue';
 
+  static const kHome = 'home';
+
   static GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: TokenHelper.hasToken ? '/add_account' : '/',
@@ -64,6 +67,17 @@ class WebRouter {
           );
         },
         branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/home',
+                name: kHome,
+                builder: (context, state) {
+                  return const Home();
+                },
+              ),
+            ],
+          ),
           StatefulShellBranch(
             routes: [
               GoRoute(
@@ -240,7 +254,8 @@ class WebRouter {
               name: kLabMasterPatientQueue,
               builder: (context, state) => const LabMasterPatientQueue(),
             ),
-          ])
+          ]),
+
         ],
       ),
     ],

@@ -1,12 +1,9 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dashboad/core/data/models/base_model.dart';
 import 'package:dashboad/core/domain/error_handler/network_exceptions.dart';
-
 import 'package:dashboad/features/create_account/data/models/usermodel.dart';
 import 'package:dashboad/features/create_account/domain/repository/create_repo.dart';
 import 'package:dashboad/features/patients/data/models/patient_model.dart';
-
 import '../data_source/remote/create_remote.dart';
 
 class CreateRepoImpl extends CreateRepo {
@@ -33,6 +30,7 @@ class CreateRepoImpl extends CreateRepo {
         description: description,
         user_type: user_type,
         password: password,
+        image: image
       );
       Usermodel usermodel = Usermodel.fromJson(resp.data);
       return right(usermodel);
@@ -58,6 +56,7 @@ class CreateRepoImpl extends CreateRepo {
     try {
       BaseModel response = await remoteDataSource.createDoctor(
           first_name: first_name,
+          image: image,
           middle_name: middle_name,
           last_name: last_name,
           phone_number: phone_number,

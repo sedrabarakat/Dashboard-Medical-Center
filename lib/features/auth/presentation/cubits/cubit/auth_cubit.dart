@@ -50,9 +50,12 @@ class AuthCubit extends Cubit<AuthState> {
     }, (data) async {
       otpButtonState = ButtonState.success;
 
+
+
       await SharedPrefrence.saveData(key: 'token', value: data['token']);
       await SharedPrefrence.saveData(
           key: 'role', value: data['user']['user_type']);
+      await SharedPrefrence.saveData(key: 'Name', value: "${data['user']['first_name']}");
       DioHelper().addTokenInterceptor();
       emit(const AuthState.verfiyCodeSuccess());
     });

@@ -23,7 +23,7 @@ class AppUrl {
   static const updateDoctor = '$baseUrl${dashboard}doctor/update/';
   static const getDoctorProfile = '$baseUrl${dashboard}doctor/';
   static const postDoctorSchedule = '$baseUrl${dashboard}doctor/';
-  static const getDoctorSchedule = '$baseUrl${dashboard}doctor/';
+  static const getDoctorSchedule = '$baseUrl${dashboard}doctor/schedule/';
   /*>>>>>>>>>>>>>>>>>>>> Patients <<<<<<<<<<<<<<<<<<<<*/
   static const creatPatient = '$baseUrl${dashboard}patient/store';
   static const getPatientsList = '$baseUrl${dashboard}patient';
@@ -68,4 +68,6 @@ class AppUrl {
   static const makeItFail = "$baseUrl${dashboard}lab/fail/";
   static const getServices = '$baseUrl${dashboard}service';
   static const uploadLabFile = '$baseUrl${dashboard}session/details/';
+  /*>>>>>>>>>>>>>>>>>>>> inbox <<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+  static const getInbox = '${baseUrl}complaints';
 }

@@ -18,8 +18,10 @@ Widget SelectedCell({
       children: [
         Cell(index: index,cubit: cubit),
         SizedBox(width: 10.w,),
-        Text(Selected_role_list[index]["name"],
-          style: StyleManager.font20W600,)
+        Flexible(
+          child: Text(Selected_role_list[index]["name"],
+            style: StyleManager.font20W600,),
+        )
       ],),
   );
 }

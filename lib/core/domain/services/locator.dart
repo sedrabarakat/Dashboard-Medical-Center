@@ -10,6 +10,8 @@ import 'package:dashboad/features/create_account/domain/repository/create_repo.d
 import 'package:dashboad/features/director/domain/repository/director_repo.dart';
 import 'package:dashboad/features/doctors/data/datasources/doctor_remote_data_source.dart';
 import 'package:dashboad/features/doctors/domain/repositories/doctor_repo.dart';
+import 'package:dashboad/features/inbox/data/data_source/inbox_remote.dart';
+import 'package:dashboad/features/inbox/data/repository/inbox_repo.dart';
 import 'package:dashboad/features/lab_master/data/datasources/lab_remote.dart';
 import 'package:dashboad/features/lab_master/domain/repositories/lab_repo.dart';
 import 'package:dashboad/features/laboratory/data/data_sources/laboratory_remote_data_source.dart';
@@ -111,5 +113,12 @@ Future locatorSetUp() async {
   );
   getIt.registerLazySingleton<LabRepo>(
     () => LabRepo(getIt()),
+  );
+  /*>>>>>>>>>> Inbox <<<<<<<<<<*/
+  getIt.registerLazySingleton<InboxRemote>(
+        () => InboxRemote(getIt()),
+  );
+  getIt.registerLazySingleton<InboxRepo>(
+        () => InboxRepo(getIt()),
   );
 }

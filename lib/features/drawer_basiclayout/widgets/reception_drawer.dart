@@ -16,10 +16,19 @@ Widget receptionDrawerList(
     listTileWidget(
         index: index,
         spIndex: 0,
+        icon: Icons.home,
+        text: 'Home',
+        onTap: () {
+          navigationShell.goBranch(0,
+              initialLocation: index == navigationShell.currentIndex);
+        }),
+    listTileWidget(
+        index: index,
+        spIndex: 1,
         text: 'Add Patient',
         onTap: () {
           // cubit.changeSelctedTap(index: 1);
-          navigationShell.goBranch(0,
+          navigationShell.goBranch(1,
               initialLocation: index == navigationShell.currentIndex);
 
           // context.go('/add_account');
@@ -27,21 +36,21 @@ Widget receptionDrawerList(
         icon: Icons.add),
     listTileWidget(
       index: index,
-      spIndex: 4,
+      spIndex: 5,
       text: 'Doctors',
       icon: Icons.medical_services_rounded,
       onTap: () {
-        navigationShell.goBranch(4,
+        navigationShell.goBranch(5,
             initialLocation: index == navigationShell.currentIndex);
       },
     ),
     listTileWidget(
       index: index,
-      spIndex: 5,
+      spIndex: 6,
       text: 'Patients',
       icon: Icons.medication_liquid,
       onTap: () {
-        navigationShell.goBranch(5,
+        navigationShell.goBranch(6,
             initialLocation: index == navigationShell.currentIndex);
       },
     ),
@@ -51,7 +60,7 @@ Widget receptionDrawerList(
       ),
       leading: Icon(
         Icons.book_online,
-        color: (index == 3) ? Colors.white : ColorsHelper.blueDark,
+        color: (index == 4) ? Colors.white : ColorsHelper.blueDark,
       ),
       title: Dropdown(
         dropdownItems: const ['View All Appointments', 'Add New Appointment'],
@@ -66,7 +75,7 @@ Widget receptionDrawerList(
         borderStyle: StyleManager.Border_round40,
         fillColor: ColorsHelper.blueLightest,
       ),
-      tileColor: (index == 3) ? ColorsHelper.blueDark : null,
+      tileColor: (index == 4) ? ColorsHelper.blueDark : null,
       onTap: () {
         //cubit.changeSelctedTap(index: 3);
       },

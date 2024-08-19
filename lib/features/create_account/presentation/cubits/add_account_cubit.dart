@@ -112,7 +112,7 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
         user_type: Selected_role_list[SelectedIndex]['name'],
         image: (Image_Bytes != null)
             ? MultipartFile.fromBytes(Image_Bytes!,
-                filename: Image!.files.single.name)
+                filename: SectionName)
             : null);
     response.fold((error) {
       emit(Error_Create_User(error));
@@ -145,7 +145,7 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
             password: Password.text,
             image: (Image_Bytes != null)
                 ? MultipartFile.fromBytes(Image_Bytes!,
-                    filename: Image!.files.single.name)
+                    filename: SectionName)
                 : null,
             user_type: Selected_role_list[SelectedIndex]['name'])
         .then((value) {
@@ -168,8 +168,9 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
       description: Description.text,
       password: Password.text,
       image: (Image_Bytes != null)
+
           ? MultipartFile.fromBytes(Image_Bytes!,
-              filename: Image!.files.single.name)
+              filename: SectionName)
           : null,
       section_id: Section_id.toString(),
       days_in_advance: Day_In_Advance.text,
@@ -219,13 +220,17 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
   }
   List<int>? Image_Bytes;
   FilePickerResult? Image;
+  String ? SectionName;
 
   Future addImage() async {
     Image = await FilePicker.platform.pickFiles(
       allowMultiple: false,
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'jpeg', 'png', 'svg'],
     );
     if (Image != null) {
-      Image_Bytes = Image!.files.single.bytes;
+      Image_Bytes = Image!.files.first.bytes;
+      SectionName=Image!.files.first.name;
     }
     emit(Add_Image_state());
   }
@@ -236,6 +241,8 @@ class AddAccountCubit extends Cubit<AddAccountStates> {
     Phone.clear();
     Description.clear();
     Password.clear();
+    Image=null;
+    Image_Bytes=null;
   }
   void clearDoctorFields(){
     Day_In_Advance.clear();

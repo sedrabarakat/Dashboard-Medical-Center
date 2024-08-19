@@ -62,9 +62,9 @@ class DoctorRemoteDataSource {
     return BaseModel(data: response['data'], message: response['message']);
   }
 
-  Future<BaseModel> getDoctorShedule({required int id}) async {
+  Future<BaseModel> getDoctorSchedule({required int id}) async {
     final response =
-        await _apiServices.get("${AppUrl.getDoctorSchedule}$id/schedule");
+        await _apiServices.get("${AppUrl.getDoctorSchedule}$id");
     return BaseModel(data: response['data'], message: response['message']);
   }
 }

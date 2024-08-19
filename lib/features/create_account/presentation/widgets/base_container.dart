@@ -14,7 +14,7 @@ class BaseContainer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    return  Flexible(
+    return  Expanded(
       child: Container(
         padding: EdgeInsets.symmetric(
             horizontal: 80.w, vertical: 50.h),
@@ -28,7 +28,9 @@ class BaseContainer extends StatelessWidget{
             SizedBox(
               width: 100.w,
             ),
-            Expanded(child: FromfieldColumn(cubit: cubit,context: context,)),
+            Expanded(
+              flex: 3,
+                child: FromfieldColumn(cubit: cubit,context: context,)),
           ],
         ),
       ),

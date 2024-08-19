@@ -11,11 +11,11 @@ Widget labMasterDrawer({required StatefulNavigationShell navigationShell}) {
     children: [
       listTileWidget(
           index: index,
-          spIndex: 10,
+          spIndex: 11,
           text: 'patient queue',
           onTap: () {
             // cubit.changeSelctedTap(index: 1);
-            navigationShell.goBranch(10,
+            navigationShell.goBranch(11,
                 initialLocation: index == navigationShell.currentIndex);
 
             // context.go('/add_account');

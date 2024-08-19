@@ -10,7 +10,7 @@ AvailableTimeModel _$AvailableTimeModelFromJson(Map<String, dynamic> json) =>
     AvailableTimeModel(
       date: json['date'] as String,
       day: json['day'] as String,
-      availableTimes: (json['available_times'] as List<dynamic>)
+      availableTimes: (json['availableTimes'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
     );

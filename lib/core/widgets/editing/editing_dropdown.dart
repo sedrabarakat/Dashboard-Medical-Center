@@ -15,7 +15,7 @@ Widget editingDropDown(
   return Padding(
     padding: EdgeInsets.only(top: 18.h, right: 10.w, left: 10.w),
     child: SizedBox(
-        width: 500.w,
+        width: 250.w,
         child: (is_Editig)
             ? Dropdown(
                 filled: (is_Editig) ? true : false,

@@ -23,17 +23,19 @@ class DoctorProfile extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           DoctorCubit cubit = DoctorCubit.get(context);
-          return Padding(
+          return ConditionalBuilder(
+            condition: cubit.doctorModel != null,
+            builder: (context) => Padding(
               padding: EdgeInsets.only(left: 30.w, right: 30.w),
-              child: ConditionalBuilder(
-                condition: cubit.doctorModel != null,
-                builder: (context) => Row(
-                  children: [
-                    Container(
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
                       padding: EdgeInsets.symmetric(
                           horizontal: 30.w, vertical: 50.h),
                       height: 920.h,
-                      width: 900.w,
+                      width: 1100.w,
                       decoration: StyleManager.rounded40(color: Colors.white),
                       child: SingleChildScrollView(
                         child: Column(
@@ -45,32 +47,44 @@ class DoctorProfile extends StatelessWidget {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                TextsCol(texts: Docfields1),
-                                infoCol1(context: context),
+                                Expanded(
+                                  flex: 4,
+                                    child: TextsCol(texts: Docfields1)),
+                                Expanded(
+                                  flex: 6,
+                                    child: infoCol1(context: context)),
                                 SizedBox(
-                                  width: 50.w,
+                                  width: 100.w,
                                 ),
-                                TextsCol(
-                                    texts:
-                                        Docfields2(isEditing: cubit.isEditing)),
-                                infoCol2(context: context)
+                                Expanded(
+                                  flex: 4,
+                                  child: TextsCol(
+                                      texts:
+                                          Docfields2(isEditing: cubit.isEditing)),
+                                ),
+                                Expanded(
+                                    flex: 6,
+                                    child: infoCol2(context: context))
                               ],
                             )
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 30.w,
-                    ),
-                    doctorSchedule(cubit: cubit)
-                  ],
-                ),
-                fallback: (context) => Lottie.asset(
-                    AssetsManager.loadingPatient,
-                    width: 500.w,
-                    height: 500.h),
-              )
+                  ),
+                  SizedBox(
+                    width: 30.w,
+                  ),
+                  Expanded(
+                    flex: 1,
+                      child: doctorSchedule(cubit: cubit))
+                ],
+              ),
+            ),
+            fallback: (context) => Lottie.asset(
+                AssetsManager.loadingPatient,
+                width: 500.w,
+                height: 500.h),
           );
         });
   }

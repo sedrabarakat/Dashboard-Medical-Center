@@ -9,20 +9,16 @@ Widget PicAndName({required context, required cubit}) {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Flexible(child: Image_widget(image: cubit.image)),
+      Expanded(child: Image_widget(image: cubit.image)),
       SizedBox(
-        width: 30.w,
+        width: 30.w,height: 30.h,
       ),
-      Padding(
-        padding: EdgeInsets.only(top: 30.h),
-        child: nameWidget(
-          first_name: cubit.firstName,
-          Last_name: cubit.lastName,
-          is_Editig: cubit.isEditing,
-        ),
+      nameWidget(
+        first_name: cubit.firstName,
+        Last_name: cubit.lastName,
+        is_Editig: cubit.isEditing,
       ),
-      SizedBox(width: 50.w,),
-      Flexible(child: editingInfoButtons(cubit: cubit))
+      editingInfoButtons(cubit: cubit)
     ],
   );
 }

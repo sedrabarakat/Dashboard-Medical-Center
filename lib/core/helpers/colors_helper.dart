@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ColorsHelper {
   static Color basicBackground = const Color.fromARGB(255, 247, 247, 248);
 
-  static const Color omarColor = Color(0xFF2A2AC0);
+  static const Color primary = Color(0xFF2A2AC0);
   static const Color onPressedColor = Color(0xFF3A3ACC);
 
   ///blue

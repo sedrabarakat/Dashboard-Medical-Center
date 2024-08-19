@@ -82,7 +82,7 @@ class DoctorRepo {
   Future<Either<NetworkExceptions, Map<String, dynamic>>> getDoctorSchedule(
       {required int id}) async {
     try {
-      BaseModel baseModel = await _remote.getDoctorShedule(id: id);
+      BaseModel baseModel = await _remote.getDoctorSchedule(id: id);
       return right(baseModel.data);
     } catch (error) {
       return left(NetworkExceptions.getException(error));

@@ -44,7 +44,7 @@ Widget infoCol2({required context}) {
       editingFields(controller: cubit.dayInAdvance, is_Editig: isEditing),
       if (isEditing)
         SizedBox(
-          width: 210.w,
+          width: 310.w,
           child: Padding(
             padding: EdgeInsets.only(top: 10.h, left: 10.w),
             child: TextFild_def(

@@ -21,7 +21,7 @@ Widget AddImage({
       child: IconButton(onPressed: (){
         cubit.addImage();
       },icon: (cubit.Image_Bytes!=null)?Image.memory(
-          Uint8List.fromList(cubit.Image_Bytes!,),fit: BoxFit.fill,
+          Uint8List.fromList(cubit.Image_Bytes!),fit: BoxFit.cover,
       ):Icon(Icons.add_a_photo,size: 30.w,color: Colors.white,),),
     ),
   );

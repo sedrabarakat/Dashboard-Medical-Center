@@ -6,7 +6,7 @@ import '../../helpers/colors_helper.dart';
 Widget editingInfoButtons({
   required cubit,
 }){
-  return Expanded(
+  return Flexible(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [

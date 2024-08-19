@@ -122,11 +122,11 @@ class DoctorCubit extends Cubit<DoctorState> {
   }
 
   ///Sections for update
-  List<String>? sectionsName;
+  List<String> sectionsName=[];
   List<Map<String, int>> sections = [];
 
-  void getSections({required context}) {
-    AddAccountCubit.get(context).getSection();
+  void getSections({required context})async {
+    await AddAccountCubit.get(context).getSection();
     sectionsName = AddAccountCubit.get(context).SectionNames;
     sections = AddAccountCubit.get(context).Sections;
     emit(GetSectionState());

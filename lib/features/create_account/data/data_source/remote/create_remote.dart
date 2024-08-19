@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+
 import '../../../../../core/data/models/base_model.dart';
 import '../../../../../core/domain/services/api_service.dart';
 import '../../../../../core/domain/urls/app_url.dart';
@@ -19,15 +21,16 @@ class CreateRemoteDataSource {
       required String password,
       var image}) async {
     final response =
-        await apiService.post(AppUrls_Toggle(user_type: user_type), body: {
-      "first_name": first_name,
-      "middle_name": middle_name,
-      "last_name": last_name,
-      "phone_number": phone_number,
-      "description": description,
-      "password": password,
-      if (image != null) "image": image
-    });
+        await apiService.post(AppUrls_Toggle(user_type: user_type), formData:
+        FormData.fromMap({
+    "first_name": first_name,
+    "middle_name": middle_name,
+    "last_name": last_name,
+    "phone_number": phone_number,
+    "description": description,
+    "password": password,
+    if (image != null) "image": image
+    }));
     return BaseModel(data: response['data'], message: response['message']);
   }
 
@@ -62,28 +65,30 @@ class CreateRemoteDataSource {
       required String user_type,
         required String password,
       var image}) async {
-    final response = await apiService.post(AppUrl.creatPatient, body: {
-      "first_name": first_name,
-      "middle_name": middle_name,
-      "last_name": last_name,
-      "phone_number": phone_number,
-      "user_type": user_type,
-      "description": description,
-      "birth_date": birth_date,
-      "age": age,
-      "gender": gender,
-      "address": address,
-      "blood_type": bloodType,
-      "marital_status": marital_status,
-      "children_num": children_num,
-      "habits": habits,
-      "proffesion": profession,
-      "diabetes": diabetes,
-      "blood_pressure": blood_pressure,
-      "wallet": wallet,
-      "password":password,
-      if (image != null) "image": base64Decode(image)
-    });
+    final response = await apiService.post(AppUrl.creatPatient, formData: 
+        FormData.fromMap({
+          "first_name": first_name,
+          "middle_name": middle_name,
+          "last_name": last_name,
+          "phone_number": phone_number,
+          "user_type": user_type,
+          "description": description,
+          "birth_date": birth_date,
+          "age": age,
+          "gender": gender,
+          "address": address,
+          "blood_type": bloodType,
+          "marital_status": marital_status,
+          "children_num": children_num,
+          "habits": habits,
+          "proffesion": profession,
+          "diabetes": diabetes,
+          "blood_pressure": blood_pressure,
+          "wallet": wallet,
+          "password":password,
+          if (image != null) "image": image
+        })
+    );
     return BaseModel(data: response["data"], message: response["message"]);
   }
 
@@ -99,7 +104,8 @@ class CreateRemoteDataSource {
     required String days_in_advance,
     required String session_durtion,
   }) async {
-    final Response = await apiService.post(AppUrl.creatDoctor, body: {
+    final Response = await apiService.post(AppUrl.creatDoctor,formData: 
+    FormData.fromMap( {
       "first_name": first_name,
       "middle_name": middle_name,
       "last_name": last_name,
@@ -110,7 +116,7 @@ class CreateRemoteDataSource {
       "section_id": section_id,
       "days_in_advance": days_in_advance,
       "session_durtion": session_durtion
-    });
+    }));
     return BaseModel(data: Response["data"], message: Response["message"]);
   }
 }

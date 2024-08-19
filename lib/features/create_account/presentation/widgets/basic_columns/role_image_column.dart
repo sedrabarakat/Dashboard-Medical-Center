@@ -15,34 +15,37 @@ class RoleImageColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var role = SharedPrefrence.getData(key: 'role');
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AddImage(context: context),
-        SizedBox(
-          height: 30.h,
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 35.w),
-          child: Text("Role",
-              style: StyleManager.font20W600.copyWith(color: ColorsHelper.black54)),
-        ),
-        SizedBox(
-          height: 20.h,
-        ),
-        Flexible(
-          child: Padding(
-            padding: EdgeInsets.only(left:35.w),
-            child: SizedBox(
-              width: 250.w,
-              height: 800.h,
-              child: SelecteRoleList(
-                cubit: cubit,
+    return Expanded(
+      flex: 1,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AddImage(context: context),
+          SizedBox(
+            height: 30.h,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 35.w),
+            child: Text("Role",
+                style: StyleManager.font20W600.copyWith(color: ColorsHelper.black54)),
+          ),
+          SizedBox(
+            height: 20.h,
+          ),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left:35.w),
+              child: SizedBox(
+                width: 250.w,
+                height: 800.h,
+                child: SelecteRoleList(
+                  cubit: cubit,
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }
